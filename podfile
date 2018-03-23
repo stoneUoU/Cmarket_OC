@@ -1,0 +1,14 @@
+platform :ios, ’10.0’
+target ‘Fishes’ do
+use_frameworks!
+pod 'Masonry'
+pod 'SDWebImage'
+pod 'AFNetworking'
+pod 'MJRefresh'
+pod 'IQKeyboardManager'
+pod 'RealReachability'
+pod 'UICKeyChainStore'
+pod 'MBProgressHUD'
+pod 'CYLTableViewPlaceHolder'
+pod 'SDCycleScrollView','~> 1.75'
+end 

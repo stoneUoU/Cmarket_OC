@@ -1,0 +1,44 @@
+//
+//  HomeMs.m
+//  Fishes
+//
+//  Created by test on 2018/3/22.
+//  Copyright © 2018年 com.youlu. All rights reserved.
+//
+
+#import "HomeMs.h"
+
+@implementation HomeMs
+@synthesize group_id;
+@synthesize title;
+@synthesize price;
+@synthesize discount_price;
+@synthesize spic;
+@synthesize status;
+@synthesize total_inventory;
+@synthesize freeze_inventory;
+@synthesize start_time;
+@synthesize end_time;
+@synthesize type;
+@synthesize subtitle;
+@synthesize attr_value;
+//实现构造方法
+- (id)initMs:(NSString *)group_id title:(NSString *)title price:(NSString *)price discount_price:(NSString *)discount_price spic:(NSString *)spic status:(NSString *)status total_inventory:(NSString *)total_inventory freeze_inventory:(NSString *)freeze_inventory start_time:(NSString *)start_time end_time:(NSString *)end_time type:(NSString *)type subtitle:(NSString *)subtitle attr_value:(NSString *)attr_value{
+    if(self=[super init]){
+        self.group_id = group_id;
+        self.title = title;
+        self.price = price;
+        self.discount_price = discount_price;
+        self.spic = spic;
+        self.status = status;
+        self.total_inventory = total_inventory;
+        self.freeze_inventory = freeze_inventory;
+        self.start_time = start_time;
+        self.end_time = end_time;
+        self.type = type;
+        self.subtitle = subtitle;
+        self.attr_value = attr_value;
+    }
+    return self;
+}
+@end

@@ -1,0 +1,8 @@
+platform :ios,’10.0’
+
+target 'Fishes' do
+    pod 'AFNetworking' 
+    pod 'SDWebImage'
+    pod 'MBProgressHUD'
+    pod 'Masonry'
+end

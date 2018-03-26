@@ -7,19 +7,24 @@
 //
 
 #import "TabBarVC.h"
-#import "NavigationVC.h"
+//#import "NavigationVC.h"
 
 #import "MineVC.h"
 #import "HomeVC.h"
-#import "TabBar.h"
+
 #import "UIImage+Image.h"
 
-
-@interface TabBarVC ()
-
-@end
-
 @implementation TabBarVC
+//定义一个静态变量，实现登录后的跳转界面
+static TabBarVC *tabVC = nil;
++(TabBarVC *)sharedVC{
+    @synchronized(self){
+        if(tabVC == nil){
+            tabVC = [[self alloc] init];
+        }
+    }
+    return tabVC;
+}
 
 #pragma mark - 第一次使用当前类的时候对设置UITabBarItem的主题
 + (void)initialize
@@ -36,16 +41,20 @@
     
     [tabBarItem setTitleTextAttributes:dictNormal forState:UIControlStateNormal];
     [tabBarItem setTitleTextAttributes:dictSelected forState:UIControlStateSelected];
-    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self setUpAllChildVc];
+
+
+    //注意，shouldSelectViewController此方法得设置这个代理
+    self.delegate = self;
     
     //创建自己的tabbar，然后用kvc将自己的tabbar和系统的tabBar替换下
     TabBar *tabbar = [[TabBar alloc] init];
+    tabbar.delegate = self;
     //kvc实质是修改了系统的_tabBar
     [self setValue:tabbar forKeyPath:@"tabBar"];
     
@@ -80,10 +89,7 @@
  */
 - (void)setUpOneChildVcWithVc:(UIViewController *)Vc Image:(NSString *)image selectedImage:(NSString *)selectedImage title:(NSString *)title
 {
-    NavigationVC *nav = [[NavigationVC alloc] initWithRootViewController:Vc];
-    
-    //Vc.view.backgroundColor = [self randomColor];
-    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:Vc];
     UIImage *myImage = [UIImage imageNamed:image];
     myImage = [myImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
@@ -100,11 +106,23 @@
     [self addChildViewController:nav];
     
 }
-
-//-(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)Item{
-// 
-//    STLog(@"%@",Item.title);
-//}
+-(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    if ([[NSString stringWithFormat:@"%@",viewController.tabBarItem.title]  isEqualToString: @"我的"]){
+        //取是否登录
+        if (![[NSString stringWithFormat:@"%@",[UICKeyChainStore keyChainStore][@"orLogin"]]  isEqual: @"true"]){
+            //弹出登录视图：
+            STLog(@"弹出登录视图");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self presentViewController:[[UINavigationController alloc] initWithRootViewController:[[StartVC alloc] init]] animated:NO completion:nil];
+            });
+            return NO;
+        }else{
+            return YES;
+        }
+    }else{
+        return YES;
+    }
+}
 - (UIColor *)randomColor
 {
     CGFloat r = arc4random_uniform(256);
@@ -113,5 +131,4 @@
     return [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0];
     
 }
-
 @end

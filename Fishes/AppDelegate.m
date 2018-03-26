@@ -10,21 +10,30 @@
 
 #import "TabBarVC.h"
 
-@interface AppDelegate ()
-
-@end
+//static TabBarVC *tabBarVc;
 
 @implementation AppDelegate
 
+//+ (void)setTabBarV:(TabBarVC *)tabBar
+//{
+//    tabBarVc = tabBar;
+//}
+//+ (TabBarVC *)getTabBarV
+//{
+//    return tabBarVc;
+//}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    TabBarVC *tabBarVc = [[TabBarVC alloc] init];
+//    [UICKeyChainStore keyChainStore][@"orLogin"] = @"false";
+//    [UICKeyChainStore keyChainStore][@"authos"] = @"";
+    //[AppDelegate setTabBarV:[[TabBarVC alloc] init]];
+
     CATransition *anim = [[CATransition alloc] init];
     anim.type = @"rippleEffect";
     anim.duration = 1.0;
     [self.window.layer addAnimation:anim forKey:nil];
-    self.window.rootViewController = tabBarVc;
+    self.window.rootViewController = [TabBarVC sharedVC];
     [self.window makeKeyAndVisible];
 
     //关闭设置为NO, 默认值为NO.  键盘监听

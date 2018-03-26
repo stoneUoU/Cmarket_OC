@@ -35,19 +35,8 @@
             btn.width = self.width / 2;
             btn.x = btn.width * btnIndex;
             btn.tag = btnIndex;
-            [btn addTarget:self action:@selector(btnClick:)forControlEvents:UIControlEventTouchUpInside];
             btnIndex++;
         }
     }
 }
-- (void)btnClick:(UIButton *)button{
-    if (button.tag == 1){
-        STLog(@"%ld",(long)button.tag);
-    }
-}
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
-
-        return [super hitTest:point withEvent:event];
-}
-
 @end

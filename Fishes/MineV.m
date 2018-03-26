@@ -129,7 +129,6 @@
                 make.height.mas_equalTo(110);
             }];
 
-            STLog(@"%@",_mineMs.avatar);
             _iconV = [[UIImageView alloc] init ];
             _iconV.layer.cornerRadius = 36;
             //实现效果
@@ -214,6 +213,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.delegate toNextVC:[NSString stringWithFormat:@"%ld",(long)indexPath.section] row:[NSString stringWithFormat:@"%ld",indexPath.row]];
 }
 
 

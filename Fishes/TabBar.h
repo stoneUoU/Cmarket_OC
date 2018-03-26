@@ -7,9 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @class TabBar;
-
-@interface TabBar : UITabBar
-
+@interface TabBar : UITabBar;
 @end

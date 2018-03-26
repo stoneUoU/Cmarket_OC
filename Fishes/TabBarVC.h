@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface TabBarVC : UITabBarController
-
+#import "TabBar.h"
+#import "StartVC.h"
+@interface TabBarVC : UITabBarController<UITabBarControllerDelegate>
+//自定义导航栏
++(TabBarVC *)sharedVC;
 @end

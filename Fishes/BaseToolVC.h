@@ -24,5 +24,11 @@
 @property(nonatomic, copy) NSString *netUseVals;
 
 //创建导航栏
--(void) setUp:(NSString *) midVal sideVal:(NSString *)sideVal navC:(UIColor *)navC midFontC:(UIColor *)midFontC sideFontC:(UIColor *)sideFontC;
+- (void)setUp:(NSString *) midVal sideVal:(NSString *)sideVal backIvName:(NSString *)backIvName navC:(UIColor *)navC midFontC:(UIColor *)midFontC sideFontC:(UIColor *)sideFontC;
+
+//定义方法
+-(void) toBack;
+
+//定义方法
+-(void) toSide;
 @end

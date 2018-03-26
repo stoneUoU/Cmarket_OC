@@ -18,7 +18,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    [self setUp:@"商品详情" sideVal:@"" navC:[UIColor cyanColor] midFontC:deepBlackC sideFontC:deepBlackC];//[self setUp:@"商品详情"];
+
+    [self setUp:@"商品详情" sideVal:@"注册" backIvName:@"custom_serve_back.png" navC:[UIColor cyanColor] midFontC:deepBlackC sideFontC:deepBlackC];//[self setUp:@"商品详情"];
     [self setUpUI];
 }
 - (void)setUpUI{
@@ -48,7 +49,10 @@
     //STLog(@"%@",self.netUseVals);
     [HudTips showToast:self text:self.netUseVals showType:Pos animationType:StToastAnimationTypeScale];
 }
-
+//- (BOOL)hidesBottomBarWhenPushed
+//{
+//    return (self.navigationController.topViewController == self);
+//}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

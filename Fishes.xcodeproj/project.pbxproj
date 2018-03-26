@@ -11,9 +11,16 @@
 		523F04B520648E5100858BDD /* MineV.m in Sources */ = {isa = PBXBuildFile; fileRef = 523F04B420648E5100858BDD /* MineV.m */; };
 		523F04BA20649E1300858BDD /* MineTbCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 523F04B920649E1300858BDD /* MineTbCells.m */; };
 		523F04BD2064CB5100858BDD /* MineMs.m in Sources */ = {isa = PBXBuildFile; fileRef = 523F04BC2064CB5100858BDD /* MineMs.m */; };
+		523F04CA2064D71700858BDD /* StartV.m in Sources */ = {isa = PBXBuildFile; fileRef = 523F04C92064D71700858BDD /* StartV.m */; };
+		523F04CD2064D72700858BDD /* StartVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 523F04CC2064D72700858BDD /* StartVC.m */; };
+		523F04D02065020500858BDD /* CodeLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 523F04CF2065020500858BDD /* CodeLoginVC.m */; };
+		523F04D32065021800858BDD /* CodeLoginV.m in Sources */ = {isa = PBXBuildFile; fileRef = 523F04D22065021800858BDD /* CodeLoginV.m */; };
+		523F04D62065068A00858BDD /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 523F04D52065068A00858BDD /* NSString+MD5.m */; };
+		523FD55420664716009753B4 /* SetV.m in Sources */ = {isa = PBXBuildFile; fileRef = 523FD55320664716009753B4 /* SetV.m */; };
+		523FD55720664727009753B4 /* SetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 523FD55620664727009753B4 /* SetVC.m */; };
+		523FD55A20665454009753B4 /* MethodFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 523FD55920665454009753B4 /* MethodFunc.m */; };
 		526047141F7510800072AFB4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 526047131F7510800072AFB4 /* AppDelegate.m */; };
 		5260471C1F7510800072AFB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5260471B1F7510800072AFB4 /* Assets.xcassets */; };
-		5260471F1F7510800072AFB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5260471D1F7510800072AFB4 /* LaunchScreen.storyboard */; };
 		5260472A1F7510800072AFB4 /* FishesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 526047291F7510800072AFB4 /* FishesTests.m */; };
 		526047351F7510800072AFB4 /* FishesUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 526047341F7510800072AFB4 /* FishesUITests.m */; };
 		5260477F1F7513E40072AFB4 /* HomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5260477E1F7513E40072AFB4 /* HomeVC.m */; };
@@ -22,7 +29,6 @@
 		526047961F7515D60072AFB4 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 526047951F7515D60072AFB4 /* UIView+Extension.m */; };
 		526047991F75160C0072AFB4 /* UIImage+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 526047981F75160C0072AFB4 /* UIImage+Image.m */; };
 		5260479C1F7516390072AFB4 /* TabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5260479B1F7516390072AFB4 /* TabBarVC.m */; };
-		5260479F1F7516630072AFB4 /* NavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5260479E1F7516630072AFB4 /* NavigationVC.m */; };
 		526047A21F7516920072AFB4 /* TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 526047A11F7516920072AFB4 /* TabBar.m */; };
 		52680C74206239B700F5DB96 /* HomeBaseTbV.m in Sources */ = {isa = PBXBuildFile; fileRef = 52680C73206239B700F5DB96 /* HomeBaseTbV.m */; };
 		52680C7A20623A2C00F5DB96 /* SPPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 52680C7920623A2C00F5DB96 /* SPPageMenu.m */; };
@@ -45,6 +51,11 @@
 		528936EE2061ECC4004463E6 /* STPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 528936ED2061ECC4004463E6 /* STPlaceholderView.m */; };
 		528936F12061FDA1004463E6 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 528936F02061FDA1004463E6 /* UIColor+Hex.m */; };
 		52AE74C91FCE584900081972 /* HomeDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52AE74C81FCE584900081972 /* HomeDetailVC.m */; };
+		52BC7E682065DEC9000B5E43 /* UIFont+runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E672065DEC9000B5E43 /* UIFont+runtime.m */; };
+		52BC7E6B2065E611000B5E43 /* SmsLoginV.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E6A2065E611000B5E43 /* SmsLoginV.m */; };
+		52BC7E6E2065E62B000B5E43 /* SmsLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E6D2065E62B000B5E43 /* SmsLoginVC.m */; };
+		52BC7E712065E65F000B5E43 /* RegisterV.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E702065E65F000B5E43 /* RegisterV.m */; };
+		52BC7E742065E66E000B5E43 /* RegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E732065E66E000B5E43 /* RegisterVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,11 +83,26 @@
 		523F04B920649E1300858BDD /* MineTbCells.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineTbCells.m; sourceTree = "<group>"; };
 		523F04BB2064CB5100858BDD /* MineMs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineMs.h; sourceTree = "<group>"; };
 		523F04BC2064CB5100858BDD /* MineMs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineMs.m; sourceTree = "<group>"; };
+		523F04C82064D71700858BDD /* StartV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StartV.h; sourceTree = "<group>"; };
+		523F04C92064D71700858BDD /* StartV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StartV.m; sourceTree = "<group>"; };
+		523F04CB2064D72700858BDD /* StartVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StartVC.h; sourceTree = "<group>"; };
+		523F04CC2064D72700858BDD /* StartVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StartVC.m; sourceTree = "<group>"; };
+		523F04CE2065020500858BDD /* CodeLoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodeLoginVC.h; sourceTree = "<group>"; };
+		523F04CF2065020500858BDD /* CodeLoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CodeLoginVC.m; sourceTree = "<group>"; };
+		523F04D12065021800858BDD /* CodeLoginV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodeLoginV.h; sourceTree = "<group>"; };
+		523F04D22065021800858BDD /* CodeLoginV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CodeLoginV.m; sourceTree = "<group>"; };
+		523F04D42065068A00858BDD /* NSString+MD5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		523F04D52065068A00858BDD /* NSString+MD5.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		523FD55220664716009753B4 /* SetV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetV.h; sourceTree = "<group>"; };
+		523FD55320664716009753B4 /* SetV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetV.m; sourceTree = "<group>"; };
+		523FD55520664727009753B4 /* SetVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetVC.h; sourceTree = "<group>"; };
+		523FD55620664727009753B4 /* SetVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetVC.m; sourceTree = "<group>"; };
+		523FD55820665454009753B4 /* MethodFunc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MethodFunc.h; sourceTree = "<group>"; };
+		523FD55920665454009753B4 /* MethodFunc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MethodFunc.m; sourceTree = "<group>"; };
 		5260470C1F7510800072AFB4 /* Fishes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fishes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		526047121F7510800072AFB4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		526047131F7510800072AFB4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5260471B1F7510800072AFB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5260471E1F7510800072AFB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		526047201F7510800072AFB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		526047251F7510800072AFB4 /* FishesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FishesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		526047291F7510800072AFB4 /* FishesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FishesTests.m; sourceTree = "<group>"; };
@@ -95,8 +121,6 @@
 		526047981F75160C0072AFB4 /* UIImage+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Image.m"; sourceTree = "<group>"; };
 		5260479A1F7516390072AFB4 /* TabBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarVC.h; sourceTree = "<group>"; };
 		5260479B1F7516390072AFB4 /* TabBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarVC.m; sourceTree = "<group>"; };
-		5260479D1F7516630072AFB4 /* NavigationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationVC.h; sourceTree = "<group>"; };
-		5260479E1F7516630072AFB4 /* NavigationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationVC.m; sourceTree = "<group>"; };
 		526047A01F7516920072AFB4 /* TabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBar.h; sourceTree = "<group>"; };
 		526047A11F7516920072AFB4 /* TabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBar.m; sourceTree = "<group>"; };
 		52680C72206239B700F5DB96 /* HomeBaseTbV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeBaseTbV.h; sourceTree = "<group>"; };
@@ -143,6 +167,16 @@
 		52AE74C71FCE584900081972 /* HomeDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailVC.h; sourceTree = "<group>"; };
 		52AE74C81FCE584900081972 /* HomeDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailVC.m; sourceTree = "<group>"; };
 		52B72DF4E62F565F1F472D34 /* Pods-Fishes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fishes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fishes/Pods-Fishes.debug.xcconfig"; sourceTree = "<group>"; };
+		52BC7E662065DEC9000B5E43 /* UIFont+runtime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+runtime.h"; sourceTree = "<group>"; };
+		52BC7E672065DEC9000B5E43 /* UIFont+runtime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+runtime.m"; sourceTree = "<group>"; };
+		52BC7E692065E611000B5E43 /* SmsLoginV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmsLoginV.h; sourceTree = "<group>"; };
+		52BC7E6A2065E611000B5E43 /* SmsLoginV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmsLoginV.m; sourceTree = "<group>"; };
+		52BC7E6C2065E62B000B5E43 /* SmsLoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmsLoginVC.h; sourceTree = "<group>"; };
+		52BC7E6D2065E62B000B5E43 /* SmsLoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmsLoginVC.m; sourceTree = "<group>"; };
+		52BC7E6F2065E65F000B5E43 /* RegisterV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterV.h; sourceTree = "<group>"; };
+		52BC7E702065E65F000B5E43 /* RegisterV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterV.m; sourceTree = "<group>"; };
+		52BC7E722065E66E000B5E43 /* RegisterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterVC.h; sourceTree = "<group>"; };
+		52BC7E732065E66E000B5E43 /* RegisterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterVC.m; sourceTree = "<group>"; };
 		F37055393C97E28B7B668FA1 /* Pods_Fishes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fishes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -202,8 +236,48 @@
 		523F04BE2064D2EE00858BDD /* Start */ = {
 			isa = PBXGroup;
 			children = (
+				523F04BF2064D62300858BDD /* M */,
+				523F04C02064D62D00858BDD /* View */,
+				523F04C12064D64E00858BDD /* VC */,
 			);
 			name = Start;
+			sourceTree = "<group>";
+		};
+		523F04BF2064D62300858BDD /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = M;
+			sourceTree = "<group>";
+		};
+		523F04C02064D62D00858BDD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				523F04C82064D71700858BDD /* StartV.h */,
+				523F04C92064D71700858BDD /* StartV.m */,
+				523F04D12065021800858BDD /* CodeLoginV.h */,
+				523F04D22065021800858BDD /* CodeLoginV.m */,
+				52BC7E692065E611000B5E43 /* SmsLoginV.h */,
+				52BC7E6A2065E611000B5E43 /* SmsLoginV.m */,
+				52BC7E6F2065E65F000B5E43 /* RegisterV.h */,
+				52BC7E702065E65F000B5E43 /* RegisterV.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		523F04C12064D64E00858BDD /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				523F04CB2064D72700858BDD /* StartVC.h */,
+				523F04CC2064D72700858BDD /* StartVC.m */,
+				523F04CE2065020500858BDD /* CodeLoginVC.h */,
+				523F04CF2065020500858BDD /* CodeLoginVC.m */,
+				52BC7E6C2065E62B000B5E43 /* SmsLoginVC.h */,
+				52BC7E6D2065E62B000B5E43 /* SmsLoginVC.m */,
+				52BC7E722065E66E000B5E43 /* RegisterVC.h */,
+				52BC7E732065E66E000B5E43 /* RegisterVC.m */,
+			);
+			name = VC;
 			sourceTree = "<group>";
 		};
 		526047031F7510800072AFB4 = {
@@ -238,7 +312,6 @@
 				5260476D1F7512910072AFB4 /* Mine */,
 				5260470F1F7510800072AFB4 /* Supporting Files */,
 				5260471B1F7510800072AFB4 /* Assets.xcassets */,
-				5260471D1F7510800072AFB4 /* LaunchScreen.storyboard */,
 				526047201F7510800072AFB4 /* Info.plist */,
 			);
 			path = Fishes;
@@ -336,6 +409,8 @@
 			children = (
 				526047831F7514430072AFB4 /* MineVC.h */,
 				526047841F7514430072AFB4 /* MineVC.m */,
+				523FD55520664727009753B4 /* SetVC.h */,
+				523FD55620664727009753B4 /* SetVC.m */,
 			);
 			name = VC;
 			sourceTree = "<group>";
@@ -346,6 +421,8 @@
 				523F04B720649DEA00858BDD /* MineCells */,
 				523F04B320648E5100858BDD /* MineV.h */,
 				523F04B420648E5100858BDD /* MineV.m */,
+				523FD55220664716009753B4 /* SetV.h */,
+				523FD55320664716009753B4 /* SetV.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -363,9 +440,9 @@
 			isa = PBXGroup;
 			children = (
 				526047931F7515BB0072AFB4 /* Extension */,
-				526047921F7515B00072AFB4 /* VC */,
 				526047911F7515A40072AFB4 /* M */,
 				526047901F7515980072AFB4 /* View */,
+				526047921F7515B00072AFB4 /* VC */,
 			);
 			name = Public;
 			sourceTree = "<group>";
@@ -397,8 +474,6 @@
 			children = (
 				5260479A1F7516390072AFB4 /* TabBarVC.h */,
 				5260479B1F7516390072AFB4 /* TabBarVC.m */,
-				5260479D1F7516630072AFB4 /* NavigationVC.h */,
-				5260479E1F7516630072AFB4 /* NavigationVC.m */,
 				528936D62061E94E004463E6 /* BaseToolVC.h */,
 				528936D72061E94E004463E6 /* BaseToolVC.m */,
 			);
@@ -420,6 +495,10 @@
 				528936F02061FDA1004463E6 /* UIColor+Hex.m */,
 				5284058220635602000623B4 /* UILabel+Padding.h */,
 				5284058320635602000623B4 /* UILabel+Padding.m */,
+				523F04D42065068A00858BDD /* NSString+MD5.h */,
+				523F04D52065068A00858BDD /* NSString+MD5.m */,
+				52BC7E662065DEC9000B5E43 /* UIFont+runtime.h */,
+				52BC7E672065DEC9000B5E43 /* UIFont+runtime.m */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -437,6 +516,8 @@
 				528936E42061EBCB004463E6 /* HudTips.m */,
 				5284058B2063960B000623B4 /* FormatDs.h */,
 				5284058C2063960B000623B4 /* FormatDs.m */,
+				523FD55820665454009753B4 /* MethodFunc.h */,
+				523FD55920665454009753B4 /* MethodFunc.m */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -561,7 +642,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5260471F1F7510800072AFB4 /* LaunchScreen.storyboard in Resources */,
 				5260471C1F7510800072AFB4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -661,27 +741,37 @@
 			files = (
 				5284058120634CA2000623B4 /* HomeTbCells.m in Sources */,
 				528936E22061EB91004463E6 /* StToastAnimation.m in Sources */,
+				523FD55420664716009753B4 /* SetV.m in Sources */,
 				528936F12061FDA1004463E6 /* UIColor+Hex.m in Sources */,
+				52BC7E6B2065E611000B5E43 /* SmsLoginV.m in Sources */,
 				52AE74C91FCE584900081972 /* HomeDetailVC.m in Sources */,
 				5260477F1F7513E40072AFB4 /* HomeVC.m in Sources */,
 				523F04B520648E5100858BDD /* MineV.m in Sources */,
-				5260479F1F7516630072AFB4 /* NavigationVC.m in Sources */,
 				52680C86206248A900F5DB96 /* CarouselMs.m in Sources */,
+				523F04D62065068A00858BDD /* NSString+MD5.m in Sources */,
+				52BC7E742065E66E000B5E43 /* RegisterVC.m in Sources */,
 				528936EB2061EC71004463E6 /* UIButton+ST_FixMultiClick.m in Sources */,
+				523F04D32065021800858BDD /* CodeLoginV.m in Sources */,
 				5284058420635602000623B4 /* UILabel+Padding.m in Sources */,
+				52BC7E682065DEC9000B5E43 /* UIFont+runtime.m in Sources */,
 				5260479C1F7516390072AFB4 /* TabBarVC.m in Sources */,
 				528936E82061EC34004463E6 /* UIView+Toast.m in Sources */,
+				52BC7E712065E65F000B5E43 /* RegisterV.m in Sources */,
 				528936DF2061EB5E004463E6 /* StToast.m in Sources */,
 				52680C8020623CCD00F5DB96 /* OnStartVC.m in Sources */,
 				5284058A20638076000623B4 /* HomeMs.m in Sources */,
 				52680C74206239B700F5DB96 /* HomeBaseTbV.m in Sources */,
 				526047991F75160C0072AFB4 /* UIImage+Image.m in Sources */,
+				523F04D02065020500858BDD /* CodeLoginVC.m in Sources */,
 				52680C8320623D1900F5DB96 /* WillStartVC.m in Sources */,
+				523FD55A20665454009753B4 /* MethodFunc.m in Sources */,
 				5284058D2063960B000623B4 /* FormatDs.m in Sources */,
+				523F04CA2064D71700858BDD /* StartV.m in Sources */,
 				52680C7D20623B0400F5DB96 /* HomeBaseTbVC.m in Sources */,
 				52680C7A20623A2C00F5DB96 /* SPPageMenu.m in Sources */,
 				528936D82061E94E004463E6 /* BaseToolVC.m in Sources */,
 				528936DC2061EA88004463E6 /* NetWorkManager.m in Sources */,
+				523FD55720664727009753B4 /* SetVC.m in Sources */,
 				526047A21F7516920072AFB4 /* TabBar.m in Sources */,
 				526047141F7510800072AFB4 /* AppDelegate.m in Sources */,
 				5260478E1F7515270072AFB4 /* main.m in Sources */,
@@ -690,7 +780,9 @@
 				5284058720637D59000623B4 /* CountDown.m in Sources */,
 				528936EE2061ECC4004463E6 /* STPlaceholderView.m in Sources */,
 				526047961F7515D60072AFB4 /* UIView+Extension.m in Sources */,
+				52BC7E6E2065E62B000B5E43 /* SmsLoginVC.m in Sources */,
 				526047851F7514430072AFB4 /* MineVC.m in Sources */,
+				523F04CD2064D72700858BDD /* StartVC.m in Sources */,
 				528936E52061EBCB004463E6 /* HudTips.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -725,17 +817,6 @@
 			targetProxy = 526047311F7510800072AFB4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		5260471D1F7510800072AFB4 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5260471E1F7510800072AFB4 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		526047371F7510800072AFB4 /* Debug */ = {
@@ -835,6 +916,7 @@
 			baseConfigurationReference = 52B72DF4E62F565F1F472D34 /* Pods-Fishes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 7T5NXR7M3P;
 				GCC_PREFIX_HEADER = Fishes/CommFiles.pch;
 				INFOPLIST_FILE = Fishes/Info.plist;
@@ -849,6 +931,7 @@
 			baseConfigurationReference = 3D86F0E351C41C5DECDD7431 /* Pods-Fishes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 7T5NXR7M3P;
 				GCC_PREFIX_HEADER = Fishes/CommFiles.pch;
 				INFOPLIST_FILE = Fishes/Info.plist;

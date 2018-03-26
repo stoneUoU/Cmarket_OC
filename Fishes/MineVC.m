@@ -26,7 +26,7 @@
 
     //监听是否有网
     _netUseVals = [UICKeyChainStore keyChainStore][@"ifnetUse"];
-
+    _Auths = [UICKeyChainStore keyChainStore][@"authos"];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(setNet:)
                                                  name:@"netChange"
@@ -38,6 +38,7 @@
     [self.navigationController setNavigationBarHidden:true];
     self.navigationController.navigationBarHidden = true;
 }
+
 - (void)setUpUI{
     [self.view addSubview:_mineV];
     //添加约束
@@ -58,16 +59,18 @@
 
     if ([_netUseVals isEqualToString: @"Useable"]){
         [HudTips showHUD:self];
-        [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"user/list" withParaments:@{} Authos:defineAuths withSuccessBlock:^(NSDictionary *feedBacks) {
+        [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"user/list" withParaments:@{} Authos:self.Auths withSuccessBlock:^(NSDictionary *feedBacks) {
             [HudTips hideHUD:self];
-            self.mineV.mineMs = [[MineMs alloc] initMs:feedBacks[@"data"][@"nick_name"] gender:feedBacks[@"data"][@"gender"] tel:feedBacks[@"data"][@"tel"] avatar:feedBacks[@"data"][@"avatar"] birthday:feedBacks[@"data"][@"birthday"] user_name:feedBacks[@"data"][@"user_name"] customer_service_tel:feedBacks[@"data"][@"customer_service_tel"] has_pay:feedBacks[@"data"][@"order_num"][@"has_pay"] no_pay:feedBacks[@"data"][@"order_num"][@"no_pay"] over:feedBacks[@"data"][@"order_num"][@"over"] no_delivery:feedBacks[@"data"][@"order_num"][@"no_delivery"]];
-            [self.mineV.tableV reloadData];
-            //STLog(@"%@",feedBacks);
-            //STLog(@"%@",[picUrl stringByAppendingString:feedBacks[@"data"][@"avatar"]]);
-            //            [self.mineV.iconV sd_setImageWithURL:[NSURL URLWithString:[picUrl stringByAppendingString:feedBacks[@"data"][@"avatar"]]] placeholderImage:[UIImage imageNamed:@"pic_loading_shangpingxiangqing.png"]];
-            //            self.mineV.user_name.text = feedBacks[@"data"][@"nick_name"];
-            //            self.mineV.phone_str.text = feedBacks[@"data"][@"tel"];
-            //[self.mineV.tableV reloadData];
+            //进行容错处理丫:
+            if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
+                self.mineV.mineMs = [[MineMs alloc] initMs:feedBacks[@"data"][@"nick_name"] gender:feedBacks[@"data"][@"gender"] tel:feedBacks[@"data"][@"tel"] avatar:feedBacks[@"data"][@"avatar"] birthday:feedBacks[@"data"][@"birthday"] user_name:feedBacks[@"data"][@"user_name"] customer_service_tel:feedBacks[@"data"][@"customer_service_tel"] has_pay:feedBacks[@"data"][@"order_num"][@"has_pay"] no_pay:feedBacks[@"data"][@"order_num"][@"no_pay"] over:feedBacks[@"data"][@"order_num"][@"over"] no_delivery:feedBacks[@"data"][@"order_num"][@"no_delivery"]];
+                [self.mineV.tableV reloadData];
+            }else if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"10009"]){
+                [HudTips showToast:self text:missSsidTips showType:Pos animationType:StToastAnimationTypeScale];
+            }else{
+                [HudTips showToast:self text:feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
+            }
+            //[self.mineV.iconV sd_setImageWithURL:[NSURL URLWithString:[picUrl stringByAppendingString:feedBacks[@"data"][@"avatar"]]] placeholderImage:[UIImage imageNamed:@"pic_loading_shangpingxiangqing.png"]];
         } withFailureBlock:^(NSError *error) {
             [HudTips hideHUD:self];
             STLog(@"%@",error)
@@ -90,6 +93,36 @@
 - (void)toMsg {
     STLog(@"去消息模块");
 }
+- (void)toNextVC:(NSString *)section row:(NSString *)row{
+    switch ([section integerValue]) {
+        case 0:{
+            if ([row  isEqual: @"0"]) {
+                STLog(@"我的优惠券");
+            }else{
+                STLog(@"摊位管理");
+            }
+            break;
+        }
+        case 1:{
+            STLog(@"收货地址");
+            break;
+        }
+        case 2:{
+            if ([row  isEqual: @"0"]) {
+                STLog(@"联系客服");
+            }else{
+                SetVC * setV = [[SetVC alloc] init];
+                [self.navigationController pushViewController:setV animated:true];
+                //self.hidesBottomBarWhenPushed = NO;
+            }
+            break;
+        }
+        default:
+            STLog(@"关于我们");
+            break;
+    }
+}
+
 
 - (void)toRefresh {
     // 模拟网络请求，1秒后结束刷新

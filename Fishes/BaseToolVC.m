@@ -16,9 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //self.keychainStore = [UICKeyChainStore keyChainStore];
     //监听是否有网
     _netUseVals = [UICKeyChainStore keyChainStore][@"ifnetUse"];
+    _Auths = [UICKeyChainStore keyChainStore][@"authos"];
     id target = self.navigationController.interactivePopGestureRecognizer.delegate;
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:target action:@selector(handleNavigationTransition:)];
     pan.delegate = self;
@@ -30,11 +30,11 @@
                                                object:nil];
 }
 - (void)viewWillAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:true];
-
+    self.navigationController.navigationBarHidden = true;
 }
-- (void)setUp:(NSString *) midVal sideVal:(NSString *)sideVal navC:(UIColor *)navC midFontC:(UIColor *)midFontC sideFontC:(UIColor *)sideFontC{
+- (void)setUp:(NSString *) midVal sideVal:(NSString *)sideVal backIvName:(NSString *)backIvName navC:(UIColor *)navC midFontC:(UIColor *)midFontC sideFontC:(UIColor *)sideFontC{
 
     _statusV = [[UIView alloc] init];
     _statusV.backgroundColor = [UIColor whiteColor];
@@ -46,19 +46,19 @@
 
     _backBtn = [[UIButton alloc] init];
     //_backBtn.backgroundColor = [UIColor redColor];
-    [_backBtn setImage:[UIImage imageNamed:@"custom_serve_back.png"]forState:UIControlStateNormal];
-    [_backBtn addTarget:self action:@selector(doTap:)forControlEvents:UIControlEventTouchUpInside];
+    [_backBtn setImage:[UIImage imageNamed:backIvName]forState:UIControlStateNormal];
+    [_backBtn addTarget:self action:@selector(toBack)forControlEvents:UIControlEventTouchUpInside];
     [_backBtn adjustToSize:CGSizeMake(30,0)];
     [_navBarV addSubview:_backBtn];
 
     _sideBtn = [[UIButton alloc] init];
     _sideBtn.titleLabel.font=[UIFont systemFontOfSize:16];
     //_sideBtn.backgroundColor = [UIColor redColor];
-    _sideBtn.contentHorizontalAlignment = NSTextAlignmentCenter;
+    _sideBtn.contentHorizontalAlignment = NSTextAlignmentRight;
     [_sideBtn setTitle:sideVal forState:UIControlStateNormal];
     [_sideBtn setTitleColor:sideFontC  forState:UIControlStateNormal];
-    [_sideBtn addTarget:self action:@selector(doTap:)forControlEvents:UIControlEventTouchUpInside];
-    [_sideBtn adjustToSize:CGSizeMake(15,0)];
+    [_sideBtn addTarget:self action:@selector(toSide)forControlEvents:UIControlEventTouchUpInside];
+    [_sideBtn adjustToSize:CGSizeMake(2*spaceM,0)];
     [_navBarV addSubview:_sideBtn];
 
     _midFontL = [[UILabel alloc] init];
@@ -107,12 +107,11 @@
         make.height.mas_equalTo(0.7);
     }];
 }
-- (void)doTap:(UIButton *)button{
+- (void)toBack{
     [self.navigationController popViewControllerAnimated:true];
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)toSide{
+    STLog(@"toSide");
 }
 -(void)setNet:(NSNotification *)notification{
     NSDictionary *dict = notification.userInfo;
@@ -122,5 +121,14 @@
 -(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {
     return YES;
+}
+- (BOOL)hidesBottomBarWhenPushed
+{
+    return (self.navigationController.topViewController == self);
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 @end

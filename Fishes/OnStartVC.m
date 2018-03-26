@@ -153,8 +153,8 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self.navigationController pushViewController:[[HomeDetailVC alloc] init] animated:true];
-    //STLog(@"%ld",(long)indexPath.row)
+    HomeDetailVC * homeDetailV = [[HomeDetailVC alloc] init];
+    [self.navigationController pushViewController:homeDetailV animated:true];
 }
 //点击函数
 - (void)btnMore:(UIButton *)button{

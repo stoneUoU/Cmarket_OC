@@ -41,12 +41,27 @@
 #import "UILabel+Padding.h"
 //格式化数据
 #import "FormatDs.h"
+//MD5加密
+#import "NSString+MD5.h"
+//公共方法
+#import "MethodFunc.h"
+
+#import "AppDelegate.h"
 //自定义Log输入日志+显示行号
 #ifdef DEBUG
 #define STLog(FORMAT, ...) fprintf(stderr,"%s:%d\t%s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
 #else
 #define STLog(...)
 #endif
+//设计师设计以iphone6为原型：
+#define iphoneSixW 375
+
+//以6/6s为准宽度缩小系数
+#define StScaleW   [UIScreen mainScreen].bounds.size.width/375.0
+
+//高度缩小系数
+#define StScaleH  [UIScreen mainScreen].bounds.size.height/667.0
+
 // UIScreen.
 #define  ScreenInfo   [UIScreen mainScreen].bounds.size
 // UIScreen width.
@@ -78,12 +93,16 @@
 //#define LQYIP @"http://10.10.0.62:13380/"
 //定义BaseURL后面的一戳
 #define followRoute @"/api/cht/app/v1/"
+//定义登录失效的状态码
+#define OutCode  @"10009"
 //API key
 #define apikey  @"82428a4618b6aa313be6914d727cb9b7"
 //请求超时时间
 #define timeoutTime 6.0
 //没网时的提示
 #define missNetTips @"网络开小差啦，请检查网络"
+//登录失效的提示
+#define missSsidTips @"登录失效，请重新登录"
 //设置弹窗位置
 #define Pos StToastShowTypeBottom
 //定义颜色（随机）

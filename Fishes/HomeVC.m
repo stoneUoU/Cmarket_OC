@@ -65,6 +65,7 @@
     [self.navigationController setNavigationBarHidden:true];
     self.navigationController.navigationBarHidden = true;
 }
+
 - (void)setUpUI{
     _navBarV = [[UIView alloc] init];
     _navBarV.backgroundColor = [UIColor whiteColor];
@@ -196,6 +197,7 @@
 -(void)startR{
     if ([_netUseVals isEqualToString: @"Useable"]){
         [HudTips showHUD:self];
+        STLog(@"走了一遍");
         [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"carousel/list" withParaments:@{} Authos:@"" withSuccessBlock:^(NSDictionary *feedBacks) {
             [HudTips hideHUD:self];
             for (int i = 0; i < [feedBacks[@"data"] count]; i++) {

@@ -7,7 +7,7 @@
 //
 
 #import "MineVC.h"
-
+#import "AccountInfoVC.h"
 @interface MineVC ()
 
 @end
@@ -91,7 +91,8 @@
  */
 // MARK: - MineVDel
 - (void)toMsg {
-    STLog(@"去消息模块");
+    //STLog(@"去消息模块");
+    [MethodFunc pushToNextVC:self destVC:[[AccountInfoVC alloc] init]];
 }
 - (void)toNextVC:(NSString *)section row:(NSString *)row{
     switch ([section integerValue]) {
@@ -111,9 +112,7 @@
             if ([row  isEqual: @"0"]) {
                 STLog(@"联系客服");
             }else{
-                SetVC * setV = [[SetVC alloc] init];
-                [self.navigationController pushViewController:setV animated:true];
-                //self.hidesBottomBarWhenPushed = NO;
+                [MethodFunc pushToNextVC:self destVC:[[SetVC alloc] init]];
             }
             break;
         }

@@ -46,10 +46,19 @@
     STLog(@"密码登录返回");
     [self.navigationController popViewControllerAnimated:true];
 }
+-(void) toSmsVC{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        SmsLoginVC *smsLoginV =[[SmsLoginVC alloc] init];
+        smsLoginV.pass_Vals = self.pass_Vals;
+        [self.navigationController pushViewController:smsLoginV animated:true];
+    });
+}
 
 -(void) toSide{
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.navigationController pushViewController:[[RegisterVC alloc] init] animated:true];
+        RegisterVC *registerV =[[RegisterVC alloc] init];
+        registerV.pass_Vals = self.pass_Vals;
+        [self.navigationController pushViewController:registerV animated:true];
     });
 }
 - (void)didReceiveMemoryWarning {
@@ -70,9 +79,17 @@
                 //存登录后的token
                 [UICKeyChainStore keyChainStore][@"orLogin"] = @"true";
                 [UICKeyChainStore keyChainStore][@"authos"] = feedBacks[@"data"][@"token"];
-                [self dismissViewControllerAnimated:NO completion:nil];
-                //[AppDelegate getTabBarV].selectedIndex = 1;
-                [TabBarVC sharedVC].selectedIndex = 1;
+                STLog(@"%@",[NSString stringWithFormat:@"%@",[_pass_Vals objectForKey:@"status_code"]]);
+                if ([[NSString stringWithFormat:@"%@",[_pass_Vals objectForKey:@"status_code"]]  isEqual: @"0"]){
+                    [MethodFunc dismissCurrVC:self];
+                    [MethodFunc backToHomeVC:[_pass_Vals objectForKey:@"selfVC"]];
+                    [TabBarVC sharedVC].selectedIndex = 0;
+                }else if ([[NSString stringWithFormat:@"%@",[_pass_Vals objectForKey:@"status_code"]]  isEqual: @"1"]){
+                    [MethodFunc dismissCurrVC:self];
+                }else if ([[NSString stringWithFormat:@"%@",[_pass_Vals objectForKey:@"status_code"]]  isEqual: @"2"]){
+                    [MethodFunc dismissCurrVC:self];
+                    [TabBarVC sharedVC].selectedIndex = 1;
+                }
             }else{
                 [HudTips showToast:self text:feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
             }

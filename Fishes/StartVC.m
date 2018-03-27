@@ -22,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpUI];
+
 }
 - (void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:true];
@@ -44,19 +45,29 @@
 // MARK: - MineVDel
 - (void)toLogin {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.navigationController pushViewController:[[CodeLoginVC alloc] init] animated:true];
+        CodeLoginVC *codeLoginV =[[CodeLoginVC alloc] init];
+        codeLoginV.pass_Vals = self.pass_Vals;
+        [self.navigationController pushViewController:codeLoginV animated:true];
     });
 }
 
 - (void)toRegister {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.navigationController pushViewController:[[RegisterVC alloc] init] animated:true];
+        RegisterVC *registerV =[[RegisterVC alloc] init];
+        registerV.pass_Vals = self.pass_Vals;
+        [self.navigationController pushViewController:registerV animated:true];
     });
 }
 
 -(void) toBack{
-    [self dismissViewControllerAnimated:NO completion:nil];
-    //[AppDelegate getTabBarV].selectedIndex = 1;
+
+    if ([[NSString stringWithFormat:@"%@",[_pass_Vals objectForKey:@"status_code"]]  isEqual: @"0"]){
+        [MethodFunc dismissCurrVC:self];
+        [MethodFunc backToHomeVC:[_pass_Vals objectForKey:@"selfVC"]];
+        [TabBarVC sharedVC].selectedIndex = 0;
+    }else{
+        [MethodFunc dismissCurrVC:self];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

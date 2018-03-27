@@ -61,7 +61,6 @@ static TabBarVC *tabVC = nil;
     
 }
 
-
 #pragma mark - ------------------------------------------------------------------
 #pragma mark - 初始化tabBar上除了中间按钮之外所有的按钮
 
@@ -110,11 +109,10 @@ static TabBarVC *tabVC = nil;
     if ([[NSString stringWithFormat:@"%@",viewController.tabBarItem.title]  isEqualToString: @"我的"]){
         //取是否登录
         if (![[NSString stringWithFormat:@"%@",[UICKeyChainStore keyChainStore][@"orLogin"]]  isEqual: @"true"]){
-            //弹出登录视图：
-            STLog(@"弹出登录视图");
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self presentViewController:[[UINavigationController alloc] initWithRootViewController:[[StartVC alloc] init]] animated:NO completion:nil];
-            });
+            //Mark 弹出登录视图：进app直接点我的tab登录:status_code:2
+            StartVC * startV = [[StartVC alloc] init];
+            startV.pass_Vals = @{@"status_code":@"2"};
+            [MethodFunc presentToNaviVC:self destVC:startV];
             return NO;
         }else{
             return YES;

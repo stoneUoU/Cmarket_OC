@@ -24,6 +24,15 @@
     [_submitBtn addTarget:self action:@selector(toDo:)forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_submitBtn];
 
+    _smsLoginV = [[UILabel alloc] init];
+    _smsLoginV.font=[UIFont systemFontOfSize:13];
+    _smsLoginV.textColor = deepBlackC;
+    _smsLoginV.text = @"验证码登录";
+    [_smsLoginV setUserInteractionEnabled:YES];
+    UITapGestureRecognizer *touchTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toSmsVC:)];
+    [_smsLoginV addGestureRecognizer:touchTap];
+    [self addSubview:_smsLoginV];
+
     //添加约束
     [self setMas];
 }
@@ -33,10 +42,19 @@
         make.width.mas_equalTo(ScreenW - (spaceM*2));
         make.height.mas_equalTo(44);
     }];
+
+    [_smsLoginV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self).offset(spaceM);
+        make.bottom.mas_equalTo(_submitBtn.mas_top).offset(-20*StScaleH);
+    }];
 }
 //按钮、手势函数写这
 - (void)toDo:(UIButton *)sender{
     [_delegate toSubmit ];
+}
+
+- (void)toSmsVC:(id)sender{
+    [_delegate toSmsVC];
 }
 
 /*

@@ -7,7 +7,6 @@
 //
 
 #import "SetVC.h"
-#import "TabBarVC.h"
 @implementation SetVC
 - (id)init
 {
@@ -63,10 +62,7 @@
                 //清空用户信息
                 [UICKeyChainStore keyChainStore][@"orLogin"] = @"false";
                 [UICKeyChainStore keyChainStore][@"authos"] = @"";
-                //[MethodFunc backToHomeVC:self];
-                [self.navigationController popToRootViewControllerAnimated:YES];
-                //[AppDelegate getTabBarV].selectedIndex = 0;
-                [TabBarVC sharedVC].selectedIndex = 0;
+                [MethodFunc backToHomeVC:self];
             }else{
                 [HudTips showToast:self text:feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
             }

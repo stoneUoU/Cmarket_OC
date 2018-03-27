@@ -108,7 +108,7 @@
     }];
 }
 - (void)toBack{
-    [self.navigationController popViewControllerAnimated:true];
+    [MethodFunc popToPrevVC:self];
 }
 - (void)toSide{
     STLog(@"toSide");

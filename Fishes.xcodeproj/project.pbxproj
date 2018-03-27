@@ -41,6 +41,7 @@
 		5284058720637D59000623B4 /* CountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 5284058620637D59000623B4 /* CountDown.m */; };
 		5284058A20638076000623B4 /* HomeMs.m in Sources */ = {isa = PBXBuildFile; fileRef = 5284058920638076000623B4 /* HomeMs.m */; };
 		5284058D2063960B000623B4 /* FormatDs.m in Sources */ = {isa = PBXBuildFile; fileRef = 5284058C2063960B000623B4 /* FormatDs.m */; };
+		5288FAE82069EB32002EC6AA /* UIButton+countDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 5288FAE72069EB32002EC6AA /* UIButton+countDown.m */; };
 		528936D82061E94E004463E6 /* BaseToolVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 528936D72061E94E004463E6 /* BaseToolVC.m */; };
 		528936DC2061EA88004463E6 /* NetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 528936DB2061EA88004463E6 /* NetWorkManager.m */; };
 		528936DF2061EB5E004463E6 /* StToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 528936DE2061EB5E004463E6 /* StToast.m */; };
@@ -50,6 +51,8 @@
 		528936EB2061EC71004463E6 /* UIButton+ST_FixMultiClick.m in Sources */ = {isa = PBXBuildFile; fileRef = 528936EA2061EC71004463E6 /* UIButton+ST_FixMultiClick.m */; };
 		528936EE2061ECC4004463E6 /* STPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 528936ED2061ECC4004463E6 /* STPlaceholderView.m */; };
 		528936F12061FDA1004463E6 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 528936F02061FDA1004463E6 /* UIColor+Hex.m */; };
+		528F51A82068DECE008BA452 /* AccountInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 528F51A72068DECE008BA452 /* AccountInfoVC.m */; };
+		528F51AB2068DEF0008BA452 /* AccountInfoV.m in Sources */ = {isa = PBXBuildFile; fileRef = 528F51AA2068DEF0008BA452 /* AccountInfoV.m */; };
 		52AE74C91FCE584900081972 /* HomeDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52AE74C81FCE584900081972 /* HomeDetailVC.m */; };
 		52BC7E682065DEC9000B5E43 /* UIFont+runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E672065DEC9000B5E43 /* UIFont+runtime.m */; };
 		52BC7E6B2065E611000B5E43 /* SmsLoginV.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E6A2065E611000B5E43 /* SmsLoginV.m */; };
@@ -145,6 +148,8 @@
 		5284058920638076000623B4 /* HomeMs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeMs.m; sourceTree = "<group>"; };
 		5284058B2063960B000623B4 /* FormatDs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormatDs.h; sourceTree = "<group>"; };
 		5284058C2063960B000623B4 /* FormatDs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FormatDs.m; sourceTree = "<group>"; };
+		5288FAE62069EB32002EC6AA /* UIButton+countDown.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+countDown.h"; sourceTree = "<group>"; };
+		5288FAE72069EB32002EC6AA /* UIButton+countDown.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+countDown.m"; sourceTree = "<group>"; };
 		528936D52061E8C1004463E6 /* CommFiles.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommFiles.pch; sourceTree = "<group>"; };
 		528936D62061E94E004463E6 /* BaseToolVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseToolVC.h; sourceTree = "<group>"; };
 		528936D72061E94E004463E6 /* BaseToolVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseToolVC.m; sourceTree = "<group>"; };
@@ -164,6 +169,10 @@
 		528936ED2061ECC4004463E6 /* STPlaceholderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STPlaceholderView.m; sourceTree = "<group>"; };
 		528936EF2061FDA1004463E6 /* UIColor+Hex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		528936F02061FDA1004463E6 /* UIColor+Hex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		528F51A62068DECE008BA452 /* AccountInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountInfoVC.h; sourceTree = "<group>"; };
+		528F51A72068DECE008BA452 /* AccountInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountInfoVC.m; sourceTree = "<group>"; };
+		528F51A92068DEF0008BA452 /* AccountInfoV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountInfoV.h; sourceTree = "<group>"; };
+		528F51AA2068DEF0008BA452 /* AccountInfoV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountInfoV.m; sourceTree = "<group>"; };
 		52AE74C71FCE584900081972 /* HomeDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailVC.h; sourceTree = "<group>"; };
 		52AE74C81FCE584900081972 /* HomeDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailVC.m; sourceTree = "<group>"; };
 		52B72DF4E62F565F1F472D34 /* Pods-Fishes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fishes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fishes/Pods-Fishes.debug.xcconfig"; sourceTree = "<group>"; };
@@ -411,6 +420,8 @@
 				526047841F7514430072AFB4 /* MineVC.m */,
 				523FD55520664727009753B4 /* SetVC.h */,
 				523FD55620664727009753B4 /* SetVC.m */,
+				528F51A62068DECE008BA452 /* AccountInfoVC.h */,
+				528F51A72068DECE008BA452 /* AccountInfoVC.m */,
 			);
 			name = VC;
 			sourceTree = "<group>";
@@ -423,6 +434,8 @@
 				523F04B420648E5100858BDD /* MineV.m */,
 				523FD55220664716009753B4 /* SetV.h */,
 				523FD55320664716009753B4 /* SetV.m */,
+				528F51A92068DEF0008BA452 /* AccountInfoV.h */,
+				528F51AA2068DEF0008BA452 /* AccountInfoV.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -499,6 +512,8 @@
 				523F04D52065068A00858BDD /* NSString+MD5.m */,
 				52BC7E662065DEC9000B5E43 /* UIFont+runtime.h */,
 				52BC7E672065DEC9000B5E43 /* UIFont+runtime.m */,
+				5288FAE62069EB32002EC6AA /* UIButton+countDown.h */,
+				5288FAE72069EB32002EC6AA /* UIButton+countDown.m */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -749,6 +764,7 @@
 				523F04B520648E5100858BDD /* MineV.m in Sources */,
 				52680C86206248A900F5DB96 /* CarouselMs.m in Sources */,
 				523F04D62065068A00858BDD /* NSString+MD5.m in Sources */,
+				528F51A82068DECE008BA452 /* AccountInfoVC.m in Sources */,
 				52BC7E742065E66E000B5E43 /* RegisterVC.m in Sources */,
 				528936EB2061EC71004463E6 /* UIButton+ST_FixMultiClick.m in Sources */,
 				523F04D32065021800858BDD /* CodeLoginV.m in Sources */,
@@ -759,6 +775,7 @@
 				52BC7E712065E65F000B5E43 /* RegisterV.m in Sources */,
 				528936DF2061EB5E004463E6 /* StToast.m in Sources */,
 				52680C8020623CCD00F5DB96 /* OnStartVC.m in Sources */,
+				5288FAE82069EB32002EC6AA /* UIButton+countDown.m in Sources */,
 				5284058A20638076000623B4 /* HomeMs.m in Sources */,
 				52680C74206239B700F5DB96 /* HomeBaseTbV.m in Sources */,
 				526047991F75160C0072AFB4 /* UIImage+Image.m in Sources */,
@@ -767,6 +784,7 @@
 				523FD55A20665454009753B4 /* MethodFunc.m in Sources */,
 				5284058D2063960B000623B4 /* FormatDs.m in Sources */,
 				523F04CA2064D71700858BDD /* StartV.m in Sources */,
+				528F51AB2068DEF0008BA452 /* AccountInfoV.m in Sources */,
 				52680C7D20623B0400F5DB96 /* HomeBaseTbVC.m in Sources */,
 				52680C7A20623A2C00F5DB96 /* SPPageMenu.m in Sources */,
 				528936D82061E94E004463E6 /* BaseToolVC.m in Sources */,

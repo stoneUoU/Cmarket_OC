@@ -39,7 +39,7 @@
 
     _msgV = [[UIView alloc] init];
     [_msgV setUserInteractionEnabled:YES];
-    UITapGestureRecognizer *touchTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(msgTap:)];
+    UITapGestureRecognizer *touchTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toMsg:)];
     [_msgV addGestureRecognizer:touchTap];
     [_navBarV addSubview:_msgV];
 
@@ -119,7 +119,7 @@
             _topV = [[UIView alloc] init ];
             _topV.backgroundColor = styleColor;
             [_topV setUserInteractionEnabled:YES];
-            UITapGestureRecognizer *tapInfo = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(infoTap:)];
+            UITapGestureRecognizer *tapInfo = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toInfo:)];
             [_topV addGestureRecognizer:tapInfo];
             [headerV addSubview:_topV];
             [_topV mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -222,10 +222,10 @@
 //    //如果没有导航栏，就进行这种跳转；
 //    [self.navigationController pushViewController:[[HomeDetailVC alloc] init] animated:true];
 //}
-- (void)msgTap:(id)sender{
+- (void)toMsg:(id)sender{
     [self.delegate toMsg];
 }
-- (void)infoTap:(id)sender{
+- (void)toInfo:(id)sender{
     [self.delegate toMsg];
 }
 - (void)loadDs{

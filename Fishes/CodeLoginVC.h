@@ -10,5 +10,9 @@
 #import "CodeLoginV.h"
 @interface CodeLoginVC : BaseToolVC<CodeLoginVDel>
 @property (nonatomic,strong) CodeLoginV *codeLoginV;
+
+//从上一个界面传过来的字典：   //定一个值：登录失效是:status_code:0
+@property(nonatomic,strong)NSDictionary *pass_Vals;
+
 @end
 

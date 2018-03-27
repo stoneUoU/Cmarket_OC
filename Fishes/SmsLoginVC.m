@@ -10,11 +10,12 @@
 #import "TabBarVC.h"
 #import "AppDelegate.h"
 #import "RegisterVC.h"
+#import "UIButton+countDown.h"
 @implementation SmsLoginVC
 - (id)init
 {
     _smsLoginV = [[SmsLoginV alloc] init]; //对MyUIView进行初始化
-    _smsLoginV.backgroundColor = [UIColor whiteColor];
+    _smsLoginV.backgroundColor = allBgColor;
     _smsLoginV.delegate = self; //将SecondVC自己的实例作为委托对象
     return [super init];
 }
@@ -40,6 +41,14 @@
 // MARK: - SmsLoginVDel
 - (void)toSubmit {
     [self startR];
+}
+
+- (void)toSmsCode {
+    STLog(@"88888");
+    [_smsLoginV.smsBtn startWithTime:5 title:@"获取验证码" countDownTitle:@"s后再获取" mainColor:[UIColor clearColor] countColor:[UIColor clearColor]];
+}
+- (void)toCodeVC{
+    [MethodFunc popToPrevVC:self];
 }
 // MARK: - 重写父类的方法
 -(void) toBack{
@@ -71,9 +80,16 @@
                 //存登录后的token
                 [UICKeyChainStore keyChainStore][@"orLogin"] = @"true";
                 [UICKeyChainStore keyChainStore][@"authos"] = feedBacks[@"data"][@"token"];
-                [self dismissViewControllerAnimated:NO completion:nil];
-                //[AppDelegate getTabBarV].selectedIndex = 1;
-                [TabBarVC sharedVC].selectedIndex = 1;
+                if ([[NSString stringWithFormat:@"%@",[_pass_Vals objectForKey:@"status_code"]]  isEqual: @"0"]){
+                    [MethodFunc dismissCurrVC:self];
+                    [MethodFunc backToHomeVC:[_pass_Vals objectForKey:@"selfVC"]];
+                    [TabBarVC sharedVC].selectedIndex = 0;
+                }else if ([[NSString stringWithFormat:@"%@",[_pass_Vals objectForKey:@"status_code"]]  isEqual: @"1"]){
+                    [MethodFunc dismissCurrVC:self];
+                }else if ([[NSString stringWithFormat:@"%@",[_pass_Vals objectForKey:@"status_code"]]  isEqual: @"2"]){
+                    [MethodFunc dismissCurrVC:self];
+                    [TabBarVC sharedVC].selectedIndex = 1;
+                }
             }else{
                 [HudTips showToast:self text:feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
             }
@@ -85,4 +101,5 @@
         [HudTips showToast:self text:missNetTips showType:Pos animationType:StToastAnimationTypeScale];
     }
 }
+
 @end

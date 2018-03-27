@@ -10,6 +10,7 @@
 @protocol CodeLoginVDel
 //这里只需要声明方法
 - (void)toSubmit;
+- (void)toSmsVC;
 @end
 @interface CodeLoginV : UIView{
     id<CodeLoginVDel> _delegate; //这个定义会在后面的解释，它是一个协议，用来实现委托。
@@ -18,5 +19,5 @@
 
 @property (nonatomic ,strong)UIButton *submitBtn;
 
-
+@property (nonatomic ,strong)UILabel *smsLoginV;
 @end

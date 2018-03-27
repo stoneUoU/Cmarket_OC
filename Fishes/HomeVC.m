@@ -10,7 +10,7 @@
 #import "OnStartVC.h"
 #import "WillStartVC.h"
 #import "CarouselMs.h"
-
+#import "StartVC.h"
 @implementation HomeVC
 - (id)init
 {
@@ -78,7 +78,7 @@
     _msgV = [[UIView alloc] init];
     _msgV.backgroundColor = [UIColor clearColor];//cutOffLineC;
     [_msgV setUserInteractionEnabled:YES];
-    UITapGestureRecognizer *touchTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(msgTap:)];
+    UITapGestureRecognizer *touchTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toMsg:)];
     [_msgV addGestureRecognizer:touchTap];
     [_navBarV addSubview:_msgV];
 
@@ -227,8 +227,15 @@
 //    //如果没有导航栏，就进行这种跳转；
 //    [self.navigationController pushViewController:[[HomeDetailVC alloc] init] animated:true];
 //}
-- (void)msgTap:(id)sender{
-    STLog(@"去消息模块");
+- (void)toMsg:(id)sender{
+    if (![[NSString stringWithFormat:@"%@",[UICKeyChainStore keyChainStore][@"orLogin"]]  isEqual: @"true"]){
+        //MARK:弹出登录视图：在主页消息、主页立即购买、商品详情界面登录:status_code:1
+        StartVC * startV = [[StartVC alloc] init];
+        startV.pass_Vals = @{@"status_code":@"1"};
+        [MethodFunc presentToNaviVC:self destVC:startV];
+    }else{
+        STLog(@"已登录,去消息");
+    }
 }
 //监听textfeild的内容改变
 - (void)valC:(id)UITextField{

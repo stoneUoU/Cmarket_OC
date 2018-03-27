@@ -41,10 +41,15 @@
     [self startR];
 }
 
--(void) toBack{
-    STLog(@"注册返回");
-    [self.navigationController popViewControllerAnimated:true];
-}
+//-(void) toBack{
+//    STLog(@"注册返回");
+//    for (UIViewController *controller in self.navigationController.viewControllers) {
+//        if ([controller isKindOfClass:[StartVC class]]) {
+//            StartVC *startV =(StartVC *)controller;
+//            [self.navigationController popToViewController:startV animated:YES];
+//        }
+//    }
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -64,9 +69,16 @@
                 //存登录后的token
                 [UICKeyChainStore keyChainStore][@"orLogin"] = @"true";
                 [UICKeyChainStore keyChainStore][@"authos"] = feedBacks[@"data"][@"token"];
-                [self dismissViewControllerAnimated:NO completion:nil];
-                //[AppDelegate getTabBarV].selectedIndex = 1;
-                [TabBarVC sharedVC].selectedIndex = 1;
+                if ([[NSString stringWithFormat:@"%@",[_pass_Vals objectForKey:@"status_code"]]  isEqual: @"0"]){
+                    [MethodFunc dismissCurrVC:self];
+                    [MethodFunc backToHomeVC:[_pass_Vals objectForKey:@"selfVC"]];
+                    [TabBarVC sharedVC].selectedIndex = 0;
+                }else if ([[NSString stringWithFormat:@"%@",[_pass_Vals objectForKey:@"status_code"]]  isEqual: @"1"]){
+                    [MethodFunc dismissCurrVC:self];
+                }else if ([[NSString stringWithFormat:@"%@",[_pass_Vals objectForKey:@"status_code"]]  isEqual: @"2"]){
+                    [MethodFunc dismissCurrVC:self];
+                    [TabBarVC sharedVC].selectedIndex = 1;
+                }
             }else{
                 [HudTips showToast:self text:feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
             }

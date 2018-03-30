@@ -49,7 +49,7 @@
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
                 [MethodFunc dealAuthMiss:self tipInfo:feedBacks[@"msg"]];
             }else if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"10009"]){
-                [HudTips showToast:self text:missSsidTips showType:Pos animationType:StToastAnimationTypeScale];
+                [MethodFunc dealAuthMiss:self tipInfo:feedBacks[@"msg"]];
             }else{
                 [HudTips showToast:self text:feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
             }

@@ -13,4 +13,6 @@ pod 'CYLTableViewPlaceHolder'
 pod 'SDCycleScrollView','~> 1.75'
 pod 'JPush'
 pod 'SocketRocket'
+pod 'YYKit'
+pod 'WechatOpenSDK' 
 end 

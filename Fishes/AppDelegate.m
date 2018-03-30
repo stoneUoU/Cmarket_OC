@@ -11,6 +11,8 @@
 #import "TabBarVC.h"
 
 #import "MonitorVC.h"
+
+#import "YYModelVC.h"
 //static TabBarVC *tabBarVc;
 
 
@@ -52,6 +54,8 @@
     [self setNetNotice];
 
     [self setAPNS];
+    //注册微信支付:
+    [STPAYMANAGER st_registerApp];
 
     [application setApplicationIconBadgeNumber:0];
     [application cancelAllLocalNotifications];
@@ -65,7 +69,7 @@
     if (remoteUserInfo) {//远程通知启动App
         [self dealPushM:remoteUserInfo];
     }else{
-        self.window.rootViewController =  [TabBarVC sharedVC]; //[[MonitorVC alloc]init ];  
+        self.window.rootViewController = [[YYModelVC alloc]init ]; //[TabBarVC sharedVC]; //[[MonitorVC alloc]init ];
     }
 
     return YES;
@@ -186,13 +190,13 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSDictionary * userInfo = response.notification.request.content.userInfo;
 
     UNNotificationRequest *request = response.notification.request; // 收到推送的请求
-    UNNotificationContent *content = request.content; // 收到推送的消息内容
-
-    NSNumber *badge = content.badge;  // 推送消息的角标
-    NSString *body = content.body;    // 推送消息体
-    UNNotificationSound *sound = content.sound;  // 推送消息的声音
-    NSString *subtitle = content.subtitle;  // 推送消息的副标题
-    NSString *title = content.title;  // 推送消息的标题
+//    UNNotificationContent *content = request.content; // 收到推送的消息内容
+//
+//    NSNumber *badge = content.badge;  // 推送消息的角标
+//    NSString *body = content.body;    // 推送消息体
+//    UNNotificationSound *sound = content.sound;  // 推送消息的声音
+//    NSString *subtitle = content.subtitle;  // 推送消息的副标题
+//    NSString *title = content.title;  // 推送消息的标题
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
     }
@@ -215,6 +219,36 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 -(void)dealPushM:(NSDictionary *)userInfo{
 
     self.window.rootViewController = [TabBarVC sharedVC];
+}
+
+
+/**
+ *  @author DevelopmentEngineer-ST
+ *  集成支付
+ *  最老的版本，最好也写上
+ */
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+
+    return [STPAYMANAGER st_handleUrl:url];
+}
+/**
+ *  @author DevelopmentEngineer-ST
+ *
+ *  iOS 9.0 之前 会调用
+ */
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+
+    return [STPAYMANAGER st_handleUrl:url];
+}
+/**
+ *  @author DevelopmentEngineer-ST
+ *
+ *  iOS 9.0 以上（包括iOS9.0）
+ */
+
+- (BOOL)application:(UIApplication *)application openURL:(nonnull NSURL *)url options:(nonnull NSDictionary<NSString *,id> *)options{
+
+    return [STPAYMANAGER st_handleUrl:url];
 }
 
 @end

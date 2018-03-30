@@ -11,6 +11,7 @@
 #import "WillStartVC.h"
 #import "CarouselMs.h"
 #import "StartVC.h"
+#import "HomeDetailVC.h"
 @implementation HomeVC
 - (id)init
 {
@@ -226,14 +227,17 @@
 //    [self.navigationController pushViewController:[[HomeDetailVC alloc] init] animated:true];
 //}
 - (void)toMsg:(id)sender{
-    if (![[NSString stringWithFormat:@"%@",[UICKeyChainStore keyChainStore][@"orLogin"]]  isEqual: @"true"]){
-        //MARK:弹出登录视图：在主页消息、主页立即购买、商品详情界面登录:status_code:1
-        StartVC * startV = [[StartVC alloc] init];
-        startV.pass_Vals = @{@"status_code":@"1"};
-        [MethodFunc presentToNaviVC:self destVC:startV];
-    }else{
-        STLog(@"已登录,去消息");
-    }
+//    if (![[NSString stringWithFormat:@"%@",[UICKeyChainStore keyChainStore][@"orLogin"]]  isEqual: @"true"]){
+//        //MARK:弹出登录视图：在主页消息、主页立即购买、商品详情界面登录:status_code:1
+//        StartVC * startV = [[StartVC alloc] init];
+//        startV.pass_Vals = @{@"status_code":@"1"};
+//        [MethodFunc presentToNaviVC:self destVC:startV];
+//    }else{
+//        STLog(@"已登录,去消息");
+//    }
+    HomeDetailVC * homeDetailV = [[HomeDetailVC alloc] init];
+    homeDetailV.pass_Vals = @{@"group_id":@"20"};
+    [MethodFunc pushToNextVC:self destVC:homeDetailV];
 }
 //监听textfeild的内容改变
 - (void)valC:(id)UITextField{

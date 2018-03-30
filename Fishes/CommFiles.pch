@@ -20,6 +20,8 @@
 #import "RealReachability.h"
 //本地存储  KeyChainStore
 #import <UICKeyChainStore/UICKeyChainStore.h>
+//支付宝支付SDK
+#import <AlipaySDK/AlipaySDK.h>
 //提示弹窗
 #import "StToast.h"
 //view extension
@@ -48,6 +50,12 @@
 //正则表达式
 #import "ValidatedFile.h"
 #import "AppDelegate.h"
+
+//YYkit框架
+#import <YYKit/YYKit.h>
+#import "NSString+MD5.h"
+//封装好的支付类
+#import "STPayManager.h"
 //自定义Log输入日志+显示行号
 #ifdef DEBUG
 #define STLog(FORMAT, ...) fprintf(stderr,"%s:%d\t%s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
@@ -108,6 +116,12 @@
 #define STColor(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1]
 #define STRandomC STColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
 
+//微信ID
+#define WeChatAppID @"wxdfbebafd5dfc1038"
+//微信商户号
+#define WeChatPartnerid @"1497430442"
+//支付宝ID
+#define AlipayAppID @"alipay2018011601913586"
 
 //页面风格定制颜色：
 #define styleColor  [UIColor color_HexStr:@"af5c3d"]

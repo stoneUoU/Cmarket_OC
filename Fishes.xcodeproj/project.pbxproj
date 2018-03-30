@@ -8,6 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		190C152298CE4C445552C782 /* Pods_Fishes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F37055393C97E28B7B668FA1 /* Pods_Fishes.framework */; };
+		5216E9F8206E0AFD004DBBCB /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5216E9F7206E0AFC004DBBCB /* AlipaySDK.bundle */; };
+		5216E9FA206E0B05004DBBCB /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5216E9F9206E0B05004DBBCB /* AlipaySDK.framework */; };
+		5216E9FC206E0B34004DBBCB /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5216E9FB206E0B34004DBBCB /* libc++.tbd */; };
+		5216E9FE206E0B3C004DBBCB /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5216E9FD206E0B3C004DBBCB /* libz.tbd */; };
+		5216EA00206E0B5A004DBBCB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5216E9FF206E0B5A004DBBCB /* SystemConfiguration.framework */; };
+		5216EA02206E0B65004DBBCB /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5216EA01206E0B65004DBBCB /* CoreTelephony.framework */; };
+		5216EA04206E0B71004DBBCB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5216EA03206E0B71004DBBCB /* QuartzCore.framework */; };
+		5216EA06206E0B79004DBBCB /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5216EA05206E0B79004DBBCB /* CoreText.framework */; };
+		5216EA08206E0B83004DBBCB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5216EA07206E0B83004DBBCB /* CoreGraphics.framework */; };
+		5216EA0A206E0B8B004DBBCB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5216EA09206E0B8B004DBBCB /* UIKit.framework */; };
+		5216EA0C206E0B97004DBBCB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5216EA0B206E0B97004DBBCB /* Foundation.framework */; };
+		5216EA0E206E0B9E004DBBCB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5216EA0D206E0B9E004DBBCB /* CFNetwork.framework */; };
+		5216EA10206E0BA9004DBBCB /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5216EA0F206E0BA9004DBBCB /* CoreMotion.framework */; };
+		5216EA13206E0F9B004DBBCB /* STPayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5216EA12206E0F9B004DBBCB /* STPayManager.m */; };
 		523F04B520648E5100858BDD /* MineV.m in Sources */ = {isa = PBXBuildFile; fileRef = 523F04B420648E5100858BDD /* MineV.m */; };
 		523F04BA20649E1300858BDD /* MineTbCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 523F04B920649E1300858BDD /* MineTbCells.m */; };
 		523F04BD2064CB5100858BDD /* MineMs.m in Sources */ = {isa = PBXBuildFile; fileRef = 523F04BC2064CB5100858BDD /* MineMs.m */; };
@@ -57,6 +71,7 @@
 		528F51AB2068DEF0008BA452 /* AccountInfoV.m in Sources */ = {isa = PBXBuildFile; fileRef = 528F51AA2068DEF0008BA452 /* AccountInfoV.m */; };
 		52A22213206B345400F71B0C /* ValidatedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A22212206B345400F71B0C /* ValidatedFile.m */; };
 		52A22218206B749700F71B0C /* MonitorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A22217206B749700F71B0C /* MonitorVC.m */; };
+		52AB1029206DE5F0007DC919 /* YYModelVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52AB1028206DE5F0007DC919 /* YYModelVC.m */; };
 		52AE74C91FCE584900081972 /* HomeDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52AE74C81FCE584900081972 /* HomeDetailVC.m */; };
 		52BC7E682065DEC9000B5E43 /* UIFont+runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E672065DEC9000B5E43 /* UIFont+runtime.m */; };
 		52BC7E6B2065E611000B5E43 /* SmsLoginV.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E6A2065E611000B5E43 /* SmsLoginV.m */; };
@@ -86,6 +101,21 @@
 
 /* Begin PBXFileReference section */
 		3D86F0E351C41C5DECDD7431 /* Pods-Fishes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fishes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fishes/Pods-Fishes.release.xcconfig"; sourceTree = "<group>"; };
+		5216E9F7206E0AFC004DBBCB /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		5216E9F9206E0B05004DBBCB /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		5216E9FB206E0B34004DBBCB /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		5216E9FD206E0B3C004DBBCB /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		5216E9FF206E0B5A004DBBCB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5216EA01206E0B65004DBBCB /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		5216EA03206E0B71004DBBCB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5216EA05206E0B79004DBBCB /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		5216EA07206E0B83004DBBCB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5216EA09206E0B8B004DBBCB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5216EA0B206E0B97004DBBCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5216EA0D206E0B9E004DBBCB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		5216EA0F206E0BA9004DBBCB /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		5216EA11206E0F9B004DBBCB /* STPayManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STPayManager.h; sourceTree = "<group>"; };
+		5216EA12206E0F9B004DBBCB /* STPayManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STPayManager.m; sourceTree = "<group>"; };
 		523F04B320648E5100858BDD /* MineV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineV.h; sourceTree = "<group>"; };
 		523F04B420648E5100858BDD /* MineV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineV.m; sourceTree = "<group>"; };
 		523F04B820649E1300858BDD /* MineTbCells.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineTbCells.h; sourceTree = "<group>"; };
@@ -188,6 +218,8 @@
 		52A22216206B749700F71B0C /* MonitorVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonitorVC.h; sourceTree = "<group>"; };
 		52A22217206B749700F71B0C /* MonitorVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonitorVC.m; sourceTree = "<group>"; };
 		52A22219206B8DDF00F71B0C /* Fishes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fishes.entitlements; sourceTree = "<group>"; };
+		52AB1027206DE5F0007DC919 /* YYModelVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYModelVC.h; sourceTree = "<group>"; };
+		52AB1028206DE5F0007DC919 /* YYModelVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYModelVC.m; sourceTree = "<group>"; };
 		52AE74C71FCE584900081972 /* HomeDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailVC.h; sourceTree = "<group>"; };
 		52AE74C81FCE584900081972 /* HomeDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailVC.m; sourceTree = "<group>"; };
 		52B72DF4E62F565F1F472D34 /* Pods-Fishes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fishes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fishes/Pods-Fishes.debug.xcconfig"; sourceTree = "<group>"; };
@@ -213,7 +245,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5216EA10206E0BA9004DBBCB /* CoreMotion.framework in Frameworks */,
+				5216EA0E206E0B9E004DBBCB /* CFNetwork.framework in Frameworks */,
+				5216EA0C206E0B97004DBBCB /* Foundation.framework in Frameworks */,
+				5216EA0A206E0B8B004DBBCB /* UIKit.framework in Frameworks */,
+				5216EA08206E0B83004DBBCB /* CoreGraphics.framework in Frameworks */,
+				5216EA06206E0B79004DBBCB /* CoreText.framework in Frameworks */,
+				5216EA04206E0B71004DBBCB /* QuartzCore.framework in Frameworks */,
+				5216EA02206E0B65004DBBCB /* CoreTelephony.framework in Frameworks */,
+				5216EA00206E0B5A004DBBCB /* SystemConfiguration.framework in Frameworks */,
+				5216E9FE206E0B3C004DBBCB /* libz.tbd in Frameworks */,
+				5216E9FC206E0B34004DBBCB /* libc++.tbd in Frameworks */,
 				190C152298CE4C445552C782 /* Pods_Fishes.framework in Frameworks */,
+				5216E9FA206E0B05004DBBCB /* AlipaySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +355,8 @@
 		526047031F7510800072AFB4 = {
 			isa = PBXGroup;
 			children = (
+				5216E9F9206E0B05004DBBCB /* AlipaySDK.framework */,
+				5216E9F7206E0AFC004DBBCB /* AlipaySDK.bundle */,
 				5260470E1F7510800072AFB4 /* Fishes */,
 				526047281F7510800072AFB4 /* FishesTests */,
 				526047331F7510800072AFB4 /* FishesUITests */,
@@ -334,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				52A22219206B8DDF00F71B0C /* Fishes.entitlements */,
+				52AB1026206DE5B2007DC919 /* YYKit */,
 				528C5474206C7E9500635C9E /* Monitor */,
 				528936D92061EA53004463E6 /* Tools */,
 				5260478F1F75158F0072AFB4 /* Public */,
@@ -562,6 +609,8 @@
 				52A22212206B345400F71B0C /* ValidatedFile.m */,
 				52CE2EF4206CCCFE0053A72B /* WebSocketNetwork.h */,
 				52CE2EF5206CCCFE0053A72B /* WebSocketNetwork.m */,
+				5216EA11206E0F9B004DBBCB /* STPayManager.h */,
+				5216EA12206E0F9B004DBBCB /* STPayManager.m */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -577,9 +626,29 @@
 			name = Monitor;
 			sourceTree = "<group>";
 		};
+		52AB1026206DE5B2007DC919 /* YYKit */ = {
+			isa = PBXGroup;
+			children = (
+				52AB1027206DE5F0007DC919 /* YYModelVC.h */,
+				52AB1028206DE5F0007DC919 /* YYModelVC.m */,
+			);
+			name = YYKit;
+			sourceTree = "<group>";
+		};
 		56CB3BF52E6898587C37A712 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5216EA0F206E0BA9004DBBCB /* CoreMotion.framework */,
+				5216EA0D206E0B9E004DBBCB /* CFNetwork.framework */,
+				5216EA0B206E0B97004DBBCB /* Foundation.framework */,
+				5216EA09206E0B8B004DBBCB /* UIKit.framework */,
+				5216EA07206E0B83004DBBCB /* CoreGraphics.framework */,
+				5216EA05206E0B79004DBBCB /* CoreText.framework */,
+				5216EA03206E0B71004DBBCB /* QuartzCore.framework */,
+				5216EA01206E0B65004DBBCB /* CoreTelephony.framework */,
+				5216E9FF206E0B5A004DBBCB /* SystemConfiguration.framework */,
+				5216E9FD206E0B3C004DBBCB /* libz.tbd */,
+				5216E9FB206E0B34004DBBCB /* libc++.tbd */,
 				F37055393C97E28B7B668FA1 /* Pods_Fishes.framework */,
 			);
 			name = Frameworks;
@@ -705,6 +774,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5216E9F8206E0AFD004DBBCB /* AlipaySDK.bundle in Resources */,
 				5260471C1F7510800072AFB4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -744,6 +814,7 @@
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework",
 				"${BUILT_PRODUCTS_DIR}/UICKeyChainStore/UICKeyChainStore.framework",
+				"${BUILT_PRODUCTS_DIR}/YYKit/YYKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -758,6 +829,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketRocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICKeyChainStore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -806,6 +878,7 @@
 			files = (
 				5284058120634CA2000623B4 /* HomeTbCells.m in Sources */,
 				528936E22061EB91004463E6 /* StToastAnimation.m in Sources */,
+				52AB1029206DE5F0007DC919 /* YYModelVC.m in Sources */,
 				523FD55420664716009753B4 /* SetV.m in Sources */,
 				528936F12061FDA1004463E6 /* UIColor+Hex.m in Sources */,
 				52BC7E6B2065E611000B5E43 /* SmsLoginV.m in Sources */,
@@ -856,6 +929,7 @@
 				526047961F7515D60072AFB4 /* UIView+Extension.m in Sources */,
 				52BC7E6E2065E62B000B5E43 /* SmsLoginVC.m in Sources */,
 				526047851F7514430072AFB4 /* MineVC.m in Sources */,
+				5216EA13206E0F9B004DBBCB /* STPayManager.m in Sources */,
 				523F04CD2064D72700858BDD /* StartVC.m in Sources */,
 				528936E52061EBCB004463E6 /* HudTips.m in Sources */,
 			);
@@ -993,6 +1067,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Fishes/Fishes.entitlements;
 				DEVELOPMENT_TEAM = 7T5NXR7M3P;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = Fishes/CommFiles.pch;
 				INFOPLIST_FILE = Fishes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1009,6 +1087,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Fishes/Fishes.entitlements;
 				DEVELOPMENT_TEAM = 7T5NXR7M3P;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = Fishes/CommFiles.pch;
 				INFOPLIST_FILE = Fishes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -21,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor whiteColor];
     //监听是否有网
     _netUseVals = [UICKeyChainStore keyChainStore][@"ifnetUse"];
     _Auths = [UICKeyChainStore keyChainStore][@"authos"];
@@ -60,7 +61,12 @@
             [HudTips hideHUD:self];
             //进行容错处理丫:
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
-                STLog(@"%@",feedBacks);
+                STLog(@"%@",[feedBacks modelToJSONString]);
+                self.homeDetailV.homeDetailMs = [[HomeDetailMs alloc] initMs:feedBacks[@"data"][@"start_time"] total_inventory:feedBacks[@"data"][@"total_inventory"] qty:feedBacks[@"data"][@"qty"] group_id:feedBacks[@"data"][@"group_id"] freeze_inventory:feedBacks[@"data"][@"freeze_inventory"] vendor:feedBacks[@"data"][@"vendor"] volume:feedBacks[@"data"][@"volume"] price:feedBacks[@"data"][@"price"]  status:feedBacks[@"data"][@"status"] end_time:feedBacks[@"data"][@"end_time"] turnover:feedBacks[@"data"][@"turnover"] discount_price:feedBacks[@"data"][@"discount_price"] detail:feedBacks[@"data"][@"detail"] title:feedBacks[@"data"][@"title"] vendor_id:feedBacks[@"data"][@"vendor_id"] small_pic:feedBacks[@"data"][@"small_pic"]  logistics_fee:feedBacks[@"data"][@"logistics_fee"] actual_logistics_fee:feedBacks[@"data"][@"actual_logistics_fee"] type:feedBacks[@"data"][@"type"] subtitle:feedBacks[@"data"][@"subtitle"] vendor_avatar:feedBacks[@"vendor_avatar"][@"detail"] category_id:feedBacks[@"data"][@"category_id"] attr_value:feedBacks[@"data"][@"attr_value"][0][@"attr_value"]];
+                for (int i = 0 ; i < [feedBacks[@"data"][@"banner"] count]; i++) {
+                    [self.homeDetailV.imgStrGroup addObject:[picUrl stringByAppendingString:feedBacks[@"data"][@"banner"][i]]];
+                }
+                [self.homeDetailV.tableV reloadData];
             }else if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"10009"]){
                 [HudTips showToast:self text:missSsidTips showType:Pos animationType:StToastAnimationTypeScale];
             }else{

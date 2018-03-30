@@ -66,7 +66,8 @@
                 self.mineV.mineMs = [[MineMs alloc] initMs:feedBacks[@"data"][@"nick_name"] gender:feedBacks[@"data"][@"gender"] tel:feedBacks[@"data"][@"tel"] avatar:feedBacks[@"data"][@"avatar"] birthday:feedBacks[@"data"][@"birthday"] user_name:feedBacks[@"data"][@"user_name"] customer_service_tel:feedBacks[@"data"][@"customer_service_tel"] has_pay:feedBacks[@"data"][@"order_num"][@"has_pay"] no_pay:feedBacks[@"data"][@"order_num"][@"no_pay"] over:feedBacks[@"data"][@"order_num"][@"over"] no_delivery:feedBacks[@"data"][@"order_num"][@"no_delivery"]];
                 [self.mineV.tableV reloadData];
             }else if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"10009"]){
-                [HudTips showToast:self text:missSsidTips showType:Pos animationType:StToastAnimationTypeScale];
+                //[HudTips showToast:self text:missSsidTips showType:Pos animationType:StToastAnimationTypeScale];
+                [MethodFunc dealAuthMiss:self tipInfo:feedBacks[@"msg"]];
             }else{
                 [HudTips showToast:self text:feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
             }

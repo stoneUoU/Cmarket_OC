@@ -34,6 +34,10 @@ PODS:
   - SDWebImage/Core (4.3.3)
   - SocketRocket (0.5.1)
   - UICKeyChainStore (2.1.1)
+  - WechatOpenSDK (1.8.1)
+  - YYKit (1.0.9):
+    - YYKit/no-arc (= 1.0.9)
+  - YYKit/no-arc (1.0.9)
 
 DEPENDENCIES:
   - AFNetworking
@@ -48,6 +52,8 @@ DEPENDENCIES:
   - SDWebImage
   - SocketRocket
   - UICKeyChainStore
+  - WechatOpenSDK
+  - YYKit
 
 SPEC CHECKSUMS:
   AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
@@ -63,7 +69,9 @@ SPEC CHECKSUMS:
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   UICKeyChainStore: 239558492fa260531a0774cfc611ea83a6eaff3a
+  WechatOpenSDK: 491d965d79335070328571d3e79f714549e79a5e
+  YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: f1e9230aa5a77bfb96805e0da825b3c5e9fd8391
+PODFILE CHECKSUM: e3466b8ed329accf3bf7eacdda75ece643f360bc
 
 COCOAPODS: 1.4.0

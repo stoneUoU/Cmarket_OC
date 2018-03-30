@@ -6,6 +6,7 @@
 //  Copyright © 2018年 com.youlu. All rights reserved.
 //
 #import <UIKit/UIKit.h>
+#import "HomeDetailMs.h"
 @protocol HomeDetailVDel
 //这里只需要声明方法
 - (void)toDo;
@@ -28,11 +29,6 @@
 //轮播图
 @property SDCycleScrollView *cycleScrollV;
 
-@property (nonatomic,strong)NSMutableArray *dataArrs;
-
-@property (nonatomic,strong)NSMutableArray *imgStrGroup;
-
-
 //商品主标题
 @property (nonatomic ,strong) UILabel *product_title;
 //商品副标题
@@ -51,5 +47,11 @@
 @property (nonatomic ,strong) UILabel *progress_bar_vals;
 //进度条
 @property (nonatomic ,strong) UIProgressView *progress_bar;
+
+
+//定义数据源
+@property (nonatomic,retain)HomeDetailMs *homeDetailMs;
+//存轮播图片
+@property (nonatomic,retain)NSMutableArray *imgStrGroup;
 
 @end

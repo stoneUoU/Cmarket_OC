@@ -84,11 +84,6 @@
     }
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    if (self.dataArrs.count >= 10){
-//        return self.dataArrs.count + 1;
-//    }else{
-//        return self.dataArrs.count;
-//    }
     return self.dataArrs.count;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -99,57 +94,65 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 10;
 }
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView *footerV = [[UIView alloc] init];
+    footerV.backgroundColor = allBgColor ;
+    if (self.dataArrs.count >= 10){
+        [footerV setUserInteractionEnabled:YES];
+        UITapGestureRecognizer *tapMore = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toMore:)];
+        [footerV addGestureRecognizer:tapMore];
+        UIButton *moreBtn = [[UIButton alloc] init];
+        moreBtn.titleLabel.font=[UIFont systemFontOfSize:14];
+        [moreBtn setTitleColor:styleColor  forState:UIControlStateNormal];
+        [moreBtn setTitle:@"查看更多" forState:UIControlStateNormal];
+        [footerV addSubview:moreBtn];
+        [moreBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(footerV);
+            make.right.equalTo(footerV.mas_right).offset(-spaceM);
+        }];
+    }
+    return footerV;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    if (self.dataArrs.count >= 10){
+        return 44*StScaleH;
+    }else{
+        return 24*StScaleH;
+    }
+}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 150;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if  ([[NSString stringWithFormat:@"%ld",(long)indexPath.row] isEqualToString:[NSString stringWithFormat:@"%lu",(unsigned long)self.dataArrs.count]]) {
-//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-//        if (!cell){
-//            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-//        }
-//        UIButton *moreBtn = [[UIButton alloc] init];
-//        moreBtn.titleLabel.font=[UIFont systemFontOfSize:14];
-//        [moreBtn setTitleColor:styleColor  forState:UIControlStateNormal];
-//        [moreBtn setTitle:@"查看更多" forState:UIControlStateNormal];
-//        [moreBtn addTarget:self action:@selector(btnMore:)forControlEvents:UIControlEventTouchUpInside];
-//        [cell addSubview:moreBtn];
-//        [moreBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.centerY.equalTo(cell);
-//            make.right.equalTo(cell.mas_right).offset(2*spaceM);
-//        }];
-//        return cell;
-//
-//    }else{
-        HomeTbCells *homeTbCells = (HomeTbCells *)[tableView dequeueReusableCellWithIdentifier:@"onStartTbs"];
-        HomeMs *homeMs = self.dataArrs[indexPath.row];
-        //除去选中时的颜色
-        homeTbCells.selectionStyle = UITableViewCellSelectionStyleNone;
-        [homeTbCells.product_icon sd_setImageWithURL:[NSURL URLWithString:[picUrl stringByAppendingString:homeMs.spic]] placeholderImage:[UIImage imageNamed:@"pic_loading_shangpingxiangqing.png"]];
-        homeTbCells.product_title.text = [NSString stringWithFormat:@"%@",homeMs.title];
-        homeTbCells.product_small_title.text = [NSString stringWithFormat:@"%@",homeMs.subtitle];
-        homeTbCells.product_attr.text = [[FormatDs retainPoint:@"0.00" floatV:[homeMs.discount_price floatValue]/[[homeMs.attr_value stringByReplacingOccurrencesOfString:@"kg" withString:@""] floatValue]/2] stringByAppendingString:@"元/斤"];
-        //"\(String(format: "%.2f",(Double(datas.discount_price)!/(Double("\(datas.attr_value)".replacingOccurrences(of:"kg", with: ""))! * 2))/100))元/斤"
-        homeTbCells.progress_bar.progress =  [homeMs.freeze_inventory floatValue]/[homeMs.total_inventory floatValue];
-        homeTbCells.progress_bar_vals.text = [[@"已购" stringByAppendingString:[FormatDs retainPoint:@"0" floatV:[homeMs.freeze_inventory floatValue]/[homeMs.total_inventory floatValue]*10000] ] stringByAppendingString:@"%"];
-        [homeTbCells.doBtn setTitle:@"立即下单" forState:UIControlStateNormal];
-        homeTbCells.product_price.text =  [FormatDs retainPoint:@"0.00" floatV:[homeMs.discount_price floatValue]];
-        homeTbCells.doBtn.backgroundColor = styleColor;
-        homeTbCells.start_end.text = @"距结束";
-        homeTbCells.count_down.text = [self getInTimeWithStr:[NSString stringWithFormat:@"%@",homeMs.end_time]];
-        if ([homeTbCells.count_down.text isEqualToString:@"活动已经结束！"]) {
-            homeTbCells.count_down.textColor = [UIColor redColor];
-        }else{
-            homeTbCells.count_down.textColor = [UIColor orangeColor];
-        }
-        if ([[FormatDs retainPoint:@"0" floatV:[homeMs.freeze_inventory floatValue]/[homeMs.total_inventory floatValue]*100] isEqualToString:@"1"]) {
-            [homeTbCells.doBtn setTitle:@"已拼满" forState:UIControlStateNormal];
-            homeTbCells.doBtn.backgroundColor = btnDisableC;
-        }
-        homeTbCells.tag = indexPath.row;
-        return homeTbCells;
-    //}
+    HomeTbCells *homeTbCells = (HomeTbCells *)[tableView dequeueReusableCellWithIdentifier:@"onStartTbs"];
+    homeTbCells.selectionStyle =NO;
+    HomeMs *homeMs = self.dataArrs[indexPath.row];
+    //除去选中时的颜色
+    homeTbCells.selectionStyle = UITableViewCellSelectionStyleNone;
+    [homeTbCells.product_icon sd_setImageWithURL:[NSURL URLWithString:[picUrl stringByAppendingString:homeMs.spic]] placeholderImage:[UIImage imageNamed:@"pic_loading_shangpingxiangqing.png"]];
+    homeTbCells.product_title.text = [NSString stringWithFormat:@"%@",homeMs.title];
+    homeTbCells.product_small_title.text = [NSString stringWithFormat:@"%@",homeMs.subtitle];
+    homeTbCells.product_attr.text = [[FormatDs retainPoint:@"0.00" floatV:[homeMs.discount_price floatValue]/[[homeMs.attr_value stringByReplacingOccurrencesOfString:@"kg" withString:@""] floatValue]/2] stringByAppendingString:@"元/斤"];
+    homeTbCells.progress_bar.progress =  [homeMs.freeze_inventory floatValue]/[homeMs.total_inventory floatValue];
+    homeTbCells.progress_bar_vals.text = [[@"已购" stringByAppendingString:[FormatDs retainPoint:@"0" floatV:[homeMs.freeze_inventory floatValue]/[homeMs.total_inventory floatValue]*10000] ] stringByAppendingString:@"%"];
+    [homeTbCells.doBtn setTitle:@"立即下单" forState:UIControlStateNormal];
+    homeTbCells.product_price.text =  [FormatDs retainPoint:@"0.00" floatV:[homeMs.discount_price floatValue]];
+    homeTbCells.doBtn.backgroundColor = styleColor;
+    homeTbCells.start_end.text = @"距结束";
+    homeTbCells.count_down.text = [self getInTimeWithStr:[NSString stringWithFormat:@"%@",homeMs.end_time]];
+    if ([homeTbCells.count_down.text isEqualToString:@"活动已经结束！"]) {
+        homeTbCells.count_down.textColor = [UIColor redColor];
+    }else{
+        homeTbCells.count_down.textColor = [UIColor orangeColor];
+    }
+    if ([[FormatDs retainPoint:@"0" floatV:[homeMs.freeze_inventory floatValue]/[homeMs.total_inventory floatValue]*100] isEqualToString:@"1"]) {
+        [homeTbCells.doBtn setTitle:@"已拼满" forState:UIControlStateNormal];
+        homeTbCells.doBtn.backgroundColor = btnDisableC;
+    }
+    homeTbCells.tag = indexPath.row;
+    return homeTbCells;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -159,7 +162,7 @@
     [MethodFunc pushToNextVC:self destVC:homeDetailV];
 }
 //点击函数
-- (void)btnMore:(UIButton *)button{
+- (void)toMore:(id)sender{
     STLog(@"查看更多");
 }
 -(void)dealloc{
@@ -171,10 +174,6 @@
 /**
  * 根据传入的年份和月份获得该月份的天数
  *
- * @param year
- *            年份-正整数
- * @param month
- *            月份-正整数
  * @return 返回天数
  */
 -(NSInteger)getDayNumberWithYear:(NSInteger )y month:(NSInteger )m{

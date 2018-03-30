@@ -9,7 +9,8 @@
 #import "HomeDetailMs.h"
 
 @implementation HomeDetailMs
-- (id)initMs:(NSString *)start_time total_inventory:(NSString *)total_inventory qty:(NSString *)qty group_id:(NSString *)group_id freeze_inventory:(NSString *)freeze_inventory vendor:(NSString *)vendor volume:(NSString *)volume price:(NSString *)price status:(NSString *)status end_time:(NSString *)end_time turnover:(NSString *)turnover discount_price:(NSString *)discount_price detail:(NSString *)detail title:(NSString *)title vendor_id:(NSString *)vendor_id small_pic:(NSString *)small_pic logistics_fee:(NSString *)logistics_fee actual_logistics_fee:(NSString *)actual_logistics_fee type:(NSString *)type subtitle:(NSString *)subtitle vendor_avatar:(NSString *)vendor_avatar category_id:(NSString *)category_id{
+//@synthesize title;
+- (id)initMs:(NSString *)start_time total_inventory:(NSString *)total_inventory qty:(NSString *)qty group_id:(NSString *)group_id freeze_inventory:(NSString *)freeze_inventory vendor:(NSString *)vendor volume:(NSString *)volume price:(NSString *)price status:(NSString *)status end_time:(NSString *)end_time turnover:(NSString *)turnover discount_price:(NSString *)discount_price detail:(NSString *)detail title:(NSString *)title vendor_id:(NSString *)vendor_id small_pic:(NSString *)small_pic logistics_fee:(NSString *)logistics_fee actual_logistics_fee:(NSString *)actual_logistics_fee type:(NSString *)type subtitle:(NSString *)subtitle vendor_avatar:(NSString *)vendor_avatar category_id:(NSString *)category_id attr_value:(NSString *)attr_value{
     if(self=[super init]){
         self.start_time = start_time;
         self.total_inventory = total_inventory;
@@ -33,6 +34,7 @@
         self.subtitle = subtitle;
         self.vendor_avatar = vendor_avatar;
         self.category_id = category_id;
+        self.attr_value = attr_value;
     }
     return self;
 }

@@ -9,6 +9,12 @@
 #import "HomeDetailV.h"
 
 @implementation HomeDetailV
+- (id)init
+{
+    self.imgStrGroup = [NSMutableArray array];
+    // 情景二：采用网络图片实现
+    return [super init];
+}
 - (void)drawRect:(CGRect)rect {
     [self setUpUI];
 }
@@ -91,6 +97,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *headerV = [[UIView alloc] init];
     headerV.backgroundColor = [UIColor whiteColor];
+    _cycleScrollV.imageURLStringsGroup = _imgStrGroup;
     [headerV addSubview:_cycleScrollV];
     [_cycleScrollV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.width.equalTo(headerV);
@@ -101,7 +108,7 @@
     _product_title.font = [UIFont systemFontOfSize:13];
     _product_title.numberOfLines = 2;
     _product_title.lineBreakMode = NSLineBreakByTruncatingTail;
-    _product_title.text = @"阿里pay丫，想";
+    _product_title.text = _homeDetailMs.title;
     [headerV addSubview:_product_title];
     [_product_title mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_cycleScrollV.mas_bottom).offset(10*StScaleH);
@@ -118,7 +125,7 @@
     _product_small_title.textAlignment = NSTextAlignmentCenter;
     _product_small_title.leftEdge = 5;
     _product_small_title.rightEdge = 5;
-    _product_small_title.text = @"阿里pay丫，想00000";
+    _product_small_title.text = _homeDetailMs.subtitle;
     [headerV addSubview:_product_small_title];
     [_product_small_title mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(headerV.mas_left).offset(spaceM);
@@ -159,7 +166,7 @@
     _product_price = [[UILabel alloc] init];
     _product_price.font = [UIFont systemFontOfSize:18];
     _product_price.textColor = [UIColor color_HexStr:@"d73509"];
-    _product_price.text = @"20.09";
+    _product_price.text = [FormatDs retainPoint:@"0.00" floatV:[_homeDetailMs.discount_price floatValue]];
     [headerV addSubview:_product_price];
     [_product_price mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_product_unit.mas_right).offset(0);
@@ -173,6 +180,7 @@
     _product_attr.layer.cornerRadius = 3;
     _product_attr.layer.masksToBounds = true;
     _product_attr.textAlignment = NSTextAlignmentCenter;
+    _product_attr.text = _homeDetailMs.attr_value == NULL ? @"" :  [[FormatDs retainPoint:@"0.00" floatV:[_homeDetailMs.discount_price floatValue]/[[_homeDetailMs.attr_value stringByReplacingOccurrencesOfString:@"kg" withString:@""] floatValue]/2] stringByAppendingString:@"元/斤"];
     _product_attr.leftEdge = 5;
     _product_attr.rightEdge = 5;
     [headerV addSubview:_product_attr];
@@ -188,7 +196,7 @@
     _progress_bar.layer.borderWidth = 1;
     _progress_bar.progressTintColor = progress_barC;  // 已走过的颜色
     _progress_bar.trackTintColor = [UIColor whiteColor];  // 为走过的颜色
-    _progress_bar.progress = 0.4;
+    _progress_bar.progress = [_homeDetailMs.freeze_inventory floatValue]/[_homeDetailMs.total_inventory floatValue];
     [headerV addSubview:_progress_bar];
     [_progress_bar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_product_price);
@@ -200,7 +208,7 @@
     _progress_bar_vals = [[UILabel alloc] init];
     _progress_bar_vals.font = [UIFont systemFontOfSize:11];
     _progress_bar_vals.textColor = deepBlackC;
-    _progress_bar_vals.text = @"已抢购";
+    _progress_bar_vals.text = _homeDetailMs.freeze_inventory == NULL ? @"" : [[@"已购" stringByAppendingString:[FormatDs retainPoint:@"0" floatV:[_homeDetailMs.freeze_inventory floatValue]/[_homeDetailMs.total_inventory floatValue]*10000] ] stringByAppendingString:@"%"];
     [headerV addSubview:_progress_bar_vals];
     [_progress_bar_vals mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_progress_bar);
@@ -245,15 +253,14 @@
 
     UILabel *html_V = [[UILabel alloc] init];
     html_V.numberOfLines = 0;
-    NSString *str1 = [[@"<!doctype html><html><head><meta content=\"width=device-width, initial-scale=1.0\" name=\"viewport\"><style>img{width:" stringByAppendingString:[NSString stringWithFormat:@"%f", ScreenW - 2*spaceM]] stringByAppendingString:@"px}</style></head><body><p><img src='https://pic.cht.znrmny.com/static_file/upload/image/2f3913aa08d311e89eae021e2a1dc1af.png'></p><p><img src='https://pic.cht.znrmny.com/static_file/upload/image/358856f808d311e89eae021e2a1dc1af.png'></p><p><img src='https://pic.cht.znrmny.com/static_file/upload/image/3c8aa08208d311e89eae021e2a1dc1af.png'></p><p><img src='https://pic.cht.znrmny.com/static_file/upload/image/46cdd82008d311e89eae021e2a1dc1af.png'></p></body></html>"];
+    NSString *decodedStr = [[NSString alloc] initWithData: [[NSData alloc] initWithBase64EncodedString:_homeDetailMs.detail == NULL ? @"" : _homeDetailMs.detail options:0] encoding:NSUTF8StringEncoding];
+    NSString *htmlStr =[[[[@"<!doctype html><html><head><meta content=\"width=device-width, initial-scale=1.0\" name=\"viewport\"><style>img{width:" stringByAppendingString:[NSString stringWithFormat:@"%f", ScreenW - 2*spaceM]] stringByAppendingString:@"px}</style></head><body>"] stringByAppendingString: decodedStr] stringByAppendingString:@"</body></html>"];
     //1.将字符串转化为标准HTML字符串
-    str1 = [self htmlEntityDecode:str1];
+    htmlStr = [self htmlEntityDecode:htmlStr];
     //2.将HTML字符串转换为attributeString
-    NSAttributedString * attributeStr = [self attributedStringWithHTMLString:str1];
-
+    NSAttributedString * attrStr = [self attributedStringWithHTMLString:htmlStr];
     //3.使用label加载html字符串
-    html_V.attributedText = attributeStr;
-
+    html_V.attributedText = attrStr;
     [footerV addSubview:html_V];
     [html_V mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(info_V.mas_bottom).offset(0);

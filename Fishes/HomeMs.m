@@ -9,19 +9,6 @@
 #import "HomeMs.h"
 
 @implementation HomeMs
-@synthesize group_id;
-@synthesize title;
-@synthesize price;
-@synthesize discount_price;
-@synthesize spic;
-@synthesize status;
-@synthesize total_inventory;
-@synthesize freeze_inventory;
-@synthesize start_time;
-@synthesize end_time;
-@synthesize type;
-@synthesize subtitle;
-@synthesize attr_value;
 //实现构造方法
 - (id)initMs:(NSString *)group_id title:(NSString *)title price:(NSString *)price discount_price:(NSString *)discount_price spic:(NSString *)spic status:(NSString *)status total_inventory:(NSString *)total_inventory freeze_inventory:(NSString *)freeze_inventory start_time:(NSString *)start_time end_time:(NSString *)end_time type:(NSString *)type subtitle:(NSString *)subtitle attr_value:(NSString *)attr_value{
     if(self=[super init]){

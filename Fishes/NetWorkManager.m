@@ -8,12 +8,6 @@
 
 #import "NetWorkManager.h"
 
-#import <AVFoundation/AVAsset.h>
-#import <AVFoundation/AVAssetExportSession.h>
-#import <AVFoundation/AVMediaFormat.h>
-
-
-
 @implementation NetWorkManager
 
 
@@ -104,7 +98,6 @@
 
 +(void)requestWithType:(HttpRequestType)type withUrlString:(NSString *)urlString withParaments:(id)paraments Authos:(NSString *)Authos withSuccessBlock:(requestSuccess)successBlock withFailureBlock:(requestFailure)failureBlock
 {
-    //STLog(@"%@",paraments)
 
     switch (type) {
 

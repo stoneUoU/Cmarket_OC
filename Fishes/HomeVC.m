@@ -41,15 +41,12 @@
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.showsVerticalScrollIndicator = NO;
-        //_tableView.sectionHeaderHeight = PageMenuH;
     }
     return _tableView;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //super.viewDidLoad()
     self.view.backgroundColor = [UIColor whiteColor];
-    // Do any additional setup after loading the view.
     //监听是否有网
     _netUseVals = [UICKeyChainStore keyChainStore][@"ifnetUse"];
 
@@ -114,10 +111,11 @@
     _cycleScrollV.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
     _cycleScrollV.currentPageDotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色
 
-    /*block监听点击方式*/
+    /*block监听点击方式（解决循环引用）*/    
+    __weak typeof(self) weakSelf = self;
     self.cycleScrollV.clickItemOperationBlock = ^(NSInteger index) {
         //点击闭包
-        CarouselMs *carouselMs = _dataArrs[index];
+        CarouselMs *carouselMs = weakSelf.dataArrs[index];
         STLog(@">>>>>  %@", carouselMs.ids);
     };
 

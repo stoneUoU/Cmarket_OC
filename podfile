@@ -11,4 +11,6 @@ pod 'UICKeyChainStore'
 pod 'MBProgressHUD'
 pod 'CYLTableViewPlaceHolder'
 pod 'SDCycleScrollView','~> 1.75'
+pod 'JPush'
+pod 'SocketRocket'
 end 

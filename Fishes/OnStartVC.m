@@ -153,7 +153,10 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [MethodFunc pushToNextVC:self destVC:[[HomeDetailVC alloc] init]];
+    HomeMs *homeMs = self.dataArrs[indexPath.row];
+    HomeDetailVC * homeDetailV = [[HomeDetailVC alloc] init];
+    homeDetailV.pass_Vals = @{@"group_id":homeMs.group_id};
+    [MethodFunc pushToNextVC:self destVC:homeDetailV];
 }
 //点击函数
 - (void)btnMore:(UIButton *)button{

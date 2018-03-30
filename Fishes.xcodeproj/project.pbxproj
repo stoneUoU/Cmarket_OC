@@ -51,14 +51,20 @@
 		528936EB2061EC71004463E6 /* UIButton+ST_FixMultiClick.m in Sources */ = {isa = PBXBuildFile; fileRef = 528936EA2061EC71004463E6 /* UIButton+ST_FixMultiClick.m */; };
 		528936EE2061ECC4004463E6 /* STPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 528936ED2061ECC4004463E6 /* STPlaceholderView.m */; };
 		528936F12061FDA1004463E6 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 528936F02061FDA1004463E6 /* UIColor+Hex.m */; };
+		528C5477206C7EB900635C9E /* MonitorV.m in Sources */ = {isa = PBXBuildFile; fileRef = 528C5476206C7EB900635C9E /* MonitorV.m */; };
+		528C547A206C848000635C9E /* HomeDetailV.m in Sources */ = {isa = PBXBuildFile; fileRef = 528C5479206C848000635C9E /* HomeDetailV.m */; };
 		528F51A82068DECE008BA452 /* AccountInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 528F51A72068DECE008BA452 /* AccountInfoVC.m */; };
 		528F51AB2068DEF0008BA452 /* AccountInfoV.m in Sources */ = {isa = PBXBuildFile; fileRef = 528F51AA2068DEF0008BA452 /* AccountInfoV.m */; };
+		52A22213206B345400F71B0C /* ValidatedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A22212206B345400F71B0C /* ValidatedFile.m */; };
+		52A22218206B749700F71B0C /* MonitorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A22217206B749700F71B0C /* MonitorVC.m */; };
 		52AE74C91FCE584900081972 /* HomeDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52AE74C81FCE584900081972 /* HomeDetailVC.m */; };
 		52BC7E682065DEC9000B5E43 /* UIFont+runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E672065DEC9000B5E43 /* UIFont+runtime.m */; };
 		52BC7E6B2065E611000B5E43 /* SmsLoginV.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E6A2065E611000B5E43 /* SmsLoginV.m */; };
 		52BC7E6E2065E62B000B5E43 /* SmsLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E6D2065E62B000B5E43 /* SmsLoginVC.m */; };
 		52BC7E712065E65F000B5E43 /* RegisterV.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E702065E65F000B5E43 /* RegisterV.m */; };
 		52BC7E742065E66E000B5E43 /* RegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E732065E66E000B5E43 /* RegisterVC.m */; };
+		52CE2EF6206CCCFE0053A72B /* WebSocketNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CE2EF5206CCCFE0053A72B /* WebSocketNetwork.m */; };
+		52CE2EF9206CE22B0053A72B /* HomeDetailMs.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CE2EF8206CE22B0053A72B /* HomeDetailMs.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,10 +175,19 @@
 		528936ED2061ECC4004463E6 /* STPlaceholderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STPlaceholderView.m; sourceTree = "<group>"; };
 		528936EF2061FDA1004463E6 /* UIColor+Hex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		528936F02061FDA1004463E6 /* UIColor+Hex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		528C5475206C7EB900635C9E /* MonitorV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonitorV.h; sourceTree = "<group>"; };
+		528C5476206C7EB900635C9E /* MonitorV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonitorV.m; sourceTree = "<group>"; };
+		528C5478206C848000635C9E /* HomeDetailV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailV.h; sourceTree = "<group>"; };
+		528C5479206C848000635C9E /* HomeDetailV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailV.m; sourceTree = "<group>"; };
 		528F51A62068DECE008BA452 /* AccountInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountInfoVC.h; sourceTree = "<group>"; };
 		528F51A72068DECE008BA452 /* AccountInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountInfoVC.m; sourceTree = "<group>"; };
 		528F51A92068DEF0008BA452 /* AccountInfoV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountInfoV.h; sourceTree = "<group>"; };
 		528F51AA2068DEF0008BA452 /* AccountInfoV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountInfoV.m; sourceTree = "<group>"; };
+		52A22211206B345400F71B0C /* ValidatedFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ValidatedFile.h; sourceTree = "<group>"; };
+		52A22212206B345400F71B0C /* ValidatedFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValidatedFile.m; sourceTree = "<group>"; };
+		52A22216206B749700F71B0C /* MonitorVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonitorVC.h; sourceTree = "<group>"; };
+		52A22217206B749700F71B0C /* MonitorVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonitorVC.m; sourceTree = "<group>"; };
+		52A22219206B8DDF00F71B0C /* Fishes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fishes.entitlements; sourceTree = "<group>"; };
 		52AE74C71FCE584900081972 /* HomeDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailVC.h; sourceTree = "<group>"; };
 		52AE74C81FCE584900081972 /* HomeDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailVC.m; sourceTree = "<group>"; };
 		52B72DF4E62F565F1F472D34 /* Pods-Fishes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fishes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fishes/Pods-Fishes.debug.xcconfig"; sourceTree = "<group>"; };
@@ -186,6 +201,10 @@
 		52BC7E702065E65F000B5E43 /* RegisterV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterV.m; sourceTree = "<group>"; };
 		52BC7E722065E66E000B5E43 /* RegisterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterVC.h; sourceTree = "<group>"; };
 		52BC7E732065E66E000B5E43 /* RegisterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterVC.m; sourceTree = "<group>"; };
+		52CE2EF4206CCCFE0053A72B /* WebSocketNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebSocketNetwork.h; sourceTree = "<group>"; };
+		52CE2EF5206CCCFE0053A72B /* WebSocketNetwork.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebSocketNetwork.m; sourceTree = "<group>"; };
+		52CE2EF7206CE22B0053A72B /* HomeDetailMs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailMs.h; sourceTree = "<group>"; };
+		52CE2EF8206CE22B0053A72B /* HomeDetailMs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailMs.m; sourceTree = "<group>"; };
 		F37055393C97E28B7B668FA1 /* Pods_Fishes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fishes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -314,6 +333,8 @@
 		5260470E1F7510800072AFB4 /* Fishes */ = {
 			isa = PBXGroup;
 			children = (
+				52A22219206B8DDF00F71B0C /* Fishes.entitlements */,
+				528C5474206C7E9500635C9E /* Monitor */,
 				528936D92061EA53004463E6 /* Tools */,
 				5260478F1F75158F0072AFB4 /* Public */,
 				523F04BE2064D2EE00858BDD /* Start */,
@@ -385,9 +406,11 @@
 		526047631F7512070072AFB4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				523F04B620649DD700858BDD /* HomeCells */,
 				52680C73206239B700F5DB96 /* HomeBaseTbV.m */,
 				52680C72206239B700F5DB96 /* HomeBaseTbV.h */,
-				523F04B620649DD700858BDD /* HomeCells */,
+				528C5478206C848000635C9E /* HomeDetailV.h */,
+				528C5479206C848000635C9E /* HomeDetailV.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -399,6 +422,8 @@
 				52680C85206248A900F5DB96 /* CarouselMs.m */,
 				5284058820638076000623B4 /* HomeMs.h */,
 				5284058920638076000623B4 /* HomeMs.m */,
+				52CE2EF7206CE22B0053A72B /* HomeDetailMs.h */,
+				52CE2EF8206CE22B0053A72B /* HomeDetailMs.m */,
 			);
 			name = M;
 			sourceTree = "<group>";
@@ -533,8 +558,23 @@
 				5284058C2063960B000623B4 /* FormatDs.m */,
 				523FD55820665454009753B4 /* MethodFunc.h */,
 				523FD55920665454009753B4 /* MethodFunc.m */,
+				52A22211206B345400F71B0C /* ValidatedFile.h */,
+				52A22212206B345400F71B0C /* ValidatedFile.m */,
+				52CE2EF4206CCCFE0053A72B /* WebSocketNetwork.h */,
+				52CE2EF5206CCCFE0053A72B /* WebSocketNetwork.m */,
 			);
 			name = Tools;
+			sourceTree = "<group>";
+		};
+		528C5474206C7E9500635C9E /* Monitor */ = {
+			isa = PBXGroup;
+			children = (
+				528C5475206C7EB900635C9E /* MonitorV.h */,
+				528C5476206C7EB900635C9E /* MonitorV.m */,
+				52A22216206B749700F71B0C /* MonitorVC.h */,
+				52A22217206B749700F71B0C /* MonitorVC.m */,
+			);
+			name = Monitor;
 			sourceTree = "<group>";
 		};
 		56CB3BF52E6898587C37A712 /* Frameworks */ = {
@@ -617,6 +657,14 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 7T5NXR7M3P;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					526047241F7510800072AFB4 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -694,6 +742,7 @@
 				"${BUILT_PRODUCTS_DIR}/RealReachability/RealReachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SDCycleScrollView/SDCycleScrollView.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework",
 				"${BUILT_PRODUCTS_DIR}/UICKeyChainStore/UICKeyChainStore.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -707,6 +756,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealReachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDCycleScrollView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketRocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICKeyChainStore.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -773,6 +823,7 @@
 				5260479C1F7516390072AFB4 /* TabBarVC.m in Sources */,
 				528936E82061EC34004463E6 /* UIView+Toast.m in Sources */,
 				52BC7E712065E65F000B5E43 /* RegisterV.m in Sources */,
+				528C5477206C7EB900635C9E /* MonitorV.m in Sources */,
 				528936DF2061EB5E004463E6 /* StToast.m in Sources */,
 				52680C8020623CCD00F5DB96 /* OnStartVC.m in Sources */,
 				5288FAE82069EB32002EC6AA /* UIButton+countDown.m in Sources */,
@@ -781,10 +832,13 @@
 				526047991F75160C0072AFB4 /* UIImage+Image.m in Sources */,
 				523F04D02065020500858BDD /* CodeLoginVC.m in Sources */,
 				52680C8320623D1900F5DB96 /* WillStartVC.m in Sources */,
+				52A22218206B749700F71B0C /* MonitorVC.m in Sources */,
 				523FD55A20665454009753B4 /* MethodFunc.m in Sources */,
 				5284058D2063960B000623B4 /* FormatDs.m in Sources */,
 				523F04CA2064D71700858BDD /* StartV.m in Sources */,
+				52A22213206B345400F71B0C /* ValidatedFile.m in Sources */,
 				528F51AB2068DEF0008BA452 /* AccountInfoV.m in Sources */,
+				528C547A206C848000635C9E /* HomeDetailV.m in Sources */,
 				52680C7D20623B0400F5DB96 /* HomeBaseTbVC.m in Sources */,
 				52680C7A20623A2C00F5DB96 /* SPPageMenu.m in Sources */,
 				528936D82061E94E004463E6 /* BaseToolVC.m in Sources */,
@@ -793,10 +847,12 @@
 				526047A21F7516920072AFB4 /* TabBar.m in Sources */,
 				526047141F7510800072AFB4 /* AppDelegate.m in Sources */,
 				5260478E1F7515270072AFB4 /* main.m in Sources */,
+				52CE2EF9206CE22B0053A72B /* HomeDetailMs.m in Sources */,
 				523F04BA20649E1300858BDD /* MineTbCells.m in Sources */,
 				523F04BD2064CB5100858BDD /* MineMs.m in Sources */,
 				5284058720637D59000623B4 /* CountDown.m in Sources */,
 				528936EE2061ECC4004463E6 /* STPlaceholderView.m in Sources */,
+				52CE2EF6206CCCFE0053A72B /* WebSocketNetwork.m in Sources */,
 				526047961F7515D60072AFB4 /* UIView+Extension.m in Sources */,
 				52BC7E6E2065E62B000B5E43 /* SmsLoginVC.m in Sources */,
 				526047851F7514430072AFB4 /* MineVC.m in Sources */,
@@ -935,6 +991,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Fishes/Fishes.entitlements;
 				DEVELOPMENT_TEAM = 7T5NXR7M3P;
 				GCC_PREFIX_HEADER = Fishes/CommFiles.pch;
 				INFOPLIST_FILE = Fishes/Info.plist;
@@ -950,6 +1007,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Fishes/Fishes.entitlements;
 				DEVELOPMENT_TEAM = 7T5NXR7M3P;
 				GCC_PREFIX_HEADER = Fishes/CommFiles.pch;
 				INFOPLIST_FILE = Fishes/Info.plist;

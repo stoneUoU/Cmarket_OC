@@ -8,14 +8,6 @@
 
 #import "CarouselMs.h"
 @implementation CarouselMs
-@synthesize banner;
-@synthesize enable;
-@synthesize ids;
-@synthesize params;
-@synthesize sn;
-@synthesize status;
-@synthesize title;
-@synthesize type;
 //实现构造方法
 -(id)initMs:(NSString *)banner enable:(NSString *)enable ids:(NSString *)ids params:(NSString *)params sn:(NSString *)sn status:(NSString *)status title:(NSString *)title type:(NSString *)type{
     if(self=[super init]){

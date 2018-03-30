@@ -47,4 +47,30 @@
 
 @property (nonatomic ,strong)UILabel *phone_str;
 
+@property (nonatomic ,strong)UIView *orderV;
+
+@property (nonatomic ,strong)UILabel *orderLab;
+
+@property (nonatomic ,strong)UIImageView *toIcon;
+
+@property (nonatomic ,strong)UILabel *seeAllL;
+
+@property (nonatomic ,strong)UIView *l_cut_off_V;
+
+//订单操作View
+@property (nonatomic ,strong)UIView *dealV;
+//待付款
+@property (nonatomic ,strong)UIView *wait_payV;
+@property (nonatomic ,strong)UIImageView *wait_pay_IV;
+//拼单中
+@property (nonatomic ,strong)UIView *pinDan_V;
+@property (nonatomic ,strong)UIImageView *pinDan_IV;
+//待收货
+@property (nonatomic ,strong)UIView *wait_receV;
+@property (nonatomic ,strong)UIImageView *wait_receIV;
+//已完成
+@property (nonatomic ,strong)UIView *over_V;
+@property (nonatomic ,strong)UIImageView *over_IV;
+
+
 @end

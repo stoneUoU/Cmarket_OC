@@ -33,9 +33,9 @@
 }
 
 + (void)pushToNextVC:(UIViewController *)selfVC destVC:(UIViewController *)destVC{
-    dispatch_async(dispatch_get_main_queue(), ^{
+    //dispatch_async(dispatch_get_main_queue(), ^{
         [selfVC.navigationController pushViewController:destVC animated:YES];
-    });
+    //});
 }
 
 + (void)popToPrevVC:(UIViewController *)selfVC{

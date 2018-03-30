@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeDetailV.h"
+@interface HomeDetailVC : UIViewController<UIGestureRecognizerDelegate,HomeDetailVDel>
 
-@interface HomeDetailVC : BaseToolVC
-@property (nonatomic ,strong)UIButton *btn;
+@property (nonatomic,strong) HomeDetailV *homeDetailV;
+@property(nonatomic, copy) NSString *Auths;
+@property(nonatomic, copy) NSString *netUseVals;
+
+@property(nonatomic,strong)NSDictionary *pass_Vals;
 @end

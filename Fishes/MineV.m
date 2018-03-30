@@ -55,8 +55,7 @@
     [_tableV registerClass:[MineTbCells class] forCellReuseIdentifier: @"mineTbCells"];
     //添加下拉刷新头
     _tableV.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadDs)];
-    //添加一个footerV
-    _tableV.tableFooterView = [[UIView alloc] init];
+
     // 马上进入刷新状态
     [self addSubview:_tableV];
 
@@ -115,7 +114,7 @@
     UIView *headerV = [[UIView alloc] init];
     switch (section) {
         case 0:{
-            headerV.backgroundColor = [UIColor cyanColor];
+            headerV.backgroundColor = allBgColor;
             _topV = [[UIView alloc] init ];
             _topV.backgroundColor = styleColor;
             [_topV setUserInteractionEnabled:YES];
@@ -126,11 +125,11 @@
                 make.top.equalTo(headerV.mas_top).offset(0);
                 make.left.equalTo(headerV.mas_left).offset(0);
                 make.width.mas_equalTo(ScreenW);
-                make.height.mas_equalTo(110);
+                make.height.mas_equalTo(110*StScaleH);
             }];
 
             _iconV = [[UIImageView alloc] init ];
-            _iconV.layer.cornerRadius = 36;
+            _iconV.layer.cornerRadius = 36*StScaleH;
             //实现效果
             _iconV.clipsToBounds = true;
             [_iconV sd_setImageWithURL:[NSURL URLWithString:[picUrl stringByAppendingString:_mineMs.avatar == NULL ? @"" : _mineMs.avatar]] placeholderImage:[UIImage imageNamed:@"pic_loading_shangpingxiangqing.png"]];
@@ -138,8 +137,8 @@
             [_iconV mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerY.equalTo(_topV);
                 make.left.equalTo(_topV.mas_left).offset(spaceM);
-                make.width.mas_equalTo(72);
-                make.height.mas_equalTo(72);
+                make.width.mas_equalTo(72*StScaleH);
+                make.height.mas_equalTo(72*StScaleH);
             }];
             _user_name = [[UILabel alloc] init];
             _user_name.font = [UIFont systemFontOfSize:15];
@@ -148,7 +147,7 @@
             _user_name.text = _mineMs.nick_name;
             [_topV addSubview:_user_name];
             [_user_name mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(_iconV.mas_top).offset(8);
+                make.top.equalTo(_iconV.mas_top).offset(8*StScaleH);
                 make.left.equalTo(_iconV.mas_right).offset(12);
             }];
 
@@ -156,7 +155,7 @@
             phone_icon.image = [UIImage imageNamed:@"dianhua.png"];
             [_topV addSubview:phone_icon];
             [phone_icon mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(_user_name.mas_bottom).offset(4);
+                make.top.equalTo(_user_name.mas_bottom).offset(4*StScaleH);
                 make.left.equalTo(_iconV.mas_right).offset(12);
             }];
 
@@ -179,6 +178,138 @@
                 make.right.equalTo(_topV.mas_right).offset(-spaceM);
             }];
 
+            _orderV = [[UIView alloc] init ];
+            _orderV.backgroundColor = [UIColor whiteColor];
+            [_orderV setUserInteractionEnabled:YES];
+            UITapGestureRecognizer *tapOrder = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toOrder:)];
+            [_orderV addGestureRecognizer:tapOrder];
+            [headerV addSubview:_orderV];
+            [_orderV mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(_topV.mas_bottom).offset(0);
+                make.left.equalTo(headerV.mas_left).offset(0);
+                make.width.mas_equalTo(ScreenW);
+                make.height.mas_equalTo(44*StScaleH);
+            }];
+
+            _orderLab  = [[UILabel alloc] init];
+            _orderLab.font = [UIFont systemFontOfSize:16];
+            _orderLab.textColor = deepBlackC;
+            _orderLab.textAlignment = NSTextAlignmentLeft;
+            _orderLab.text = @"我的订单";
+            [_orderV addSubview:_orderLab];
+            [_orderLab mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerY.equalTo(_orderV);
+                make.left.equalTo(_orderV.mas_left).offset(spaceM);
+            }];
+
+            _toIcon  = [[UIImageView alloc] init];
+            _toIcon.image = [UIImage imageNamed:@"SeeAllArrow.png"];
+            [_orderV addSubview:_toIcon];
+            [_toIcon mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerY.equalTo(_orderV);
+                make.right.equalTo(_orderV.mas_right).offset(-spaceM);
+            }];
+
+            _seeAllL  = [[UILabel alloc] init];
+            _seeAllL.font = [UIFont systemFontOfSize:13];
+            _seeAllL.textColor = midBlackC;
+            _seeAllL.textAlignment = NSTextAlignmentRight;
+            _seeAllL.text = @"查看全部";
+            [_orderV addSubview:_seeAllL];
+            [_seeAllL mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerY.equalTo(_orderV);
+                make.right.equalTo(_toIcon.mas_left).offset(-6);
+            }];
+
+            _l_cut_off_V = [[UIView alloc] init ];
+            _l_cut_off_V.backgroundColor = cutOffLineC;
+            [headerV addSubview:_l_cut_off_V];
+            [_l_cut_off_V mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.bottom.equalTo(_orderV.mas_bottom).offset(0);
+                make.left.equalTo(headerV.mas_left).offset(0);
+                make.width.mas_equalTo(ScreenW);
+                make.height.mas_equalTo(0.7);
+            }];
+
+            _dealV = [[UIView alloc] init ];
+            _dealV.backgroundColor = [UIColor whiteColor];
+            [headerV addSubview:_dealV];
+            [_dealV mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(_l_cut_off_V.mas_bottom).offset(0);
+                make.left.equalTo(headerV.mas_left).offset(0);
+                make.width.mas_equalTo(ScreenW);
+                make.height.mas_equalTo(70*StScaleH);
+            }];
+
+            _wait_payV = [[UIView alloc] init ];
+            [_dealV addSubview:_wait_payV];
+            [_wait_payV mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(_dealV.mas_top).offset(0);
+                make.left.equalTo(headerV.mas_left).offset(0);
+                make.width.mas_equalTo(ScreenW/4);
+                make.height.mas_equalTo(70*StScaleH);
+            }];
+
+            _wait_pay_IV = [[UIImageView alloc] init ];
+            _wait_pay_IV.image = [UIImage imageNamed:@"daifukuan.png"];
+            [_wait_payV addSubview:_wait_pay_IV];
+            [_wait_pay_IV mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(_wait_payV.mas_top).offset(10*StScaleH);
+                make.centerX.equalTo(_wait_payV);
+            }];
+
+            _pinDan_V = [[UIView alloc] init ];
+            [_dealV addSubview:_pinDan_V];
+            [_pinDan_V mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(_dealV.mas_top).offset(0);
+                make.left.equalTo(_wait_payV.mas_right).offset(0);
+                make.width.mas_equalTo(ScreenW/4);
+                make.height.mas_equalTo(70*StScaleH);
+            }];
+
+            _pinDan_IV = [[UIImageView alloc] init ];
+            _pinDan_IV.image = [UIImage imageNamed:@"pindanzhong.png"];
+            [_pinDan_V addSubview:_pinDan_IV];
+            [_pinDan_IV mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(_pinDan_V.mas_top).offset(10*StScaleH);
+                make.centerX.equalTo(_pinDan_V);
+            }];
+
+            _wait_receV = [[UIView alloc] init ];
+            [_dealV addSubview:_wait_receV];
+            [_wait_receV mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(_dealV.mas_top).offset(0);
+                make.left.equalTo(_pinDan_V.mas_right).offset(0);
+                make.width.mas_equalTo(ScreenW/4);
+                make.height.mas_equalTo(70*StScaleH);
+            }];
+
+            _wait_receIV = [[UIImageView alloc] init ];
+            _wait_receIV.image = [UIImage imageNamed:@"daishouhuo.png"];
+            [_wait_receV addSubview:_wait_receIV];
+            [_wait_receIV mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(_wait_receV.mas_top).offset(10*StScaleH);
+                make.centerX.equalTo(_wait_receV);
+            }];
+
+            _over_V = [[UIView alloc] init ];
+            [_dealV addSubview:_over_V];
+            [_over_V mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(_dealV.mas_top).offset(0);
+                make.left.equalTo(_wait_receV.mas_right).offset(0);
+                make.width.mas_equalTo(ScreenW/4);
+                make.height.mas_equalTo(70*StScaleH);
+            }];
+
+            _over_IV = [[UIImageView alloc] init ];
+            _over_IV.image = [UIImage imageNamed:@"yishouhuo.png"];
+            [_over_V addSubview:_over_IV];
+            [_over_IV mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(_over_V.mas_top).offset(10*StScaleH);
+                make.centerX.equalTo(_over_V);
+            }];
+
+
             return headerV;
             break;
         }
@@ -192,13 +323,17 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     switch (section) {
         case 0:
-            return 234;
+            return 234*StScaleH;
         default:
             return 0.00001;
     }
 }
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+
+    return [[UIView alloc]init];
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 10;
+    return 10*StScaleH;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -226,6 +361,9 @@
     [self.delegate toMsg];
 }
 - (void)toInfo:(id)sender{
+    [self.delegate toMsg];
+}
+- (void)toOrder:(id)sender{
     [self.delegate toMsg];
 }
 - (void)loadDs{

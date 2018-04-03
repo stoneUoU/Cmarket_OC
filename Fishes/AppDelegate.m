@@ -13,13 +13,32 @@
 #import "MonitorVC.h"
 
 #import "YYModelVC.h"
-//static TabBarVC *tabBarVc;
 
+#import "YYCacheVC.h"
+
+#import "YYCacheTools.h"
+//static TabBarVC *tabBarVc;
+#import "AppUpdate.h"
 
 // iOS10注册APNs所需头文件
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif
+
+
+#import "XYLaunchVC.h"
+#import "XYIntroductionPage.h"
+
+@interface AppDelegate ()<XYLaunchDelegate,XYIntroductionDelegate>
+{
+    XYIntroductionPage * _xyIntroductionPage;
+    NSArray *            _xyCoverImgNameArr;
+    NSArray *            _xyBgImgNameArr;
+    NSArray *            _xyCoverTitleArr;
+    NSURL   *            _xyVideoUrl;
+    XYLaunchVC *         _xyLaunch;
+}
+@end
 
 @implementation AppDelegate
 
@@ -57,21 +76,32 @@
     //注册微信支付:
     [STPAYMANAGER st_registerApp];
 
+    [YYCacheTools removeAllResCache];
     [application setApplicationIconBadgeNumber:0];
     [application cancelAllLocalNotifications];
     [JPUSHService setupWithOption:launchOptions appKey:jpushAppKey
                           channel:apsForChannel
                  apsForProduction:apsForPs
             advertisingIdentifier:nil];
-
     //通过通知启动APP
     NSDictionary *remoteUserInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if (remoteUserInfo) {//远程通知启动App
         [self dealPushM:remoteUserInfo];
     }else{
-        self.window.rootViewController = [[YYModelVC alloc]init ]; //[TabBarVC sharedVC]; //[[MonitorVC alloc]init ];
+        if ([[NSString stringWithFormat:@"%@",[UICKeyChainStore keyChainStore][@"firstIn"]]  isEqual: @"true"]){
+            self.window.rootViewController =   [TabBarVC sharedVC]; //[TabBarVC sharedVC]; //[[MonitorVC alloc]init ];
+            //[self xyAdLaunch];
+        }else{
+            [self setFollow];
+        }
     }
 
+    //检查更新
+//    AppUpdate *appUpdate = [AppUpdate shareIns];
+//    [appUpdate appVersion];
+
+    #pragma mark-xy -引导页-----------------------------------------------------
+    //[self setFollow];
     return YES;
 }
 
@@ -250,5 +280,53 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
     return [STPAYMANAGER st_handleUrl:url];
 }
+
+
+#pragma mark-xy ---------------------------------引导页-------------------------------
+- (void)setFollow{
+    _xyBgImgNameArr = @[@"loading1", @"loading2", @"loading3"];
+    _xyIntroductionPage = [self example1];
+    self.window.rootViewController = [TabBarVC sharedVC];//只用引导页的时候打开此项/跟启动页一起用的时候注释掉
+    [self.window addSubview:_xyIntroductionPage.view];
+}
+//传统引导页
+- (XYIntroductionPage *)example1{
+    //可以添加gif动态图哦
+    _xyBgImgNameArr = @[@"loading1", @"loading2", @"loading3"];
+    XYIntroductionPage * xyPage = [[XYIntroductionPage alloc]init];
+    xyPage.xyCoverImgArr = _xyBgImgNameArr;//设置浮层滚动图片数组
+    xyPage.xyDelegate = self;//进入按钮事件代理
+    xyPage.xyAutoScrolling = NO;//是否自动滚动
+    xyPage.xyPageControl.hidden = YES;
+    //可以自定义设置进入按钮样式
+    [xyPage.xyEnterBtn setTitle:@"立即进入" forState:UIControlStateNormal];
+    return xyPage;
+}
+
+#pragma mark-xy 启动页2 -广告
+- (void)xyAdLaunch{
+    _xyLaunch = [[XYLaunchVC alloc]initWithRootVC:[TabBarVC sharedVC] withLaunchType:XYLaunchAD];
+    _xyLaunch.xyAdDuration = 16;
+    _xyLaunch.xyDelegate = self;
+    _xyLaunch.xyAdActionUrl = @"https://www.baidu.com";
+    //    _xyLaunch.xyIsCloseTimer = YES;//跟引导页(XYIntroductionPage)一起用的时候要打开/否则关闭
+    // 网络
+    _xyLaunch.xyAdImgUrl = @"http://pic.qiantucdn.com/58pic/17/76/58/24K58PICsEp_1024.jpg";
+    // 本地
+    self.window.rootViewController = _xyLaunch;
+
+}
+
+//详情页代理
+- (void)xyLaunchAdImgViewAction:(id)sender withObject:(id)object{
+    STLog(@"JJJJJJ");
+}
+//进入按钮事件
+- (void)xyIntroductionViewEnterTap:(id)sender{
+    _xyIntroductionPage = nil;
+    [UICKeyChainStore keyChainStore][@"firstIn"] =@"true";
+    //[_xyLaunch xy_startFire];//和引导页(XYIntroductionPage)一起用的时候加上这句
+}
+
 
 @end

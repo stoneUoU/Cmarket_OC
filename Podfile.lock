@@ -29,12 +29,14 @@ PODS:
   - RealReachability/Ping (1.1.9)
   - SDCycleScrollView (1.75):
     - SDWebImage (>= 4.0.0)
-  - SDWebImage (4.3.3):
-    - SDWebImage/Core (= 4.3.3)
-  - SDWebImage/Core (4.3.3)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
   - SocketRocket (0.5.1)
   - UICKeyChainStore (2.1.1)
   - WechatOpenSDK (1.8.1)
+  - XYLaunchAndIntroduction (1.0):
+    - SDWebImage (= 4.0.0)
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
@@ -49,10 +51,10 @@ DEPENDENCIES:
   - MJRefresh
   - RealReachability
   - SDCycleScrollView (~> 1.75)
-  - SDWebImage
   - SocketRocket
   - UICKeyChainStore
   - WechatOpenSDK
+  - XYLaunchAndIntroduction
   - YYKit
 
 SPEC CHECKSUMS:
@@ -66,12 +68,13 @@ SPEC CHECKSUMS:
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
   RealReachability: a8c483900986a0f3305733961effbfbb00637a02
   SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
-  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   UICKeyChainStore: 239558492fa260531a0774cfc611ea83a6eaff3a
   WechatOpenSDK: 491d965d79335070328571d3e79f714549e79a5e
+  XYLaunchAndIntroduction: 7fe87187115584174081ac338f19ef7bcc2a1441
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: e3466b8ed329accf3bf7eacdda75ece643f360bc
+PODFILE CHECKSUM: 9d82495f63faa69e4611e5abfcb732bc7aaa8c3e
 
 COCOAPODS: 1.4.0

@@ -43,17 +43,26 @@
 
 }
 //查询商品
--(void)startPR{
+- (void)startPR:(NSString *)selIdx  withFreeze:(NSString *)freeze_inventory withUpdate:(NSString *)update_time{
     if ([_netUseVals isEqualToString: @"Useable"]){
-        [NetWorkManager requestWithType:HttpRequestTypePost withUrlString:followRoute@"search" withParaments:@{@"cond":@{@"keywords":@"",@"status":@4},@"sort":@{@"freeze_inventory":@"desc",@"group_product_price":@"",@"update_time":@""},@"limit":@(_pageSize),@"page":@1} Authos:@"" withSuccessBlock:^(NSDictionary *feedBacks) {
+        [NetWorkManager requestWithType:HttpRequestTypePost withUrlString:followRoute@"search" withParaments:@{@"cond":@{@"keywords":@"",@"status":selIdx},@"sort":@{@"freeze_inventory":freeze_inventory,@"group_product_price":@"",@"update_time":update_time},@"limit":@(_pageSize),@"page":@1} Authos:@"" withSuccessBlock:^(NSDictionary *feedBacks) {
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]] isEqualToString:@"0"]){
-                for (int i = 0; i < [feedBacks[@"data"] count]; i++) {
-                    HomeMs *homeMs = [[HomeMs alloc] initMs:feedBacks[@"data"][i][@"group_id"] title:feedBacks[@"data"][i][@"title"] price:feedBacks[@"data"][i][@"price"] discount_price:feedBacks[@"data"][i][@"discount_price"] spic:feedBacks[@"data"][i][@"spic"] status:feedBacks[@"data"][i][@"status"] total_inventory:feedBacks[@"data"][i][@"total_inventory"] freeze_inventory:feedBacks[@"data"][i][@"freeze_inventory"] start_time:feedBacks[@"data"][i][@"start_time"] end_time:feedBacks[@"data"][i][@"end_time"] type:feedBacks[@"data"][i][@"type"] subtitle:feedBacks[@"data"][i][@"subtitle"] attr_value:feedBacks[@"data"][i][@"attr_value"][0][@"attr_value"]];
-                    [self.dataArrs addObject:homeMs];
+                if ( [feedBacks[@"data"] count] == 0){
+                    if (_placeholderV == nil){
+                        _placeholderV = [[STPlaceholderView alloc]initWithFrame:self.view.bounds type:STPlaceholderViewTypeNoData delegate:self];
+                        [self.view addSubview:_placeholderV];
+                    }
+                }else{
+                    [_placeholderV removeAllSubviews];
+                    _placeholderV = nil;
+                    for (int i = 0; i < [feedBacks[@"data"] count]; i++) {
+                        HomeMs *homeMs = [[HomeMs alloc] initMs:feedBacks[@"data"][i][@"group_id"] title:feedBacks[@"data"][i][@"title"] price:feedBacks[@"data"][i][@"price"] discount_price:feedBacks[@"data"][i][@"discount_price"] spic:feedBacks[@"data"][i][@"spic"] status:feedBacks[@"data"][i][@"status"] total_inventory:feedBacks[@"data"][i][@"total_inventory"] freeze_inventory:feedBacks[@"data"][i][@"freeze_inventory"] start_time:feedBacks[@"data"][i][@"start_time"] end_time:feedBacks[@"data"][i][@"end_time"] type:feedBacks[@"data"][i][@"type"] subtitle:feedBacks[@"data"][i][@"subtitle"] attr_value:feedBacks[@"data"][i][@"attr_value"][0][@"attr_value"]];
+                        [self.dataArrs addObject:homeMs];
+                    }
+                    [self.tableView reloadData];
                 }
-                [self.tableView reloadData];
             }else{
-                [HudTips showToast:self text:feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
+                [HudTips showToast: feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
             }
         } withFailureBlock:^(NSError *error) {
             [HudTips hideHUD:self];

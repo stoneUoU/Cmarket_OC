@@ -123,7 +123,7 @@
 
     [self.view addSubview:self.tableView];
 
-    // 添加4个子控制器
+    // 添加2个子控制器
     [self addChildViewController:[[OnStartVC alloc] init]];
     [self addChildViewController:[[WillStartVC alloc] init]];
     // 先将第一个子控制的view添加到scrollView上去
@@ -195,8 +195,11 @@
 //发送网络请求：（查询轮播图R）
 -(void)startR{
     if ([_netUseVals isEqualToString: @"Useable"]){
+        if (_placeholderV != nil){
+            [_placeholderV removeFromSuperview];
+            _placeholderV = nil;
+        }
         [HudTips showHUD:self];
-        STLog(@"走了一遍");
         [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"carousel/list" withParaments:@{} Authos:@"" withSuccessBlock:^(NSDictionary *feedBacks) {
             [HudTips hideHUD:self];
             for (int i = 0; i < [feedBacks[@"data"] count]; i++) {
@@ -210,7 +213,11 @@
             STLog(@"%@",error)
         }];
     }else{
-        [HudTips showToast:self text:missNetTips showType:Pos animationType:StToastAnimationTypeScale];
+        if (_placeholderV == nil){
+            _placeholderV = [[STPlaceholderView alloc]initWithFrame:CGRectMake(0, StatusBarAndNavigationBarH, ScreenW, ScreenH - StatusBarAndNavigationBarH ) type:STPlaceholderViewTypeNoNetwork delegate:self];
+            [self.view addSubview:_placeholderV];
+        }
+        [HudTips showToast: missNetTips showType:Pos animationType:StToastAnimationTypeScale];
     }
 }
  // 下拉刷新
@@ -349,6 +356,40 @@
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark - Delegate - 占位图
+/** 占位图的重新加载按钮点击时回调 */
+- (void)placeholderView:(STPlaceholderView *)placeholderView reloadButtonDidClick:(UIButton *)sender{
+    switch (placeholderView.type) {
+        case STPlaceholderViewTypeNoGoods:       // 没商品
+        {
+            STLog(@"没商品");
+        }
+            break;
+
+        case STPlaceholderViewTypeNoData:       // 没有订单
+        {
+            STLog(@"没有订单");
+        }
+            break;
+
+        case STPlaceholderViewTypeNoNetwork:     // 没网
+        {
+            STLog(@"没网");
+            [self startR];
+        }
+            break;
+
+        case STPlaceholderViewTypeBeautifulGirl: // 妹纸
+        {
+            STLog(@"没商品");
+        }
+            break;
+
+        default:
+            break;
+    }
 }
 @end
 

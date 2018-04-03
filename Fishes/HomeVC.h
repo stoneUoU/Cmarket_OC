@@ -10,7 +10,7 @@
 #import "SPPageMenu.h"
 #import "HomeBaseTbV.h"
 
-@interface HomeVC : UIViewController<UITextFieldDelegate,SPPageMenuDelegate,UITableViewDataSource,UITableViewDelegate,SDCycleScrollViewDelegate>
+@interface HomeVC : UIViewController<UITextFieldDelegate,SPPageMenuDelegate,UITableViewDataSource,UITableViewDelegate,SDCycleScrollViewDelegate,STPlaceholderViewDelegate>
 @property (nonatomic ,strong)UIView *navBarV;
 
 @property (nonatomic ,strong)UIView *cutOffV;
@@ -44,6 +44,8 @@
 
 @property (nonatomic,strong)NSMutableArray *imgStrGroup;
 
+//定义一个没有数据时的View
+@property (nonatomic,strong)STPlaceholderView *placeholderV;
 
 
 

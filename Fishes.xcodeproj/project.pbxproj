@@ -65,10 +65,15 @@
 		528936EB2061EC71004463E6 /* UIButton+ST_FixMultiClick.m in Sources */ = {isa = PBXBuildFile; fileRef = 528936EA2061EC71004463E6 /* UIButton+ST_FixMultiClick.m */; };
 		528936EE2061ECC4004463E6 /* STPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 528936ED2061ECC4004463E6 /* STPlaceholderView.m */; };
 		528936F12061FDA1004463E6 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 528936F02061FDA1004463E6 /* UIColor+Hex.m */; };
+		528BFCFE20730971002C5ACB /* YYCacheTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 528BFCFD20730971002C5ACB /* YYCacheTools.m */; };
+		528BFD0420734E1E002C5ACB /* LazyTbCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 528BFD0320734E1E002C5ACB /* LazyTbCells.m */; };
+		528BFD0A20736558002C5ACB /* AppUpdateV.m in Sources */ = {isa = PBXBuildFile; fileRef = 528BFD0920736558002C5ACB /* AppUpdateV.m */; };
+		528BFD0D207375EE002C5ACB /* AppUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 528BFD0C207375EE002C5ACB /* AppUpdate.m */; };
 		528C5477206C7EB900635C9E /* MonitorV.m in Sources */ = {isa = PBXBuildFile; fileRef = 528C5476206C7EB900635C9E /* MonitorV.m */; };
 		528C547A206C848000635C9E /* HomeDetailV.m in Sources */ = {isa = PBXBuildFile; fileRef = 528C5479206C848000635C9E /* HomeDetailV.m */; };
 		528F51A82068DECE008BA452 /* AccountInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 528F51A72068DECE008BA452 /* AccountInfoVC.m */; };
 		528F51AB2068DEF0008BA452 /* AccountInfoV.m in Sources */ = {isa = PBXBuildFile; fileRef = 528F51AA2068DEF0008BA452 /* AccountInfoV.m */; };
+		5294C5682072279D00F55510 /* YYCacheVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5294C5672072279D00F55510 /* YYCacheVC.m */; };
 		52A22213206B345400F71B0C /* ValidatedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A22212206B345400F71B0C /* ValidatedFile.m */; };
 		52A22218206B749700F71B0C /* MonitorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A22217206B749700F71B0C /* MonitorVC.m */; };
 		52AB1029206DE5F0007DC919 /* YYModelVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52AB1028206DE5F0007DC919 /* YYModelVC.m */; };
@@ -80,6 +85,9 @@
 		52BC7E742065E66E000B5E43 /* RegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E732065E66E000B5E43 /* RegisterVC.m */; };
 		52CE2EF6206CCCFE0053A72B /* WebSocketNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CE2EF5206CCCFE0053A72B /* WebSocketNetwork.m */; };
 		52CE2EF9206CE22B0053A72B /* HomeDetailMs.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CE2EF8206CE22B0053A72B /* HomeDetailMs.m */; };
+		52E42E612071D1940038062C /* SingleClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E42E602071D1940038062C /* SingleClass.m */; };
+		52E42E642071DEC00038062C /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E42E632071DEC00038062C /* BaseModel.m */; };
+		52E42E672071DEF60038062C /* TestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E42E662071DEF60038062C /* TestModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,6 +213,14 @@
 		528936ED2061ECC4004463E6 /* STPlaceholderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STPlaceholderView.m; sourceTree = "<group>"; };
 		528936EF2061FDA1004463E6 /* UIColor+Hex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		528936F02061FDA1004463E6 /* UIColor+Hex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		528BFCFC20730971002C5ACB /* YYCacheTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYCacheTools.h; sourceTree = "<group>"; };
+		528BFCFD20730971002C5ACB /* YYCacheTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYCacheTools.m; sourceTree = "<group>"; };
+		528BFD0220734E1E002C5ACB /* LazyTbCells.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LazyTbCells.h; sourceTree = "<group>"; };
+		528BFD0320734E1E002C5ACB /* LazyTbCells.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LazyTbCells.m; sourceTree = "<group>"; };
+		528BFD0820736558002C5ACB /* AppUpdateV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppUpdateV.h; sourceTree = "<group>"; };
+		528BFD0920736558002C5ACB /* AppUpdateV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppUpdateV.m; sourceTree = "<group>"; };
+		528BFD0B207375EE002C5ACB /* AppUpdate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppUpdate.h; sourceTree = "<group>"; };
+		528BFD0C207375EE002C5ACB /* AppUpdate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppUpdate.m; sourceTree = "<group>"; };
 		528C5475206C7EB900635C9E /* MonitorV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonitorV.h; sourceTree = "<group>"; };
 		528C5476206C7EB900635C9E /* MonitorV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonitorV.m; sourceTree = "<group>"; };
 		528C5478206C848000635C9E /* HomeDetailV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailV.h; sourceTree = "<group>"; };
@@ -213,6 +229,8 @@
 		528F51A72068DECE008BA452 /* AccountInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountInfoVC.m; sourceTree = "<group>"; };
 		528F51A92068DEF0008BA452 /* AccountInfoV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountInfoV.h; sourceTree = "<group>"; };
 		528F51AA2068DEF0008BA452 /* AccountInfoV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountInfoV.m; sourceTree = "<group>"; };
+		5294C5662072279D00F55510 /* YYCacheVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYCacheVC.h; sourceTree = "<group>"; };
+		5294C5672072279D00F55510 /* YYCacheVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYCacheVC.m; sourceTree = "<group>"; };
 		52A22211206B345400F71B0C /* ValidatedFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ValidatedFile.h; sourceTree = "<group>"; };
 		52A22212206B345400F71B0C /* ValidatedFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValidatedFile.m; sourceTree = "<group>"; };
 		52A22216206B749700F71B0C /* MonitorVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonitorVC.h; sourceTree = "<group>"; };
@@ -237,6 +255,12 @@
 		52CE2EF5206CCCFE0053A72B /* WebSocketNetwork.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebSocketNetwork.m; sourceTree = "<group>"; };
 		52CE2EF7206CE22B0053A72B /* HomeDetailMs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailMs.h; sourceTree = "<group>"; };
 		52CE2EF8206CE22B0053A72B /* HomeDetailMs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailMs.m; sourceTree = "<group>"; };
+		52E42E5F2071D1940038062C /* SingleClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SingleClass.h; sourceTree = "<group>"; };
+		52E42E602071D1940038062C /* SingleClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SingleClass.m; sourceTree = "<group>"; };
+		52E42E622071DEC00038062C /* BaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
+		52E42E632071DEC00038062C /* BaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		52E42E652071DEF60038062C /* TestModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestModel.h; sourceTree = "<group>"; };
+		52E42E662071DEF60038062C /* TestModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestModel.m; sourceTree = "<group>"; };
 		F37055393C97E28B7B668FA1 /* Pods_Fishes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fishes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -543,6 +567,8 @@
 				52680C7920623A2C00F5DB96 /* SPPageMenu.m */,
 				5284058520637D59000623B4 /* CountDown.h */,
 				5284058620637D59000623B4 /* CountDown.m */,
+				528BFD0820736558002C5ACB /* AppUpdateV.h */,
+				528BFD0920736558002C5ACB /* AppUpdateV.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -550,6 +576,8 @@
 		526047911F7515A40072AFB4 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				52E42E622071DEC00038062C /* BaseModel.h */,
+				52E42E632071DEC00038062C /* BaseModel.m */,
 			);
 			name = M;
 			sourceTree = "<group>";
@@ -611,6 +639,8 @@
 				52CE2EF5206CCCFE0053A72B /* WebSocketNetwork.m */,
 				5216EA11206E0F9B004DBBCB /* STPayManager.h */,
 				5216EA12206E0F9B004DBBCB /* STPayManager.m */,
+				528BFD0B207375EE002C5ACB /* AppUpdate.h */,
+				528BFD0C207375EE002C5ACB /* AppUpdate.m */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -629,8 +659,18 @@
 		52AB1026206DE5B2007DC919 /* YYKit */ = {
 			isa = PBXGroup;
 			children = (
+				5294C5662072279D00F55510 /* YYCacheVC.h */,
+				5294C5672072279D00F55510 /* YYCacheVC.m */,
 				52AB1027206DE5F0007DC919 /* YYModelVC.h */,
 				52AB1028206DE5F0007DC919 /* YYModelVC.m */,
+				52E42E5F2071D1940038062C /* SingleClass.h */,
+				52E42E602071D1940038062C /* SingleClass.m */,
+				52E42E652071DEF60038062C /* TestModel.h */,
+				52E42E662071DEF60038062C /* TestModel.m */,
+				528BFCFC20730971002C5ACB /* YYCacheTools.h */,
+				528BFCFD20730971002C5ACB /* YYCacheTools.m */,
+				528BFD0220734E1E002C5ACB /* LazyTbCells.h */,
+				528BFD0320734E1E002C5ACB /* LazyTbCells.m */,
 			);
 			name = YYKit;
 			sourceTree = "<group>";
@@ -814,6 +854,7 @@
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework",
 				"${BUILT_PRODUCTS_DIR}/UICKeyChainStore/UICKeyChainStore.framework",
+				"${BUILT_PRODUCTS_DIR}/XYLaunchAndIntroduction/XYLaunchAndIntroduction.framework",
 				"${BUILT_PRODUCTS_DIR}/YYKit/YYKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -829,6 +870,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketRocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICKeyChainStore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XYLaunchAndIntroduction.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -883,11 +925,14 @@
 				528936F12061FDA1004463E6 /* UIColor+Hex.m in Sources */,
 				52BC7E6B2065E611000B5E43 /* SmsLoginV.m in Sources */,
 				52AE74C91FCE584900081972 /* HomeDetailVC.m in Sources */,
+				52E42E672071DEF60038062C /* TestModel.m in Sources */,
 				5260477F1F7513E40072AFB4 /* HomeVC.m in Sources */,
 				523F04B520648E5100858BDD /* MineV.m in Sources */,
+				52E42E612071D1940038062C /* SingleClass.m in Sources */,
 				52680C86206248A900F5DB96 /* CarouselMs.m in Sources */,
 				523F04D62065068A00858BDD /* NSString+MD5.m in Sources */,
 				528F51A82068DECE008BA452 /* AccountInfoVC.m in Sources */,
+				5294C5682072279D00F55510 /* YYCacheVC.m in Sources */,
 				52BC7E742065E66E000B5E43 /* RegisterVC.m in Sources */,
 				528936EB2061EC71004463E6 /* UIButton+ST_FixMultiClick.m in Sources */,
 				523F04D32065021800858BDD /* CodeLoginV.m in Sources */,
@@ -897,8 +942,10 @@
 				528936E82061EC34004463E6 /* UIView+Toast.m in Sources */,
 				52BC7E712065E65F000B5E43 /* RegisterV.m in Sources */,
 				528C5477206C7EB900635C9E /* MonitorV.m in Sources */,
+				52E42E642071DEC00038062C /* BaseModel.m in Sources */,
 				528936DF2061EB5E004463E6 /* StToast.m in Sources */,
 				52680C8020623CCD00F5DB96 /* OnStartVC.m in Sources */,
+				528BFD0420734E1E002C5ACB /* LazyTbCells.m in Sources */,
 				5288FAE82069EB32002EC6AA /* UIButton+countDown.m in Sources */,
 				5284058A20638076000623B4 /* HomeMs.m in Sources */,
 				52680C74206239B700F5DB96 /* HomeBaseTbV.m in Sources */,
@@ -913,9 +960,11 @@
 				528F51AB2068DEF0008BA452 /* AccountInfoV.m in Sources */,
 				528C547A206C848000635C9E /* HomeDetailV.m in Sources */,
 				52680C7D20623B0400F5DB96 /* HomeBaseTbVC.m in Sources */,
+				528BFD0D207375EE002C5ACB /* AppUpdate.m in Sources */,
 				52680C7A20623A2C00F5DB96 /* SPPageMenu.m in Sources */,
 				528936D82061E94E004463E6 /* BaseToolVC.m in Sources */,
 				528936DC2061EA88004463E6 /* NetWorkManager.m in Sources */,
+				528BFD0A20736558002C5ACB /* AppUpdateV.m in Sources */,
 				523FD55720664727009753B4 /* SetVC.m in Sources */,
 				526047A21F7516920072AFB4 /* TabBar.m in Sources */,
 				526047141F7510800072AFB4 /* AppDelegate.m in Sources */,
@@ -930,6 +979,7 @@
 				52BC7E6E2065E62B000B5E43 /* SmsLoginVC.m in Sources */,
 				526047851F7514430072AFB4 /* MineVC.m in Sources */,
 				5216EA13206E0F9B004DBBCB /* STPayManager.m in Sources */,
+				528BFCFE20730971002C5ACB /* YYCacheTools.m in Sources */,
 				523F04CD2064D72700858BDD /* StartVC.m in Sources */,
 				528936E52061EBCB004463E6 /* HudTips.m in Sources */,
 			);

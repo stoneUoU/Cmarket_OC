@@ -51,7 +51,7 @@
             }else if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"10009"]){
                 [MethodFunc dealAuthMiss:self tipInfo:feedBacks[@"msg"]];
             }else{
-                [HudTips showToast:self text:feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
+                [HudTips showToast: feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
             }
             //[self.mineV.iconV sd_setImageWithURL:[NSURL URLWithString:[picUrl stringByAppendingString:feedBacks[@"data"][@"avatar"]]] placeholderImage:[UIImage imageNamed:@"pic_loading_shangpingxiangqing.png"]];
         } withFailureBlock:^(NSError *error) {
@@ -59,7 +59,7 @@
             STLog(@"%@",error)
         }];
     }else{
-        [HudTips showToast:self text:missNetTips showType:Pos animationType:StToastAnimationTypeScale];
+        [HudTips showToast: missNetTips showType:Pos animationType:StToastAnimationTypeScale];
     }
 }
 - (void)didReceiveMemoryWarning {

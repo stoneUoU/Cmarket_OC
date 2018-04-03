@@ -55,7 +55,7 @@ typedef void(^STCompleteCallBack)(STErrCode errCode,NSString *errStr);
 - (PayReq *)st_getWXPayParam:(NSDictionary *)wxDict;
 
 //判断手机中是否安装微信
-- (BOOL)st_orInstall:(UIViewController *)selfVC;
+- (BOOL)st_orInstall;
 /**
  *  @author DevelopmentEngineer-ST
  *

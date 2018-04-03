@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface BaseToolVC : UIViewController<UIGestureRecognizerDelegate>
+#import "STPlaceholderView.h"
+@interface BaseToolVC : UIViewController<UIGestureRecognizerDelegate,STPlaceholderViewDelegate>
 @property (strong, nonatomic) UICKeyChainStore *keychainStore;
 
 @property (nonatomic ,strong)UIView *statusV;
@@ -22,6 +22,8 @@
 
 @property(nonatomic, copy) NSString *Auths;
 @property(nonatomic, copy) NSString *netUseVals;
+//定义一个没有数据时的View
+@property (nonatomic,strong)STPlaceholderView *placeholderV;
 
 //创建导航栏
 - (void)setUp:(NSString *) midVal sideVal:(NSString *)sideVal backIvName:(NSString *)backIvName navC:(UIColor *)navC midFontC:(UIColor *)midFontC sideFontC:(UIColor *)sideFontC;

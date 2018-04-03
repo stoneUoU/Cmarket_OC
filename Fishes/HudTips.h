@@ -15,6 +15,6 @@
 + (void)hideHUD:(UIViewController *)ctrl;
 
 //此处写的是上面StToaster的代码
-+ (void)showToast:(UIViewController *)ctrl text:(NSString *)text showType:(StToastShowType)type animationType:(StToastAnimationType)animationType;
++ (void)showToast:(NSString *)text showType:(StToastShowType)type animationType:(StToastAnimationType)animationType;
 
 @end

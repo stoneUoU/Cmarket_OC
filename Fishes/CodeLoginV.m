@@ -7,8 +7,12 @@
 //
 
 #import "CodeLoginV.h"
+@interface CodeLoginV(){
+    UIButton *_submitBtn;
 
-
+    UILabel *_smsLoginV;
+}
+@end
 @implementation CodeLoginV
 - (void)drawRect:(CGRect)rect {
     [self setUpUI];
@@ -35,6 +39,7 @@
 
     //添加约束
     [self setMas];
+
 }
 - (void) setMas{
     [_submitBtn mas_makeConstraints:^(MASConstraintMaker *make) {

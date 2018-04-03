@@ -48,8 +48,7 @@
 -(instancetype)initWithBaseURL:(NSURL *)url
 {
     if (self = [super initWithBaseURL:url]) {
-#warning 可根据具体情况进行设置
-
+        //可根据具体情况进行设置
         NSAssert(url,@"您需要为您的请求设置baseUrl");
         /**设置相应的缓存策略*/
 
@@ -68,13 +67,9 @@
 
         [self.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 
-
-#warning 此处做为测试 可根据自己应用设置相应的值
-
+        //此处做为测试 可根据自己应用设置相应的值
         /**设置apikey ------类似于自己应用中的tokken---此处仅仅作为测试使用*/
-
         //[self.requestSerializer setValue:apikey forHTTPHeaderField:@"apikey"];
-
         /**设置接受的类型*/
         self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
 

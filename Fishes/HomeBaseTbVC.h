@@ -20,6 +20,9 @@
 //产品列表：
 @property (nonatomic,assign)double pageSize;
 
+//定义一个没有数据时的View
+@property (nonatomic,strong)STPlaceholderView *placeholderV;
+
 //查询商品
-- (void)startPR;
+- (void)startPR:(NSString *)selIdx  withFreeze:(NSString *)freeze_inventory withUpdate:(NSString *)update_time;
 @end

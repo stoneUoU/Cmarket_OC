@@ -39,8 +39,8 @@
 }
 
 // MARK: - SmsLoginVDel
-- (void)toSubmit {
-    [self startR];
+- (void) toSubmit:(NSString *)tel withSmsCode:(NSString *)smsCode{
+    [self startR:tel withSmsCode:smsCode];
 }
 
 - (void)toSmsCode {
@@ -55,28 +55,28 @@
         [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"user/code" withParaments:@{@"opr":@"login",@"tel":@"15717914505"} Authos:@"" withSuccessBlock:^(NSDictionary *feedBacks) {
             [HudTips hideHUD:self];
             STLog(@"%@",feedBacks);
-            [HudTips showToast:self text:feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
+            [HudTips showToast: feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
         } withFailureBlock:^(NSError *error) {
             [HudTips hideHUD:self];
             STLog(@"%@",error)
         }];
     }else{
-        [HudTips showToast:self text:missNetTips showType:Pos animationType:StToastAnimationTypeScale];
+        [HudTips showToast: missNetTips showType:Pos animationType:StToastAnimationTypeScale];
     }
 }
 
--(void)startR{
+-(void)startR:(NSString *)tel withSmsCode:(NSString *)smsCode{
     if ([self.netUseVals isEqualToString: @"Useable"]){
-        if (![ValidatedFile PayCodeIsValidated:self.smsLoginV.smsField.text]){
-            [HudTips showToast:self text:@"验证码位数不合理" showType:Pos animationType:StToastAnimationTypeScale];
+        if (![ValidatedFile PayCodeIsValidated:smsCode]){
+            [HudTips showToast: @"验证码位数不合理" showType:Pos animationType:StToastAnimationTypeScale];
         }else{
             [HudTips showHUD:self];
-            [NetWorkManager requestWithType:HttpRequestTypePost withUrlString:followRoute@"user/login/code" withParaments:@{@"registration_id":@"",@"username":@"15717914505",@"code":self.smsLoginV.smsField.text} Authos:@"" withSuccessBlock:^(NSDictionary *feedBacks) {
+            [NetWorkManager requestWithType:HttpRequestTypePost withUrlString:followRoute@"user/login/code" withParaments:@{@"registration_id":@"",@"username":@"15717914505",@"code":smsCode} Authos:@"" withSuccessBlock:^(NSDictionary *feedBacks) {
                 [HudTips hideHUD:self];
                 STLog(@"%@",feedBacks);
                 //进行容错处理丫:
                 if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
-                    [HudTips showToast:self text:feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
+                    [HudTips showToast: feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
                     //存登录后的token
                     [UICKeyChainStore keyChainStore][@"orLogin"] = @"true";
                     [UICKeyChainStore keyChainStore][@"authos"] = feedBacks[@"data"][@"token"];
@@ -91,7 +91,7 @@
                         [TabBarVC sharedVC].selectedIndex = 1;
                     }
                 }else{
-                    [HudTips showToast:self text:feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
+                    [HudTips showToast: feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
                 }
             } withFailureBlock:^(NSError *error) {
                 [HudTips hideHUD:self];
@@ -99,7 +99,7 @@
             }];
         }
     }else{
-        [HudTips showToast:self text:missNetTips showType:Pos animationType:StToastAnimationTypeScale];
+        [HudTips showToast: missNetTips showType:Pos animationType:StToastAnimationTypeScale];
     }
 }
 // MARK: - 重写父类的方法

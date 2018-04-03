@@ -7,6 +7,9 @@
 //
 
 #import "YYModelVC.h"
+#import "TestModel.h"
+#import "SingleClass.h"
+#import "CarouselMs.h"
 @interface YYBook : NSObject
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, assign) uint64_t pages;
@@ -14,25 +17,6 @@
 @end
 
 @implementation YYBook
-@end
-
-
-@interface MoveMs : NSObject
-@property (nonatomic, assign) BOOL enable;
-@property (nonatomic, strong) NSString* banner;
-@property (nonatomic, strong) NSString* params;
-@property (nonatomic, assign) NSString* ids;
-@property (nonatomic, assign) NSString* status;
-@property (nonatomic, strong) NSString* title;
-@property (nonatomic, assign) NSString* sn;
-@property (nonatomic, assign) NSString* type;
-@end
-
-@implementation MoveMs
-//返回一个 Dict，将 Model 属性名对映射到 JSON 的 Key。
-+ (NSDictionary *)modelCustomPropertyMapper {
-    return @{@"ids" : @"id"};
-}
 @end
 
 
@@ -45,6 +29,12 @@
 //@property MoveMs *data; //Book 包含 Author 属性
 @end
 @implementation Res
+@end
+
+@interface YYModelVC()
+    {
+        NSMutableArray *_data;
+    }
 @end
 
 @implementation YYModelVC
@@ -70,7 +60,36 @@
 
     //[self setUpUI];
 
-    [self startR];
+    [self startQ];
+
+    NSLog(@"开始《《《");
+    SingleClass *obj1 = [SingleClass shareIns] ;
+    NSLog(@"obj1 = %@.", obj1) ;
+
+    SingleClass *obj2 = [SingleClass shareIns] ;
+    NSLog(@"obj2 = %@.", obj2) ;
+
+    SingleClass *obj3 = [[SingleClass alloc] init] ;
+    NSLog(@"obj3 = %@.", obj3) ;
+
+    SingleClass* obj4 = [[SingleClass alloc] init] ;
+    NSLog(@"obj4 = %@.", [obj4 copy]) ;
+
+    NSLog(@"结束》》》");
+}
+-(void)startQ{
+    [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"carousel/list" withParaments:@{} Authos:@"" withSuccessBlock:^(NSDictionary *feedBacks) {
+        _data = [[NSMutableArray alloc] init];
+        for (NSDictionary *dataDic in feedBacks[@"data"]) {
+            TestModel *model = [[TestModel alloc] initWithDataDic:dataDic];
+            [_data addObject:model];
+        }
+        TestModel *mds = _data[0];
+        STLog(@"====%@",mds.title);
+    } withFailureBlock:^(NSError *error) {
+        [HudTips hideHUD:self];
+        STLog(@"%@",error)
+    }];
 }
 -(void)startR{
     [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"carousel/list" withParaments:@{} Authos:@"" withSuccessBlock:^(NSDictionary *feedBacks) {
@@ -163,7 +182,7 @@
 }
 
 - (void)sendWXpay {
-    if ([STPAYMANAGER st_orInstall:self]){
+    if ([STPAYMANAGER st_orInstall]){
         //微信支付丫：
         [STPAYMANAGER st_payWithOrderMessage:[STPAYMANAGER st_getWXPayParam:@{@"prepayid":@"1101000000140415649af9fc314aa427",@"package":@"Sign=WXPay",@"noncestr":@"a462b76e7436e98e0ed6e13c64b4fd1c",@"timestamp":@"1397527777",@"sign":@"582282D72DD2B03AD892830965F428CB16E7A256"}] callBack:^(STErrCode errCode, NSString *errStr) {
             STLog(@"errCode = %zd,errStr = %@",errCode,errStr);

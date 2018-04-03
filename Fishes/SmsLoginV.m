@@ -7,6 +7,25 @@
 //
 
 #import "SmsLoginV.h"
+@interface SmsLoginV(){
+    UIButton *_submitBtn;
+
+    UIView *_telV;
+
+    UILabel *_telL;
+
+    UIView *_v_cut_line;
+
+    UIView *_l_cut_line;
+
+    UIView *_smsV;
+
+    UILabel *_smsL;
+
+    UILabel *_codeLoginV;
+}
+@end
+
 @implementation SmsLoginV
 - (void)drawRect:(CGRect)rect {
     [self setUpUI];
@@ -173,7 +192,17 @@
 
 
 - (void)toDo:(UIButton *)sender{
-    [_delegate toSubmit ];
+    NSString *tel = _telField.text;
+    NSString *smsCode = _smsField.text;
+
+    //去除两端空格
+    tel = [tel stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    smsCode = [smsCode stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    //去除两端空格和回车
+    tel = [tel stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    smsCode = [smsCode stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
+    [_delegate toSubmit:tel withSmsCode:smsCode];
 }
 
 - (void)toCodeVC:(id)sender{

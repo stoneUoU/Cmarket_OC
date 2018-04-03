@@ -26,11 +26,12 @@
     });
 }
 
-+ (void)showToast:(UIViewController *)ctrl text:(NSString *)text showType:(StToastShowType)type animationType:(StToastAnimationType)animationType{
++ (void)showToast:(NSString *)text showType:(StToastShowType)type animationType:(StToastAnimationType)animationType{
     dispatch_async(dispatch_get_main_queue(), ^{
         // 更新界面
         StToast *toast = [StToast toastWithText:text animationType:animationType];
-        [toast showInView:ctrl.view showType:type];
+        UIWindow *window = UIApplication.sharedApplication.delegate.window;
+        [toast showInView:window showType:type];
     });
 }
 @end

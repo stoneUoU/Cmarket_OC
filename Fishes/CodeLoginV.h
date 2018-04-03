@@ -12,12 +12,8 @@
 - (void)toSubmit;
 - (void)toSmsVC;
 @end
-@interface CodeLoginV : UIView{
-    id<CodeLoginVDel> _delegate; //这个定义会在后面的解释，它是一个协议，用来实现委托。
-}
-@property id<CodeLoginVDel> delegate; //定义一个属性，可以用来进行get set操作
+@interface CodeLoginV : UIView
 
-@property (nonatomic ,strong)UIButton *submitBtn;
+@property (nonatomic, weak) id<CodeLoginVDel> delegate; //它是一个协议，用来实现委托
 
-@property (nonatomic ,strong)UILabel *smsLoginV;
 @end

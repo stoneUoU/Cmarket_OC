@@ -13,7 +13,7 @@ typedef NS_ENUM(NSInteger, STPlaceholderViewType) {
     /** 没网 */
     STPlaceholderViewTypeNoNetwork = 1,
     /** 没订单 */
-    STPlaceholderViewTypeNoOrder,
+    STPlaceholderViewTypeNoData,
     /** 没商品 */
     STPlaceholderViewTypeNoGoods,
     /** 美丽的妹纸 */

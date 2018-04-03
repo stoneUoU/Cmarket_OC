@@ -7,11 +7,8 @@
 //
 
 #import "TabBarVC.h"
-//#import "NavigationVC.h"
-
 #import "MineVC.h"
 #import "HomeVC.h"
-
 #import "UIImage+Image.h"
 
 @implementation TabBarVC

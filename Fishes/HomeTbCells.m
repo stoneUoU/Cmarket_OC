@@ -21,16 +21,32 @@
     }
     return  self;
 }
+
+//懒加载：
+
+- (UIImageView *)product_icon {
+    if(_product_icon == nil) {
+        _product_icon = [[UIImageView alloc] init];
+        [self addSubview:_product_icon];
+    }
+    return _product_icon;
+}
+
+- (UILabel *)product_title {
+    if(_product_title == nil) {
+        _product_title = [[UILabel alloc] init];
+        _product_title.font = [UIFont systemFontOfSize:16];
+        _product_title.numberOfLines = 2;
+        _product_title.lineBreakMode = NSLineBreakByTruncatingTail;
+        [self addSubview:_product_title];
+    }
+    return _product_title;
+}
+
 - (void)createV{
 
-    _product_icon = [[UIImageView alloc] init];
-    [self addSubview:_product_icon];
-
-    _product_title = [[UILabel alloc] init];
-    _product_title.font = [UIFont systemFontOfSize:16];
-    _product_title.numberOfLines = 2;
-    _product_title.lineBreakMode = NSLineBreakByTruncatingTail;
-    [self addSubview:_product_title];
+    [self product_icon];
+    [self product_title];
 
     _product_small_title = [[CustomLabel alloc] init];
     _product_small_title.font = [UIFont systemFontOfSize:10];
@@ -118,7 +134,6 @@
     [_product_small_title mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_product_title.mas_bottom).offset(10);
         make.left.equalTo(_product_title.mas_left).offset(0);
-        make.height.mas_equalTo(15);
     }];
 
     [_product_attr mas_makeConstraints:^(MASConstraintMaker *make) {

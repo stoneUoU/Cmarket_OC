@@ -89,7 +89,7 @@
 }
 
 + (void)dealAuthMiss:(UIViewController *)selfVC tipInfo:(NSString *)tipInfo{
-    [HudTips showToast:selfVC text:tipInfo showType:Pos animationType:StToastAnimationTypeScale];
+    [HudTips showToast:tipInfo showType:Pos animationType:StToastAnimationTypeScale];
     //清空用户信息
     [UICKeyChainStore keyChainStore][@"orLogin"] = @"false";
     [UICKeyChainStore keyChainStore][@"authos"] = @"";

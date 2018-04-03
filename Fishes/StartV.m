@@ -7,6 +7,22 @@
 //
 
 #import "StartV.h"
+@interface StartV(){
+    UIView *_statusV;
+
+    UIView *_navBarV;
+
+    UIButton *_backBtn;
+
+    UIImageView *_logoIV;
+
+    UIImageView *_caiIV;
+
+    UIButton *_loginBtn;
+
+    UIButton *_registerBtn;
+}
+@end
 
 @implementation StartV
 - (void)drawRect:(CGRect)rect {

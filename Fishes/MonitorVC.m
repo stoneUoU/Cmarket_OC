@@ -110,7 +110,7 @@ completionHandler:(nonnull void (^)(NSURLSessionResponseDisposition))completionH
 
 -(void)webSocketDidReceivedMessage:(id)message{
 
-    [HudTips showToast:self text:message showType:Pos animationType:StToastAnimationTypeScale];
+    [HudTips showToast: message showType:Pos animationType:StToastAnimationTypeScale];
 }
 
 - (void)onLogin:(WebSocketStatus)state

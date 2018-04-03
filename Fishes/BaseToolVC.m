@@ -131,4 +131,38 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+#pragma mark - Delegate - 占位图
+/** 占位图的重新加载按钮点击时回调 */
+- (void)placeholderView:(STPlaceholderView *)placeholderView reloadButtonDidClick:(UIButton *)sender{
+    switch (placeholderView.type) {
+        case STPlaceholderViewTypeNoGoods:       // 没商品
+        {
+            STLog(@"没商品");
+        }
+            break;
+
+        case STPlaceholderViewTypeNoData:       // 没有订单
+        {
+            STLog(@"没有订单");
+        }
+            break;
+
+        case STPlaceholderViewTypeNoNetwork:     // 没网
+        {
+            STLog(@"没网");
+        }
+            break;
+
+        case STPlaceholderViewTypeBeautifulGirl: // 妹纸
+        {
+            STLog(@"没商品");
+        }
+            break;
+
+        default:
+            break;
+    }
+}
 @end

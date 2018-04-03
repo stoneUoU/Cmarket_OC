@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HomeBaseTbVC.h"
 #import "HomeTbCells.h"
-@interface WillStartVC : HomeBaseTbVC
-
+#import "CountDown.h"
+@interface WillStartVC : HomeBaseTbVC<STPlaceholderViewDelegate>
+@property (strong, nonatomic)  CountDown *countDown;
 @end

@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 // 引入JPush功能所需头文件(极光推送)
 #import "JPUSHService.h"
+
+//#import "AppDelegate+Service.h"
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate,JPUSHRegisterDelegate>
 @property (strong, nonatomic) UIWindow *window;
 //+ (void)setTabBarV:(UITabBarController *)tabBar;

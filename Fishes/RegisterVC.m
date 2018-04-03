@@ -65,7 +65,7 @@
             STLog(@"%@",feedBacks);
             //进行容错处理丫:
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
-                [HudTips showToast:self text:feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
+                [HudTips showToast: feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
                 //存登录后的token
                 [UICKeyChainStore keyChainStore][@"orLogin"] = @"true";
                 [UICKeyChainStore keyChainStore][@"authos"] = feedBacks[@"data"][@"token"];
@@ -80,14 +80,14 @@
                     [TabBarVC sharedVC].selectedIndex = 1;
                 }
             }else{
-                [HudTips showToast:self text:feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
+                [HudTips showToast: feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
             }
         } withFailureBlock:^(NSError *error) {
             [HudTips hideHUD:self];
             STLog(@"%@",error)
         }];
     }else{
-        [HudTips showToast:self text:missNetTips showType:Pos animationType:StToastAnimationTypeScale];
+        [HudTips showToast: missNetTips showType:Pos animationType:StToastAnimationTypeScale];
     }
 }
 @end

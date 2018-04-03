@@ -109,15 +109,15 @@
         }
     }
 }
-- (BOOL)st_orInstall:(UIViewController *)selfVC{
+- (BOOL)st_orInstall{
 
     if (![WXApi isWXAppInstalled]) {
         //判断是否有微信
-        [HudTips showToast:selfVC text:@"未安装微信" showType:Pos animationType:StToastAnimationTypeScale];
+        [HudTips showToast:@"未安装微信" showType:Pos animationType:StToastAnimationTypeScale];
         return NO;
     }else if (![WXApi isWXAppSupportApi]){
         //判断是否有微信
-        [HudTips showToast:selfVC text:@"当前版本微信不支持微信支付" showType:Pos animationType:StToastAnimationTypeScale];
+        [HudTips showToast:@"当前版本微信不支持微信支付" showType:Pos animationType:StToastAnimationTypeScale];
         return NO;
     }else{
         return YES;

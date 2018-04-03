@@ -1,0 +1,6 @@
+framework module XYLaunchAndIntroduction {
+  umbrella header "XYLaunchAndIntroduction-umbrella.h"
+
+  export *
+  module * { export * }
+}

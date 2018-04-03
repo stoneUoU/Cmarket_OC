@@ -19,6 +19,8 @@
     [super viewDidLoad];
     [self setUp:@"设置" sideVal:@"" backIvName:@"custom_serve_back.png" navC:[UIColor clearColor] midFontC:deepBlackC sideFontC:[UIColor clearColor]];
     [self setUpUI];
+
+    [self startR];
 }
 - (void)setUpUI{
     [self.view addSubview:_setV];
@@ -52,26 +54,34 @@
 }
 
 -(void)startR{
-    if ([self.netUseVals isEqualToString: @"Useable"]){
+    if ([self.netUseVals isEqualToString: @"Unseable"]){
+        if (self.placeholderV != nil){
+            [self.placeholderV removeFromSuperview];
+            self.placeholderV = nil;
+        }
         [HudTips showHUD:self];
         [NetWorkManager requestWithType:HttpRequestTypePost withUrlString:followRoute@"user/logout" withParaments:@{} Authos:self.Auths withSuccessBlock:^(NSDictionary *feedBacks) {
             [HudTips hideHUD:self];
             //进行容错处理丫:
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
-                [HudTips showToast:self text:@"注销成功" showType:Pos animationType:StToastAnimationTypeScale];
+                [HudTips showToast: @"注销成功" showType:Pos animationType:StToastAnimationTypeScale];
                 //清空用户信息
                 [UICKeyChainStore keyChainStore][@"orLogin"] = @"false";
                 [UICKeyChainStore keyChainStore][@"authos"] = @"";
                 [MethodFunc backToHomeVC:self];
             }else{
-                [HudTips showToast:self text:feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
+                [HudTips showToast: feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
             }
         } withFailureBlock:^(NSError *error) {
             [HudTips hideHUD:self];
             STLog(@"%@",error)
         }];
     }else{
-        [HudTips showToast:self text:missNetTips showType:Pos animationType:StToastAnimationTypeScale];
+        if (self.placeholderV == nil){
+            self.placeholderV = [[STPlaceholderView alloc]initWithFrame:CGRectMake(0, StatusBarAndNavigationBarH, ScreenW, ScreenH - StatusBarAndNavigationBarH ) type:STPlaceholderViewTypeNoNetwork delegate:self];
+            [self.view addSubview:self.placeholderV];
+        }
+        [HudTips showToast: missNetTips showType:Pos animationType:StToastAnimationTypeScale];
     }
 }
 - (void)didReceiveMemoryWarning {

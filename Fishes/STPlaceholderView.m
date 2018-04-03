@@ -62,9 +62,9 @@
         }
             break;
 
-        case STPlaceholderViewTypeNoOrder: // 没订单
+        case STPlaceholderViewTypeNoData: // 没订单
         {
-            imageView.image = [UIImage imageNamed:@"noOrder"];
+            imageView.image = [UIImage imageNamed:@"noData"];
             descLabel.text = @"暂无订单";
             [reloadButton setTitle:@"重新加载" forState:UIControlStateNormal];
         }

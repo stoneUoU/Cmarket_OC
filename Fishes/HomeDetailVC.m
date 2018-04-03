@@ -68,9 +68,9 @@
                 }
                 [self.homeDetailV.tableV reloadData];
             }else if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"10009"]){
-                [HudTips showToast:self text:missSsidTips showType:Pos animationType:StToastAnimationTypeScale];
+                [HudTips showToast:missSsidTips showType:Pos animationType:StToastAnimationTypeScale];
             }else{
-                [HudTips showToast:self text:feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
+                [HudTips showToast: feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
             }
             //[self.mineV.iconV sd_setImageWithURL:[NSURL URLWithString:[picUrl stringByAppendingString:feedBacks[@"data"][@"avatar"]]] placeholderImage:[UIImage imageNamed:@"pic_loading_shangpingxiangqing.png"]];
         } withFailureBlock:^(NSError *error) {
@@ -78,7 +78,7 @@
             STLog(@"%@",error)
         }];
     }else{
-        [HudTips showToast:self text:missNetTips showType:Pos animationType:StToastAnimationTypeScale];
+        [HudTips showToast: missNetTips showType:Pos animationType:StToastAnimationTypeScale];
     }
 }
 #pragma  设置网络
@@ -102,7 +102,14 @@
 
 #pragma mark - HomeDetailVDel
 -(void) toDo{
-    STLog(@"toDo");
+    if (![[NSString stringWithFormat:@"%@",[UICKeyChainStore keyChainStore][@"orLogin"]]  isEqual: @"true"]){
+        //MARK:弹出登录视图：在主页消息、主页立即购买、商品详情界面登录:status_code:1
+        StartVC * startV = [[StartVC alloc] init];
+        startV.pass_Vals = @{@"status_code":@"1"};
+        [MethodFunc presentToNaviVC:self destVC:startV];
+    }else{
+        STLog(@"已登录,去拼单");
+    }
 }
 
 /*
@@ -118,7 +125,7 @@
 //- (void)goBuy:(id)sender{
 //    //如果没有导航栏，就进行这种跳转；
 //    //STLog(@"%@",self.netUseVals);
-//    //[HudTips showToast:self text:self.netUseVals showType:Pos animationType:StToastAnimationTypeScale];
+//    //[HudTips showToast: self.netUseVals showType:Pos animationType:StToastAnimationTypeScale];
 //    if (![[NSString stringWithFormat:@"%@",[UICKeyChainStore keyChainStore][@"orLogin"]]  isEqual: @"true"]){
 //        //MARK:弹出登录视图：在主页消息、主页立即购买、商品详情界面登录:status_code:1
 //        StartVC * startV = [[StartVC alloc] init];

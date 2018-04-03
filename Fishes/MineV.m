@@ -8,9 +8,49 @@
 
 #import "MineV.h"
 
+
+@interface MineV(){
+    //渲染列表
+    NSArray *_mineDicts;
+    //headerV中的 View
+    UIView *_topV;
+
+    UIImageView *_iconV;
+
+    UILabel *_user_name;
+
+    UILabel *_phone_str;
+
+    UIView *_orderV;
+
+    UILabel *_orderLab;
+
+    UIImageView *_toIcon;
+
+    UILabel *_seeAllL;
+
+    UIView *_l_cut_off_V;
+
+    //订单操作View
+    UIView *_dealV; //assgin
+    //待付款
+    UIView *_wait_payV;
+    UIImageView *_wait_pay_IV;
+    //拼单中
+    UIView *_pinDan_V;
+    UIImageView *_pinDan_IV;
+    //待收货
+    UIView *_wait_receV;
+    UIImageView *_wait_receIV;
+    //已完成
+    UIView *_over_V;
+   UIImageView *_over_IV;
+}
+@end
 @implementation MineV
+@synthesize mineMs = _mineMs;
 - (void)drawRect:(CGRect)rect {
-    self.mineDicts = @[
+    _mineDicts = @[
         @[
             @{@"png":@"wodeyinhangka.png",@"vals":@"我的优惠券"},@{@"png":@"wodetanwei.png",@"vals":@"摊位管理"}
         ],

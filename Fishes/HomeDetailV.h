@@ -11,10 +11,9 @@
 //这里只需要声明方法
 - (void)toDo;
 @end
-@interface HomeDetailV : UIView<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>{
-    id<HomeDetailVDel> _delegate; //这个定义会在后面的解释，它是一个协议，用来实现委托。
-}
-@property id<HomeDetailVDel> delegate; //定义一个属性，可以用来进行get set操作
+@interface HomeDetailV : UIView<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
+
+@property (nonatomic, weak) id<HomeDetailVDel> delegate; //定义一个属性，可以用来进行get set操作
 
 //定义一个状态栏
 @property (nonatomic,strong)UIView *statusV;

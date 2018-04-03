@@ -7,6 +7,10 @@
 //
 
 #import "RegisterV.h"
+@interface RegisterV(){
+    UIButton *_submitBtn;
+}
+@end
 @implementation RegisterV
 - (void)drawRect:(CGRect)rect {
     [self setUpUI];

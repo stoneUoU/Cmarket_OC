@@ -2,7 +2,6 @@ platform :ios, ’10.0’
 target ‘Fishes’ do
 use_frameworks!
 pod 'Masonry'
-pod 'SDWebImage'
 pod 'AFNetworking'
 pod 'MJRefresh'
 pod 'IQKeyboardManager'
@@ -15,4 +14,5 @@ pod 'JPush'
 pod 'SocketRocket'
 pod 'YYKit'
 pod 'WechatOpenSDK' 
+pod ‘XYLaunchAndIntroduction’
 end 

@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "MineV.h"
-#import "SetVC.h"
 @interface MineVC: UIViewController<MineVDel>
 @property (nonatomic,strong) MineV *mineV;
 @property(nonatomic, copy) NSString *Auths;

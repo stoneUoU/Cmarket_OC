@@ -8,6 +8,8 @@
 
 #import "MineVC.h"
 #import "AccountInfoVC.h"
+#import "AboutUsVC.h"
+#import "SetVC.h"
 @interface MineVC ()
 
 @end
@@ -118,7 +120,7 @@
             break;
         }
         default:
-            STLog(@"关于我们");
+            [MethodFunc pushToNextVC:self destVC:[[AboutUsVC alloc] init]];
             break;
     }
 }

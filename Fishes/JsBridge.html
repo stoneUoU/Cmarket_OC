@@ -1,0 +1,44 @@
+<!doctype html>
+<html><head>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<style type='text/css'>
+		html { font-family:Helvetica; color:#222; }
+		h1 { color:steelblue; font-size:24px; margin-top:24px; }
+		button { margin:0 3px 10px; font-size:12px; }
+		.logLine { border-bottom:1px solid #ccc; padding:4px 2px; font-family:courier; font-size:11px; }
+	</style>
+</head><body>
+	<h1>WebViewJavascriptBridge Demo</h1>
+	<script>
+    /*这段代码是固定的，必须要放到js中*/
+    function setupWebViewJavascriptBridge(callback) {
+        if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
+        if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+        window.WVJBCallbacks = [callback];
+        var WVJBIframe = document.createElement('iframe');
+        WVJBIframe.style.display = 'none';
+        WVJBIframe.src = 'https://__bridge_loaded__';
+        document.documentElement.appendChild(WVJBIframe);
+        setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
+    }
+
+    setupWebViewJavascriptBridge(function(bridge) {
+
+        //<!--处理 oc 调用 js -->
+		bridge.registerHandler('OC_Call_JS', function(data, responseCallback) {
+			var responseData = { 'Javascript Says':'oc调用JS成功!!!!!' }
+			responseCallback(responseData)
+		})
+        //此处 js 调用OC方法
+		var callbackButton = document.getElementById('buttons').appendChild(document.createElement('button'))
+		callbackButton.innerHTML = '点击我，我会调用oc的方法'
+		callbackButton.onclick = function(e) {
+			e.preventDefault()
+			bridge.callHandler('JS_Call_ObjC', {'stone': 'linlei'}, function(response) {
+				print(response)
+			})
+		}
+	})
+	</script>
+	<div id='buttons'></div> <div id='log'></div>
+</body></html>

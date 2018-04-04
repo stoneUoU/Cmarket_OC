@@ -71,6 +71,17 @@
 		528BFD0D207375EE002C5ACB /* AppUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 528BFD0C207375EE002C5ACB /* AppUpdate.m */; };
 		528C5477206C7EB900635C9E /* MonitorV.m in Sources */ = {isa = PBXBuildFile; fileRef = 528C5476206C7EB900635C9E /* MonitorV.m */; };
 		528C547A206C848000635C9E /* HomeDetailV.m in Sources */ = {isa = PBXBuildFile; fileRef = 528C5479206C848000635C9E /* HomeDetailV.m */; };
+		528DC0EF20745E2900B02986 /* AboutUsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 528DC0EE20745E2900B02986 /* AboutUsVC.m */; };
+		528DC0FC207474C400B02986 /* WebViewJavascriptBridgeBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 528DC0F4207474C300B02986 /* WebViewJavascriptBridgeBase.m */; };
+		528DC0FD207474C400B02986 /* WKWebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 528DC0F5207474C300B02986 /* WKWebViewJavascriptBridge.m */; };
+		528DC0FE207474C400B02986 /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 528DC0F6207474C300B02986 /* WebViewJavascriptBridge.m */; };
+		528DC0FF207474C400B02986 /* WebViewJavascriptBridge_JS.m in Sources */ = {isa = PBXBuildFile; fileRef = 528DC0F9207474C300B02986 /* WebViewJavascriptBridge_JS.m */; };
+		528DC1012074751100B02986 /* JsBridge.html in Resources */ = {isa = PBXBuildFile; fileRef = 528DC1002074751100B02986 /* JsBridge.html */; };
+		528DC10720749E6900B02986 /* PopPresentAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 528DC10320749E6900B02986 /* PopPresentAnimation.m */; };
+		528DC10820749E6900B02986 /* PopDismissAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 528DC10520749E6900B02986 /* PopDismissAnimation.m */; };
+		528DC10B20749ECB00B02986 /* PopPresentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 528DC10A20749ECB00B02986 /* PopPresentVC.m */; };
+		528DC10E20749FB700B02986 /* FirmOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 528DC10D20749FB700B02986 /* FirmOrderVC.m */; };
+		528DC11120749FCF00B02986 /* FirmOrderV.m in Sources */ = {isa = PBXBuildFile; fileRef = 528DC11020749FCF00B02986 /* FirmOrderV.m */; };
 		528F51A82068DECE008BA452 /* AccountInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 528F51A72068DECE008BA452 /* AccountInfoVC.m */; };
 		528F51AB2068DEF0008BA452 /* AccountInfoV.m in Sources */ = {isa = PBXBuildFile; fileRef = 528F51AA2068DEF0008BA452 /* AccountInfoV.m */; };
 		5294C5682072279D00F55510 /* YYCacheVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5294C5672072279D00F55510 /* YYCacheVC.m */; };
@@ -225,6 +236,27 @@
 		528C5476206C7EB900635C9E /* MonitorV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonitorV.m; sourceTree = "<group>"; };
 		528C5478206C848000635C9E /* HomeDetailV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailV.h; sourceTree = "<group>"; };
 		528C5479206C848000635C9E /* HomeDetailV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailV.m; sourceTree = "<group>"; };
+		528DC0ED20745E2900B02986 /* AboutUsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutUsVC.h; sourceTree = "<group>"; };
+		528DC0EE20745E2900B02986 /* AboutUsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutUsVC.m; sourceTree = "<group>"; };
+		528DC0F4207474C300B02986 /* WebViewJavascriptBridgeBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridgeBase.m; sourceTree = "<group>"; };
+		528DC0F5207474C300B02986 /* WKWebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewJavascriptBridge.m; sourceTree = "<group>"; };
+		528DC0F6207474C300B02986 /* WebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge.m; sourceTree = "<group>"; };
+		528DC0F7207474C300B02986 /* WebViewJavascriptBridge_JS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge_JS.h; sourceTree = "<group>"; };
+		528DC0F8207474C300B02986 /* WebViewJavascriptBridgeBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridgeBase.h; sourceTree = "<group>"; };
+		528DC0F9207474C300B02986 /* WebViewJavascriptBridge_JS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge_JS.m; sourceTree = "<group>"; };
+		528DC0FA207474C300B02986 /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
+		528DC0FB207474C300B02986 /* WKWebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewJavascriptBridge.h; sourceTree = "<group>"; };
+		528DC1002074751100B02986 /* JsBridge.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = JsBridge.html; sourceTree = "<group>"; };
+		528DC10320749E6900B02986 /* PopPresentAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopPresentAnimation.m; sourceTree = "<group>"; };
+		528DC10420749E6900B02986 /* PopDismissAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopDismissAnimation.h; sourceTree = "<group>"; };
+		528DC10520749E6900B02986 /* PopDismissAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopDismissAnimation.m; sourceTree = "<group>"; };
+		528DC10620749E6900B02986 /* PopPresentAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopPresentAnimation.h; sourceTree = "<group>"; };
+		528DC10920749ECB00B02986 /* PopPresentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopPresentVC.h; sourceTree = "<group>"; };
+		528DC10A20749ECB00B02986 /* PopPresentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopPresentVC.m; sourceTree = "<group>"; };
+		528DC10C20749FB700B02986 /* FirmOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirmOrderVC.h; sourceTree = "<group>"; };
+		528DC10D20749FB700B02986 /* FirmOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirmOrderVC.m; sourceTree = "<group>"; };
+		528DC10F20749FCF00B02986 /* FirmOrderV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirmOrderV.h; sourceTree = "<group>"; };
+		528DC11020749FCF00B02986 /* FirmOrderV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirmOrderV.m; sourceTree = "<group>"; };
 		528F51A62068DECE008BA452 /* AccountInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountInfoVC.h; sourceTree = "<group>"; };
 		528F51A72068DECE008BA452 /* AccountInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountInfoVC.m; sourceTree = "<group>"; };
 		528F51A92068DEF0008BA452 /* AccountInfoV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountInfoV.h; sourceTree = "<group>"; };
@@ -413,6 +445,7 @@
 				5260476D1F7512910072AFB4 /* Mine */,
 				5260470F1F7510800072AFB4 /* Supporting Files */,
 				5260471B1F7510800072AFB4 /* Assets.xcassets */,
+				528DC1002074751100B02986 /* JsBridge.html */,
 				526047201F7510800072AFB4 /* Info.plist */,
 			);
 			path = Fishes;
@@ -470,6 +503,10 @@
 				52680C8220623D1900F5DB96 /* WillStartVC.m */,
 				52AE74C71FCE584900081972 /* HomeDetailVC.h */,
 				52AE74C81FCE584900081972 /* HomeDetailVC.m */,
+				528DC10920749ECB00B02986 /* PopPresentVC.h */,
+				528DC10A20749ECB00B02986 /* PopPresentVC.m */,
+				528DC10C20749FB700B02986 /* FirmOrderVC.h */,
+				528DC10D20749FB700B02986 /* FirmOrderVC.m */,
 			);
 			name = VC;
 			sourceTree = "<group>";
@@ -482,6 +519,8 @@
 				52680C72206239B700F5DB96 /* HomeBaseTbV.h */,
 				528C5478206C848000635C9E /* HomeDetailV.h */,
 				528C5479206C848000635C9E /* HomeDetailV.m */,
+				528DC10F20749FCF00B02986 /* FirmOrderV.h */,
+				528DC11020749FCF00B02986 /* FirmOrderV.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -518,6 +557,8 @@
 				523FD55620664727009753B4 /* SetVC.m */,
 				528F51A62068DECE008BA452 /* AccountInfoVC.h */,
 				528F51A72068DECE008BA452 /* AccountInfoVC.m */,
+				528DC0ED20745E2900B02986 /* AboutUsVC.h */,
+				528DC0EE20745E2900B02986 /* AboutUsVC.m */,
 			);
 			name = VC;
 			sourceTree = "<group>";
@@ -621,6 +662,8 @@
 		528936D92061EA53004463E6 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				528DC10220749E6900B02986 /* PopPresentV */,
+				528DC0F3207474C300B02986 /* WKwebViewJsBridge */,
 				528936DA2061EA88004463E6 /* NetWorkManager.h */,
 				528936DB2061EA88004463E6 /* NetWorkManager.m */,
 				528936DD2061EB5E004463E6 /* StToast.h */,
@@ -654,6 +697,32 @@
 				52A22217206B749700F71B0C /* MonitorVC.m */,
 			);
 			name = Monitor;
+			sourceTree = "<group>";
+		};
+		528DC0F3207474C300B02986 /* WKwebViewJsBridge */ = {
+			isa = PBXGroup;
+			children = (
+				528DC0F4207474C300B02986 /* WebViewJavascriptBridgeBase.m */,
+				528DC0F5207474C300B02986 /* WKWebViewJavascriptBridge.m */,
+				528DC0F6207474C300B02986 /* WebViewJavascriptBridge.m */,
+				528DC0F7207474C300B02986 /* WebViewJavascriptBridge_JS.h */,
+				528DC0F8207474C300B02986 /* WebViewJavascriptBridgeBase.h */,
+				528DC0F9207474C300B02986 /* WebViewJavascriptBridge_JS.m */,
+				528DC0FA207474C300B02986 /* WebViewJavascriptBridge.h */,
+				528DC0FB207474C300B02986 /* WKWebViewJavascriptBridge.h */,
+			);
+			path = WKwebViewJsBridge;
+			sourceTree = "<group>";
+		};
+		528DC10220749E6900B02986 /* PopPresentV */ = {
+			isa = PBXGroup;
+			children = (
+				528DC10320749E6900B02986 /* PopPresentAnimation.m */,
+				528DC10420749E6900B02986 /* PopDismissAnimation.h */,
+				528DC10520749E6900B02986 /* PopDismissAnimation.m */,
+				528DC10620749E6900B02986 /* PopPresentAnimation.h */,
+			);
+			path = PopPresentV;
 			sourceTree = "<group>";
 		};
 		52AB1026206DE5B2007DC919 /* YYKit */ = {
@@ -816,6 +885,7 @@
 			files = (
 				5216E9F8206E0AFD004DBBCB /* AlipaySDK.bundle in Resources */,
 				5260471C1F7510800072AFB4 /* Assets.xcassets in Resources */,
+				528DC1012074751100B02986 /* JsBridge.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -923,7 +993,10 @@
 				52AB1029206DE5F0007DC919 /* YYModelVC.m in Sources */,
 				523FD55420664716009753B4 /* SetV.m in Sources */,
 				528936F12061FDA1004463E6 /* UIColor+Hex.m in Sources */,
+				528DC0FF207474C400B02986 /* WebViewJavascriptBridge_JS.m in Sources */,
+				528DC0FE207474C400B02986 /* WebViewJavascriptBridge.m in Sources */,
 				52BC7E6B2065E611000B5E43 /* SmsLoginV.m in Sources */,
+				528DC10720749E6900B02986 /* PopPresentAnimation.m in Sources */,
 				52AE74C91FCE584900081972 /* HomeDetailVC.m in Sources */,
 				52E42E672071DEF60038062C /* TestModel.m in Sources */,
 				5260477F1F7513E40072AFB4 /* HomeVC.m in Sources */,
@@ -934,6 +1007,9 @@
 				528F51A82068DECE008BA452 /* AccountInfoVC.m in Sources */,
 				5294C5682072279D00F55510 /* YYCacheVC.m in Sources */,
 				52BC7E742065E66E000B5E43 /* RegisterVC.m in Sources */,
+				528DC10E20749FB700B02986 /* FirmOrderVC.m in Sources */,
+				528DC0FC207474C400B02986 /* WebViewJavascriptBridgeBase.m in Sources */,
+				528DC0FD207474C400B02986 /* WKWebViewJavascriptBridge.m in Sources */,
 				528936EB2061EC71004463E6 /* UIButton+ST_FixMultiClick.m in Sources */,
 				523F04D32065021800858BDD /* CodeLoginV.m in Sources */,
 				5284058420635602000623B4 /* UILabel+Padding.m in Sources */,
@@ -953,6 +1029,7 @@
 				523F04D02065020500858BDD /* CodeLoginVC.m in Sources */,
 				52680C8320623D1900F5DB96 /* WillStartVC.m in Sources */,
 				52A22218206B749700F71B0C /* MonitorVC.m in Sources */,
+				528DC11120749FCF00B02986 /* FirmOrderV.m in Sources */,
 				523FD55A20665454009753B4 /* MethodFunc.m in Sources */,
 				5284058D2063960B000623B4 /* FormatDs.m in Sources */,
 				523F04CA2064D71700858BDD /* StartV.m in Sources */,
@@ -960,8 +1037,10 @@
 				528F51AB2068DEF0008BA452 /* AccountInfoV.m in Sources */,
 				528C547A206C848000635C9E /* HomeDetailV.m in Sources */,
 				52680C7D20623B0400F5DB96 /* HomeBaseTbVC.m in Sources */,
+				528DC0EF20745E2900B02986 /* AboutUsVC.m in Sources */,
 				528BFD0D207375EE002C5ACB /* AppUpdate.m in Sources */,
 				52680C7A20623A2C00F5DB96 /* SPPageMenu.m in Sources */,
+				528DC10B20749ECB00B02986 /* PopPresentVC.m in Sources */,
 				528936D82061E94E004463E6 /* BaseToolVC.m in Sources */,
 				528936DC2061EA88004463E6 /* NetWorkManager.m in Sources */,
 				528BFD0A20736558002C5ACB /* AppUpdateV.m in Sources */,
@@ -975,6 +1054,7 @@
 				5284058720637D59000623B4 /* CountDown.m in Sources */,
 				528936EE2061ECC4004463E6 /* STPlaceholderView.m in Sources */,
 				52CE2EF6206CCCFE0053A72B /* WebSocketNetwork.m in Sources */,
+				528DC10820749E6900B02986 /* PopDismissAnimation.m in Sources */,
 				526047961F7515D60072AFB4 /* UIView+Extension.m in Sources */,
 				52BC7E6E2065E62B000B5E43 /* SmsLoginVC.m in Sources */,
 				526047851F7514430072AFB4 /* MineVC.m in Sources */,

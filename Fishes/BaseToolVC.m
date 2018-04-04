@@ -48,12 +48,11 @@
     //_backBtn.backgroundColor = [UIColor redColor];
     [_backBtn setImage:[UIImage imageNamed:backIvName]forState:UIControlStateNormal];
     [_backBtn addTarget:self action:@selector(toBack)forControlEvents:UIControlEventTouchUpInside];
-    [_backBtn adjustToSize:CGSizeMake(30,0)];
+    [_backBtn adjustToSize:CGSizeMake(2*spaceM,0)];
     [_navBarV addSubview:_backBtn];
 
     _sideBtn = [[UIButton alloc] init];
     _sideBtn.titleLabel.font=[UIFont systemFontOfSize:16];
-    //_sideBtn.backgroundColor = [UIColor redColor];
     _sideBtn.contentHorizontalAlignment = NSTextAlignmentRight;
     [_sideBtn setTitle:sideVal forState:UIControlStateNormal];
     [_sideBtn setTitleColor:sideFontC  forState:UIControlStateNormal];
@@ -63,7 +62,6 @@
 
     _midFontL = [[UILabel alloc] init];
     _midFontL.text = midVal;
-    //_midFontL.backgroundColor = [UIColor cyanColor];
     _midFontL.textAlignment = NSTextAlignmentCenter;
     _midFontL.textColor = midFontC;
     [_navBarV addSubview:_midFontL];
@@ -72,9 +70,9 @@
     _cutOffV.backgroundColor = cutOffLineC;
     [_navBarV addSubview:_cutOffV];
 
-    [self setBaseMas];
+    [self setBaseMas:sideVal];
 }
-- (void) setBaseMas{
+- (void) setBaseMas:(NSString *)sideVal{
     // mas_makeConstraints 就是 Masonry 的 autolayout 添加函数，将所需的约束添加到block中就行。
     [_statusV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view);
@@ -89,16 +87,26 @@
         make.height.mas_equalTo(NavigationBarH);
     }];
     [_backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.left.height.equalTo(_navBarV);
+        make.centerY.equalTo(_navBarV);
+        make.left.equalTo(_navBarV.mas_left).offset(0);
+        make.height.mas_equalTo(NavigationBarH);
     }];
     [_sideBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.height.equalTo(_navBarV);
         make.right.equalTo(_navBarV.mas_right).offset(0);
+        make.height.mas_equalTo(NavigationBarH);
     }];
     [_midFontL mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.height.equalTo(_navBarV);
-        make.centerX.equalTo(_navBarV);
-        make.right.equalTo(_sideBtn.mas_left).offset(0);
+        make.center.equalTo(_navBarV);
+        //根据右边按钮的长度动态改变中间字的宽度
+        if ([sideVal length] == 0){
+            make.width.mas_equalTo(ScreenW - 2*40);
+        }else if([sideVal length] == 2){
+            make.width.mas_equalTo(ScreenW - 2*60);
+        }else if([sideVal length] == 4){
+            make.width.mas_equalTo(ScreenW/2);
+        }
+
     }];
     [_cutOffV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(_navBarV.mas_bottom).offset(0);

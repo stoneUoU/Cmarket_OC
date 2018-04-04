@@ -17,7 +17,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setUp:@"设置" sideVal:@"" backIvName:@"custom_serve_back.png" navC:[UIColor clearColor] midFontC:deepBlackC sideFontC:[UIColor clearColor]];
+    [self setUp:@"设置" sideVal:@"" backIvName:@"custom_serve_back.png" navC:[UIColor clearColor] midFontC:deepBlackC sideFontC:deepBlackC];
     [self setUpUI];
 
     [self startR];

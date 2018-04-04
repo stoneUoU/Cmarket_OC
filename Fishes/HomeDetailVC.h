@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HomeDetailV.h"
-@interface HomeDetailVC : UIViewController<UIGestureRecognizerDelegate,HomeDetailVDel>
+@interface HomeDetailVC : UIViewController<UIGestureRecognizerDelegate,HomeDetailVDel,UIViewControllerTransitioningDelegate>
 
 @property (nonatomic,strong) HomeDetailV *homeDetailV;
 @property(nonatomic, copy) NSString *Auths;

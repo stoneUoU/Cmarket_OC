@@ -12,6 +12,7 @@
 #import "CarouselMs.h"
 #import "StartVC.h"
 #import "HomeDetailVC.h"
+#import "SetVC.h"
 @implementation HomeVC
 - (id)init
 {
@@ -242,9 +243,10 @@
 //    }else{
 //        STLog(@"已登录,去消息");
 //    }
-    HomeDetailVC * homeDetailV = [[HomeDetailVC alloc] init];
-    homeDetailV.pass_Vals = @{@"group_id":@"20"};
-    [MethodFunc pushToNextVC:self destVC:homeDetailV];
+//    HomeDetailVC * homeDetailV = [[HomeDetailVC alloc] init];
+//    homeDetailV.pass_Vals = @{@"group_id":@"20"};
+//    [MethodFunc pushToNextVC:self destVC:homeDetailV];
+    [MethodFunc pushToNextVC:self destVC:[[SetVC alloc]init] ];
 }
 //监听textfeild的内容改变
 - (void)valC:(id)UITextField{
@@ -275,10 +277,6 @@
     return ScreenH;
 }
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-
-}
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 
     if (scrollView == self.tableView) {
@@ -291,14 +289,6 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:@"headerViewToTop" object:nil];
         }
     }
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-
 }
 
 - (void)subTableViewDidScroll:(NSNotification *)noti {

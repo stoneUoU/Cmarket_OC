@@ -12,13 +12,13 @@
 #import "TestModel.h"
 #import "LazyTbCells.h"
 #import "AppUpdateV.h"
-@interface YYCacheVC ()<UITableViewDelegate,UITableViewDataSource,AppUpdateVDelegate>{
+@interface YYCacheVC ()<UITableViewDelegate,UITableViewDataSource>{  //AppUpdateVDelegate
     UITableView * _tableV;
 }
-
+@property(nonatomic,strong)NSMutableArray *imgArr;
 //可以自定义提醒View，跟着需求走
 //@property (nonatomic, strong)AppUpdateV *appUpdateV;
-
+@property(nonatomic,strong)UIButton *showBtn;
 @end
 @implementation YYCacheVC
 - (id)init
@@ -26,8 +26,21 @@
     self.dataArrs = [NSMutableArray array];
 
     self.expressArrs = [NSMutableArray array];
+
+    _imgArr = [self setImgArr];
     // 情景二：采用网络图片实现
     return [super init];
+}
+
+-(NSMutableArray *)setImgArr{
+    NSMutableArray *arr = [[NSMutableArray alloc]initWithCapacity:0];
+    for (int i = 1; i<=3; i++) {
+        DYAdModel *adModel  = [[DYAdModel alloc]init];
+        adModel.imgStr      = [NSString stringWithFormat:@"loading%d",i];
+        adModel.linkUrl     = @"https://github.com/DanielYK/AdAlertView";
+        [arr addObject:adModel];
+    }
+    return arr;
 }
 #pragma mark - Lazy Load
 //- (AppUpdateV *)appUpdateV {
@@ -47,18 +60,29 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
 
-    //[self setUpUI];
+    [self setUpUI];
 
     //[self startQ];
 
-    //[self startO];
+    [self startO];
     //[self testYYCache];
     //[self setAlert];
+    //[self performSelector:@selector(showAdAlertView) withObject:nil afterDelay:0.1];
+
 }
 
 //-(void) setAlert{
 //    self.appUpdateV.hidden = NO;
 //}
+
+-(void)showAdAlertView{
+    [DYAdAlertView  showInView:[[UIApplication sharedApplication]keyWindow] theDelegate:self theADInfo:_imgArr placeHolderImage:@"loading1"];
+}
+-(void)clickAlertViewAtIndex:(NSInteger)index{
+    DYAdModel *adModel  = [_imgArr objectAtIndex:index];
+    STLog(@"%@",adModel.linkUrl);
+
+}
 
 -(void) setUpUI{
     //注册cell的名称

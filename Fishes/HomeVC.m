@@ -13,6 +13,7 @@
 #import "StartVC.h"
 #import "HomeDetailVC.h"
 #import "SetVC.h"
+#import "YYCacheVC.h"
 @implementation HomeVC
 - (id)init
 {
@@ -246,7 +247,37 @@
 //    HomeDetailVC * homeDetailV = [[HomeDetailVC alloc] init];
 //    homeDetailV.pass_Vals = @{@"group_id":@"20"};
 //    [MethodFunc pushToNextVC:self destVC:homeDetailV];
-    [MethodFunc pushToNextVC:self destVC:[[SetVC alloc]init] ];
+    //[MethodFunc pushToNextVC:self destVC:[[SetVC alloc]init] ];
+//    STAlertV *alertV = [[STAlertV alloc] initWithContentView:self.view];
+//    alertV.delegate = self;
+//    [alertV setPopStyle:STPopStyleFromTop];
+//    [alertV presentPopupControllerAnimate:YES];
+
+    self.popAligment  = CBPopupViewAligmentBottom;
+        YYCacheVC *vc = [[YYCacheVC alloc] init];
+        //vc.view.backgroundColor = [UIColor cyanColor];
+        if (self.popAligment == CBPopupViewAligmentCenter) {
+            vc.view.frame = CGRectMake(0, 0, 285, 250);
+            vc.view.layer.cornerRadius = 4.0;
+            vc.view.layer.masksToBounds = YES;
+        }else
+        {
+            vc.view.frame = CGRectMake(0, 0, self.view.bounds.size.width, 250);
+
+        }
+
+        [self cb_presentPopupViewController:vc animationType:CBPopupViewAnimationSlideFromBottom aligment:self.popAligment overlayDismissed:nil];
+
+    //    CBPopupViewAligmentCenter,
+    //    CBPopupViewAligmentTop,
+    //    CBPopupViewAligmentBottom
+
+//    {@"Fade":@(CBPopupViewAnimationFade),
+//        @"SlideFromBottom":@(CBPopupViewAnimationSlideFromBottom),
+//        @"SlideFromTop":@(CBPopupViewAnimationSlideFromTop),
+//        @"SlideFromLeft":@(CBPopupViewAnimationSlideFromLeft),
+//        @"SlideFromRight":@(CBPopupViewAnimationSlideFromRight)
+
 }
 //监听textfeild的内容改变
 - (void)valC:(id)UITextField{

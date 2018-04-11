@@ -22,6 +22,9 @@
 		5216EA0E206E0B9E004DBBCB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5216EA0D206E0B9E004DBBCB /* CFNetwork.framework */; };
 		5216EA10206E0BA9004DBBCB /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5216EA0F206E0BA9004DBBCB /* CoreMotion.framework */; };
 		5216EA13206E0F9B004DBBCB /* STPayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5216EA12206E0F9B004DBBCB /* STPayManager.m */; };
+		523C2901207A003000D2D225 /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 523C2900207A003000D2D225 /* CircleView.m */; };
+		523C2904207A020300D2D225 /* STButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 523C2903207A020300D2D225 /* STButton.m */; };
+		523C2907207A026000D2D225 /* UIButton+ExpandArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 523C2906207A026000D2D225 /* UIButton+ExpandArea.m */; };
 		523F04B520648E5100858BDD /* MineV.m in Sources */ = {isa = PBXBuildFile; fileRef = 523F04B420648E5100858BDD /* MineV.m */; };
 		523F04BA20649E1300858BDD /* MineTbCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 523F04B920649E1300858BDD /* MineTbCells.m */; };
 		523F04BD2064CB5100858BDD /* MineMs.m in Sources */ = {isa = PBXBuildFile; fileRef = 523F04BC2064CB5100858BDD /* MineMs.m */; };
@@ -82,13 +85,19 @@
 		528DC10B20749ECB00B02986 /* PopPresentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 528DC10A20749ECB00B02986 /* PopPresentVC.m */; };
 		528DC10E20749FB700B02986 /* FirmOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 528DC10D20749FB700B02986 /* FirmOrderVC.m */; };
 		528DC11120749FCF00B02986 /* FirmOrderV.m in Sources */ = {isa = PBXBuildFile; fileRef = 528DC11020749FCF00B02986 /* FirmOrderV.m */; };
+		528DC1142074B95F00B02986 /* STAlertV.m in Sources */ = {isa = PBXBuildFile; fileRef = 528DC1132074B95F00B02986 /* STAlertV.m */; };
+		528DC11A2074C02B00B02986 /* DYAdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 528DC1192074C02B00B02986 /* DYAdModel.m */; };
+		528DC11D2074C03A00B02986 /* DYAdAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 528DC11C2074C03900B02986 /* DYAdAlertView.m */; };
+		528DC1202074C8A000B02986 /* UIViewController+CBPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 528DC11F2074C8A000B02986 /* UIViewController+CBPopup.m */; };
 		528F51A82068DECE008BA452 /* AccountInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 528F51A72068DECE008BA452 /* AccountInfoVC.m */; };
 		528F51AB2068DEF0008BA452 /* AccountInfoV.m in Sources */ = {isa = PBXBuildFile; fileRef = 528F51AA2068DEF0008BA452 /* AccountInfoV.m */; };
 		5294C5682072279D00F55510 /* YYCacheVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5294C5672072279D00F55510 /* YYCacheVC.m */; };
+		5295DB5C207DB31E00352354 /* UIImageView+CornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 5295DB5B207DB31E00352354 /* UIImageView+CornerRadius.m */; };
 		52A22213206B345400F71B0C /* ValidatedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A22212206B345400F71B0C /* ValidatedFile.m */; };
 		52A22218206B749700F71B0C /* MonitorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A22217206B749700F71B0C /* MonitorVC.m */; };
 		52AB1029206DE5F0007DC919 /* YYModelVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52AB1028206DE5F0007DC919 /* YYModelVC.m */; };
 		52AE74C91FCE584900081972 /* HomeDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52AE74C81FCE584900081972 /* HomeDetailVC.m */; };
+		52BADA4A2079E43A00C84945 /* ThreadVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BADA492079E43A00C84945 /* ThreadVC.m */; };
 		52BC7E682065DEC9000B5E43 /* UIFont+runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E672065DEC9000B5E43 /* UIFont+runtime.m */; };
 		52BC7E6B2065E611000B5E43 /* SmsLoginV.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E6A2065E611000B5E43 /* SmsLoginV.m */; };
 		52BC7E6E2065E62B000B5E43 /* SmsLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E6D2065E62B000B5E43 /* SmsLoginVC.m */; };
@@ -135,6 +144,12 @@
 		5216EA0F206E0BA9004DBBCB /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		5216EA11206E0F9B004DBBCB /* STPayManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STPayManager.h; sourceTree = "<group>"; };
 		5216EA12206E0F9B004DBBCB /* STPayManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STPayManager.m; sourceTree = "<group>"; };
+		523C28FF207A003000D2D225 /* CircleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
+		523C2900207A003000D2D225 /* CircleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
+		523C2902207A020200D2D225 /* STButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STButton.h; sourceTree = "<group>"; };
+		523C2903207A020300D2D225 /* STButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STButton.m; sourceTree = "<group>"; };
+		523C2905207A026000D2D225 /* UIButton+ExpandArea.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+ExpandArea.h"; sourceTree = "<group>"; };
+		523C2906207A026000D2D225 /* UIButton+ExpandArea.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ExpandArea.m"; sourceTree = "<group>"; };
 		523F04B320648E5100858BDD /* MineV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineV.h; sourceTree = "<group>"; };
 		523F04B420648E5100858BDD /* MineV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineV.m; sourceTree = "<group>"; };
 		523F04B820649E1300858BDD /* MineTbCells.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineTbCells.h; sourceTree = "<group>"; };
@@ -257,12 +272,22 @@
 		528DC10D20749FB700B02986 /* FirmOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirmOrderVC.m; sourceTree = "<group>"; };
 		528DC10F20749FCF00B02986 /* FirmOrderV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirmOrderV.h; sourceTree = "<group>"; };
 		528DC11020749FCF00B02986 /* FirmOrderV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirmOrderV.m; sourceTree = "<group>"; };
+		528DC1122074B95F00B02986 /* STAlertV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STAlertV.h; sourceTree = "<group>"; };
+		528DC1132074B95F00B02986 /* STAlertV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STAlertV.m; sourceTree = "<group>"; };
+		528DC1182074C02500B02986 /* DYAdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYAdModel.h; sourceTree = "<group>"; };
+		528DC1192074C02B00B02986 /* DYAdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYAdModel.m; sourceTree = "<group>"; };
+		528DC11B2074C03500B02986 /* DYAdAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYAdAlertView.h; sourceTree = "<group>"; };
+		528DC11C2074C03900B02986 /* DYAdAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYAdAlertView.m; sourceTree = "<group>"; };
+		528DC11E2074C89A00B02986 /* UIViewController+CBPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CBPopup.h"; sourceTree = "<group>"; };
+		528DC11F2074C8A000B02986 /* UIViewController+CBPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CBPopup.m"; sourceTree = "<group>"; };
 		528F51A62068DECE008BA452 /* AccountInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountInfoVC.h; sourceTree = "<group>"; };
 		528F51A72068DECE008BA452 /* AccountInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountInfoVC.m; sourceTree = "<group>"; };
 		528F51A92068DEF0008BA452 /* AccountInfoV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountInfoV.h; sourceTree = "<group>"; };
 		528F51AA2068DEF0008BA452 /* AccountInfoV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountInfoV.m; sourceTree = "<group>"; };
 		5294C5662072279D00F55510 /* YYCacheVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYCacheVC.h; sourceTree = "<group>"; };
 		5294C5672072279D00F55510 /* YYCacheVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYCacheVC.m; sourceTree = "<group>"; };
+		5295DB5A207DB31E00352354 /* UIImageView+CornerRadius.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+CornerRadius.h"; sourceTree = "<group>"; };
+		5295DB5B207DB31E00352354 /* UIImageView+CornerRadius.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+CornerRadius.m"; sourceTree = "<group>"; };
 		52A22211206B345400F71B0C /* ValidatedFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ValidatedFile.h; sourceTree = "<group>"; };
 		52A22212206B345400F71B0C /* ValidatedFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValidatedFile.m; sourceTree = "<group>"; };
 		52A22216206B749700F71B0C /* MonitorVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonitorVC.h; sourceTree = "<group>"; };
@@ -273,6 +298,8 @@
 		52AE74C71FCE584900081972 /* HomeDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailVC.h; sourceTree = "<group>"; };
 		52AE74C81FCE584900081972 /* HomeDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailVC.m; sourceTree = "<group>"; };
 		52B72DF4E62F565F1F472D34 /* Pods-Fishes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fishes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fishes/Pods-Fishes.debug.xcconfig"; sourceTree = "<group>"; };
+		52BADA482079E43A00C84945 /* ThreadVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThreadVC.h; sourceTree = "<group>"; };
+		52BADA492079E43A00C84945 /* ThreadVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThreadVC.m; sourceTree = "<group>"; };
 		52BC7E662065DEC9000B5E43 /* UIFont+runtime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+runtime.h"; sourceTree = "<group>"; };
 		52BC7E672065DEC9000B5E43 /* UIFont+runtime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+runtime.m"; sourceTree = "<group>"; };
 		52BC7E692065E611000B5E43 /* SmsLoginV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmsLoginV.h; sourceTree = "<group>"; };
@@ -436,6 +463,7 @@
 			isa = PBXGroup;
 			children = (
 				52A22219206B8DDF00F71B0C /* Fishes.entitlements */,
+				52BADA472079E40E00C84945 /* ThreadTest */,
 				52AB1026206DE5B2007DC919 /* YYKit */,
 				528C5474206C7E9500635C9E /* Monitor */,
 				528936D92061EA53004463E6 /* Tools */,
@@ -610,6 +638,14 @@
 				5284058620637D59000623B4 /* CountDown.m */,
 				528BFD0820736558002C5ACB /* AppUpdateV.h */,
 				528BFD0920736558002C5ACB /* AppUpdateV.m */,
+				528DC1122074B95F00B02986 /* STAlertV.h */,
+				528DC1132074B95F00B02986 /* STAlertV.m */,
+				528DC11B2074C03500B02986 /* DYAdAlertView.h */,
+				528DC11C2074C03900B02986 /* DYAdAlertView.m */,
+				523C28FF207A003000D2D225 /* CircleView.h */,
+				523C2900207A003000D2D225 /* CircleView.m */,
+				523C2902207A020200D2D225 /* STButton.h */,
+				523C2903207A020300D2D225 /* STButton.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -617,6 +653,8 @@
 		526047911F7515A40072AFB4 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				528DC1182074C02500B02986 /* DYAdModel.h */,
+				528DC1192074C02B00B02986 /* DYAdModel.m */,
 				52E42E622071DEC00038062C /* BaseModel.h */,
 				52E42E632071DEC00038062C /* BaseModel.m */,
 			);
@@ -637,6 +675,8 @@
 		526047931F7515BB0072AFB4 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				528DC11E2074C89A00B02986 /* UIViewController+CBPopup.h */,
+				528DC11F2074C8A000B02986 /* UIViewController+CBPopup.m */,
 				526047941F7515D60072AFB4 /* UIView+Extension.h */,
 				526047951F7515D60072AFB4 /* UIView+Extension.m */,
 				526047971F75160C0072AFB4 /* UIImage+Image.h */,
@@ -655,6 +695,10 @@
 				52BC7E672065DEC9000B5E43 /* UIFont+runtime.m */,
 				5288FAE62069EB32002EC6AA /* UIButton+countDown.h */,
 				5288FAE72069EB32002EC6AA /* UIButton+countDown.m */,
+				523C2905207A026000D2D225 /* UIButton+ExpandArea.h */,
+				523C2906207A026000D2D225 /* UIButton+ExpandArea.m */,
+				5295DB5A207DB31E00352354 /* UIImageView+CornerRadius.h */,
+				5295DB5B207DB31E00352354 /* UIImageView+CornerRadius.m */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -742,6 +786,15 @@
 				528BFD0320734E1E002C5ACB /* LazyTbCells.m */,
 			);
 			name = YYKit;
+			sourceTree = "<group>";
+		};
+		52BADA472079E40E00C84945 /* ThreadTest */ = {
+			isa = PBXGroup;
+			children = (
+				52BADA482079E43A00C84945 /* ThreadVC.h */,
+				52BADA492079E43A00C84945 /* ThreadVC.m */,
+			);
+			name = ThreadTest;
 			sourceTree = "<group>";
 		};
 		56CB3BF52E6898587C37A712 /* Frameworks */ = {
@@ -919,6 +972,7 @@
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/Meiqia/Meiqia.framework",
 				"${BUILT_PRODUCTS_DIR}/RealReachability/RealReachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SDCycleScrollView/SDCycleScrollView.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -935,6 +989,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Meiqia.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealReachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDCycleScrollView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -996,8 +1051,10 @@
 				528DC0FF207474C400B02986 /* WebViewJavascriptBridge_JS.m in Sources */,
 				528DC0FE207474C400B02986 /* WebViewJavascriptBridge.m in Sources */,
 				52BC7E6B2065E611000B5E43 /* SmsLoginV.m in Sources */,
+				528DC1202074C8A000B02986 /* UIViewController+CBPopup.m in Sources */,
 				528DC10720749E6900B02986 /* PopPresentAnimation.m in Sources */,
 				52AE74C91FCE584900081972 /* HomeDetailVC.m in Sources */,
+				528DC1142074B95F00B02986 /* STAlertV.m in Sources */,
 				52E42E672071DEF60038062C /* TestModel.m in Sources */,
 				5260477F1F7513E40072AFB4 /* HomeVC.m in Sources */,
 				523F04B520648E5100858BDD /* MineV.m in Sources */,
@@ -1009,6 +1066,7 @@
 				52BC7E742065E66E000B5E43 /* RegisterVC.m in Sources */,
 				528DC10E20749FB700B02986 /* FirmOrderVC.m in Sources */,
 				528DC0FC207474C400B02986 /* WebViewJavascriptBridgeBase.m in Sources */,
+				52BADA4A2079E43A00C84945 /* ThreadVC.m in Sources */,
 				528DC0FD207474C400B02986 /* WKWebViewJavascriptBridge.m in Sources */,
 				528936EB2061EC71004463E6 /* UIButton+ST_FixMultiClick.m in Sources */,
 				523F04D32065021800858BDD /* CodeLoginV.m in Sources */,
@@ -1020,11 +1078,14 @@
 				528C5477206C7EB900635C9E /* MonitorV.m in Sources */,
 				52E42E642071DEC00038062C /* BaseModel.m in Sources */,
 				528936DF2061EB5E004463E6 /* StToast.m in Sources */,
+				528DC11A2074C02B00B02986 /* DYAdModel.m in Sources */,
+				523C2901207A003000D2D225 /* CircleView.m in Sources */,
 				52680C8020623CCD00F5DB96 /* OnStartVC.m in Sources */,
 				528BFD0420734E1E002C5ACB /* LazyTbCells.m in Sources */,
 				5288FAE82069EB32002EC6AA /* UIButton+countDown.m in Sources */,
 				5284058A20638076000623B4 /* HomeMs.m in Sources */,
 				52680C74206239B700F5DB96 /* HomeBaseTbV.m in Sources */,
+				523C2907207A026000D2D225 /* UIButton+ExpandArea.m in Sources */,
 				526047991F75160C0072AFB4 /* UIImage+Image.m in Sources */,
 				523F04D02065020500858BDD /* CodeLoginVC.m in Sources */,
 				52680C8320623D1900F5DB96 /* WillStartVC.m in Sources */,
@@ -1039,7 +1100,9 @@
 				52680C7D20623B0400F5DB96 /* HomeBaseTbVC.m in Sources */,
 				528DC0EF20745E2900B02986 /* AboutUsVC.m in Sources */,
 				528BFD0D207375EE002C5ACB /* AppUpdate.m in Sources */,
+				528DC11D2074C03A00B02986 /* DYAdAlertView.m in Sources */,
 				52680C7A20623A2C00F5DB96 /* SPPageMenu.m in Sources */,
+				523C2904207A020300D2D225 /* STButton.m in Sources */,
 				528DC10B20749ECB00B02986 /* PopPresentVC.m in Sources */,
 				528936D82061E94E004463E6 /* BaseToolVC.m in Sources */,
 				528936DC2061EA88004463E6 /* NetWorkManager.m in Sources */,
@@ -1059,6 +1122,7 @@
 				52BC7E6E2065E62B000B5E43 /* SmsLoginVC.m in Sources */,
 				526047851F7514430072AFB4 /* MineVC.m in Sources */,
 				5216EA13206E0F9B004DBBCB /* STPayManager.m in Sources */,
+				5295DB5C207DB31E00352354 /* UIImageView+CornerRadius.m in Sources */,
 				528BFCFE20730971002C5ACB /* YYCacheTools.m in Sources */,
 				523F04CD2064D72700858BDD /* StartVC.m in Sources */,
 				528936E52061EBCB004463E6 /* HudTips.m in Sources */,

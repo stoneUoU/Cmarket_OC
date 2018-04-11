@@ -56,6 +56,9 @@
 #import "NSString+MD5.h"
 //封装好的支付类
 #import "STPayManager.h"
+
+
+#import "Macros.h"
 //自定义Log输入日志+显示行号
 #ifdef DEBUG
 #define STLog(FORMAT, ...) fprintf(stderr,"%s:%d\t%s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);

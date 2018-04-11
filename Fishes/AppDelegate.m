@@ -16,6 +16,8 @@
 
 #import "YYCacheVC.h"
 
+#import "ThreadVC.h"
+
 #import "YYCacheTools.h"
 //static TabBarVC *tabBarVc;
 #import "AppUpdate.h"
@@ -89,7 +91,7 @@
         [self dealPushM:remoteUserInfo];
     }else{
         if ([[NSString stringWithFormat:@"%@",[UICKeyChainStore keyChainStore][@"firstIn"]]  isEqual: @"true"]){
-            self.window.rootViewController =   [TabBarVC sharedVC]; //[TabBarVC sharedVC]; //[[MonitorVC alloc]init ];
+            self.window.rootViewController =  [TabBarVC sharedVC]; //[[ThreadVC alloc] init];//[TabBarVC sharedVC];  //  [[YYCacheVC alloc] init]; //[[MonitorVC alloc]init ];  //[[YYModelVC alloc] init];
             //[self xyAdLaunch];
         }else{
             [self setFollow];
@@ -120,15 +122,18 @@
     ReachabilityStatus status = [GLobalRealReachability currentReachabilityStatus];
     if (status == RealStatusNotReachable)
     {
+        STLog(@"1111");
         keychainStore[@"ifnetUse"] = @"unUseable";
     }
     if (status == RealStatusViaWiFi)
     {
+        STLog(@"2222");
         keychainStore[@"ifnetUse"] = @"Useable";
     }
 
     if (status == RealStatusViaWWAN)
     {
+        STLog(@"3333");
         keychainStore[@"ifnetUse"] = @"Useable";
     }
 }

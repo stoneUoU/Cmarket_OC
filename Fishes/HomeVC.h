@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "SPPageMenu.h"
 #import "HomeBaseTbV.h"
-
-@interface HomeVC : UIViewController<UITextFieldDelegate,SPPageMenuDelegate,UITableViewDataSource,UITableViewDelegate,SDCycleScrollViewDelegate,STPlaceholderViewDelegate>
+#import "STAlertV.h"
+#import "UIViewController+CBPopup.h"
+@interface HomeVC : UIViewController<UITextFieldDelegate,SPPageMenuDelegate,UITableViewDataSource,UITableViewDelegate,SDCycleScrollViewDelegate,STPlaceholderViewDelegate,STAlertVDel>
 @property (nonatomic ,strong)UIView *navBarV;
 
 @property (nonatomic ,strong)UIView *cutOffV;
@@ -47,6 +48,8 @@
 //定义一个没有数据时的View
 @property (nonatomic,strong)STPlaceholderView *placeholderV;
 
+//定义一个弹出视图
+@property (assign, nonatomic) CBPopupViewAligment popAligment;
 
 
 @end

@@ -298,6 +298,38 @@
                 make.centerX.equalTo(_wait_payV);
             }];
 
+            UILabel * wait_pay_font = [[UILabel alloc] init];
+            wait_pay_font.font = [UIFont systemFontOfSize:13];
+            wait_pay_font.textColor = midBlackC;
+            wait_pay_font.textAlignment = NSTextAlignmentRight;
+            wait_pay_font.text = @"代付款";
+            [_wait_payV addSubview:wait_pay_font];
+            [wait_pay_font mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.equalTo(_wait_payV);
+                make.bottom.equalTo(_wait_payV.mas_bottom).offset(-10*StScaleH);
+            }];
+
+            UILabel * wait_pay_brage = [[UILabel alloc] init];
+            wait_pay_brage.font = [UIFont systemFontOfSize:13];
+            wait_pay_brage.textColor = [UIColor color_HexStr:@"d73509"];
+            wait_pay_brage.textAlignment = NSTextAlignmentCenter;
+            wait_pay_brage.text = _mineMs.no_pay == NULL ? @"" : [NSString stringWithFormat:@"%@",_mineMs.no_pay];
+            wait_pay_brage.layer.borderColor = [UIColor color_HexStr:@"d73509"].CGColor;
+            if ([[NSString stringWithFormat:@"%@",_mineMs.no_pay] isEqual: @"0"] || _mineMs.no_pay == NULL ){
+                wait_pay_brage.hidden = YES;
+            }else{
+                wait_pay_brage.hidden = NO;
+                wait_pay_brage.layer.borderWidth = 1;
+                wait_pay_brage.layer.cornerRadius = 10;
+            }
+            [_wait_payV addSubview:wait_pay_brage];
+            [wait_pay_brage mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(_wait_payV.mas_top).offset(2);
+                make.right.equalTo(_wait_payV.mas_right).offset(-10*StScaleH);
+                make.width.mas_equalTo(20*StScaleH);
+                make.height.mas_equalTo(20*StScaleH);
+            }];
+
             _pinDan_V = [[UIView alloc] init ];
             [_dealV addSubview:_pinDan_V];
             [_pinDan_V mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -313,6 +345,33 @@
             [_pinDan_IV mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(_pinDan_V.mas_top).offset(10*StScaleH);
                 make.centerX.equalTo(_pinDan_V);
+            }];
+
+            UILabel * pinDan_font = [[UILabel alloc] init];
+            pinDan_font.font = [UIFont systemFontOfSize:13];
+            pinDan_font.textColor = midBlackC;
+            pinDan_font.textAlignment = NSTextAlignmentRight;
+            pinDan_font.text = @"拼单中";
+            [_pinDan_V addSubview:pinDan_font];
+            [pinDan_font mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.equalTo(_pinDan_V);
+                make.bottom.equalTo(_pinDan_V.mas_bottom).offset(-10*StScaleH);
+            }];
+
+            UILabel * pinDan_brage = [[UILabel alloc] init];
+            pinDan_brage.font = [UIFont systemFontOfSize:13];
+            pinDan_brage.textColor = [UIColor color_HexStr:@"d73509"];
+            pinDan_brage.textAlignment = NSTextAlignmentCenter;
+            pinDan_brage.text = [NSString stringWithFormat:@"%@",_mineMs.has_pay];
+            pinDan_brage.layer.borderColor = [UIColor color_HexStr:@"d73509"].CGColor;
+            pinDan_brage.layer.borderWidth = 1;
+            pinDan_brage.layer.cornerRadius = 10;
+            [_pinDan_V addSubview:pinDan_brage];
+            [pinDan_brage mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(_pinDan_V.mas_top).offset(2);
+                make.right.equalTo(_pinDan_V.mas_right).offset(-10*StScaleH);
+                make.width.mas_equalTo(20*StScaleH);
+                make.height.mas_equalTo(20*StScaleH);
             }];
 
             _wait_receV = [[UIView alloc] init ];
@@ -332,6 +391,33 @@
                 make.centerX.equalTo(_wait_receV);
             }];
 
+            UILabel * wait_rece_font = [[UILabel alloc] init];
+            wait_rece_font.font = [UIFont systemFontOfSize:13];
+            wait_rece_font.textColor = midBlackC;
+            wait_rece_font.textAlignment = NSTextAlignmentRight;
+            wait_rece_font.text = @"待收货";
+            [_wait_receV addSubview:wait_rece_font];
+            [wait_rece_font mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.equalTo(_wait_receV);
+                make.bottom.equalTo(_wait_receV.mas_bottom).offset(-10*StScaleH);
+            }];
+
+            UILabel * wait_rece_brage = [[UILabel alloc] init];
+            wait_rece_brage.font = [UIFont systemFontOfSize:13];
+            wait_rece_brage.textColor = [UIColor color_HexStr:@"d73509"];
+            wait_rece_brage.textAlignment = NSTextAlignmentCenter;
+            wait_rece_brage.text = [NSString stringWithFormat:@"%@",_mineMs.no_delivery];
+            wait_rece_brage.layer.borderColor = [UIColor color_HexStr:@"d73509"].CGColor;
+            wait_rece_brage.layer.borderWidth = 1;
+            wait_rece_brage.layer.cornerRadius = 10;
+            [_wait_receV addSubview:wait_rece_brage];
+            [wait_rece_brage mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(_wait_receV.mas_top).offset(2);
+                make.right.equalTo(_wait_receV.mas_right).offset(-10*StScaleH);
+                make.width.mas_equalTo(20*StScaleH);
+                make.height.mas_equalTo(20*StScaleH);
+            }];
+
             _over_V = [[UIView alloc] init ];
             [_dealV addSubview:_over_V];
             [_over_V mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -349,6 +435,32 @@
                 make.centerX.equalTo(_over_V);
             }];
 
+            UILabel * over_font = [[UILabel alloc] init];
+            over_font.font = [UIFont systemFontOfSize:13];
+            over_font.textColor = midBlackC;
+            over_font.textAlignment = NSTextAlignmentRight;
+            over_font.text = @"已完成";
+            [_over_V addSubview:over_font];
+            [over_font mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.equalTo(_over_V);
+                make.bottom.equalTo(_over_V.mas_bottom).offset(-10*StScaleH);
+            }];
+
+//            UILabel * over_brage = [[UILabel alloc] init];
+//            over_brage.font = [UIFont systemFontOfSize:13];
+//            over_brage.textColor = [UIColor color_HexStr:@"d73509"];
+//            over_brage.textAlignment = NSTextAlignmentCenter;
+//            over_brage.text = @"4";
+//            over_brage.layer.borderColor = [UIColor color_HexStr:@"d73509"].CGColor;
+//            over_brage.layer.borderWidth = 1;
+//            over_brage.layer.cornerRadius = 10;
+//            [_over_V addSubview:over_brage];
+//            [over_brage mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.top.equalTo(_over_V.mas_top).offset(2);
+//                make.right.equalTo(_over_V.mas_right).offset(-10*StScaleH);
+//                make.width.mas_equalTo(20*StScaleH);
+//                make.height.mas_equalTo(20*StScaleH);
+//            }];
 
             return headerV;
             break;

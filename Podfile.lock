@@ -21,6 +21,12 @@ PODS:
     - JCore (~> 1.1.7)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
+  - Meiqia (3.4.5):
+    - Meiqia/MeiqiaSDK (= 3.4.5)
+    - Meiqia/MQChatViewController (= 3.4.5)
+  - Meiqia/MeiqiaSDK (3.4.5)
+  - Meiqia/MQChatViewController (3.4.5):
+    - Meiqia/MeiqiaSDK
   - MJRefresh (3.1.15.3)
   - RealReachability (1.1.9):
     - RealReachability/Connection (= 1.1.9)
@@ -48,6 +54,7 @@ DEPENDENCIES:
   - JPush
   - Masonry
   - MBProgressHUD
+  - Meiqia (~> 3.4.5)
   - MJRefresh
   - RealReachability
   - SDCycleScrollView (~> 1.75)
@@ -65,6 +72,7 @@ SPEC CHECKSUMS:
   JPush: 9574d072cc37e93fa293ba69b43ce763c440943a
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  Meiqia: 17055d9abb1269243d82d9d8adb27151a1b6ef40
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
   RealReachability: a8c483900986a0f3305733961effbfbb00637a02
   SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
@@ -75,6 +83,6 @@ SPEC CHECKSUMS:
   XYLaunchAndIntroduction: 7fe87187115584174081ac338f19ef7bcc2a1441
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 9d82495f63faa69e4611e5abfcb732bc7aaa8c3e
+PODFILE CHECKSUM: b9dafe6442ceff5aaa464315720c4778350bf028
 
 COCOAPODS: 1.4.0

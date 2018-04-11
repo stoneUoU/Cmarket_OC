@@ -58,9 +58,9 @@
 
     [YYModelVC SimpleObjectExample];
 
-    //[self setUpUI];
+    [self setUpUI];
 
-    [self startQ];
+    //[self startQ];
 
     NSLog(@"开始《《《");
     SingleClass *obj1 = [SingleClass shareIns] ;
@@ -114,22 +114,6 @@
         STLog(@"%@",error)
     }];
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 -(void)setUpUI{

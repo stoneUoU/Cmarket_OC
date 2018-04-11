@@ -53,7 +53,7 @@ static SRWebSocket * webScoket = nil;
 {
     
     if (_webSocket == nil) {
-        self.webSocket = [[SRWebSocket alloc]initWithURL:[NSURL URLWithString:@"ws://123.207.167.163:9010/ajaxchattest"]]; //ws://192.168.1.1:2000
+        self.webSocket = [[SRWebSocket alloc]initWithURL:[NSURL URLWithString:@"ws://123.207.167.163:9010/ajaxchattest"]]; //ws://192.168.1.1:2000  
     }
     self.webSocket.delegate = self;
     [self.webSocket open];

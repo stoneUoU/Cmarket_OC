@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface YYCacheVC : UIViewController
+#import "DYAdAlertView.h"
+#import "DYAdModel.h"
+@interface YYCacheVC : UIViewController<DYAdAlertDelegate>
 @property (nonatomic,strong)NSMutableArray *dataArrs;
 
 @property (nonatomic,retain)NSMutableArray *expressArrs;

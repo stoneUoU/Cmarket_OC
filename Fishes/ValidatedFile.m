@@ -56,7 +56,7 @@
 //登录密码
 + (BOOL) LoginCodeIsValidated:(NSString *)str
 {
-    NSString *loginCodeCheck = @"^\\w{6,15}$";
+    NSString *loginCodeCheck = @"^(?![0-9]+$)(?![a-zA-Z]+$)[a-zA-Z0-9]{6,18}";
     NSPredicate *loginCodeTest = [NSPredicate predicateWithFormat:@"SELF MATCHES%@",loginCodeCheck];
     return [loginCodeTest evaluateWithObject:str];
 }
@@ -71,6 +71,18 @@
     NSString *bankCardCheck = @"(^[1-9]\\d{5}(18|19|([23]\\d))\\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\\d{3}[0-9Xx]$)|(^[1-9]\\d{5}\\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\\d{2}[0-9Xx]$)";
     NSPredicate *bankCardTest = [NSPredicate predicateWithFormat:@"SELF MATCHES%@",bankCardCheck];
     return [bankCardTest evaluateWithObject:str];
+}
+#pragma 正则校验URL
++ (BOOL) URLIsValidated : (NSString *) str{
+    NSString *urlCheck = @"^[0-9A-Za-z]{1,50}";
+    NSPredicate *urlTest = [NSPredicate predicateWithFormat:@"SELF MATCHES%@",urlCheck];
+    return [urlTest evaluateWithObject:str];
+}
+#pragma 正则只能输入数字和字母
++ (BOOL) CNumIsValidated : (NSString *) str{
+    NSString *cNumCheck = @"^[A-Za-z0-9]+$";
+    NSPredicate *cNumTest = [NSPredicate predicateWithFormat:@"SELF MATCHES%@",cNumCheck];
+    return [cNumTest evaluateWithObject:str];
 }
 
 @end

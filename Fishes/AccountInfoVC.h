@@ -7,6 +7,20 @@
 //
 #import <UIKit/UIKit.h>
 #import "AccountInfoV.h"
-@interface AccountInfoVC : BaseToolVC<AccountInfoVDel>
+#import "STDatePickerView.h"
+
+typedef void(^NickB)(NSDictionary *, BOOL);
+
+@interface AccountInfoVC : BaseToolVC<AccountInfoVDel,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,STDatePickerViewDelegate>
 @property (nonatomic,strong) AccountInfoV *accountInfoV;
+
+@property UIImagePickerController *pickerController;
+
+@property (nonatomic, strong) NickB nickB;
+
+@property (nonatomic, strong) NSArray* arrO;
+
+@property (nonatomic, strong) NSDictionary* dictO;
+//使用单例并实现闭包
++(instancetype) shareIns;
 @end

@@ -10,4 +10,6 @@
 
 @interface UIFont (runtime)
 
++ (UIFont *)adjustFont:(CGFloat)fontSize;
+
 @end

@@ -48,7 +48,7 @@
 }
 @end
 @implementation MineV
-@synthesize mineMs = _mineMs;
+//@synthesize mineMs = _mineMs;
 - (void)drawRect:(CGRect)rect {
     _mineDicts = @[
         @[
@@ -313,9 +313,9 @@
             wait_pay_brage.font = [UIFont systemFontOfSize:13];
             wait_pay_brage.textColor = [UIColor color_HexStr:@"d73509"];
             wait_pay_brage.textAlignment = NSTextAlignmentCenter;
-            wait_pay_brage.text = _mineMs.no_pay == NULL ? @"" : [NSString stringWithFormat:@"%@",_mineMs.no_pay];
+            wait_pay_brage.text = _mineSonMs.no_pay == NULL ? @"" : [NSString stringWithFormat:@"%@",_mineSonMs.no_pay];
             wait_pay_brage.layer.borderColor = [UIColor color_HexStr:@"d73509"].CGColor;
-            if ([[NSString stringWithFormat:@"%@",_mineMs.no_pay] isEqual: @"0"] || _mineMs.no_pay == NULL ){
+            if ([[NSString stringWithFormat:@"%@",_mineSonMs.no_pay] isEqual: @"0"] || _mineSonMs.no_pay == NULL ){
                 wait_pay_brage.hidden = YES;
             }else{
                 wait_pay_brage.hidden = NO;
@@ -362,10 +362,15 @@
             pinDan_brage.font = [UIFont systemFontOfSize:13];
             pinDan_brage.textColor = [UIColor color_HexStr:@"d73509"];
             pinDan_brage.textAlignment = NSTextAlignmentCenter;
-            pinDan_brage.text = [NSString stringWithFormat:@"%@",_mineMs.has_pay];
+            pinDan_brage.text = [NSString stringWithFormat:@"%@",_mineSonMs.has_pay];
             pinDan_brage.layer.borderColor = [UIColor color_HexStr:@"d73509"].CGColor;
-            pinDan_brage.layer.borderWidth = 1;
-            pinDan_brage.layer.cornerRadius = 10;
+            if ([[NSString stringWithFormat:@"%@",_mineSonMs.has_pay] isEqual: @"0"] || _mineSonMs.has_pay == NULL ){
+                pinDan_brage.hidden = YES;
+            }else{
+                pinDan_brage.hidden = NO;
+                pinDan_brage.layer.borderWidth = 1;
+                pinDan_brage.layer.cornerRadius = 10;
+            }
             [_pinDan_V addSubview:pinDan_brage];
             [pinDan_brage mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(_pinDan_V.mas_top).offset(2);
@@ -406,10 +411,15 @@
             wait_rece_brage.font = [UIFont systemFontOfSize:13];
             wait_rece_brage.textColor = [UIColor color_HexStr:@"d73509"];
             wait_rece_brage.textAlignment = NSTextAlignmentCenter;
-            wait_rece_brage.text = [NSString stringWithFormat:@"%@",_mineMs.no_delivery];
+            wait_rece_brage.text = [NSString stringWithFormat:@"%@",_mineSonMs.no_delivery];
             wait_rece_brage.layer.borderColor = [UIColor color_HexStr:@"d73509"].CGColor;
-            wait_rece_brage.layer.borderWidth = 1;
-            wait_rece_brage.layer.cornerRadius = 10;
+            if ([[NSString stringWithFormat:@"%@",_mineSonMs.no_delivery] isEqual: @"0"] || _mineSonMs.no_delivery == NULL ){
+                wait_rece_brage.hidden = YES;
+            }else{
+                wait_rece_brage.hidden = NO;
+                wait_rece_brage.layer.borderWidth = 1;
+                wait_rece_brage.layer.cornerRadius = 10;
+            }
             [_wait_receV addSubview:wait_rece_brage];
             [wait_rece_brage mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(_wait_receV.mas_top).offset(2);

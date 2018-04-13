@@ -79,7 +79,8 @@
                 //存登录后的token
                 [UICKeyChainStore keyChainStore][@"orLogin"] = @"true";
                 [UICKeyChainStore keyChainStore][@"authos"] = feedBacks[@"data"][@"token"];
-                STLog(@"%@",[NSString stringWithFormat:@"%@",[_pass_Vals objectForKey:@"status_code"]]);
+                STLog(@"%@",feedBacks[@"data"][@"token"]);
+                STLog(@"%@",[feedBacks[@"data"] objectForKey:@"token"]);
                 if ([[NSString stringWithFormat:@"%@",[_pass_Vals objectForKey:@"status_code"]]  isEqual: @"0"]){
                     [MethodFunc dismissCurrVC:self];
                     [MethodFunc backToHomeVC:[_pass_Vals objectForKey:@"selfVC"]];

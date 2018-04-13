@@ -35,7 +35,7 @@
 - (UILabel *)product_title {
     if(_product_title == nil) {
         _product_title = [[UILabel alloc] init];
-        _product_title.font = [UIFont systemFontOfSize:16];
+        _product_title.font = [UIFont adjustFont:16];//[UIFont systemFontOfSize:16];
         _product_title.numberOfLines = 2;
         _product_title.lineBreakMode = NSLineBreakByTruncatingTail;
         [self addSubview:_product_title];

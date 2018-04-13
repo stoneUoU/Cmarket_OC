@@ -54,7 +54,7 @@
 }
 
 -(void)startR{
-    if ([self.netUseVals isEqualToString: @"Unseable"]){
+    if ([self.netUseVals isEqualToString: @"Useable"]){
         if (self.placeholderV != nil){
             [self.placeholderV removeFromSuperview];
             self.placeholderV = nil;

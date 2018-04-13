@@ -78,7 +78,7 @@
     //注册微信支付:
     [STPAYMANAGER st_registerApp];
 
-    [YYCacheTools removeAllResCache];
+    //[YYCacheTools removeAllResCache];
     [application setApplicationIconBadgeNumber:0];
     [application cancelAllLocalNotifications];
     [JPUSHService setupWithOption:launchOptions appKey:jpushAppKey
@@ -122,18 +122,15 @@
     ReachabilityStatus status = [GLobalRealReachability currentReachabilityStatus];
     if (status == RealStatusNotReachable)
     {
-        STLog(@"1111");
         keychainStore[@"ifnetUse"] = @"unUseable";
     }
     if (status == RealStatusViaWiFi)
     {
-        STLog(@"2222");
         keychainStore[@"ifnetUse"] = @"Useable";
     }
 
     if (status == RealStatusViaWWAN)
     {
-        STLog(@"3333");
         keychainStore[@"ifnetUse"] = @"Useable";
     }
 }

@@ -362,7 +362,7 @@
         _pageMenu = [SPPageMenu pageMenuWithFrame:CGRectMake(0, 0, ScreenW, PageMenuH) trackerStyle:SPPageMenuTrackerStyleLineAttachment];
         [_pageMenu setItems:@[@"正在进行",@"即将开始"] selectedItemIndex:0];
         _pageMenu.delegate = self;
-        _pageMenu.itemTitleFont = [UIFont systemFontOfSize:16];
+        _pageMenu.itemTitleFont = [UIFont adjustFont:16];
         _pageMenu.selectedItemTitleColor = styleColor;
         _pageMenu.unSelectedItemTitleColor = deepBlackC;
         _pageMenu.tracker.backgroundColor = styleColor;

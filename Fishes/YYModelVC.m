@@ -61,21 +61,6 @@
     [self setUpUI];
 
     //[self startQ];
-
-    NSLog(@"开始《《《");
-    SingleClass *obj1 = [SingleClass shareIns] ;
-    NSLog(@"obj1 = %@.", obj1) ;
-
-    SingleClass *obj2 = [SingleClass shareIns] ;
-    NSLog(@"obj2 = %@.", obj2) ;
-
-    SingleClass *obj3 = [[SingleClass alloc] init] ;
-    NSLog(@"obj3 = %@.", obj3) ;
-
-    SingleClass* obj4 = [[SingleClass alloc] init] ;
-    NSLog(@"obj4 = %@.", [obj4 copy]) ;
-
-    NSLog(@"结束》》》");
 }
 -(void)startQ{
     [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"carousel/list" withParaments:@{} Authos:@"" withSuccessBlock:^(NSDictionary *feedBacks) {

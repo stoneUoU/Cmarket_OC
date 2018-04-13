@@ -57,12 +57,6 @@
         /**分别设置请求以及相应的序列化器*/
         self.requestSerializer = [AFJSONRequestSerializer serializer];
 
-        AFJSONResponseSerializer * response = [AFJSONResponseSerializer serializer];
-
-        response.removesKeysWithNullValues = YES;
-
-        self.responseSerializer = response;
-
         /**复杂的参数类型 需要使用json传值-设置请求内容的类型*/
 
         [self.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -71,7 +65,7 @@
         /**设置apikey ------类似于自己应用中的tokken---此处仅仅作为测试使用*/
         //[self.requestSerializer setValue:apikey forHTTPHeaderField:@"apikey"];
         /**设置接受的类型*/
-        self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
+        self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil,nil];
 
     }
 
@@ -103,9 +97,11 @@
             /**设置请求超时时间*/
             [[NetWorkManager shareManager].requestSerializer setTimeoutInterval:timeoutTime];
             [[NetWorkManager shareManager] GET:urlString parameters:paraments success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-
-                successBlock(responseObject);
-
+                if([responseObject isKindOfClass:[NSData class]]){   //根据后台返回的数据类型进行判断，若为NSData，则转成NSDict
+                    successBlock([NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil]);
+                }else{
+                    successBlock(responseObject);
+                }
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 
                 failureBlock(error);
@@ -122,9 +118,11 @@
             /**设置请求超时时间*/
             [[NetWorkManager shareManager].requestSerializer setTimeoutInterval:timeoutTime];
             [[NetWorkManager shareManager] POST:urlString parameters:paraments success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-
-                successBlock(responseObject);
-
+                if([responseObject isKindOfClass:[NSData class]]){   //根据后台返回的数据类型进行判断，若为NSData，则转成NSDict
+                    successBlock([NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil]);
+                }else{
+                    successBlock(responseObject);
+                }
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 
                 failureBlock(error);

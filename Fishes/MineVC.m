@@ -34,11 +34,20 @@
                                                  name:@"netChange"
                                                object:nil];
     [self setUpUI];
-    [self startR];
+    [self setClosure];
+}
+
+- (void) setClosure{
+    AccountInfoVC *accountV=[AccountInfoVC shareIns];
+    accountV.nickB = ^(NSDictionary *dict, BOOL b){
+        STLog(@"%@",[dict objectForKey:@"postN"]);
+        [self startR:1];
+    };
 }
 - (void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:true];
     self.navigationController.navigationBarHidden = true;
+    [self startR:1];
 }
 
 - (void)setUpUI{
@@ -57,32 +66,42 @@
 
 
 //发送网络请求：（查询个人信息R）
--(void)startR{
-
+-(void)startR:(NSInteger )ifR{
+    if([YYCacheTools isCacheExist:@"user/list"]){
+        [self setCache];
+    }
     if ([_netUseVals isEqualToString: @"Useable"]){
-        [HudTips showHUD:self];
         [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"user/list" withParaments:@{} Authos:self.Auths withSuccessBlock:^(NSDictionary *feedBacks) {
-            [HudTips hideHUD:self];
             //进行容错处理丫:
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
-                self.mineV.mineMs = [[MineMs alloc] initMs:feedBacks[@"data"][@"nick_name"] gender:feedBacks[@"data"][@"gender"] tel:feedBacks[@"data"][@"tel"] avatar:feedBacks[@"data"][@"avatar"] birthday:feedBacks[@"data"][@"birthday"] user_name:feedBacks[@"data"][@"user_name"] customer_service_tel:feedBacks[@"data"][@"customer_service_tel"] has_pay:feedBacks[@"data"][@"order_num"][@"has_pay"] no_pay:feedBacks[@"data"][@"order_num"][@"no_pay"] over:feedBacks[@"data"][@"order_num"][@"over"] no_delivery:feedBacks[@"data"][@"order_num"][@"no_delivery"]];
-                [self.mineV.tableV reloadData];
+                if (![[NSString stringWithFormat:@"%@",feedBacks] isEqualToString:[NSString stringWithFormat:@"%@",[YYCacheTools resCacheForURL:@"user/list"]]]){
+                    //将返回的数据存入YYCache
+                    [YYCacheTools setResCache:feedBacks url:@"user/list"];
+                    MineMs *mineMs = [MineMs modelWithJSON:feedBacks[@"data"]];
+                    MineSonMs *mineSonMs = [MineSonMs modelWithJSON:feedBacks[@"data"][@"order_num"]];
+                    [mineMs.order_num addObject:mineSonMs];
+                    self.mineV.mineMs = mineMs;
+                    self.mineV.mineSonMs = mineSonMs;
+                    [self.mineV.tableV reloadData];
+                }
+                if (ifR == 0){
+                    [self.mineV.tableV.mj_header endRefreshing];
+                }
             }else if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"10009"]){
-                //[HudTips showToast: missSsidTips showType:Pos animationType:StToastAnimationTypeScale];
                 [MethodFunc dealAuthMiss:self tipInfo:feedBacks[@"msg"]];
             }else{
                 [HudTips showToast: feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
+                if (ifR == 0){
+                    [self.mineV.tableV.mj_header endRefreshing];
+                }
             }
-            //[self.mineV.iconV sd_setImageWithURL:[NSURL URLWithString:[picUrl stringByAppendingString:feedBacks[@"data"][@"avatar"]]] placeholderImage:[UIImage imageNamed:@"pic_loading_shangpingxiangqing.png"]];
         } withFailureBlock:^(NSError *error) {
-            [HudTips hideHUD:self];
             STLog(@"%@",error)
         }];
     }else{
         [HudTips showToast: missNetTips showType:Pos animationType:StToastAnimationTypeScale];
     }
 }
-
 /*
  #pragma mark - Navigation
  
@@ -95,7 +114,12 @@
 // MARK: - MineVDel
 - (void)toMsg {
     //STLog(@"去消息模块");
-    [MethodFunc pushToNextVC:self destVC:[[AccountInfoVC alloc] init]];
+//    AccountInfoVC *accountV=[[AccountInfoVC alloc]init ];
+//    accountV.nickB = ^(NSDictionary *dict, BOOL b){
+//        STLog(@"%@",[dict objectForKey:@"postN"]);
+//        [self startR:1];
+//    };
+    [MethodFunc pushToNextVC:self destVC:[[AccountInfoVC alloc]init ]];
 }
 - (void)toNextVC:(NSString *)section row:(NSString *)row{
     switch ([section integerValue]) {
@@ -128,9 +152,7 @@
 
 - (void)toRefresh {
     // 模拟网络请求，1秒后结束刷新
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.mineV.tableV.mj_header endRefreshing];
-    });
+    [self startR:0];
 }
 
 //通知模块代码：
@@ -138,6 +160,15 @@
     NSDictionary *dict = notification.userInfo;
     _netUseVals =  dict[@"ifnetUse"];
 }
+-(void)setCache{
+    MineMs *mineMs = [MineMs modelWithJSON:[YYCacheTools resCacheForURL:@"user/list"][@"data"]];
+    MineSonMs *mineSonMs = [MineSonMs modelWithJSON:[YYCacheTools resCacheForURL:@"user/list"][@"data"][@"order_num"]];
+    [mineMs.order_num addObject:mineSonMs];
+    self.mineV.mineMs = mineMs;
+    self.mineV.mineSonMs = mineSonMs;
+    [self.mineV.tableV reloadData];
+};
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

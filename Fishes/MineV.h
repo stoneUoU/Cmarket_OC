@@ -32,5 +32,6 @@
 @property (nonatomic, weak) id<MineVDel> delegate; //定义一个属性，可以用来进行get set操作
 //定义数据源
 @property (nonatomic,retain)MineMs *mineMs;
-
+//定义数据源
+@property (nonatomic,retain)MineSonMs *mineSonMs;
 @end

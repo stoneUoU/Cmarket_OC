@@ -50,15 +50,17 @@
 //正则表达式
 #import "ValidatedFile.h"
 #import "AppDelegate.h"
+#import "UIFont+runtime.h"
 
 //YYkit框架
 #import <YYKit/YYKit.h>
 #import "NSString+MD5.h"
 //封装好的支付类
 #import "STPayManager.h"
-
-
-#import "Macros.h"
+//图片圆角
+#import "UIImageView+CornerRadius.h"
+#import "YYCacheTools.h"
+//#import "Macros.h"
 //自定义Log输入日志+显示行号
 #ifdef DEBUG
 #define STLog(FORMAT, ...) fprintf(stderr,"%s:%d\t%s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
@@ -98,13 +100,14 @@
 #define CMarketUrl  @"https://api.cht.znrmny.com"
 #define picUrl @"https://pic.cht.znrmny.com"
 #define LQYIP @"https://webview.cht.znrmny.com/"
+////定义BaseURL后面的一戳
+#define followRoute @"api/cht/app/v1/"
 
 //请求地址：测试环境
 //#define CMarketUrl  @"http://10.10.0.62:13381/"
 //#define picUrl @"http://10.10.0.62:13380"
 //#define LQYIP @"http://10.10.0.62:13380/"
-//定义BaseURL后面的一戳
-#define followRoute @"/api/cht/app/v1/"
+//#define followRoute @""
 //定义登录失效的状态码
 #define OutCode  @"10009"
 //请求超时时间
@@ -150,3 +153,8 @@
 #define apsForChannel  @"Publish channel"
 //token
 //#define authos @"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjE1NzE3OTE0NTA1IiwidXNlcl9pZCI6IjEwMDA3Iiwicm9sZV9uYW1lIjoidXNlciIsImV4cCI6MTUyNDEwNjMyMS40MjI1NzYsImlhdCI6MTUyMTUxNDMyMS40MjI1NzYsInR5cGUiOiIzIn0.HwSkoZcSrbPLy4eSPLRIkGNqjM9NEOWlyy2ZXBniGjc"
+
+
+//在xcode打印中: 数组的[]被改成()   json的 : 被改成 =  , 被改成 ;
+
+//注:  NSArray没有removeAllObject方法    

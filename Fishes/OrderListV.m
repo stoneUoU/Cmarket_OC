@@ -30,6 +30,7 @@
     [_tableV registerClass:[OrderListTbCells class] forCellReuseIdentifier: @"orderListTbCells"];
     //添加下拉刷新头
     _tableV.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(freshDs)];
+    _tableV.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMDs)];
     // 马上进入刷新状态
     [self addSubview:_tableV];
 
@@ -262,6 +263,9 @@
 }
 - (void)freshDs{
     [self.delegate toRefresh];
+}
+- (void)loadMDs{
+    [self.delegate toLoadM];
 }
 //    _testBtn = [[UIButton alloc] init];
 //    _testBtn.titleLabel.font=[UIFont systemFontOfSize:16];

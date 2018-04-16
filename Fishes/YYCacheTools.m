@@ -29,6 +29,13 @@ static YYCache *_dataCache;
     BOOL isContains=[_dataCache containsObjectForKey:url];
     return isContains;
 }
++ (void)removeAppointedResCache:(NSString *)url{
+    STLog(@"99999");
+    //根据key移除缓存
+    [_dataCache.diskCache removeObjectForKey:url withBlock:^(NSString * _Nonnull url) {
+        STLog(@"removeObjectForKey %@",url);
+    }];
+}
 + (NSInteger)getAllResCacheSize {
     return [_dataCache.diskCache totalCost];
 }

@@ -18,6 +18,8 @@
 
 + (void)removeAllResCache;
 
++ (void)removeAppointedResCache:(NSString *)url;
+
 + (BOOL)isCacheExist:(NSString *)url;
 
 @end

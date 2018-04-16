@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "OrderListV.h"
-@interface OrderListVC : UIViewController<OrderListVDel>
+@interface OrderListVC : UIViewController<OrderListVDel,STPlaceholderViewDelegate>
 @property (nonatomic,strong) OrderListV *orderListV;
 @property(nonatomic,strong)NSDictionary *pass_Vals;
 
@@ -16,8 +16,10 @@
 
 @property(nonatomic, copy) NSString *Auths;
 @property(nonatomic, copy) NSString *netUseVals;
-
-
+@property double pageInt;
 @property (nonatomic,assign)double pageSize;
+@property double totalMount;
+//定义一个没有数据时的View
+@property (nonatomic,strong)STPlaceholderView *placeholderV;
 
 @end

@@ -11,6 +11,7 @@
 @protocol OrderListVDel
 //这里只需要声明方法
 - (void)toRefresh;
+- (void)toLoadM;
 - (void)toGo:(NSInteger) section row:(NSInteger) row;
 @end
 @interface OrderListV : UIView<UITableViewDelegate,UITableViewDataSource>

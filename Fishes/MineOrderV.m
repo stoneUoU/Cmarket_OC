@@ -41,6 +41,9 @@
 
     _segmentView=[[ZPSegmentView alloc]initWithFrame:CGRectMake(0, -StatusBarAndNavigationBarH, ScreenW, ScreenH)];
     [_segmentView setupWithtitles:titles style:_style childVcs:childVcs parentVc:VC];
+    //segmentView?.titleView.setCurrentIndex(self.jumpIds)
+    //segmentView?.contentView.titleView((segmentView?.titleView)!, targetIndex: self.jumpIds
+    //_segmentView.cu
     [self addSubview:_segmentView];
 }
 

@@ -49,7 +49,7 @@
 @property (nonatomic, strong) NSString* logistics_code;
 @property (nonatomic, strong) NSString* express_no;
 @property (nonatomic, strong) NSString* consignee_tel;
-@property (nonatomic, strong) NSString* description;
+@property (nonatomic, strong) NSString* desc;
 @property (nonatomic, strong) NSString* consignee_address;
 @property (nonatomic, strong) NSString* logistics_type_id;
 @end

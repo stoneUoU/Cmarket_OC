@@ -112,6 +112,8 @@
 		52BC7E6E2065E62B000B5E43 /* SmsLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E6D2065E62B000B5E43 /* SmsLoginVC.m */; };
 		52BC7E712065E65F000B5E43 /* RegisterV.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E702065E65F000B5E43 /* RegisterV.m */; };
 		52BC7E742065E66E000B5E43 /* RegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E732065E66E000B5E43 /* RegisterVC.m */; };
+		52C96B9020847E7E00F4DD03 /* OrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C96B8F20847E7E00F4DD03 /* OrderDetailVC.m */; };
+		52C96B9320847E9100F4DD03 /* OrderDetailV.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C96B9220847E9100F4DD03 /* OrderDetailV.m */; };
 		52CE2EF6206CCCFE0053A72B /* WebSocketNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CE2EF5206CCCFE0053A72B /* WebSocketNetwork.m */; };
 		52CE2EF9206CE22B0053A72B /* HomeDetailMs.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CE2EF8206CE22B0053A72B /* HomeDetailMs.m */; };
 		52E42E612071D1940038062C /* SingleClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E42E602071D1940038062C /* SingleClass.m */; };
@@ -336,6 +338,10 @@
 		52BC7E702065E65F000B5E43 /* RegisterV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterV.m; sourceTree = "<group>"; };
 		52BC7E722065E66E000B5E43 /* RegisterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterVC.h; sourceTree = "<group>"; };
 		52BC7E732065E66E000B5E43 /* RegisterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterVC.m; sourceTree = "<group>"; };
+		52C96B8E20847E7E00F4DD03 /* OrderDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailVC.h; sourceTree = "<group>"; };
+		52C96B8F20847E7E00F4DD03 /* OrderDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailVC.m; sourceTree = "<group>"; };
+		52C96B9120847E9100F4DD03 /* OrderDetailV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailV.h; sourceTree = "<group>"; };
+		52C96B9220847E9100F4DD03 /* OrderDetailV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailV.m; sourceTree = "<group>"; };
 		52CE2EF4206CCCFE0053A72B /* WebSocketNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebSocketNetwork.h; sourceTree = "<group>"; };
 		52CE2EF5206CCCFE0053A72B /* WebSocketNetwork.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebSocketNetwork.m; sourceTree = "<group>"; };
 		52CE2EF7206CE22B0053A72B /* HomeDetailMs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailMs.h; sourceTree = "<group>"; };
@@ -620,6 +626,8 @@
 				52795ACE20807B67000FA895 /* MineOrderVC.m */,
 				52795AC720807A14000FA895 /* OrderListVC.h */,
 				52795AC820807A14000FA895 /* OrderListVC.m */,
+				52C96B8E20847E7E00F4DD03 /* OrderDetailVC.h */,
+				52C96B8F20847E7E00F4DD03 /* OrderDetailVC.m */,
 				528DC0ED20745E2900B02986 /* AboutUsVC.h */,
 				528DC0EE20745E2900B02986 /* AboutUsVC.m */,
 			);
@@ -638,6 +646,8 @@
 				52795AD1208086B5000FA895 /* MineOrderV.m */,
 				52795ACA20807A75000FA895 /* OrderListV.h */,
 				52795ACB20807A75000FA895 /* OrderListV.m */,
+				52C96B9120847E9100F4DD03 /* OrderDetailV.h */,
+				52C96B9220847E9100F4DD03 /* OrderDetailV.m */,
 				528F51A92068DEF0008BA452 /* AccountInfoV.h */,
 				528F51AA2068DEF0008BA452 /* AccountInfoV.m */,
 			);
@@ -1020,11 +1030,11 @@
 				"${BUILT_PRODUCTS_DIR}/RealReachability/RealReachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SDCycleScrollView/SDCycleScrollView.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SGPagingView/SGPagingView.framework",
 				"${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework",
 				"${BUILT_PRODUCTS_DIR}/UICKeyChainStore/UICKeyChainStore.framework",
 				"${BUILT_PRODUCTS_DIR}/XYLaunchAndIntroduction/XYLaunchAndIntroduction.framework",
 				"${BUILT_PRODUCTS_DIR}/YYKit/YYKit.framework",
-				"${BUILT_PRODUCTS_DIR}/ZPSegmentBarOC/ZPSegmentBarOC.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1038,11 +1048,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealReachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDCycleScrollView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SGPagingView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketRocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICKeyChainStore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XYLaunchAndIntroduction.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZPSegmentBarOC.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1118,6 +1128,7 @@
 				52795AD5208090D3000FA895 /* OrderListTbCells.m in Sources */,
 				52BADA4A2079E43A00C84945 /* ThreadVC.m in Sources */,
 				528DC0FD207474C400B02986 /* WKWebViewJavascriptBridge.m in Sources */,
+				52C96B9320847E9100F4DD03 /* OrderDetailV.m in Sources */,
 				528936EB2061EC71004463E6 /* UIButton+ST_FixMultiClick.m in Sources */,
 				523F04D32065021800858BDD /* CodeLoginV.m in Sources */,
 				5284058420635602000623B4 /* UILabel+Padding.m in Sources */,
@@ -1151,6 +1162,7 @@
 				528C547A206C848000635C9E /* HomeDetailV.m in Sources */,
 				52680C7D20623B0400F5DB96 /* HomeBaseTbVC.m in Sources */,
 				528DC0EF20745E2900B02986 /* AboutUsVC.m in Sources */,
+				52C96B9020847E7E00F4DD03 /* OrderDetailVC.m in Sources */,
 				528BFD0D207375EE002C5ACB /* AppUpdate.m in Sources */,
 				528DC11D2074C03A00B02986 /* DYAdAlertView.m in Sources */,
 				52680C7A20623A2C00F5DB96 /* SPPageMenu.m in Sources */,

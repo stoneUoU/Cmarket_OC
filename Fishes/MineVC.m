@@ -123,7 +123,7 @@
     [MethodFunc pushToNextVC:self destVC:[[AccountInfoVC alloc]init ]];
 }
 - (void)toOrder {
-    [MethodFunc pushToNextVC:self destVC:[[MineOrderVC alloc]init ]];
+    [MethodFunc pushToNextVC:self destVC:[[MineOrderVC alloc]initWithIds:0]];
 }
 - (void)toNextVC:(NSString *)section row:(NSString *)row{
     switch ([section integerValue]) {
@@ -152,7 +152,22 @@
             break;
     }
 }
-
+- (void)toWpay {
+    MineOrderVC * vc=[[MineOrderVC alloc]initWithIds:1];
+    [MethodFunc pushToNextVC:self destVC:vc];
+}
+- (void)toPdan {
+    MineOrderVC * vc=[[MineOrderVC alloc]initWithIds:2];
+    [MethodFunc pushToNextVC:self destVC:vc];
+}
+- (void)toWrece {
+    MineOrderVC * vc=[[MineOrderVC alloc]initWithIds:3];
+    [MethodFunc pushToNextVC:self destVC:vc];
+}
+- (void)toOver {
+    MineOrderVC * vc=[[MineOrderVC alloc]initWithIds:4];
+    [MethodFunc pushToNextVC:self destVC:vc];
+}
 
 - (void)toRefresh {
     // 模拟网络请求，1秒后结束刷新

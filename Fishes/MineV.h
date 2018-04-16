@@ -15,6 +15,11 @@
 - (void)toOrder;
 - (void)toRefresh;
 - (void)toNextVC:(NSString *) section row:(NSString *) row;
+
+- (void)toWpay;
+- (void)toPdan;
+- (void)toWrece;
+- (void)toOver;
 @end
 @interface MineV : UIView<UITableViewDelegate,UITableViewDataSource>{
     MineMs *_mineMs;

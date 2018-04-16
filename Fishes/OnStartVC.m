@@ -90,8 +90,8 @@
     //除去选中时的颜色
     homeTbCells.selectionStyle = UITableViewCellSelectionStyleNone;
     [homeTbCells.product_icon sd_setImageWithURL:[NSURL URLWithString:[picUrl stringByAppendingString:homeMs.spic]] placeholderImage:[UIImage imageNamed:@"pic_loading_shangpingxiangqing.png"]];
-    //homeTbCells.product_title.text = [NSString stringWithFormat:@"%@",homeMs.title];
-    homeTbCells.product_title.attributedText = [MethodFunc strWithUIImage:@" 海上月是天上月，故乡人是心上人海上月是天上月，故乡人是心上人海上月是天上月，故乡人是心上人" andImage:@"tag_four" andBounds:CGRectMake(0, 0, 64*ScreenW/iphoneSixW, 14*ScreenW/iphoneSixW)];
+    homeTbCells.product_title.text = [NSString stringWithFormat:@"%@",homeMs.title];
+    //homeTbCells.product_title.attributedText = [MethodFunc strWithUIImage:@" 海上月是天上月，故乡人是心上人海上月是天上月，故乡人是心上人海上月是天上月，故乡人是心上人" andImage:@"tag_four" andBounds:CGRectMake(0, 0, 64*ScreenW/iphoneSixW, 14*ScreenW/iphoneSixW)];
     homeTbCells.product_small_title.text = [NSString stringWithFormat:@"%@",homeMs.subtitle];
     homeTbCells.product_attr.text = [[FormatDs retainPoint:@"0.00" floatV:[homeMs.discount_price floatValue]/[[homeMs.attr_value stringByReplacingOccurrencesOfString:@"kg" withString:@""] floatValue]/2] stringByAppendingString:@"元/斤"];
     homeTbCells.progress_bar.progress =  [homeMs.freeze_inventory floatValue]/[homeMs.total_inventory floatValue];

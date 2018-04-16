@@ -284,6 +284,9 @@
             }];
 
             _wait_payV = [[UIView alloc] init ];
+            [_wait_payV setUserInteractionEnabled:YES];
+            UITapGestureRecognizer *wait_payOrder = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toWaitPay:)];
+            [_wait_payV addGestureRecognizer:wait_payOrder];
             [_dealV addSubview:_wait_payV];
             [_wait_payV mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(_dealV.mas_top).offset(0);
@@ -333,6 +336,9 @@
             }];
 
             _pinDan_V = [[UIView alloc] init ];
+            [_pinDan_V setUserInteractionEnabled:YES];
+            UITapGestureRecognizer *pin_danOrder = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toPinDan:)];
+            [_pinDan_V addGestureRecognizer:pin_danOrder];
             [_dealV addSubview:_pinDan_V];
             [_pinDan_V mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(_dealV.mas_top).offset(0);
@@ -382,6 +388,9 @@
             }];
 
             _wait_receV = [[UIView alloc] init ];
+            [_wait_receV setUserInteractionEnabled:YES];
+            UITapGestureRecognizer *wait_receOrder = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toWaitRece:)];
+            [_wait_receV addGestureRecognizer:wait_receOrder];
             [_dealV addSubview:_wait_receV];
             [_wait_receV mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(_dealV.mas_top).offset(0);
@@ -431,6 +440,9 @@
             }];
 
             _over_V = [[UIView alloc] init ];
+            [_over_V setUserInteractionEnabled:YES];
+            UITapGestureRecognizer *overOrder = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toOver:)];
+            [_over_V addGestureRecognizer:overOrder];
             [_dealV addSubview:_over_V];
             [_over_V mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(_dealV.mas_top).offset(0);
@@ -532,6 +544,20 @@
 }
 - (void)loadDs{
     [self.delegate toRefresh];
+}
+
+- (void)toWaitPay:(id)sender{
+    [self.delegate toWpay];
+}
+
+- (void)toPinDan:(id)sender{
+    [self.delegate toPdan];
+}
+- (void)toWaitRece:(id)sender{
+    [self.delegate toWrece];
+}
+- (void)toOver:(id)sender{
+    [self.delegate toOver];
 }
 /*
 // Only override drawRect: if you perform custom drawing.

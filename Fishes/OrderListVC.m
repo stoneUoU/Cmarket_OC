@@ -7,6 +7,7 @@
 //
 
 #import "OrderListVC.h"
+#import "OrderDetailVC.h"
 @implementation OrderListVC
 - (id)init
 {
@@ -62,7 +63,7 @@
         }
         STLog(@"%@",inTab == 0 ? @{@"page":@(_pageInt),@"limit":@(_pageSize)} : @{@"page":@(_pageInt),@"limit":@(_pageSize),@"consumer_status":@(inTab)});
         [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"order/list" withParaments:inTab == 0 ? @{@"page":@(_pageInt),@"limit":@(_pageSize)} : @{@"page":@(_pageInt),@"limit":@(_pageSize),@"consumer_status":@(inTab)} Authos:self.Auths withSuccessBlock:^(NSDictionary *feedBacks) {
-            STLog(@"%@",[feedBacks modelToJSONString]);
+            //STLog(@"%@",[feedBacks modelToJSONString]);
             //进行容错处理丫:（上拉加载绝对是走这里）注：没拍出上拉加载数据与前一页相同的情况
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
                 if (![[NSString stringWithFormat:@"%@",feedBacks] isEqualToString:[NSString stringWithFormat:@"%@",[YYCacheTools resCacheForURL:@"order/list"]]]){
@@ -71,7 +72,7 @@
                         //将返回的数据存入YYCache   上拉加载就不用存如cache
                         [YYCacheTools setResCache:feedBacks url:@"order/list"];
                     }
-                    STLog(@"不相同");
+                    //STLog(@"不相同");
                     if ( [feedBacks[@"data"] count] == 0){
                         if (_placeholderV == nil){
                             _placeholderV = [[STPlaceholderView alloc]initWithFrame:self.view.bounds type:STPlaceholderViewTypeNoData delegate:self];
@@ -82,11 +83,11 @@
                         _placeholderV = nil;
                         for (int i = 0; i < [feedBacks[@"data"] count]; i++) {
                             OrderMs *orderMs = [OrderMs modelWithJSON:feedBacks[@"data"][i]];
-                            [self.orderListV.orderMs addObject:orderMs];
                             OrderSonAMs *orderSonAMs = [OrderSonAMs modelWithJSON:feedBacks[@"data"][i][@"address"]];
                             [orderMs.address addObject:orderSonAMs];
                             OrderSonRMs *orderSonRMs = [OrderSonRMs modelWithJSON:feedBacks[@"data"][i][@"refundment"]];
                             [orderMs.refundment addObject:orderSonRMs];
+                            [self.orderListV.orderMs addObject:orderMs];
                         }
                     }
                 }
@@ -148,8 +149,10 @@
     [self.orderListV.tableV reloadData];
 };
 //OrderListVdel
--(void)toGo:(NSInteger)section row:(NSInteger)row{
-    STLog(@"点击");
+-(void)toGo:(NSString *)ids{
+    OrderDetailVC * vc=[[OrderDetailVC alloc]init];
+    vc.pass_Vals = @{@"order_no":ids};
+    [MethodFunc pushToNextVC:self destVC:vc];
 }
 //下拉刷新
 -(void)toRefresh{

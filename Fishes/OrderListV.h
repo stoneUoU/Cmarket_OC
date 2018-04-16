@@ -12,7 +12,8 @@
 //这里只需要声明方法
 - (void)toRefresh;
 - (void)toLoadM;
-- (void)toGo:(NSInteger) section row:(NSInteger) row;
+//从View中代理出ids
+- (void)toGo:(NSString *) ids;
 @end
 @interface OrderListV : UIView<UITableViewDelegate,UITableViewDataSource>
 

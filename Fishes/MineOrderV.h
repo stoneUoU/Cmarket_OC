@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ZPSegmentView.h"
-@interface MineOrderV : UIView
-@property (nonatomic, strong)ZPSegmentView *segmentView;
+#import "SGPagingView.h"
+@interface MineOrderV : UIView<SGPageTitleViewDelegate, SGPageContentViewDelegate>
 
-@property (nonatomic, strong)ZPSegmentBarStyle *style;
-- (instancetype)initWithFrame:(CGRect)frame andVC:(UIViewController *)VC;
+@property (nonatomic, strong) SGPageTitleView *pageTitleView;
+@property (nonatomic, strong) SGPageContentView *pageContentView;
+
+- (instancetype)initWithFrame:(CGRect)frame andVC:(UIViewController *)VC andIndex:(NSInteger )index;
 @end

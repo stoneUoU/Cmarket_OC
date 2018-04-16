@@ -144,11 +144,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/RealReachability/RealReachability.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDCycleScrollView/SDCycleScrollView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SGPagingView/SGPagingView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/UICKeyChainStore/UICKeyChainStore.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/XYLaunchAndIntroduction/XYLaunchAndIntroduction.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YYKit/YYKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ZPSegmentBarOC/ZPSegmentBarOC.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework"
@@ -161,11 +161,11 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/RealReachability/RealReachability.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDCycleScrollView/SDCycleScrollView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SGPagingView/SGPagingView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/UICKeyChainStore/UICKeyChainStore.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/XYLaunchAndIntroduction/XYLaunchAndIntroduction.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YYKit/YYKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ZPSegmentBarOC/ZPSegmentBarOC.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

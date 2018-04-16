@@ -254,7 +254,8 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [_delegate toGo:indexPath.section row:indexPath.row];
+    OrderMs *orderMs = _orderMs[indexPath.section];
+    [_delegate toGo:orderMs.order_no];
 }
 
 //按钮、手势函数写这

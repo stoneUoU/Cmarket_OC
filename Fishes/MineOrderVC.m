@@ -9,9 +9,9 @@
 #import "MineOrderVC.h"
 
 @implementation MineOrderVC
-- (id)init
+- (id)initWithIds:(NSInteger)index
 {
-    _mineOrderV = [[MineOrderV alloc] initWithFrame:CGRectZero andVC:self]; //对MyUIView进行初始化
+    _mineOrderV = [[MineOrderV alloc] initWithFrame:CGRectZero andVC:self andIndex:index]; //对MyUIView进行初始化
     _mineOrderV.backgroundColor = [UIColor whiteColor];
     return [super init];
 }

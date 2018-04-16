@@ -10,4 +10,6 @@
 #import "MineOrderV.h"
 @interface MineOrderVC : BaseToolVC
 @property (nonatomic,strong) MineOrderV *mineOrderV;
+
+- (instancetype)initWithIds:(NSInteger)index;
 @end

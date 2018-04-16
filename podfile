@@ -16,5 +16,5 @@ pod 'YYKit'
 pod 'WechatOpenSDK' 
 pod ‘XYLaunchAndIntroduction’
 pod 'Meiqia', '~> 3.4.5'
-pod 'ZPSegmentBarOC'
+pod 'SGPagingView'
 end 

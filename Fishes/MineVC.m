@@ -10,6 +10,7 @@
 #import "AccountInfoVC.h"
 #import "AboutUsVC.h"
 #import "SetVC.h"
+#import "MineOrderVC.h"
 @interface MineVC ()
 
 @end
@@ -120,6 +121,9 @@
 //        [self startR:1];
 //    };
     [MethodFunc pushToNextVC:self destVC:[[AccountInfoVC alloc]init ]];
+}
+- (void)toOrder {
+    [MethodFunc pushToNextVC:self destVC:[[MineOrderVC alloc]init ]];
 }
 - (void)toNextVC:(NSString *)section row:(NSString *)row{
     switch ([section integerValue]) {

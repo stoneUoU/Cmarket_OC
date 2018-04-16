@@ -185,6 +185,8 @@
             _user_name.textColor = [UIColor whiteColor];
             _user_name.textAlignment = NSTextAlignmentLeft;
             _user_name.text = _mineMs.nick_name;
+            //_user_name.font =  [UIFont fontWithName:@"iconFont" size:20];
+            //_user_name.text = @"\U0000e6ae 林磊蕾蕾"; //OC语言：@"U0000e645"   //注意：编码查看点击下载文件夹中的demo_unicode.html查
             [_topV addSubview:_user_name];
             [_user_name mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(_iconV.mas_top).offset(8*StScaleH);
@@ -526,7 +528,7 @@
     [self.delegate toMsg];
 }
 - (void)toOrder:(id)sender{
-    [self.delegate toMsg];
+    [self.delegate toOrder];
 }
 - (void)loadDs{
     [self.delegate toRefresh];

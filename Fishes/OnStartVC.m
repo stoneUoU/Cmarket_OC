@@ -91,7 +91,7 @@
     homeTbCells.selectionStyle = UITableViewCellSelectionStyleNone;
     [homeTbCells.product_icon sd_setImageWithURL:[NSURL URLWithString:[picUrl stringByAppendingString:homeMs.spic]] placeholderImage:[UIImage imageNamed:@"pic_loading_shangpingxiangqing.png"]];
     //homeTbCells.product_title.text = [NSString stringWithFormat:@"%@",homeMs.title];
-    homeTbCells.product_title.attributedText = [self stringWithUIImage:@" 海上月是天上月，故乡人是心上人海上月是天上月，故乡人是心上人海上月是天上月，故乡人是心上人" andImage:@"tag_four" andBounds:CGRectMake(0, 0, 64*ScreenW/iphoneSixW, 14*ScreenW/iphoneSixW)];
+    homeTbCells.product_title.attributedText = [MethodFunc strWithUIImage:@" 海上月是天上月，故乡人是心上人海上月是天上月，故乡人是心上人海上月是天上月，故乡人是心上人" andImage:@"tag_four" andBounds:CGRectMake(0, 0, 64*ScreenW/iphoneSixW, 14*ScreenW/iphoneSixW)];
     homeTbCells.product_small_title.text = [NSString stringWithFormat:@"%@",homeMs.subtitle];
     homeTbCells.product_attr.text = [[FormatDs retainPoint:@"0.00" floatV:[homeMs.discount_price floatValue]/[[homeMs.attr_value stringByReplacingOccurrencesOfString:@"kg" withString:@""] floatValue]/2] stringByAppendingString:@"元/斤"];
     homeTbCells.progress_bar.progress =  [homeMs.freeze_inventory floatValue]/[homeMs.total_inventory floatValue];
@@ -183,22 +183,5 @@
         return [NSString stringWithFormat:@"%@天 %@时 %@分 %@秒", dayStr,hoursStr, minutesStr,secondsStr];
     }
     return [NSString stringWithFormat:@"%@时 %@分 %@秒",hoursStr , minutesStr,secondsStr];
-}
-//设置图片的富文本
-- (NSAttributedString *)stringWithUIImage:(NSString *) contentStr andImage:(NSString *) imageStr andBounds:(CGRect ) rects {
-    // 创建一个富文本
-    NSMutableAttributedString * attriStr = [[NSMutableAttributedString alloc] initWithString:contentStr];
-    /**
-     添加图片到指定的位置
-     */
-    NSTextAttachment *attchImage = [[NSTextAttachment alloc] init];
-    // 表情图片
-    attchImage.image = [UIImage imageNamed:imageStr];
-    // 设置图片大小
-    attchImage.bounds = rects;
-    NSAttributedString *stringImage = [NSAttributedString attributedStringWithAttachment:attchImage];
-    [attriStr insertAttributedString:stringImage atIndex:0];
-
-    return attriStr;
 }
 @end

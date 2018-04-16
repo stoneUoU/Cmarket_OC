@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OrderListV.h"
+@interface OrderListVC : UIViewController<OrderListVDel>
+@property (nonatomic,strong) OrderListV *orderListV;
+@property(nonatomic,strong)NSDictionary *pass_Vals;
 
-@interface OrderListVC : UIViewController
+@property (strong, nonatomic) UICKeyChainStore *keychainStore;
+
+@property(nonatomic, copy) NSString *Auths;
+@property(nonatomic, copy) NSString *netUseVals;
+
+
+@property (nonatomic,assign)double pageSize;
 
 @end

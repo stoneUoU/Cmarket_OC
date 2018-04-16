@@ -97,17 +97,17 @@
 #define  StatusBarAndNavigationBarH  (isX ? 88.f : 64.f)
 #define ViewSafeAreInsets(view) ({UIEdgeInsets insets; if(@available(iOS 11.0, *)) {insets = view.safeAreaInsets;} else {insets = UIEdgeInsetsZero;} insets;})
 //请求地址：生产环境
-#define CMarketUrl  @"https://api.cht.znrmny.com"
-#define picUrl @"https://pic.cht.znrmny.com"
-#define LQYIP @"https://webview.cht.znrmny.com/"
-////定义BaseURL后面的一戳
-#define followRoute @"api/cht/app/v1/"
+//#define CMarketUrl  @"https://api.cht.znrmny.com"
+//#define picUrl @"https://pic.cht.znrmny.com"
+//#define LQYIP @"https://webview.cht.znrmny.com/"
+//////定义BaseURL后面的一戳
+//#define followRoute @"api/cht/app/v1/"
 
 //请求地址：测试环境
-//#define CMarketUrl  @"http://10.10.0.62:13381/"
-//#define picUrl @"http://10.10.0.62:13380"
-//#define LQYIP @"http://10.10.0.62:13380/"
-//#define followRoute @""
+#define CMarketUrl  @"http://10.10.0.62:13381/"
+#define picUrl @"http://10.10.0.62:13380"
+#define LQYIP @"http://10.10.0.62:13380/"
+#define followRoute @""
 //定义登录失效的状态码
 #define OutCode  @"10009"
 //请求超时时间
@@ -140,6 +140,7 @@
 #define tagBtnC  [UIColor color_HexStr:@"268339"]
 #define labelDisable [UIColor color_HexStr:@"d4d4d4"]  //label置灰
 #define progress_barC [UIColor color_HexStr:@"d9b7ab"]  //进度条颜色
+#define someTableCellC  [UIColor color_HexStr:@"f9f8f8"]
 
 #define PageMenuH 44
 #define HeaderViewH 150

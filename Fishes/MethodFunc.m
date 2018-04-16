@@ -99,4 +99,29 @@
     [MethodFunc presentToNaviVC:selfVC destVC:startV];
 }
 
+//设置带有图片的富文本
++ (NSAttributedString *)strWithUIImage:(NSString *) contentStr andImage:(NSString *) imageStr andBounds:(CGRect ) rects {
+    // 创建一个富文本
+    NSMutableAttributedString * attriStr = [[NSMutableAttributedString alloc] initWithString:contentStr];
+    /**
+     添加图片到指定的位置
+     */
+    NSTextAttachment *attchImage = [[NSTextAttachment alloc] init];
+    // 表情图片
+    attchImage.image = [UIImage imageNamed:imageStr];
+    // 设置图片大小
+    attchImage.bounds = rects;
+    NSAttributedString *stringImage = [NSAttributedString attributedStringWithAttachment:attchImage];
+    [attriStr insertAttributedString:stringImage atIndex:0];
+
+    return attriStr;
+}
++ (NSAttributedString *)strWithSymbolsS:(NSString *) contentStr andSymbolsC:(UIColor *)symbolsC{
+    // 创建一个富文本  andSymbolsC的颜色
+    NSMutableAttributedString * attriStr = [[NSMutableAttributedString alloc] initWithString:contentStr];
+    [attriStr addAttribute:NSForegroundColorAttributeName value:symbolsC range:NSMakeRange(0, 1)];
+    [attriStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(0, 1)];
+    return attriStr;
+}
+
 @end

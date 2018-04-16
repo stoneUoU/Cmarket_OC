@@ -39,4 +39,9 @@
 //统一处理登录失效的问题
 + (void)dealAuthMiss:(UIViewController *)selfVC tipInfo:(NSString *)tipInfo;
 
+//设置带有图片的富文本
++ (NSAttributedString *)strWithUIImage:(NSString *) contentStr andImage:(NSString *) imageStr andBounds:(CGRect ) rects;
+
+//设置符号变小的富文本￥0.01
++ (NSAttributedString *)strWithSymbolsS:(NSString *) contentStr andSymbolsC:(UIColor *)symbolsC;
 @end

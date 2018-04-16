@@ -46,6 +46,7 @@ PODS:
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
+  - ZPSegmentBarOC (0.2.0)
 
 DEPENDENCIES:
   - AFNetworking
@@ -63,6 +64,7 @@ DEPENDENCIES:
   - WechatOpenSDK
   - XYLaunchAndIntroduction
   - YYKit
+  - ZPSegmentBarOC
 
 SPEC CHECKSUMS:
   AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
@@ -82,7 +84,8 @@ SPEC CHECKSUMS:
   WechatOpenSDK: 491d965d79335070328571d3e79f714549e79a5e
   XYLaunchAndIntroduction: 7fe87187115584174081ac338f19ef7bcc2a1441
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
+  ZPSegmentBarOC: f15a2ce09f65d9b5f884b4a420b26a8980425ce3
 
-PODFILE CHECKSUM: b9dafe6442ceff5aaa464315720c4778350bf028
+PODFILE CHECKSUM: b085b5b4265e5ad9ebf74916b0ad2333a193ae3a
 
 COCOAPODS: 1.4.0

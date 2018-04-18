@@ -75,12 +75,11 @@
         [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"user/list" withParaments:@{} Authos:self.Auths withSuccessBlock:^(NSDictionary *feedBacks) {
             //进行容错处理丫:
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
-                if (![[NSString stringWithFormat:@"%@",feedBacks] isEqualToString:[NSString stringWithFormat:@"%@",[YYCacheTools resCacheForURL:@"user/list"]]]){
+                if ([[NSString stringWithFormat:@"%@",feedBacks] isEqualToString:[NSString stringWithFormat:@"%@",[YYCacheTools resCacheForURL:@"user/list"]]]){
                     //将返回的数据存入YYCache
                     [YYCacheTools setResCache:feedBacks url:@"user/list"];
                     MineMs *mineMs = [MineMs modelWithJSON:feedBacks[@"data"]];
                     MineSonMs *mineSonMs = [MineSonMs modelWithJSON:feedBacks[@"data"][@"order_num"]];
-                    [mineMs.order_num addObject:mineSonMs];
                     self.mineV.mineMs = mineMs;
                     self.mineV.mineSonMs = mineSonMs;
                     [self.mineV.tableV reloadData];
@@ -182,7 +181,6 @@
 -(void)setCache{
     MineMs *mineMs = [MineMs modelWithJSON:[YYCacheTools resCacheForURL:@"user/list"][@"data"]];
     MineSonMs *mineSonMs = [MineSonMs modelWithJSON:[YYCacheTools resCacheForURL:@"user/list"][@"data"][@"order_num"]];
-    [mineMs.order_num addObject:mineSonMs];
     self.mineV.mineMs = mineMs;
     self.mineV.mineSonMs = mineSonMs;
     [self.mineV.tableV reloadData];

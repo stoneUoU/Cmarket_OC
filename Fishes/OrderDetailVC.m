@@ -43,7 +43,6 @@
 -(void)startR:(NSString *)order_no{
     if ([self.netUseVals isEqualToString: @"Useable"]){
         [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"order/detail" withParaments:@{@"order_no":order_no} Authos:self.Auths withSuccessBlock:^(NSDictionary *feedBacks) {
-            //STLog(@"%@",[feedBacks modelToJSONString]);
             //进行容错处理丫:
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
                 OrderMs *orderMs = [OrderMs modelWithJSON:feedBacks[@"data"]];

@@ -71,7 +71,7 @@
     [self addSubview:_product_price];
 
 
-    _doBtn = [[UIButton alloc] init];
+    _doBtn = [[TransferBtn alloc] init];
     _doBtn.layer.cornerRadius = 5;
     _doBtn.layer.masksToBounds = true;
     _doBtn.titleLabel.font=[UIFont systemFontOfSize:13];

@@ -45,7 +45,6 @@
 @property (nonatomic, strong) NSString* nick_name;
 @property (nonatomic, strong) NSString* tel;
 @property (nonatomic, strong) NSString* username;
-@property NSMutableArray* order_num;
 @end
 
 @interface MineSonMs : NSObject

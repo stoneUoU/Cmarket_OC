@@ -19,10 +19,10 @@
         _caiIcon = [[UIImageView alloc] init];
         [self addSubview:_caiIcon];
         [_caiIcon mas_makeConstraints:^(MASConstraintMaker *make) {
-            //make.top.greaterThanOrEqualTo(self.mas_top).offset(10*StScaleH);
+            make.top.equalTo(self.mas_top).offset(10*StScaleH);
             make.left.mas_equalTo(spaceM);
             make.width.height.mas_equalTo(80*StScaleH);
-            make.centerY.equalTo(self);
+            make.bottom.equalTo(self.mas_bottom).offset(-10*StScaleH);
         }];
     }
     return _caiIcon;

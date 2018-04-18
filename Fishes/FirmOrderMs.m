@@ -1,23 +1,16 @@
 //
-//  MineMs.m
+//  FirmOrderMs.m
 //  Fishes
 //
-//  Created by test on 2018/3/23.
+//  Created by test on 2018/4/17.
 //  Copyright © 2018年 com.youlu. All rights reserved.
 //
 
-#import "MineMs.h"
+#import "FirmOrderMs.h"
 
-@implementation MineMs
+@implementation MineAds
 //返回一个 Dict，将 Model 属性名对映射到 JSON 的 Key。
 + (NSDictionary *)modelCustomPropertyMapper {
-    return @{@"ids" : @"id"};
+    return @{@"defaultA" : @"default",@"ids" : @"id"};
 }
-- (id)init
-{
-    return [super init];
-}
-@end
-
-@implementation MineSonMs
 @end

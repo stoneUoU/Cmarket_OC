@@ -105,6 +105,8 @@
 		52A22213206B345400F71B0C /* ValidatedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A22212206B345400F71B0C /* ValidatedFile.m */; };
 		52A22218206B749700F71B0C /* MonitorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A22217206B749700F71B0C /* MonitorVC.m */; };
 		52AB1029206DE5F0007DC919 /* YYModelVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52AB1028206DE5F0007DC919 /* YYModelVC.m */; };
+		52AE1B752085EE6500434BBE /* FirmOrderMs.m in Sources */ = {isa = PBXBuildFile; fileRef = 52AE1B742085EE6500434BBE /* FirmOrderMs.m */; };
+		52AE1B782085FDDD00434BBE /* PPNumberButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 52AE1B772085FDDD00434BBE /* PPNumberButton.m */; };
 		52AE74C91FCE584900081972 /* HomeDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52AE74C81FCE584900081972 /* HomeDetailVC.m */; };
 		52BADA4A2079E43A00C84945 /* ThreadVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BADA492079E43A00C84945 /* ThreadVC.m */; };
 		52BC7E682065DEC9000B5E43 /* UIFont+runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E672065DEC9000B5E43 /* UIFont+runtime.m */; };
@@ -114,6 +116,8 @@
 		52BC7E742065E66E000B5E43 /* RegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E732065E66E000B5E43 /* RegisterVC.m */; };
 		52C96B9020847E7E00F4DD03 /* OrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C96B8F20847E7E00F4DD03 /* OrderDetailVC.m */; };
 		52C96B9320847E9100F4DD03 /* OrderDetailV.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C96B9220847E9100F4DD03 /* OrderDetailV.m */; };
+		52C96B962085895500F4DD03 /* TransferBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C96B952085895500F4DD03 /* TransferBtn.m */; };
+		52C96B992085C8B000F4DD03 /* MineAdsTbCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C96B982085C8B000F4DD03 /* MineAdsTbCells.m */; };
 		52CE2EF6206CCCFE0053A72B /* WebSocketNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CE2EF5206CCCFE0053A72B /* WebSocketNetwork.m */; };
 		52CE2EF9206CE22B0053A72B /* HomeDetailMs.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CE2EF8206CE22B0053A72B /* HomeDetailMs.m */; };
 		52E42E612071D1940038062C /* SingleClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E42E602071D1940038062C /* SingleClass.m */; };
@@ -323,6 +327,10 @@
 		52A22219206B8DDF00F71B0C /* Fishes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fishes.entitlements; sourceTree = "<group>"; };
 		52AB1027206DE5F0007DC919 /* YYModelVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYModelVC.h; sourceTree = "<group>"; };
 		52AB1028206DE5F0007DC919 /* YYModelVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYModelVC.m; sourceTree = "<group>"; };
+		52AE1B732085EE6500434BBE /* FirmOrderMs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirmOrderMs.h; sourceTree = "<group>"; };
+		52AE1B742085EE6500434BBE /* FirmOrderMs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirmOrderMs.m; sourceTree = "<group>"; };
+		52AE1B762085FDDD00434BBE /* PPNumberButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPNumberButton.h; sourceTree = "<group>"; };
+		52AE1B772085FDDD00434BBE /* PPNumberButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPNumberButton.m; sourceTree = "<group>"; };
 		52AE74C71FCE584900081972 /* HomeDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailVC.h; sourceTree = "<group>"; };
 		52AE74C81FCE584900081972 /* HomeDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailVC.m; sourceTree = "<group>"; };
 		52B72DF4E62F565F1F472D34 /* Pods-Fishes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fishes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fishes/Pods-Fishes.debug.xcconfig"; sourceTree = "<group>"; };
@@ -342,6 +350,10 @@
 		52C96B8F20847E7E00F4DD03 /* OrderDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailVC.m; sourceTree = "<group>"; };
 		52C96B9120847E9100F4DD03 /* OrderDetailV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailV.h; sourceTree = "<group>"; };
 		52C96B9220847E9100F4DD03 /* OrderDetailV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailV.m; sourceTree = "<group>"; };
+		52C96B942085895500F4DD03 /* TransferBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransferBtn.h; sourceTree = "<group>"; };
+		52C96B952085895500F4DD03 /* TransferBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransferBtn.m; sourceTree = "<group>"; };
+		52C96B972085C8B000F4DD03 /* MineAdsTbCells.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineAdsTbCells.h; sourceTree = "<group>"; };
+		52C96B982085C8B000F4DD03 /* MineAdsTbCells.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineAdsTbCells.m; sourceTree = "<group>"; };
 		52CE2EF4206CCCFE0053A72B /* WebSocketNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebSocketNetwork.h; sourceTree = "<group>"; };
 		52CE2EF5206CCCFE0053A72B /* WebSocketNetwork.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebSocketNetwork.m; sourceTree = "<group>"; };
 		52CE2EF7206CE22B0053A72B /* HomeDetailMs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailMs.h; sourceTree = "<group>"; };
@@ -407,6 +419,8 @@
 			children = (
 				5284057F20634CA2000623B4 /* HomeTbCells.h */,
 				5284058020634CA2000623B4 /* HomeTbCells.m */,
+				52C96B972085C8B000F4DD03 /* MineAdsTbCells.h */,
+				52C96B982085C8B000F4DD03 /* MineAdsTbCells.m */,
 			);
 			name = HomeCells;
 			sourceTree = "<group>";
@@ -599,6 +613,8 @@
 				5284058920638076000623B4 /* HomeMs.m */,
 				52CE2EF7206CE22B0053A72B /* HomeDetailMs.h */,
 				52CE2EF8206CE22B0053A72B /* HomeDetailMs.m */,
+				52AE1B732085EE6500434BBE /* FirmOrderMs.h */,
+				52AE1B742085EE6500434BBE /* FirmOrderMs.m */,
 			);
 			name = M;
 			sourceTree = "<group>";
@@ -699,6 +715,10 @@
 				523C2903207A020300D2D225 /* STButton.m */,
 				5295DB63207E028500352354 /* STDatePickerView.h */,
 				5295DB64207E028500352354 /* STDatePickerView.m */,
+				52C96B942085895500F4DD03 /* TransferBtn.h */,
+				52C96B952085895500F4DD03 /* TransferBtn.m */,
+				52AE1B762085FDDD00434BBE /* PPNumberButton.h */,
+				52AE1B772085FDDD00434BBE /* PPNumberButton.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1148,6 +1168,8 @@
 				5284058A20638076000623B4 /* HomeMs.m in Sources */,
 				52680C74206239B700F5DB96 /* HomeBaseTbV.m in Sources */,
 				523C2907207A026000D2D225 /* UIButton+ExpandArea.m in Sources */,
+				52C96B962085895500F4DD03 /* TransferBtn.m in Sources */,
+				52AE1B752085EE6500434BBE /* FirmOrderMs.m in Sources */,
 				526047991F75160C0072AFB4 /* UIImage+Image.m in Sources */,
 				523F04D02065020500858BDD /* CodeLoginVC.m in Sources */,
 				52680C8320623D1900F5DB96 /* WillStartVC.m in Sources */,
@@ -1172,6 +1194,7 @@
 				528936DC2061EA88004463E6 /* NetWorkManager.m in Sources */,
 				528BFD0A20736558002C5ACB /* AppUpdateV.m in Sources */,
 				523FD55720664727009753B4 /* SetVC.m in Sources */,
+				52C96B992085C8B000F4DD03 /* MineAdsTbCells.m in Sources */,
 				526047A21F7516920072AFB4 /* TabBar.m in Sources */,
 				526047141F7510800072AFB4 /* AppDelegate.m in Sources */,
 				5260478E1F7515270072AFB4 /* main.m in Sources */,
@@ -1183,6 +1206,7 @@
 				52CE2EF6206CCCFE0053A72B /* WebSocketNetwork.m in Sources */,
 				528DC10820749E6900B02986 /* PopDismissAnimation.m in Sources */,
 				526047961F7515D60072AFB4 /* UIView+Extension.m in Sources */,
+				52AE1B782085FDDD00434BBE /* PPNumberButton.m in Sources */,
 				52BC7E6E2065E62B000B5E43 /* SmsLoginVC.m in Sources */,
 				5295DB62207DDA3B00352354 /* AccountInfoTbCells.m in Sources */,
 				526047851F7514430072AFB4 /* MineVC.m in Sources */,

@@ -8,7 +8,8 @@
 
 #import "OnStartVC.h"
 #import "HomeDetailVC.h"
-
+#import "StartVC.h"
+#import "FirmOrderVC.h"
 @interface OnStartVC ()
 @end
 
@@ -96,7 +97,9 @@
     homeTbCells.product_attr.text = [[FormatDs retainPoint:@"0.00" floatV:[homeMs.discount_price floatValue]/[[homeMs.attr_value stringByReplacingOccurrencesOfString:@"kg" withString:@""] floatValue]/2] stringByAppendingString:@"元/斤"];
     homeTbCells.progress_bar.progress =  [homeMs.freeze_inventory floatValue]/[homeMs.total_inventory floatValue];
     homeTbCells.progress_bar_vals.text = [[@"已购" stringByAppendingString:[FormatDs retainPoint:@"0" floatV:[homeMs.freeze_inventory floatValue]/[homeMs.total_inventory floatValue]*10000] ] stringByAppendingString:@"%"];
+    homeTbCells.doBtn.transferDs = @{@"datas":homeMs.group_id};
     [homeTbCells.doBtn setTitle:@"立即下单" forState:UIControlStateNormal];
+    [homeTbCells.doBtn addTarget:self action:@selector(getOrder:) forControlEvents:UIControlEventTouchUpInside];
     homeTbCells.product_price.text =  [FormatDs retainPoint:@"0.00" floatV:[homeMs.discount_price floatValue]];
     homeTbCells.doBtn.backgroundColor = styleColor;
     homeTbCells.start_end.text = @"距结束";
@@ -123,6 +126,19 @@
 //点击函数
 - (void)toMore:(id)sender{
     STLog(@"查看更多");
+}
+-(void)getOrder:(TransferBtn *)btn{
+    if (![[NSString stringWithFormat:@"%@",[UICKeyChainStore keyChainStore][@"orLogin"]]  isEqual: @"true"]){
+        //MARK:弹出登录视图：在主页消息、主页立即购买、商品详情界面登录:status_code:1
+        StartVC * startV = [[StartVC alloc] init];
+        startV.pass_Vals = @{@"status_code":@"1"};
+        [MethodFunc presentToNaviVC:self destVC:startV];
+    }else{
+        //STLog(@"已登录,去消息");
+        FirmOrderVC *vc = [[FirmOrderVC alloc]init];
+        vc.pass_Vals = @{@"group_id":[btn.transferDs objectForKey:@"datas"],@"amount":@1};
+        [MethodFunc pushToNextVC:self destVC:vc ];
+    }
 }
 -(void)dealloc{
     NSLog(@"%s dealloc",object_getClassName(self));

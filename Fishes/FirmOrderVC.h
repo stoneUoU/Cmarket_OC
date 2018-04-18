@@ -10,5 +10,8 @@
 #import "FirmOrderV.h"
 @interface FirmOrderVC : BaseToolVC<FirmOrderVDel>
 @property (nonatomic,strong) FirmOrderV *firmOrderV;
+
+@property(nonatomic,strong)NSDictionary *pass_Vals;
+
 @end
 

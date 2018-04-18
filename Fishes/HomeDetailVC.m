@@ -19,7 +19,7 @@
     //初始化HomeDetailV
     _homeDetailV = [[HomeDetailV alloc] init]; //对_homeDetailV进行初始化
     _homeDetailV.delegate = self; //将HomeDetailV自己的实例作为委托对象
-
+    _IMGs = [NSMutableArray array];
     return [super init];
 }
 - (void)viewDidLoad {
@@ -64,18 +64,22 @@
             [HudTips hideHUD:self];
             //进行容错处理丫:
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
-                STLog(@"%@",[feedBacks modelToJSONString]);
-                self.homeDetailV.homeDetailMs = [[HomeDetailMs alloc] initMs:feedBacks[@"data"][@"start_time"] total_inventory:feedBacks[@"data"][@"total_inventory"] qty:feedBacks[@"data"][@"qty"] group_id:feedBacks[@"data"][@"group_id"] freeze_inventory:feedBacks[@"data"][@"freeze_inventory"] vendor:feedBacks[@"data"][@"vendor"] volume:feedBacks[@"data"][@"volume"] price:feedBacks[@"data"][@"price"]  status:feedBacks[@"data"][@"status"] end_time:feedBacks[@"data"][@"end_time"] turnover:feedBacks[@"data"][@"turnover"] discount_price:feedBacks[@"data"][@"discount_price"] detail:feedBacks[@"data"][@"detail"] title:feedBacks[@"data"][@"title"] vendor_id:feedBacks[@"data"][@"vendor_id"] small_pic:feedBacks[@"data"][@"small_pic"]  logistics_fee:feedBacks[@"data"][@"logistics_fee"] actual_logistics_fee:feedBacks[@"data"][@"actual_logistics_fee"] type:feedBacks[@"data"][@"type"] subtitle:feedBacks[@"data"][@"subtitle"] vendor_avatar:feedBacks[@"vendor_avatar"][@"detail"] category_id:feedBacks[@"data"][@"category_id"] attr_value:feedBacks[@"data"][@"attr_value"][0][@"attr_value"]];
-                for (int i = 0 ; i < [feedBacks[@"data"][@"banner"] count]; i++) {
-                    [self.homeDetailV.imgStrGroup addObject:[picUrl stringByAppendingString:feedBacks[@"data"][@"banner"][i]]];
+                HomeDetailMs *homeDetailMs = [HomeDetailMs modelWithJSON:feedBacks[@"data"]];
+                for (int i = 0; i < [feedBacks[@"data"][@"attr_value"] count]; i++) {
+                    HomeDetailSonMs *homeDetailSonMs = [HomeDetailSonMs modelWithJSON:feedBacks[@"data"][@"attr_value"][i]];
+                    [homeDetailMs.attr_value_list addObject:homeDetailSonMs];
                 }
+                for (int i = 0 ; i < [feedBacks[@"data"][@"banner"] count]; i++) {
+                    [homeDetailMs.banner_list addObject:[picUrl stringByAppendingString:feedBacks[@"data"][@"banner"][i]]];
+                }
+                HomeDetailMs* testMs = homeDetailMs;
+                self.homeDetailV.homeDetailMs = homeDetailMs;
                 [self.homeDetailV.tableV reloadData];
             }else if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"10009"]){
                 [HudTips showToast:missSsidTips showType:Pos animationType:StToastAnimationTypeScale];
             }else{
                 [HudTips showToast: feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
             }
-            //[self.mineV.iconV sd_setImageWithURL:[NSURL URLWithString:[picUrl stringByAppendingString:feedBacks[@"data"][@"avatar"]]] placeholderImage:[UIImage imageNamed:@"pic_loading_shangpingxiangqing.png"]];
         } withFailureBlock:^(NSError *error) {
             [HudTips hideHUD:self];
             STLog(@"%@",error)
@@ -109,8 +113,10 @@
         //STLog(@"已登录,去拼单");
         PopPresentVC * popPresentV = [PopPresentVC new];
         popPresentV.dictB = ^(NSDictionary *dict, BOOL b){
-            STLog(@"%@",[dict objectForKey:@"name"]);
-            [MethodFunc pushToNextVC:self destVC:[[FirmOrderVC alloc]init] ];
+            //STLog(@"%@",[dict objectForKey:@"name"]);
+            FirmOrderVC *vc = [[FirmOrderVC alloc]init];
+            vc.pass_Vals = @{@"group_id":[_pass_Vals objectForKey:@"group_id"],@"amount":[dict objectForKey:@"name"]};
+            [MethodFunc pushToNextVC:self destVC:vc ];
         };
         popPresentV.modalPresentationStyle = UIModalPresentationCustom;
         popPresentV.transitioningDelegate = self;

@@ -15,4 +15,6 @@
 @property(nonatomic, copy) NSString *netUseVals;
 
 @property(nonatomic,strong)NSDictionary *pass_Vals;
+
+@property NSMutableArray* IMGs;
 @end

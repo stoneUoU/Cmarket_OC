@@ -15,7 +15,7 @@
 @interface OrderDetailV : UIView
 
 @property (nonatomic, weak) id<OrderDetailVDel> delegate; //定义一个属性，可以用来进行get set操作
-
+@property UISegmentedControl *segmentedControl;
 //用来存数据
 @property OrderMs* orderMs;
 @end

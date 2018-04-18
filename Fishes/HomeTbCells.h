@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TransferBtn.h"
 //主页的Cells
 @interface HomeTbCells : UITableViewCell
 //商品图片
@@ -23,7 +24,7 @@
 @property (nonatomic ,strong) CustomLabel *product_attr;
 
 //立即下单
-@property (nonatomic ,strong) UIButton *doBtn;
+@property (nonatomic ,strong) TransferBtn *doBtn;
 
 //进度条文字
 @property (nonatomic ,strong) UILabel *progress_bar_vals;

@@ -14,21 +14,46 @@
 }
 - (id)init
 {
-    _orderMs = [NSMutableDictionary dictionary];
+    _orderMs = [[OrderMs alloc] init];
     return [super init];
 }
 - (void)setUpUI{
+    NSArray *segmentedArray = [NSArray arrayWithObjects:@"问答",@"倾述",nil];
+    _segmentedControl = [[UISegmentedControl alloc]initWithItems:segmentedArray];
+    _segmentedControl.frame = CGRectZero;
+    _segmentedControl.selectedSegmentIndex = 0;
+    _segmentedControl.tintColor = styleColor;
+    [_segmentedControl addTarget:self action:@selector(indexDidChangeForSegmentedControl:) forControlEvents:UIControlEventValueChanged];
+    [self addSubview:_segmentedControl];
 
     //添加约束
     [self setMas];
 }
 - (void) setMas{
-//    [_exitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.center.equalTo(self);
-//        make.width.mas_equalTo(ScreenW - (spaceM*2));
-//        make.height.mas_equalTo(44);
-//    }];
+    [_segmentedControl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self);
+        make.width.mas_equalTo(180);
+        make.height.mas_equalTo(30);
+    }];
 }
+
+-(void)indexDidChangeForSegmentedControl:(UISegmentedControl *)sender
+{
+    //我定义了一个 NSInteger tag，是为了记录我当前选择的是分段控件的左边还是右边。
+    NSInteger selecIndex = sender.selectedSegmentIndex;
+    switch(selecIndex){
+        case 0:
+            sender.selectedSegmentIndex=0;
+            break;
+
+        case 1:
+            sender.selectedSegmentIndex = 1;
+            break;
+        default:
+            break;
+    }
+}
+
 //按钮、手势函数写这
 //- (void)toDo:(UIButton *)sender{
 //    [_delegate toR ];

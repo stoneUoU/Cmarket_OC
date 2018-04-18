@@ -47,10 +47,10 @@
 
     // 网络加载 --- 创建带标题的图片轮播器
     _cycleScrollV = [SDCycleScrollView cycleScrollViewWithFrame:CGRectZero delegate:self placeholderImage:[UIImage imageNamed:@"pic_loading_shouye.png"]];
-    _cycleScrollV.imageURLStringsGroup = @[@"http://img2.niutuku.com/desk/1208/1413/ntk-1413-619.jpg",
-                                           @"http://img.bizhi.sogou.com/images/2013/07/17/347636.jpg",
-                                           @"http://img2.niutuku.com/desk/1208/2031/ntk-2031-2733.jpg",
-                                           @"http://dl.bizhi.sogou.com/images/2013/07/17/347434.jpg"];
+//    _cycleScrollV.imageURLStringsGroup = @[@"http://img2.niutuku.com/desk/1208/1413/ntk-1413-619.jpg",
+//                                           @"http://img.bizhi.sogou.com/images/2013/07/17/347636.jpg",
+//                                           @"http://img2.niutuku.com/desk/1208/2031/ntk-2031-2733.jpg",
+//                                           @"http://dl.bizhi.sogou.com/images/2013/07/17/347434.jpg"];
     _cycleScrollV.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
     _cycleScrollV.currentPageDotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色
 
@@ -97,7 +97,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *headerV = [[UIView alloc] init];
     headerV.backgroundColor = [UIColor whiteColor];
-    _cycleScrollV.imageURLStringsGroup = _imgStrGroup;
+    _cycleScrollV.imageURLStringsGroup = _homeDetailMs.banner_list;
     [headerV addSubview:_cycleScrollV];
     [_cycleScrollV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.width.equalTo(headerV);
@@ -180,7 +180,7 @@
     _product_attr.layer.cornerRadius = 3;
     _product_attr.layer.masksToBounds = true;
     _product_attr.textAlignment = NSTextAlignmentCenter;
-    _product_attr.text = _homeDetailMs.attr_value == NULL ? @"" :  [[FormatDs retainPoint:@"0.00" floatV:[_homeDetailMs.discount_price floatValue]/[[_homeDetailMs.attr_value stringByReplacingOccurrencesOfString:@"kg" withString:@""] floatValue]/2] stringByAppendingString:@"元/斤"];
+    _product_attr.text = _homeDetailMs.desc;
     _product_attr.leftEdge = 5;
     _product_attr.rightEdge = 5;
     [headerV addSubview:_product_attr];

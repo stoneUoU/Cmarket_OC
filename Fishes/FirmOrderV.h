@@ -7,15 +7,53 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "HomeDetailMs.h"
+#import "FirmOrderMs.h"
+#import "PPNumberButton.h"
 @protocol FirmOrderVDel
-//这里只需要声明方法
-- (void)toDo;
+//去支付
+- (void)toPlaceO;
+//去优惠券
+- (void)toCoupon;
+//选则支付方式
+- (void)toSelectM;
+//去实名
+- (void)toRealN;
+//去编辑地址
+- (void)toEditAs;
+//加减个数
+- (void)toPlusDescC:(NSInteger )AC;   //AC为商品数量
 @end
-@interface FirmOrderV : UIView
+@interface FirmOrderV : UIView<UITableViewDelegate,UITableViewDataSource,PPNumberButtonDelegate>
 
 @property (nonatomic, weak) id<FirmOrderVDel> delegate; //定义一个属性，可以用来进行get set操作
+//底部View
+@property (nonatomic ,strong)UIView *botV;
 
-@property (nonatomic ,strong)UIButton *doBtn;
+@property (nonatomic ,strong)UILabel *totalA;
+//合计金额
+@property (nonatomic ,strong)UILabel *totalFee;
+//立即支付
+@property (nonatomic ,strong)UIButton *payBtn;
+
+//底部View
+@property (nonatomic ,strong)UITableView *tableV;
+
+//支付宝选中Image
+@property (nonatomic ,strong)UIImageView *alipayS;
+
+//微信选中Image
+@property (nonatomic ,strong)UIImageView *weChatS;
+
+@property (nonatomic ,assign)NSInteger selectM;
+
+//用来存数据
+@property NSMutableArray* mineAds;
+//定义数据源
+@property (nonatomic,retain)HomeDetailMs *homeDetailMs;
+
+@property (nonatomic,strong)PPNumberButton *numBtn;
+
+
 
 @end

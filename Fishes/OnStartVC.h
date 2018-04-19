@@ -10,6 +10,8 @@
 #import "HomeBaseTbVC.h"
 #import "HomeTbCells.h"
 #import "CountDown.h"
+
 @interface OnStartVC : HomeBaseTbVC
 @property (strong, nonatomic)  CountDown *countDown;
+
 @end

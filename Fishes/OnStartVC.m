@@ -136,7 +136,7 @@
     }else{
         //STLog(@"已登录,去消息");
         FirmOrderVC *vc = [[FirmOrderVC alloc]init];
-        vc.pass_Vals = @{@"group_id":[btn.transferDs objectForKey:@"datas"],@"amount":@1};
+        vc.pass_Vals = @{@"group_id":[btn.transferDs objectForKey:@"datas"],@"AC":@1};
         [MethodFunc pushToNextVC:self destVC:vc ];
     }
 }

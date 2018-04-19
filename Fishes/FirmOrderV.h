@@ -10,13 +10,12 @@
 #import "HomeDetailMs.h"
 #import "FirmOrderMs.h"
 #import "PPNumberButton.h"
+#import "UILabel+Deal.h"
 @protocol FirmOrderVDel
 //去支付
 - (void)toPlaceO;
 //去优惠券
 - (void)toCoupon;
-//选则支付方式
-- (void)toSelectM;
 //去实名
 - (void)toRealN;
 //去编辑地址
@@ -44,7 +43,7 @@
 
 //微信选中Image
 @property (nonatomic ,strong)UIImageView *weChatS;
-
+//哪种支付方式
 @property (nonatomic ,assign)NSInteger selectM;
 
 //用来存数据
@@ -53,7 +52,14 @@
 @property (nonatomic,retain)HomeDetailMs *homeDetailMs;
 
 @property (nonatomic,strong)PPNumberButton *numBtn;
+//数量
+@property (nonatomic ,assign)NSInteger AC;
 
+//商品总价
+@property (nonatomic ,assign)NSString* totalM;
+
+//选中的优惠券selMs
+@property (nonatomic, strong) CouponMs *selMs;
 
 
 @end

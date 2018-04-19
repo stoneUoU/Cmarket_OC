@@ -7,10 +7,17 @@
 //
 
 #import "FirmOrderMs.h"
-
+//我的地址
 @implementation MineAds
 //返回一个 Dict，将 Model 属性名对映射到 JSON 的 Key。
 + (NSDictionary *)modelCustomPropertyMapper {
     return @{@"defaultA" : @"default",@"ids" : @"id"};
+}
+@end
+
+
+@implementation CouponMs
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"desc" : @"description"};
 }
 @end

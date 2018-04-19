@@ -73,9 +73,10 @@
     }
     if ([_netUseVals isEqualToString: @"Useable"]){
         [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"user/list" withParaments:@{} Authos:self.Auths withSuccessBlock:^(NSDictionary *feedBacks) {
+            STLog(@"%@",[feedBacks modelToJSONString]);
             //进行容错处理丫:
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
-                if ([[NSString stringWithFormat:@"%@",feedBacks] isEqualToString:[NSString stringWithFormat:@"%@",[YYCacheTools resCacheForURL:@"user/list"]]]){
+                if (![[NSString stringWithFormat:@"%@",feedBacks] isEqualToString:[NSString stringWithFormat:@"%@",[YYCacheTools resCacheForURL:@"user/list"]]]){
                     //将返回的数据存入YYCache
                     [YYCacheTools setResCache:feedBacks url:@"user/list"];
                     MineMs *mineMs = [MineMs modelWithJSON:feedBacks[@"data"]];

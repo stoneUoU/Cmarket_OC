@@ -12,7 +12,7 @@
 
 - (id)init
 {
-    _selectM = 0;
+    _selectM = 2;
     _mineAds = [NSMutableArray array];
     return [super init];
 }
@@ -29,11 +29,13 @@
     [_tableV registerClass:[MineAdsTbCells class] forCellReuseIdentifier: @"mineAdsTbCells"];
     [_tableV registerClass:[OrderListTbCells class] forCellReuseIdentifier: @"orderListTbCells"];
     // 马上进入刷新状态
-    _tableV.estimatedRowHeight = 160;  //将tableview的estimatedRowHeight设大一点
     _tableV.showsVerticalScrollIndicator=NO;
     _tableV.backgroundColor = someTableCellC;
     _tableV.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableV.rowHeight = UITableViewAutomaticDimension;
+    _tableV.estimatedRowHeight = 160;
+    _tableV.estimatedSectionHeaderHeight = 100;
+    _tableV.estimatedSectionFooterHeight = 100;
     [self addSubview:_tableV];
 
     _botV = [[UIView alloc] init];
@@ -61,7 +63,6 @@
     _totalFee= [[UILabel alloc] init];
     _totalFee.font = [UIFont systemFontOfSize:16];
     _totalFee.textColor = styleColor;
-    _totalFee.text = @"￥30.00";
     [_botV addSubview:_totalFee];
 
     //添加约束
@@ -182,23 +183,24 @@
             // 设置最小值
             _numBtn.minValue = 1;
             // 设置最大值
-            _numBtn.maxValue = 10;
+            _numBtn.maxValue = _homeDetailMs != NULL ? [_homeDetailMs.total_inventory intValue] - [_homeDetailMs.freeze_inventory intValue] :1;
             // 设置输入框中的字体大小
-            _numBtn.inputFieldFont = 23;
+            _numBtn.inputFieldFont = 16;
             _numBtn.increaseTitle = @"＋";
             _numBtn.decreaseTitle = @"－";
-            _numBtn.currentNumber = 777;
+            _numBtn.currentNumber = _AC;
             _numBtn.delegate = self;
             _numBtn.longPressSpaceTime = CGFLOAT_MAX;
-            _numBtn.resultBlock = ^(PPNumberButton *ppBtn, CGFloat number, BOOL increaseStatus){
-                
+            __weak __typeof(self) weakSelf = self;
+            _numBtn.resultBlock = ^(PPNumberButton *ppBtn, NSInteger number, BOOL increaseStatus){
+                [weakSelf.delegate toPlusDescC:number];
             };
             [countV addSubview:_numBtn];
             [_numBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.mas_equalTo(0);
-                make.top.equalTo(countV.mas_bottom).offset(0);
-                make.width.mas_equalTo(ScreenW);
-                make.height.mas_equalTo(44*StScaleH);
+                make.right.mas_equalTo(-spaceM);
+                make.centerY.equalTo(countV);
+                make.width.mas_equalTo(105);
+                make.height.mas_equalTo(28);
             }];
 
             UIView *first_lV = [[UIView alloc]init ];
@@ -231,16 +233,35 @@
                 make.centerY.equalTo(delFeeV);
             }];
 
-            UILabel *oFeeV = [[UILabel alloc] init];
-            oFeeV.font = [UIFont systemFontOfSize:16];
+            DealLabel *oFeeV = [[DealLabel alloc] init];
+            oFeeV.font = [UIFont systemFontOfSize:13];
             oFeeV.textColor = deepBlackC;
-            oFeeV.text = @"￥3.00元";
+            [oFeeV sizeToFit];
+            oFeeV.text = [[@"(￥" stringByAppendingString:[FormatDs retainPoint:@"0.00" floatV:[_homeDetailMs.logistics_fee floatValue]]] stringByAppendingString:@")"];
             oFeeV.textAlignment = NSTextAlignmentLeft;
             [delFeeV addSubview:oFeeV];
             [oFeeV mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.equalTo(delFeeV.mas_right).offset(-spaceM);
                 make.centerY.equalTo(delFeeV);
             }];
+
+            UILabel *frontV = [[UILabel alloc] init];
+            frontV.font = [UIFont systemFontOfSize:13];
+            frontV.textColor = deepBlackC;
+            if (_homeDetailMs != NULL){
+                if(![[NSString stringWithFormat:@"%@",_homeDetailMs.actual_logistics_fee] isEqualToString:@"0"]){
+                frontV.attributedText = [MethodFunc strWithSymbolsS:[@"￥" stringByAppendingString:[FormatDs retainPoint:@"0.00" floatV:[_homeDetailMs.actual_logistics_fee floatValue]]] andSymbolsC:deepBlackC];
+                }else{
+                    frontV.text = @"免运费";
+                }
+            }
+            frontV.textAlignment = NSTextAlignmentRight;
+            [delFeeV addSubview:frontV];
+            [frontV mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.right.equalTo(oFeeV.mas_left).offset(0);
+                make.centerY.equalTo(delFeeV);
+            }];
+
             UIView *second_lV = [[UIView alloc]init ];
             second_lV.backgroundColor = cutOffLineC;
             [footerV addSubview:second_lV];
@@ -283,6 +304,8 @@
             ifSBtn.layer.cornerRadius = 4;
             ifSBtn.layer.borderColor = [styleColor CGColor];
             ifSBtn.layer.borderWidth =  1;
+            //self.firmOrderV.selMs
+            ifSBtn.hidden = _selMs != NULL ? NO : YES;
             [couponV addSubview:ifSBtn];
             [ifSBtn mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(couponL.mas_right).offset(spaceM);
@@ -301,7 +324,20 @@
             UILabel *descV = [[UILabel alloc] init];
             descV.font = [UIFont systemFontOfSize:16];
             descV.textColor = deepBlackC;
-            descV.text = @"-￥3.00元";
+            if (_selMs != NULL) {
+                switch (_selMs.coupon_type) {
+                    case 1:  //满减
+                        {
+                            descV.attributedText = [MethodFunc strWithSymbolsS:[@"￥" stringByAppendingString:[FormatDs retainPoint:@"0.00" floatV:[_selMs.face_value floatValue]]] andSymbolsC:deepBlackC];
+                        }
+                        break;
+                    default:
+                        {
+                            descV.attributedText = [MethodFunc strWithSymbolsS:[@"￥" stringByAppendingString:[FormatDs retainPoint:@"0.00" floatV:([_homeDetailMs.discount_price intValue] * _AC*(100 - _selMs.discount)/100)]] andSymbolsC:deepBlackC];
+                        }
+                        break;
+                }
+            }
             descV.textAlignment = NSTextAlignmentRight;
             [couponV addSubview:descV];
             [descV mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -330,11 +366,11 @@
                 make.height.mas_equalTo(44*StScaleH);
             }];
 
-            //优惠券减了多少钱
+            //需支付的钱
             UILabel *totalFee = [[UILabel alloc] init];
             totalFee.font = [UIFont systemFontOfSize:16];
             totalFee.textColor = styleColor;
-            totalFee.text = @"￥36.00";
+            if (_totalM != NULL){totalFee.attributedText =[MethodFunc strWithSymbolsS:[@"￥" stringByAppendingString:_totalM] andSymbolsC:styleColor];}
             totalFee.textAlignment = NSTextAlignmentRight;
             [moneyV addSubview:totalFee];
             [totalFee mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -345,14 +381,13 @@
             UILabel *totalAms = [[UILabel alloc] init];
             totalAms.font = [UIFont systemFontOfSize:13];
             totalAms.textColor = deepBlackC;
-            totalAms.text = @"共5件商品  小计:";
+            totalAms.text = [[@"共" stringByAppendingString:[NSString stringWithFormat:@"%ld",(long)_AC]] stringByAppendingString:@"件商品  小计:"];
             totalAms.textAlignment = NSTextAlignmentRight;
             [moneyV addSubview:totalAms];
             [totalAms mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.equalTo(totalFee.mas_left).offset(0);
                 make.centerY.equalTo(moneyV);
             }];
-
             UIButton* alipayV= [[UIButton alloc] init];
             alipayV.backgroundColor = [UIColor whiteColor];
             alipayV.tag = 0;
@@ -405,6 +440,7 @@
             //被选中
             _alipayS  = [[UIImageView alloc] init];
             _alipayS.image = [UIImage imageNamed:@"icon_zhifu_tuoyuan.png"];
+            _alipayS.hidden = _selectM == 2 ? NO :YES ;
             [alipayV addSubview:_alipayS];
             [_alipayS mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.mas_equalTo(-spaceM);
@@ -465,7 +501,7 @@
             //被选中
             _weChatS  = [[UIImageView alloc] init];
             _weChatS.image = [UIImage imageNamed:@"icon_zhifu_tuoyuan.png"];
-            _weChatS.hidden = YES;
+            _weChatS.hidden = _selectM == 1 ? NO :YES ;
             [weChatV addSubview:_weChatS];
             [_weChatS mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.mas_equalTo(-spaceM);
@@ -565,7 +601,7 @@
         {
             _alipayS.hidden = NO;
             _weChatS.hidden = YES;
-            _selectM = 0;
+            _selectM = 2;
             break;
         }
     default:

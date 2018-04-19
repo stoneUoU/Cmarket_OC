@@ -662,7 +662,7 @@ static const CGFloat kPopupAnimationDuration = 0.25;
         if (!self.cb_overlayView) {
             self.cb_overlayView = [[UIControl alloc] initWithFrame:UIScreen.mainScreen.bounds];
             self.cb_overlayView.backgroundColor = [UIColor clearColor];
-            [self.cb_overlayView addTarget:self action:@selector(cb_tapAction:) forControlEvents:UIControlEventTouchUpInside];
+            //[self.cb_overlayView addTarget:self action:@selector(cb_tapAction:) forControlEvents:UIControlEventTouchUpInside];
         }
         
         if (!self.cb_maskView) {

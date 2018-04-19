@@ -307,7 +307,7 @@
             wait_pay_font.font = [UIFont systemFontOfSize:13];
             wait_pay_font.textColor = midBlackC;
             wait_pay_font.textAlignment = NSTextAlignmentRight;
-            wait_pay_font.text = @"代付款";
+            wait_pay_font.text = @"待付款";
             [_wait_payV addSubview:wait_pay_font];
             [wait_pay_font mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerX.equalTo(_wait_payV);
@@ -320,6 +320,7 @@
             wait_pay_brage.textAlignment = NSTextAlignmentCenter;
             wait_pay_brage.text = _mineSonMs.no_pay == NULL ? @"" : [NSString stringWithFormat:@"%@",_mineSonMs.no_pay];
             wait_pay_brage.layer.borderColor = [UIColor color_HexStr:@"d73509"].CGColor;
+            STLog(@"%@",[NSString stringWithFormat:@"%@",_mineSonMs.no_pay]);
             if ([[NSString stringWithFormat:@"%@",_mineSonMs.no_pay] isEqual: @"0"] || _mineSonMs.no_pay == NULL ){
                 wait_pay_brage.hidden = YES;
             }else{

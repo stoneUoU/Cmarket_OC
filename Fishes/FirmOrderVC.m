@@ -7,6 +7,7 @@
 //
 
 #import "FirmOrderVC.h"
+#import "CouponVC.h"
 @implementation FirmOrderVC
 - (id)init
 {
@@ -19,8 +20,9 @@
     [super viewDidLoad];
     [self setUp:@"确认下单" sideVal:@"" backIvName:@"custom_serve_back.png" navC:[UIColor clearColor] midFontC:deepBlackC sideFontC:deepBlackC];
     [self setUpUI];
-//    STLog(@"%@",[_pass_Vals objectForKey:@"group_id"]);
-//    STLog(@"%@",[_pass_Vals objectForKey:@"amount"]);
+    self.firmOrderV.AC = [[_pass_Vals objectForKey:@"AC"] intValue];
+    //两个请求，互不干扰
+    [self startAR];
     [self startGR];
 }
 - (void)setUpUI{
@@ -43,12 +45,11 @@
             STLog(@"%@",[feedBacks modelToJSONString]);
             //进行容错处理丫:
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
-                //STLog(@"成功");
                 for (int i = 0; i < [feedBacks[@"data"] count]; i++) {
                     MineAds *mineAds = [MineAds modelWithJSON:feedBacks[@"data"][i]];
                     [self.firmOrderV.mineAds addObject:mineAds];
                 }
-                [self.firmOrderV.tableV reloadData];
+                [self reloadOneSection:[[NSIndexSet alloc]initWithIndex:0]];
             }else if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"10009"]){
                 [HudTips showToast:missSsidTips showType:Pos animationType:StToastAnimationTypeScale];
             }else{
@@ -77,29 +78,9 @@
                     [homeDetailMs.banner_list addObject:[picUrl stringByAppendingString:feedBacks[@"data"][@"banner"][i]]];
                 }
                 self.firmOrderV.homeDetailMs = homeDetailMs;
-                [self.firmOrderV.tableV reloadData];
-            }else if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"10009"]){
-                [HudTips showToast:missSsidTips showType:Pos animationType:StToastAnimationTypeScale];
-            }else{
-                [HudTips showToast: feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
-            }
-        } withFailureBlock:^(NSError *error) {
-            [HudTips hideHUD:self];
-            STLog(@"%@",error)
-        }];
-    }else{
-        [HudTips showToast: missNetTips showType:Pos animationType:StToastAnimationTypeScale];
-    }
-}
-
-//查询优惠券：
--(void)startCR{
-    if ([self.netUseVals isEqualToString: @"Useable"]){
-        [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"coupon/available" withParaments:@{@"category_id":@"123",@"order_total":@"price*amount"} Authos:self.Auths withSuccessBlock:^(NSDictionary *feedBacks) {
-            STLog(@"%@",[feedBacks modelToJSONString]);
-            //进行容错处理丫:
-            if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
-                STLog(@"成功");
+                self.firmOrderV.totalM = [FormatDs retainPoint:@"0.00" floatV:[homeDetailMs.discount_price intValue] * self.firmOrderV.AC + [homeDetailMs.actual_logistics_fee intValue]];
+                self.firmOrderV.totalFee.attributedText=[MethodFunc strWithSymbolsS:[@"￥" stringByAppendingString:[FormatDs retainPoint:@"0.00" floatV:[homeDetailMs.discount_price intValue] * self.firmOrderV.AC + [homeDetailMs.actual_logistics_fee intValue]]] andSymbolsC:styleColor];
+                [self reloadOneSection:[[NSIndexSet alloc]initWithIndex:1]];
             }else if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"10009"]){
                 [HudTips showToast:missSsidTips showType:Pos animationType:StToastAnimationTypeScale];
             }else{
@@ -115,10 +96,10 @@
 }
 
 //去支付，拉起微信支付宝
--(void)startPR{
+-(void)startPR:(NSString *)coupon_code_id andGroupId:(NSString *)group_id andAC:(NSInteger)AC andAddressId:(NSString *)address_id andPayM:(NSString *)payM{
     if ([self.netUseVals isEqualToString: @"Useable"]){
-        //self.coupon_id != "" ? ["group_id":Int(self.GoodID)!,"num":self.amount,"address_id":Int(self.firmLocalMs[0].id)!,"pay_channel":1,"pay_type":self.firmOrderV.checkVals == "微信支付" ? 1 : 2 ,"coupon_code_id": Int(self.coupon_id)!] as [String : Any] : ["group_id":Int(self.GoodID)!,"num":self.amount,"address_id":Int(self.firmLocalMs[0].id)!,"pay_channel":1,"pay_type":self.firmOrderV.checkVals == "微信支付" ? 1 : 2 ] as [String : Any]
-        [NetWorkManager requestWithType:HttpRequestTypePost withUrlString:followRoute@"order/add" withParaments:@{@"category_id":@"123",@"order_total":@"price*amount"} Authos:self.Auths withSuccessBlock:^(NSDictionary *feedBacks) {
+        //微信支付:1     支付宝支付:2
+        [NetWorkManager requestWithType:HttpRequestTypePost withUrlString:followRoute@"order/add" withParaments:(coupon_code_id != NULL? @{@"group_id":group_id,@"num":[NSNumber numberWithInt:(int)AC],@"address_id":address_id,@"pay_channel":@1,@"pay_type":payM ,@"coupon_code_id": coupon_code_id} : @{@"group_id":group_id,@"num":[NSNumber numberWithInt:(int)AC],@"address_id":address_id,@"pay_channel":@1,@"pay_type":payM }) Authos:self.Auths withSuccessBlock:^(NSDictionary *feedBacks) {
             STLog(@"%@",[feedBacks modelToJSONString]);
             //进行容错处理丫:
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
@@ -139,22 +120,71 @@
 
 // MARK: - FirmOrderVDel
 - (void)toPlaceO {
-    //[MethodFunc popToRootVC:self];
-    STLog(@"立即支付");
+    //支付，拉起支付宝、微信，哈哈
+    MineAds *mineAds = self.firmOrderV.mineAds[0];
+    [self startPR:self.firmOrderV.selMs.coupon_code_id andGroupId:[NSString stringWithFormat:@"%@",[_pass_Vals objectForKey:@"group_id"]] andAC:self.firmOrderV.AC andAddressId:mineAds.ids andPayM:[NSString stringWithFormat:@"%ld",(long)self.firmOrderV.selectM]];
 }
-- (void)toCoupon {
-    //[MethodFunc popToRootVC:self];
-    STLog(@"%ld",(long)self.firmOrderV.selectM);
+- (void)toCoupon {    _popAligment  = CBPopupViewAligmentBottom;
+    CouponVC *vc = [[CouponVC alloc] initWithParams:self.firmOrderV.homeDetailMs.category_id andTotalO:[NSString stringWithFormat:@"%ld",[self.firmOrderV.homeDetailMs.discount_price intValue] * self.firmOrderV.AC] andRow:self.selRow];
+    vc.view.frame = CGRectMake(0, 0, self.view.bounds.size.width, 326*StScaleH);
+    vc.couponB = ^(NSDictionary *dict, BOOL b){
+        self.firmOrderV.selMs = [dict objectForKey:@"selMs"];
+        self.selRow = [dict objectForKey:@"selRow"];
+        STLog(@"%@",[self.firmOrderV.selMs modelToJSONString]);
+        switch (self.firmOrderV.selMs.coupon_type) {
+            case 1:  //满减
+            {
+                self.firmOrderV.totalM = [FormatDs retainPoint:@"0.00" floatV:[self.firmOrderV.homeDetailMs.discount_price intValue] * self.firmOrderV.AC + [self.firmOrderV.homeDetailMs.actual_logistics_fee intValue] - [self.firmOrderV.selMs.face_value floatValue]];
+                self.firmOrderV.totalFee.attributedText=[MethodFunc strWithSymbolsS:[@"￥" stringByAppendingString:[FormatDs retainPoint:@"0.00" floatV:[self.firmOrderV.homeDetailMs.discount_price intValue] * self.firmOrderV.AC + [self.firmOrderV.homeDetailMs.actual_logistics_fee intValue]- [self.firmOrderV.selMs.face_value floatValue]]] andSymbolsC:styleColor];
+            }
+                break;
+            default:
+            {
+                self.firmOrderV.totalM = [FormatDs retainPoint:@"0.00" floatV:[self.firmOrderV.homeDetailMs.discount_price intValue] * self.firmOrderV.AC + [self.firmOrderV.homeDetailMs.actual_logistics_fee intValue] - [self.firmOrderV.homeDetailMs.discount_price intValue] * self.firmOrderV.AC*(100 - self.firmOrderV.selMs.discount)/100];
+
+                self.firmOrderV.totalFee.attributedText=[MethodFunc strWithSymbolsS:[@"￥" stringByAppendingString:[FormatDs retainPoint:@"0.00" floatV:[self.firmOrderV.homeDetailMs.discount_price intValue] * self.firmOrderV.AC + [self.firmOrderV.homeDetailMs.actual_logistics_fee intValue]- [self.firmOrderV.homeDetailMs.discount_price intValue] * self.firmOrderV.AC*(100 - self.firmOrderV.selMs.discount)/100]] andSymbolsC:styleColor];
+            }
+                break;
+        }
+        [self reloadOneSection:[[NSIndexSet alloc]initWithIndex:1]];
+    };
+    vc.closeSelfB= ^(NSDictionary *dict, BOOL b){
+        self.firmOrderV.selMs = NULL;
+        self.selRow = NULL;
+        self.firmOrderV.totalM = [FormatDs retainPoint:@"0.00" floatV:[self.firmOrderV.homeDetailMs.discount_price intValue] * self.firmOrderV.AC + [self.firmOrderV.homeDetailMs.actual_logistics_fee intValue]];
+
+        self.firmOrderV.totalFee.attributedText=[MethodFunc strWithSymbolsS:[@"￥" stringByAppendingString:[FormatDs retainPoint:@"0.00" floatV:[self.firmOrderV.homeDetailMs.discount_price intValue] * self.firmOrderV.AC + [self.firmOrderV.homeDetailMs.actual_logistics_fee intValue]]] andSymbolsC:styleColor];
+        [self reloadOneSection:[[NSIndexSet alloc]initWithIndex:1]];
+    };
+    [self cb_presentPopupViewController:vc animationType:CBPopupViewAnimationSlideFromBottom aligment:_popAligment overlayDismissed:nil];
 }
 - (void)toRealN {
-    //[MethodFunc popToRootVC:self];
     STLog(@"实名丫");
 }
 - (void)toEditAs {
     STLog(@"编辑地址丫");
-    //[MethodFunc popToRootVC:self];
 }
+- (void)toPlusDescC:(NSInteger)AC{
+    self.firmOrderV.selMs = NULL;
+    self.selRow = NULL;
+    self.firmOrderV.AC = AC;
+    self.firmOrderV.totalM = [FormatDs retainPoint:@"0.00" floatV:[self.firmOrderV.homeDetailMs.discount_price intValue] * self.firmOrderV.AC + [self.firmOrderV.homeDetailMs.actual_logistics_fee intValue]];
+    self.firmOrderV.totalFee.attributedText=[MethodFunc strWithSymbolsS:[@"￥" stringByAppendingString:[FormatDs retainPoint:@"0.00" floatV:[self.firmOrderV.homeDetailMs.discount_price intValue] * self.firmOrderV.AC + [self.firmOrderV.homeDetailMs.actual_logistics_fee intValue]]] andSymbolsC:styleColor];
+    [self reloadOneSection:[[NSIndexSet alloc]initWithIndex:1]];
+}
+//reloadSections时的1section的数据
+-(void)reloadOneSection:(NSIndexSet *)indexSet{
+    //解决reloadSections时的闪动问题
+    [UIView performWithoutAnimation:^{
+        [self.firmOrderV.tableV reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+    }];
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+//- (void)placeholderView:(STPlaceholderView *)placeholderView reloadButtonDidClick:(UIButton *)sender {
+//    <#code#>
+//}
 @end

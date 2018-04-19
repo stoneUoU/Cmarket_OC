@@ -75,6 +75,10 @@
 		528936EB2061EC71004463E6 /* UIButton+ST_FixMultiClick.m in Sources */ = {isa = PBXBuildFile; fileRef = 528936EA2061EC71004463E6 /* UIButton+ST_FixMultiClick.m */; };
 		528936EE2061ECC4004463E6 /* STPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 528936ED2061ECC4004463E6 /* STPlaceholderView.m */; };
 		528936F12061FDA1004463E6 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 528936F02061FDA1004463E6 /* UIColor+Hex.m */; };
+		528AA1762086E1AD000B52F4 /* UILabel+Deal.m in Sources */ = {isa = PBXBuildFile; fileRef = 528AA1752086E1AD000B52F4 /* UILabel+Deal.m */; };
+		528AA1792086E851000B52F4 /* CouponVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 528AA1782086E851000B52F4 /* CouponVC.m */; };
+		528AA17C2086E867000B52F4 /* CouponV.m in Sources */ = {isa = PBXBuildFile; fileRef = 528AA17B2086E867000B52F4 /* CouponV.m */; };
+		528AA1802086F205000B52F4 /* CouponTbCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 528AA17F2086F205000B52F4 /* CouponTbCells.m */; };
 		528BFCFE20730971002C5ACB /* YYCacheTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 528BFCFD20730971002C5ACB /* YYCacheTools.m */; };
 		528BFD0420734E1E002C5ACB /* LazyTbCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 528BFD0320734E1E002C5ACB /* LazyTbCells.m */; };
 		528BFD0A20736558002C5ACB /* AppUpdateV.m in Sources */ = {isa = PBXBuildFile; fileRef = 528BFD0920736558002C5ACB /* AppUpdateV.m */; };
@@ -267,6 +271,14 @@
 		528936ED2061ECC4004463E6 /* STPlaceholderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STPlaceholderView.m; sourceTree = "<group>"; };
 		528936EF2061FDA1004463E6 /* UIColor+Hex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		528936F02061FDA1004463E6 /* UIColor+Hex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		528AA1742086E1AD000B52F4 /* UILabel+Deal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+Deal.h"; sourceTree = "<group>"; };
+		528AA1752086E1AD000B52F4 /* UILabel+Deal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Deal.m"; sourceTree = "<group>"; };
+		528AA1772086E851000B52F4 /* CouponVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CouponVC.h; sourceTree = "<group>"; };
+		528AA1782086E851000B52F4 /* CouponVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CouponVC.m; sourceTree = "<group>"; };
+		528AA17A2086E867000B52F4 /* CouponV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CouponV.h; sourceTree = "<group>"; };
+		528AA17B2086E867000B52F4 /* CouponV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CouponV.m; sourceTree = "<group>"; };
+		528AA17E2086F205000B52F4 /* CouponTbCells.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CouponTbCells.h; sourceTree = "<group>"; };
+		528AA17F2086F205000B52F4 /* CouponTbCells.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CouponTbCells.m; sourceTree = "<group>"; };
 		528BFCFC20730971002C5ACB /* YYCacheTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYCacheTools.h; sourceTree = "<group>"; };
 		528BFCFD20730971002C5ACB /* YYCacheTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYCacheTools.m; sourceTree = "<group>"; };
 		528BFD0220734E1E002C5ACB /* LazyTbCells.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LazyTbCells.h; sourceTree = "<group>"; };
@@ -421,6 +433,8 @@
 				5284058020634CA2000623B4 /* HomeTbCells.m */,
 				52C96B972085C8B000F4DD03 /* MineAdsTbCells.h */,
 				52C96B982085C8B000F4DD03 /* MineAdsTbCells.m */,
+				528AA17E2086F205000B52F4 /* CouponTbCells.h */,
+				528AA17F2086F205000B52F4 /* CouponTbCells.m */,
 			);
 			name = HomeCells;
 			sourceTree = "<group>";
@@ -586,6 +600,8 @@
 				528DC10A20749ECB00B02986 /* PopPresentVC.m */,
 				528DC10C20749FB700B02986 /* FirmOrderVC.h */,
 				528DC10D20749FB700B02986 /* FirmOrderVC.m */,
+				528AA1772086E851000B52F4 /* CouponVC.h */,
+				528AA1782086E851000B52F4 /* CouponVC.m */,
 			);
 			name = VC;
 			sourceTree = "<group>";
@@ -600,6 +616,8 @@
 				528C5479206C848000635C9E /* HomeDetailV.m */,
 				528DC10F20749FCF00B02986 /* FirmOrderV.h */,
 				528DC11020749FCF00B02986 /* FirmOrderV.m */,
+				528AA17A2086E867000B52F4 /* CouponV.h */,
+				528AA17B2086E867000B52F4 /* CouponV.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -695,6 +713,7 @@
 		526047901F7515980072AFB4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				528DC10220749E6900B02986 /* PopPresentV */,
 				526047A01F7516920072AFB4 /* TabBar.h */,
 				526047A11F7516920072AFB4 /* TabBar.m */,
 				528936EC2061ECC4004463E6 /* STPlaceholderView.h */,
@@ -762,6 +781,8 @@
 				528936F02061FDA1004463E6 /* UIColor+Hex.m */,
 				5284058220635602000623B4 /* UILabel+Padding.h */,
 				5284058320635602000623B4 /* UILabel+Padding.m */,
+				528AA1742086E1AD000B52F4 /* UILabel+Deal.h */,
+				528AA1752086E1AD000B52F4 /* UILabel+Deal.m */,
 				523F04D42065068A00858BDD /* NSString+MD5.h */,
 				523F04D52065068A00858BDD /* NSString+MD5.m */,
 				52BC7E662065DEC9000B5E43 /* UIFont+runtime.h */,
@@ -779,7 +800,6 @@
 		528936D92061EA53004463E6 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				528DC10220749E6900B02986 /* PopPresentV */,
 				528DC0F3207474C300B02986 /* WKwebViewJsBridge */,
 				528936DA2061EA88004463E6 /* NetWorkManager.h */,
 				528936DB2061EA88004463E6 /* NetWorkManager.m */,
@@ -1135,6 +1155,7 @@
 				52AE74C91FCE584900081972 /* HomeDetailVC.m in Sources */,
 				528DC1142074B95F00B02986 /* STAlertV.m in Sources */,
 				52E42E672071DEF60038062C /* TestModel.m in Sources */,
+				528AA1792086E851000B52F4 /* CouponVC.m in Sources */,
 				5260477F1F7513E40072AFB4 /* HomeVC.m in Sources */,
 				523F04B520648E5100858BDD /* MineV.m in Sources */,
 				52E42E612071D1940038062C /* SingleClass.m in Sources */,
@@ -1154,6 +1175,7 @@
 				5284058420635602000623B4 /* UILabel+Padding.m in Sources */,
 				52795ACF20807B67000FA895 /* MineOrderVC.m in Sources */,
 				52BC7E682065DEC9000B5E43 /* UIFont+runtime.m in Sources */,
+				528AA1802086F205000B52F4 /* CouponTbCells.m in Sources */,
 				5260479C1F7516390072AFB4 /* TabBarVC.m in Sources */,
 				528936E82061EC34004463E6 /* UIView+Toast.m in Sources */,
 				52BC7E712065E65F000B5E43 /* RegisterV.m in Sources */,
@@ -1196,6 +1218,7 @@
 				523FD55720664727009753B4 /* SetVC.m in Sources */,
 				52C96B992085C8B000F4DD03 /* MineAdsTbCells.m in Sources */,
 				526047A21F7516920072AFB4 /* TabBar.m in Sources */,
+				528AA17C2086E867000B52F4 /* CouponV.m in Sources */,
 				526047141F7510800072AFB4 /* AppDelegate.m in Sources */,
 				5260478E1F7515270072AFB4 /* main.m in Sources */,
 				52CE2EF9206CE22B0053A72B /* HomeDetailMs.m in Sources */,
@@ -1203,6 +1226,7 @@
 				523F04BD2064CB5100858BDD /* MineMs.m in Sources */,
 				5284058720637D59000623B4 /* CountDown.m in Sources */,
 				528936EE2061ECC4004463E6 /* STPlaceholderView.m in Sources */,
+				528AA1762086E1AD000B52F4 /* UILabel+Deal.m in Sources */,
 				52CE2EF6206CCCFE0053A72B /* WebSocketNetwork.m in Sources */,
 				528DC10820749E6900B02986 /* PopDismissAnimation.m in Sources */,
 				526047961F7515D60072AFB4 /* UIView+Extension.m in Sources */,
@@ -1357,6 +1381,7 @@
 				);
 				GCC_PREFIX_HEADER = Fishes/CommFiles.pch;
 				INFOPLIST_FILE = Fishes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.youlu.Fishes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1377,6 +1402,7 @@
 				);
 				GCC_PREFIX_HEADER = Fishes/CommFiles.pch;
 				INFOPLIST_FILE = Fishes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.youlu.Fishes;
 				PRODUCT_NAME = "$(TARGET_NAME)";

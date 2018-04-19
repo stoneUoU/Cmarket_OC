@@ -54,7 +54,7 @@ IB_DESIGNABLE
 + (instancetype)numberButtonWithFrame:(CGRect)frame;
 
 /** 加减按钮的Block回调*/
-@property (nonatomic, copy) void(^resultBlock)(PPNumberButton *ppBtn,CGFloat number, BOOL increaseStatus/* 是否为加状态*/);
+@property (nonatomic, copy) void(^resultBlock)(PPNumberButton *ppBtn,NSInteger number, BOOL increaseStatus/* 是否为加状态*/);
 /** 代理*/
 @property (nonatomic, weak) id<PPNumberButtonDelegate> delegate;
 

@@ -11,6 +11,7 @@
 #import "HomeBaseTbV.h"
 #import "STAlertV.h"
 #import "UIViewController+CBPopup.h"
+
 @interface HomeVC : UIViewController<UITextFieldDelegate,SPPageMenuDelegate,UITableViewDataSource,UITableViewDelegate,SDCycleScrollViewDelegate,STPlaceholderViewDelegate,STAlertVDel>
 @property (nonatomic ,strong)UIView *navBarV;
 
@@ -50,6 +51,5 @@
 
 //定义一个弹出视图
 @property (assign, nonatomic) CBPopupViewAligment popAligment;
-
 
 @end

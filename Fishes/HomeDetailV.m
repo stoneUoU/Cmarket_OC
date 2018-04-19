@@ -38,6 +38,9 @@
     _tableV = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _tableV.delegate = self;
     _tableV.dataSource = self;
+    _tableV.estimatedRowHeight = 160;
+    _tableV.estimatedSectionHeaderHeight = 100;
+    _tableV.estimatedSectionFooterHeight = 100;
     //给tableV注册Cells
     [_tableV registerClass:[UITableViewCell class] forCellReuseIdentifier: @"Cells"];
     //添加下拉刷新头

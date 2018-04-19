@@ -177,6 +177,8 @@
 //    STLog(@"%@",[dict objectForKey:@"num"]);
 //    [MethodFunc pushToNextVC:self destVC:[[FirmOrderVC alloc]init] ];
 //}
+
+
 //在PopPresentVC中
 //PopPresentVC.h文件
 // 定制传值协议

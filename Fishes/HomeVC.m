@@ -124,13 +124,13 @@
 
 
     [self.view addSubview:self.tableView];
+    
 
     // 添加2个子控制器
     [self addChildViewController:[[OnStartVC alloc] init]];
     [self addChildViewController:[[WillStartVC alloc] init]];
     // 先将第一个子控制的view添加到scrollView上去
     [self.scrollView addSubview:self.childViewControllers[0].view];
-
     // 添加头部视图
     self.tableView.tableHeaderView = _cycleScrollV;
     self.tableView.tableHeaderView.frame = CGRectMake(0, 0, ScreenW, HeaderViewH);
@@ -227,6 +227,7 @@
      // 模拟网络请求，1秒后结束刷新
      dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
          [self.tableView.mj_header endRefreshing];
+         STLog(@"进这里了哈");
      });
  }
 

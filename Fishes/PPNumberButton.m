@@ -102,6 +102,7 @@
     _textField.textAlignment = NSTextAlignmentCenter;
     _textField.keyboardType = UIKeyboardTypeDecimalPad;
     _textField.font = [UIFont systemFontOfSize:_inputFieldFont];
+    _textField.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.07];
     if (self.decimalNum) {
         _textField.text = [NSString stringWithFormat:@"%.1f",_minValue];
     }else{
@@ -114,13 +115,13 @@
 
     self.clipsToBounds = YES;
     self.layer.cornerRadius = 3.f;
-    self.backgroundColor = [UIColor whiteColor];
 }
 
 //设置加减按钮的公共方法
 - (UIButton *)creatButton
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    button.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.07];
     button.titleLabel.font = [UIFont boldSystemFontOfSize:_buttonTitleFont];
     [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(touchDown:) forControlEvents:UIControlEventTouchDown];
@@ -135,7 +136,7 @@
 
     _width =  self.frame.size.width;
     _height = self.frame.size.height;
-    _textField.frame = CGRectMake(_height, 0, _width - 2*_height, _height);
+    _textField.frame = CGRectMake(_height + 5, 0, _width - 2*_height - 10, _height);
     _increaseBtn.frame = CGRectMake(_width - _height, 0, _height, _height);
 
     if (_decreaseHide && _textField.text.floatValue < _minValue) {
@@ -196,7 +197,8 @@
 
         [self buttonClickCallBackWithIncreaseStatus:YES];
     } else {
-        if (_shakeAnimation) { [self shakeAnimationMethod]; } PPLog(@"已超过最大数量%.1f",_maxValue);
+        if (_shakeAnimation) { [self shakeAnimationMethod]; } //PPLog(@"已超过最大数量%.1f",_maxValue);
+        [HudTips showToast: [@"不能超过最大数量" stringByAppendingString:[NSString stringWithFormat:@"%ld",(long)_maxValue]] showType:Pos animationType:StToastAnimationTypeScale];
     }
 }
 
@@ -234,16 +236,17 @@
 
             return;
         }
-        if (_shakeAnimation) { [self shakeAnimationMethod]; } PPLog(@"数量不能小于%.1f",_minValue);
+        if (_shakeAnimation) { [self shakeAnimationMethod]; } //PPLog(@"数量不能小于%.1f",_minValue);
+        [HudTips showToast: [@"数量不能小于" stringByAppendingString:[NSString stringWithFormat:@"%ld",(long)_minValue]] showType:Pos animationType:StToastAnimationTypeScale];
     }
 }
 
 /// 点击响应
 - (void)buttonClickCallBackWithIncreaseStatus:(BOOL)increaseStatus
 {
-    _resultBlock ? _resultBlock(self,_textField.text.floatValue, increaseStatus) : nil;
+    _resultBlock ? _resultBlock(self,_textField.text.intValue, increaseStatus) : nil;
     if ([_delegate respondsToSelector:@selector(pp_numberButton: number: increaseStatus:)]) {
-        [_delegate pp_numberButton:self number:_textField.text.floatValue increaseStatus:increaseStatus];
+        [_delegate pp_numberButton:self number:_textField.text.intValue increaseStatus:increaseStatus];
     }
 }
 
@@ -260,13 +263,17 @@
         maxValueString = [NSString stringWithFormat:@"%.f",_maxValue];
     }
     if ([_textField.text pp_isNotBlank] == NO || [_textField.text floatValue] < _minValue) {
+        [HudTips showToast: [@"数量不能小于" stringByAppendingString:[NSString stringWithFormat:@"%ld",(long)_minValue]] showType:Pos animationType:StToastAnimationTypeScale];
         if (self.decimalNum) {
             _textField.text = _decreaseHide ? [NSString stringWithFormat:@"%.1f",minValueString.floatValue-self.stepValue]:minValueString;
         }else{
             _textField.text = _decreaseHide ? [NSString stringWithFormat:@"%.f",minValueString.floatValue-self.stepValue]:minValueString;
         }
     }
-    [_textField.text floatValue] > _maxValue ? _textField.text = maxValueString : nil;
+    if ([_textField.text floatValue] > _maxValue){
+        [HudTips showToast: [@"不能超过最大数量" stringByAppendingString:[NSString stringWithFormat:@"%ld",(long)_maxValue]] showType:Pos animationType:StToastAnimationTypeScale];
+        _textField.text = maxValueString;
+    }
 }
 
 /// 清除定时器
@@ -293,7 +300,7 @@
 
             _decreaseBtn.frame = CGRectMake(_width-_height, 0, _height, _height);
         }
-        self.backgroundColor = [UIColor clearColor];
+
     } else {
         _decreaseBtn.frame = CGRectMake(0, 0, _height, _height);
     }

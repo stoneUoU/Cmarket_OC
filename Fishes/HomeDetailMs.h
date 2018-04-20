@@ -9,31 +9,31 @@
 
 
 @interface HomeDetailMs : NSObject
-@property (nonatomic, strong) NSString* group_id;
-@property (nonatomic, strong) NSString* title;
+@property (nonatomic, copy) NSString* group_id;
+@property (nonatomic, copy) NSString* title;
 @property (nonatomic, assign) NSInteger status;
-@property (nonatomic, strong) NSString* discount_price;
-@property (nonatomic, strong) NSString* volume;
-@property (nonatomic, strong) NSString* vendor_id;
-@property (nonatomic, strong) NSString* freeze_inventory;
-@property (nonatomic, strong) NSString* vendor;
-@property (nonatomic, strong) NSString* logistics_fee;
+@property (nonatomic, copy) NSString* discount_price;
+@property (nonatomic, copy) NSString* volume;
+@property (nonatomic, copy) NSString* vendor_id;
+@property (nonatomic, copy) NSString* freeze_inventory;
+@property (nonatomic, copy) NSString* vendor;
+@property (nonatomic, copy) NSString* logistics_fee;
 
-@property (nonatomic, strong) NSString* small_pic;
-@property (nonatomic, strong) NSString* type;
-@property (nonatomic, assign) NSString* total_inventory;
-@property (nonatomic, strong) NSString* qty;
-@property (nonatomic, strong) NSString* vendor_avatar;
-@property (nonatomic, strong) NSString* subtitle;
-@property (nonatomic, strong) NSString* turnover;
-@property (nonatomic, strong) NSString* detail;
-@property (nonatomic, strong) NSString* start_time;
+@property (nonatomic, copy) NSString* small_pic;
+@property (nonatomic, copy) NSString* type;
+@property (nonatomic, copy) NSString* total_inventory;
+@property (nonatomic, copy) NSString* qty;
+@property (nonatomic, copy) NSString* vendor_avatar;
+@property (nonatomic, copy) NSString* subtitle;
+@property (nonatomic, copy) NSString* turnover;
+@property (nonatomic, copy) NSString* detail;
+@property (nonatomic, copy) NSString* start_time;
 
-@property (nonatomic, strong) NSString* end_time;
-@property (nonatomic, strong) NSString* price;
-@property (nonatomic, strong) NSString* category_id;
-@property (nonatomic, strong) NSString* actual_logistics_fee;
-@property (nonatomic, strong) NSString* desc;
+@property (nonatomic, copy) NSString* end_time;
+@property (nonatomic, copy) NSString* price;
+@property (nonatomic, copy) NSString* category_id;
+@property (nonatomic, copy) NSString* actual_logistics_fee;
+@property (nonatomic, copy) NSString* desc;
 
 @property NSMutableArray* banner_list;
 @property NSMutableArray* attr_value_list;
@@ -41,9 +41,9 @@
 
 @interface HomeDetailSonMs : NSObject
 
-@property (nonatomic, strong) NSString* attr_value;
-@property (nonatomic, strong) NSString* attr_name;
-@property (nonatomic, strong) NSString* attr_type;
+@property (nonatomic, copy) NSString* attr_value;
+@property (nonatomic, copy) NSString* attr_name;
+@property (nonatomic, copy) NSString* attr_type;
 
 @end
 

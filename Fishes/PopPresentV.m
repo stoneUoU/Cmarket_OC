@@ -76,6 +76,17 @@
         make.width.height.mas_equalTo(85);
     }];
 
+    _closeB = [[UIButton alloc] init];
+    _closeB.titleLabel.font=[UIFont systemFontOfSize:16];
+    [_closeB setTitle:@"关闭" forState:UIControlStateNormal];
+    [_closeB setTitleColor:styleColor  forState:UIControlStateNormal];
+    [_closeB addTarget:self action:@selector(toDo:)forControlEvents:UIControlEventTouchUpInside];
+    [headerV addSubview:_closeB];
+    [_closeB mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(-spaceM);
+        make.top.equalTo(headerV).offset(6*StScaleH);
+    }];
+
     UILabel *priceInfo = [[UILabel alloc] init];
     priceInfo.font = [UIFont systemFontOfSize:16];
     priceInfo.textColor = styleColor;
@@ -157,6 +168,10 @@
 //按钮、手势函数写这
 - (void)toSubmit:(UIButton *)sender{
     [_delegate toCloseSelf:self.AC];
+}
+
+- (void)toDo:(UIButton *)sender{
+    [_delegate toCloseV];
 }
 
 @end

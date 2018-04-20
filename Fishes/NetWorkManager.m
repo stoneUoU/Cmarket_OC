@@ -115,7 +115,6 @@
         {
             //设置请求头
             [[NetWorkManager shareManager].requestSerializer setValue:Authos forHTTPHeaderField:@"token"];
-            STLog(@"%@",paraments);
             /**设置请求超时时间*/
             [[NetWorkManager shareManager].requestSerializer setTimeoutInterval:timeoutTime];
             [[NetWorkManager shareManager] POST:urlString parameters:paraments success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

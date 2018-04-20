@@ -36,22 +36,22 @@
 //@end
 
 @interface MineMs : NSObject
-@property (nonatomic, strong) NSString* avatar;
-@property (nonatomic, strong) NSString* birthday;
-@property (nonatomic, strong) NSString* customer_service_tel;
-@property (nonatomic, strong) NSString* enable;
-@property (nonatomic, strong) NSString* gender;
-@property (nonatomic, strong) NSString* ids;
-@property (nonatomic, strong) NSString* nick_name;
-@property (nonatomic, strong) NSString* tel;
-@property (nonatomic, strong) NSString* username;
+@property (nonatomic, copy) NSString* avatar;
+@property (nonatomic, copy) NSString* birthday;
+@property (nonatomic, copy) NSString* customer_service_tel;
+@property (nonatomic, copy) NSString* enable;
+@property (nonatomic, copy) NSString* gender;
+@property (nonatomic, copy) NSString* ids;
+@property (nonatomic, copy) NSString* nick_name;
+@property (nonatomic, copy) NSString* tel;
+@property (nonatomic, copy) NSString* username;
 @end
 
 @interface MineSonMs : NSObject
 
-@property (nonatomic, strong) NSString* has_pay;
-@property (nonatomic, strong) NSString* no_delivery;
-@property (nonatomic, strong) NSString* no_pay;
-@property (nonatomic, strong) NSString* over;
+@property (nonatomic, copy) NSString* has_pay;
+@property (nonatomic, copy) NSString* no_delivery;
+@property (nonatomic, copy) NSString* no_pay;
+@property (nonatomic, copy) NSString* over;
 
 @end

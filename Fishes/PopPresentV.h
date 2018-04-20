@@ -11,6 +11,8 @@
 @protocol PopPresentVDel
 //这里只需要声明方法
 - (void)toCloseSelf:(NSInteger)AC;
+
+- (void)toCloseV;
 @end
 @interface PopPresentV : UIView<UITableViewDelegate,PPNumberButtonDelegate>
 
@@ -24,6 +26,8 @@
 
 //数量
 @property (nonatomic ,assign)NSInteger AC;
+
+@property (nonatomic ,strong)UIButton *closeB;
 
 //定义数据源
 @property (nonatomic,retain)HomeDetailMs *homeDetailMs;

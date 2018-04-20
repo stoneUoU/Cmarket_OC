@@ -524,6 +524,7 @@
         return 360*StScaleH;
     }
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section  == 0 ){
@@ -542,9 +543,10 @@
             marketLab.text = @"请先摊位信息认证";
             marketLab.textAlignment = NSTextAlignmentLeft;
             [cells addSubview:marketLab];
+            MASAttachKeys(marketLab);
             [marketLab mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(iconV.mas_right).offset(10);
-                make.top.bottom.mas_equalTo(0);
+                make.centerY.mas_equalTo(0);
                 make.height.mas_equalTo(44*StScaleH);
             }];
             cells.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

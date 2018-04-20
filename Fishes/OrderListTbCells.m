@@ -18,11 +18,13 @@
     if(_caiIcon == nil) {
         _caiIcon = [[UIImageView alloc] init];
         [self addSubview:_caiIcon];
+        MASAttachKeys(_caiIcon);
         [_caiIcon mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.mas_top).offset(10*StScaleH);
+            //将控件的约束优先级置为高级，那么就算约束重复了也不会有警告 priorityHigh()
+            make.top.equalTo(self.mas_top).offset(10*StScaleH).priorityHigh();
             make.left.mas_equalTo(spaceM);
+            make.bottom.equalTo(self.mas_bottom).offset(-10*StScaleH).priorityHigh();
             make.width.height.mas_equalTo(80*StScaleH);
-            make.bottom.equalTo(self.mas_bottom).offset(-10*StScaleH);
         }];
     }
     return _caiIcon;
@@ -56,19 +58,19 @@
     }
     return _priceLab;
 }
-- (UILabel *)amount {
-    if(_amount == nil) {
-        _amount = [[UILabel alloc] init];
-        _amount.font = [UIFont systemFontOfSize:16];
-        _amount.textColor = midBlackC;
-        [self addSubview:_amount];
-        [_amount mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(self.priceLab);
-            make.right.mas_equalTo(-spaceM);
-        }];
-    }
-    return _amount;
-}
+//- (UILabel *)amount {
+//    if(_amount == nil) {
+//        _amount = [[UILabel alloc] init];
+//        _amount.font = [UIFont systemFontOfSize:16];
+//        _amount.textColor = midBlackC;
+//        [self addSubview:_amount];
+//        [_amount mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.centerY.equalTo(self.priceLab);
+//            make.right.mas_equalTo(-spaceM);
+//        }];
+//    }
+//    return _amount;
+//}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

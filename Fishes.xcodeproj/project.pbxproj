@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		190C152298CE4C445552C782 /* Pods_Fishes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F37055393C97E28B7B668FA1 /* Pods_Fishes.framework */; };
+		5202E7442089C25D00772C12 /* STVFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5202E7432089C25D00772C12 /* STVFactory.m */; };
 		5216E9F8206E0AFD004DBBCB /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5216E9F7206E0AFC004DBBCB /* AlipaySDK.bundle */; };
 		5216E9FA206E0B05004DBBCB /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5216E9F9206E0B05004DBBCB /* AlipaySDK.framework */; };
 		5216E9FC206E0B34004DBBCB /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5216E9FB206E0B34004DBBCB /* libc++.tbd */; };
@@ -149,6 +150,9 @@
 
 /* Begin PBXFileReference section */
 		3D86F0E351C41C5DECDD7431 /* Pods-Fishes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fishes.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fishes/Pods-Fishes.release.xcconfig"; sourceTree = "<group>"; };
+		5202E7422089C25D00772C12 /* STVFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STVFactory.h; sourceTree = "<group>"; };
+		5202E7432089C25D00772C12 /* STVFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STVFactory.m; sourceTree = "<group>"; };
+		5202E7452089C4A900772C12 /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
 		5216E9F7206E0AFC004DBBCB /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		5216E9F9206E0B05004DBBCB /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		5216E9FB206E0B34004DBBCB /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -551,6 +555,7 @@
 			children = (
 				52795AD92080B4D7000FA895 /* iconfont.ttf */,
 				528936D52061E8C1004463E6 /* CommFiles.pch */,
+				5202E7452089C4A900772C12 /* Macros.h */,
 				526047121F7510800072AFB4 /* AppDelegate.h */,
 				526047131F7510800072AFB4 /* AppDelegate.m */,
 				5260478D1F7515270072AFB4 /* main.m */,
@@ -743,6 +748,8 @@
 				52C96B952085895500F4DD03 /* TransferBtn.m */,
 				52AE1B762085FDDD00434BBE /* PPNumberButton.h */,
 				52AE1B772085FDDD00434BBE /* PPNumberButton.m */,
+				5202E7422089C25D00772C12 /* STVFactory.h */,
+				5202E7432089C25D00772C12 /* STVFactory.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1228,6 +1235,7 @@
 				526047141F7510800072AFB4 /* AppDelegate.m in Sources */,
 				5260478E1F7515270072AFB4 /* main.m in Sources */,
 				52CE2EF9206CE22B0053A72B /* HomeDetailMs.m in Sources */,
+				5202E7442089C25D00772C12 /* STVFactory.m in Sources */,
 				523F04BA20649E1300858BDD /* MineTbCells.m in Sources */,
 				523F04BD2064CB5100858BDD /* MineMs.m in Sources */,
 				5284058720637D59000623B4 /* CountDown.m in Sources */,

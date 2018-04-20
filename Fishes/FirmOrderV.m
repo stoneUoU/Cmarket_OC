@@ -111,7 +111,6 @@
         {    
             headerV.backgroundColor = [UIColor whiteColor];
             UIImageView *iconV = [[UIImageView alloc] init ];
-            iconV.image = [UIImage imageNamed:@"appUpdate_bg.png"];
             if (_homeDetailMs != NULL){
                 [iconV sd_setImageWithURL:[NSURL URLWithString:[picUrl stringByAppendingString:_homeDetailMs.vendor_avatar]] placeholderImage:[UIImage imageNamed:@"pic_loading_shangpingxiangqing.png"]];
             }
@@ -183,7 +182,9 @@
             // 设置最小值
             _numBtn.minValue = 1;
             // 设置最大值
-            _numBtn.maxValue = _homeDetailMs != NULL ? [_homeDetailMs.total_inventory intValue] - [_homeDetailMs.freeze_inventory intValue] :1;
+            if (_homeDetailMs != NULL){
+                _numBtn.maxValue = [_homeDetailMs.total_inventory intValue] - [_homeDetailMs.freeze_inventory intValue];
+            };
             // 设置输入框中的字体大小
             _numBtn.inputFieldFont = 16;
             _numBtn.increaseTitle = @"＋";

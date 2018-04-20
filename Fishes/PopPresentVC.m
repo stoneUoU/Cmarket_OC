@@ -9,6 +9,13 @@
 #import "PopPresentVC.h"
 
 @implementation PopPresentVC
+- (id)init
+{
+    _popPresentV= [[PopPresentV alloc] init]; //对MyUIView进行初始化
+    _popPresentV.backgroundColor = [UIColor whiteColor];
+    _popPresentV.delegate = self; //将SecondVC自己的实例作为委托对象
+    return [super init];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -19,42 +26,24 @@
 
     [self setUpUI];
 }
-
 - (void)setUpUI{
-    UIButton * closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    closeBtn.frame = CGRectMake(15, 0, 50, 40);
-    [closeBtn setTitle:@"关闭" forState:UIControlStateNormal];
-    [closeBtn setTitleColor:[UIColor colorWithRed:217/255.0 green:110/255.0 blue:90/255.0 alpha:1] forState:UIControlStateNormal];
-    [closeBtn addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:closeBtn];
-
-    _doBtn = [[UIButton alloc] init];
-    _doBtn.titleLabel.font=[UIFont systemFontOfSize:16];
-    _doBtn.backgroundColor = styleColor;
-    [_doBtn setTitle:@"确定" forState:UIControlStateNormal];
-    [_doBtn setTitleColor:[UIColor whiteColor]  forState:UIControlStateNormal];
-    [_doBtn addTarget:self action:@selector(toDo:)forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_doBtn];
-
+    [self.view addSubview:_popPresentV];
     //添加约束
     [self setMas];
 }
+
+
 - (void) setMas{
-    [_doBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.left.equalTo(self.view);
-        make.width.mas_equalTo(ScreenW);
-        make.height.mas_equalTo(44);
+    [_popPresentV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view);
+        make.left.equalTo(self.view);
+        make.width.height.mas_equalTo(self.view);
     }];
 }
-//按钮、手势函数写这
-- (void)toDo:(UIButton *)sender{
+-(void) toCloseSelf:(NSInteger)AC{
     [self dismissViewControllerAnimated:YES completion:nil];
-    _dictB(@{@"name":@"oooooo"}, YES);
+    _dictB(@{@"AC":[NSNumber numberWithInt:(int)AC]}, YES);
 }
-- (void)close {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

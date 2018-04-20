@@ -48,6 +48,7 @@
     return _tableView;
 }
 - (void)viewDidLoad {
+
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     //监听是否有网
@@ -57,6 +58,7 @@
                                              selector:@selector(setNet:)
                                                  name:@"netChange"
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refFooterM:) name:@"onStartRefEnd" object:nil];
     [self setUpUI];
     [self startR];
     
@@ -141,6 +143,7 @@
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         // 下拉刷新
         [self downPullUpdateData];
+
     }];
     //添加约束
     [self setMas];
@@ -225,10 +228,7 @@
  // 下拉刷新
  - (void)downPullUpdateData {
      // 模拟网络请求，1秒后结束刷新
-     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-         [self.tableView.mj_header endRefreshing];
-         STLog(@"进这里了哈");
-     });
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"onStartRef" object:@{@"num":@"刷新"}];
  }
 
 //按钮、手势函数写这
@@ -290,6 +290,11 @@
      NSDictionary *dict = notification.userInfo;
      _netUseVals =  dict[@"ifnetUse"];
  }
+
+- (void)refFooterM:(NSNotification *)noti {
+    STLog(@"%@",[noti.object objectForKey:@"info"]);
+    [self.tableView.mj_header endRefreshing];
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
 }

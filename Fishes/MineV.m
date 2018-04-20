@@ -326,7 +326,7 @@
             }else{
                 wait_pay_brage.hidden = NO;
                 wait_pay_brage.layer.borderWidth = 1;
-                wait_pay_brage.layer.cornerRadius = 10;
+                wait_pay_brage.layer.cornerRadius = 10*StScaleH;
             }
             [_wait_payV addSubview:wait_pay_brage];
             [wait_pay_brage mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -378,7 +378,7 @@
             }else{
                 pinDan_brage.hidden = NO;
                 pinDan_brage.layer.borderWidth = 1;
-                pinDan_brage.layer.cornerRadius = 10;
+                pinDan_brage.layer.cornerRadius = 10*StScaleH;
             }
             [_pinDan_V addSubview:pinDan_brage];
             [pinDan_brage mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -430,7 +430,7 @@
             }else{
                 wait_rece_brage.hidden = NO;
                 wait_rece_brage.layer.borderWidth = 1;
-                wait_rece_brage.layer.cornerRadius = 10;
+                wait_rece_brage.layer.cornerRadius = 10*StScaleH;
             }
             [_wait_receV addSubview:wait_rece_brage];
             [wait_rece_brage mas_makeConstraints:^(MASConstraintMaker *make) {

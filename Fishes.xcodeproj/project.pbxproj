@@ -102,6 +102,7 @@
 		528DC1202074C8A000B02986 /* UIViewController+CBPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 528DC11F2074C8A000B02986 /* UIViewController+CBPopup.m */; };
 		528F51A82068DECE008BA452 /* AccountInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 528F51A72068DECE008BA452 /* AccountInfoVC.m */; };
 		528F51AB2068DEF0008BA452 /* AccountInfoV.m in Sources */ = {isa = PBXBuildFile; fileRef = 528F51AA2068DEF0008BA452 /* AccountInfoV.m */; };
+		5292B35320888676002A3E87 /* PopPresentV.m in Sources */ = {isa = PBXBuildFile; fileRef = 5292B35220888676002A3E87 /* PopPresentV.m */; };
 		5294C5682072279D00F55510 /* YYCacheVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5294C5672072279D00F55510 /* YYCacheVC.m */; };
 		5295DB5C207DB31E00352354 /* UIImageView+CornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 5295DB5B207DB31E00352354 /* UIImageView+CornerRadius.m */; };
 		5295DB62207DDA3B00352354 /* AccountInfoTbCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 5295DB61207DDA3B00352354 /* AccountInfoTbCells.m */; };
@@ -324,6 +325,8 @@
 		528F51A72068DECE008BA452 /* AccountInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountInfoVC.m; sourceTree = "<group>"; };
 		528F51A92068DEF0008BA452 /* AccountInfoV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountInfoV.h; sourceTree = "<group>"; };
 		528F51AA2068DEF0008BA452 /* AccountInfoV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountInfoV.m; sourceTree = "<group>"; };
+		5292B35120888676002A3E87 /* PopPresentV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopPresentV.h; sourceTree = "<group>"; };
+		5292B35220888676002A3E87 /* PopPresentV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopPresentV.m; sourceTree = "<group>"; };
 		5294C5662072279D00F55510 /* YYCacheVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYCacheVC.h; sourceTree = "<group>"; };
 		5294C5672072279D00F55510 /* YYCacheVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYCacheVC.m; sourceTree = "<group>"; };
 		5295DB5A207DB31E00352354 /* UIImageView+CornerRadius.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+CornerRadius.h"; sourceTree = "<group>"; };
@@ -614,6 +617,8 @@
 				52680C72206239B700F5DB96 /* HomeBaseTbV.h */,
 				528C5478206C848000635C9E /* HomeDetailV.h */,
 				528C5479206C848000635C9E /* HomeDetailV.m */,
+				5292B35120888676002A3E87 /* PopPresentV.h */,
+				5292B35220888676002A3E87 /* PopPresentV.m */,
 				528DC10F20749FCF00B02986 /* FirmOrderV.h */,
 				528DC11020749FCF00B02986 /* FirmOrderV.m */,
 				528AA17A2086E867000B52F4 /* CouponV.h */,
@@ -1149,6 +1154,7 @@
 				528DC0FE207474C400B02986 /* WebViewJavascriptBridge.m in Sources */,
 				52BC7E6B2065E611000B5E43 /* SmsLoginV.m in Sources */,
 				5295DB65207E028600352354 /* STDatePickerView.m in Sources */,
+				5292B35320888676002A3E87 /* PopPresentV.m in Sources */,
 				528DC1202074C8A000B02986 /* UIViewController+CBPopup.m in Sources */,
 				528DC10720749E6900B02986 /* PopPresentAnimation.m in Sources */,
 				52795AD2208086B5000FA895 /* MineOrderV.m in Sources */,

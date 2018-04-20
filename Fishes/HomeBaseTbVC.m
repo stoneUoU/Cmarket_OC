@@ -43,10 +43,11 @@
 
 }
 //查询商品
-- (void)startPR:(NSString *)selIdx  withFreeze:(NSString *)freeze_inventory withUpdate:(NSString *)update_time{
+- (void)startPR:(NSString *)selIdx  withFreeze:(NSString *)freeze_inventory withUpdate:(NSString *)update_time andIfR:(NSInteger )ifR{
     if ([_netUseVals isEqualToString: @"Useable"]){
         [NetWorkManager requestWithType:HttpRequestTypePost withUrlString:followRoute@"search" withParaments:@{@"cond":@{@"keywords":@"",@"status":selIdx},@"sort":@{@"freeze_inventory":freeze_inventory,@"group_product_price":@"",@"update_time":update_time},@"limit":@(_pageSize),@"page":@1} Authos:@"" withSuccessBlock:^(NSDictionary *feedBacks) {
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]] isEqualToString:@"0"]){
+                [self.dataArrs removeAllObjects];
                 if ( [feedBacks[@"data"] count] == 0){
                     if (_placeholderV == nil){
                         _placeholderV = [[STPlaceholderView alloc]initWithFrame:self.view.bounds type:STPlaceholderViewTypeNoData delegate:self];
@@ -60,6 +61,10 @@
                         [self.dataArrs addObject:homeMs];
                     }
                     [self.tableView reloadData];
+                }
+                //  ifR == 0  下拉刷新
+                if (ifR == 0){
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"onStartRefEnd" object:@{@"info":@"完成"}];
                 }
             }else{
                 [HudTips showToast: feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];

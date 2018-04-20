@@ -21,7 +21,7 @@
     UIViewController * fromVC =
     [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     
-    toVC.view.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, 300);
+    toVC.view.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, ScreenW*3/5);
     
     [[transitionContext containerView] addSubview:toVC.view];
     

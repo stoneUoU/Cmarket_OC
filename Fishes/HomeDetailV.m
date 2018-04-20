@@ -154,26 +154,15 @@
         make.bottom.equalTo(_start_end.mas_bottom).offset(15*StScaleH);
         make.right.equalTo(headerV.mas_right).offset(-spaceM);
     }];
-
-    _product_unit = [[UILabel alloc] init];
-    _product_unit.font = [UIFont systemFontOfSize:12];
-    _product_unit.textColor = [UIColor color_HexStr:@"d73509"];
-    _product_unit.text = @"￥";
-    [headerV addSubview:_product_unit];
-    [_product_unit mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_product_small_title.mas_bottom).offset(20*StScaleH);
-        make.left.equalTo(headerV.mas_left).offset(spaceM);
-        make.bottom.equalTo(headerV.mas_bottom).offset(-16*StScaleH);
-    }];
-
     _product_price = [[UILabel alloc] init];
     _product_price.font = [UIFont systemFontOfSize:18];
     _product_price.textColor = [UIColor color_HexStr:@"d73509"];
-    _product_price.text = [FormatDs retainPoint:@"0.00" floatV:[_homeDetailMs.discount_price floatValue]];
+    _product_price.attributedText = [MethodFunc strWithSymbolsS:[@"￥" stringByAppendingString:[FormatDs retainPoint:@"0.00" floatV:[_homeDetailMs.discount_price floatValue]]] andSymbolsC:styleColor];
     [headerV addSubview:_product_price];
     [_product_price mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_product_unit.mas_right).offset(0);
-        make.bottom.equalTo(_product_unit.mas_bottom).offset(0);
+        make.top.equalTo(_product_small_title.mas_bottom).offset(20*StScaleH);
+        make.left.equalTo(headerV.mas_left).offset(spaceM);
+        make.bottom.equalTo(headerV.mas_bottom).offset(-16*StScaleH);
     }];
 
     _product_attr = [[CustomLabel alloc] init];

@@ -51,7 +51,7 @@
                 }
                 [self reloadOneSection:[[NSIndexSet alloc]initWithIndex:0]];
             }else if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"10009"]){
-                [HudTips showToast:missSsidTips showType:Pos animationType:StToastAnimationTypeScale];
+                [MethodFunc dealAuthMiss:self tipInfo:feedBacks[@"msg"]];
             }else{
                 [HudTips showToast: feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
             }
@@ -82,7 +82,7 @@
                 self.firmOrderV.totalFee.attributedText=[MethodFunc strWithSymbolsS:[@"￥" stringByAppendingString:[FormatDs retainPoint:@"0.00" floatV:[homeDetailMs.discount_price intValue] * self.firmOrderV.AC + [homeDetailMs.actual_logistics_fee intValue]]] andSymbolsC:styleColor];
                 [self reloadOneSection:[[NSIndexSet alloc]initWithIndex:1]];
             }else if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"10009"]){
-                [HudTips showToast:missSsidTips showType:Pos animationType:StToastAnimationTypeScale];
+                //[HudTips showToast:missSsidTips showType:Pos animationType:StToastAnimationTypeScale];
             }else{
                 [HudTips showToast: feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
             }
@@ -99,13 +99,23 @@
 -(void)startPR:(NSString *)coupon_code_id andGroupId:(NSString *)group_id andAC:(NSInteger)AC andAddressId:(NSString *)address_id andPayM:(NSString *)payM{
     if ([self.netUseVals isEqualToString: @"Useable"]){
         //微信支付:1     支付宝支付:2
+        STLog(@"%@",payM);
         [NetWorkManager requestWithType:HttpRequestTypePost withUrlString:followRoute@"order/add" withParaments:(coupon_code_id != NULL? @{@"group_id":group_id,@"num":[NSNumber numberWithInt:(int)AC],@"address_id":address_id,@"pay_channel":@1,@"pay_type":payM ,@"coupon_code_id": coupon_code_id} : @{@"group_id":group_id,@"num":[NSNumber numberWithInt:(int)AC],@"address_id":address_id,@"pay_channel":@1,@"pay_type":payM }) Authos:self.Auths withSuccessBlock:^(NSDictionary *feedBacks) {
             STLog(@"%@",[feedBacks modelToJSONString]);
             //进行容错处理丫:
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
-                STLog(@"成功");
+                //STLog(@"成功");
+                if ([[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"pay_type"]]  isEqual: @"1"]){
+//                    STLog(@"微信支付");
+//                    STLog(@"%@",[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"hash_result"][@"package"]]);
+                    [self sendWXpay:@{@"prepayid":[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"hash_result"][@"prepayid"]],@"package":[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"hash_result"][@"package"]],@"noncestr":[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"hash_result"][@"noncestr"]],@"timestamp":[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"hash_result"][@"timestamp"]],@"sign":[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"hash_result"][@"sign"]]}];
+                }else{
+//                    STLog(@"支付宝支付");
+//                    STLog(@"%@",[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"hash_result"]]);
+                    [self alipayM:[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"hash_result"]]];
+                }
             }else if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"10009"]){
-                [HudTips showToast:missSsidTips showType:Pos animationType:StToastAnimationTypeScale];
+                [MethodFunc dealAuthMiss:self tipInfo:feedBacks[@"msg"]];
             }else{
                 [HudTips showToast: feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
             }
@@ -179,7 +189,26 @@
         [self.firmOrderV.tableV reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
     }];
 }
-
+//拉起微信支付 =========   哈哈哈哈哈O(∩_∩)O
+- (void)sendWXpay:(NSDictionary *)payDict{
+    if ([STPAYMANAGER st_orInstall]){
+        //微信支付丫：
+        [STPAYMANAGER st_payWithOrderMessage:[STPAYMANAGER st_getWXPayParam:payDict] callBack:^(STErrCode errCode, NSString *errStr) {
+            STLog(@"errCode = %zd,errStr = %@",errCode,errStr);
+        }];
+    }
+}
+//拉起支付宝支付 =========   哈哈哈哈哈O(∩_∩)O
+- (void)alipayM:(NSString *)payStr{
+    /**
+     *  @author DevelopmentEngineer-ST
+     *
+     *  来自支付宝文档数据
+     */
+    [STPAYMANAGER st_payWithOrderMessage:payStr callBack:^(STErrCode errCode, NSString *errStr) {
+        STLog(@"errCode = %zd,errStr = %@",errCode,errStr);
+    }];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

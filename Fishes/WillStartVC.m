@@ -28,7 +28,7 @@
     //给tableView注册Cells
     [self.tableView registerClass:[HomeTbCells class] forCellReuseIdentifier: @"onStartTbs"];
 
-    [self startPR:@"2" withFreeze:@"" withUpdate:@"desc"];
+    [self startPR:@"2" withFreeze:@"" withUpdate:@"desc" andIfR:1];
 }
 
 -(void)updateTimeInVisibleCells{

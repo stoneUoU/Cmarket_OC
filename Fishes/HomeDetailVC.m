@@ -110,12 +110,11 @@
         startV.pass_Vals = @{@"status_code":@"1"};
         [MethodFunc presentToNaviVC:self destVC:startV];
     }else{
-        //STLog(@"已登录,去拼单");
         PopPresentVC * popPresentV = [PopPresentVC new];
+        popPresentV.popPresentV.homeDetailMs = self.homeDetailV.homeDetailMs;
         popPresentV.dictB = ^(NSDictionary *dict, BOOL b){
-            //STLog(@"%@",[dict objectForKey:@"name"]);
             FirmOrderVC *vc = [[FirmOrderVC alloc]init];
-            vc.pass_Vals = @{@"group_id":[_pass_Vals objectForKey:@"group_id"],@"amount":[dict objectForKey:@"name"]};
+            vc.pass_Vals = @{@"group_id":[_pass_Vals objectForKey:@"group_id"],@"AC":[dict objectForKey:@"AC"]};
             [MethodFunc pushToNextVC:self destVC:vc ];
         };
         popPresentV.modalPresentationStyle = UIModalPresentationCustom;

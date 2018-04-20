@@ -24,5 +24,5 @@
 @property (nonatomic,strong)STPlaceholderView *placeholderV;
 
 //查询商品
-- (void)startPR:(NSString *)selIdx  withFreeze:(NSString *)freeze_inventory withUpdate:(NSString *)update_time;
+- (void)startPR:(NSString *)selIdx  withFreeze:(NSString *)freeze_inventory withUpdate:(NSString *)update_time andIfR:(NSInteger)ifR;
 @end

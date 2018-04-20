@@ -15,6 +15,7 @@
 
 @implementation OnStartVC
 - (void)viewDidLoad {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toRefreshVC:) name:@"onStartRef" object:nil];
     [super viewDidLoad];
     [self setUpUI];
 }
@@ -28,7 +29,7 @@
     //给tableView注册Cells
     [self.tableView registerClass:[HomeTbCells class] forCellReuseIdentifier: @"onStartTbs"];
 
-    [self startPR:@"4" withFreeze:@"desc" withUpdate:@""];
+    [self startPR:@"4" withFreeze:@"desc" withUpdate:@"" andIfR:1];
 }
 -(void)updateTimeInVisibleCells{
     NSArray  *cells = self.tableView.visibleCells; //取出屏幕可见cell
@@ -104,14 +105,15 @@
     homeTbCells.doBtn.backgroundColor = styleColor;
     homeTbCells.start_end.text = @"距结束";
     homeTbCells.count_down.text = [self getInTimeWithStr:[NSString stringWithFormat:@"%@",homeMs.end_time]];
+    if ([homeMs.total_inventory isEqual: homeMs.freeze_inventory]) {
+        [homeTbCells.doBtn setTitle:@"已拼满" forState:UIControlStateNormal];
+        homeTbCells.doBtn.backgroundColor = btnDisableC;
+        homeTbCells.count_down.hidden = YES;
+    }
     if ([homeTbCells.count_down.text isEqualToString:@"活动已经结束！"]) {
         homeTbCells.count_down.textColor = [UIColor redColor];
     }else{
         homeTbCells.count_down.textColor = [UIColor orangeColor];
-    }
-    if ([[FormatDs retainPoint:@"0" floatV:[homeMs.freeze_inventory floatValue]/[homeMs.total_inventory floatValue]*100] isEqualToString:@"1"]) {
-        [homeTbCells.doBtn setTitle:@"已拼满" forState:UIControlStateNormal];
-        homeTbCells.doBtn.backgroundColor = btnDisableC;
     }
     homeTbCells.tag = indexPath.row;
     return homeTbCells;
@@ -140,8 +142,17 @@
         [MethodFunc pushToNextVC:self destVC:vc ];
     }
 }
+//方法:监听到通知之后调用的方法
+- (void)toRefreshVC:(NSNotification *)noti {
+    STLog(@"%@",[noti.object objectForKey:@"num"]);
+    [self startPR:@"4" withFreeze:@"desc" withUpdate:@"" andIfR:0];
+    //self.view.backgroundColor = noti.object;
+    //[MethodFunc pushToNextVC:self destVC:[[FirmOrderVC alloc]init] ];
+}
+
 -(void)dealloc{
     NSLog(@"%s dealloc",object_getClassName(self));
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"onStartRef" object:nil];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

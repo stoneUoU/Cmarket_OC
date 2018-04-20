@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "PopPresentV.h"
 typedef void(^DictB)(NSDictionary *, BOOL);
 
-@interface PopPresentVC : UIViewController
+@interface PopPresentVC : UIViewController<PopPresentVDel>
 
-@property (nonatomic ,strong)UIButton *doBtn;
+@property (nonatomic,strong) PopPresentV *popPresentV;
 
 @property (nonatomic, strong) DictB dictB;
 
 @end
+

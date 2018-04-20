@@ -99,20 +99,15 @@
 -(void)startPR:(NSString *)coupon_code_id andGroupId:(NSString *)group_id andAC:(NSInteger)AC andAddressId:(NSString *)address_id andPayM:(NSString *)payM{
     if ([self.netUseVals isEqualToString: @"Useable"]){
         //微信支付:1     支付宝支付:2
-        STLog(@"%@",payM);
-        [NetWorkManager requestWithType:HttpRequestTypePost withUrlString:followRoute@"order/add" withParaments:(coupon_code_id != NULL? @{@"group_id":group_id,@"num":[NSNumber numberWithInt:(int)AC],@"address_id":address_id,@"pay_channel":@1,@"pay_type":payM ,@"coupon_code_id": coupon_code_id} : @{@"group_id":group_id,@"num":[NSNumber numberWithInt:(int)AC],@"address_id":address_id,@"pay_channel":@1,@"pay_type":payM }) Authos:self.Auths withSuccessBlock:^(NSDictionary *feedBacks) {
-            STLog(@"%@",[feedBacks modelToJSONString]);
+        [NetWorkManager requestWithType:HttpRequestTypePost withUrlString:followRoute@"order/add" withParaments:(coupon_code_id != NULL? @{@"group_id":[NSNumber numberWithInt:[group_id intValue]],@"num":[NSNumber numberWithInt:(int)AC],@"address_id":[NSNumber numberWithInt:[address_id intValue]],@"pay_channel":@1,@"pay_type":[NSNumber numberWithInt:[payM intValue]] ,@"coupon_code_id": [NSNumber numberWithInt:[coupon_code_id intValue]]} : @{@"group_id":[NSNumber numberWithInt:[group_id intValue]],@"num":[NSNumber numberWithInt:(int)AC],@"address_id":[NSNumber numberWithInt:[address_id intValue]],@"pay_channel":@1,@"pay_type":[NSNumber numberWithInt:[payM intValue]] }) Authos:self.Auths withSuccessBlock:^(NSDictionary *feedBacks) {
             //进行容错处理丫:
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
-                //STLog(@"成功");
-                if ([[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"pay_type"]]  isEqual: @"1"]){
-//                    STLog(@"微信支付");
-//                    STLog(@"%@",[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"hash_result"][@"package"]]);
-                    [self sendWXpay:@{@"prepayid":[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"hash_result"][@"prepayid"]],@"package":[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"hash_result"][@"package"]],@"noncestr":[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"hash_result"][@"noncestr"]],@"timestamp":[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"hash_result"][@"timestamp"]],@"sign":[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"hash_result"][@"sign"]]}];
+                if ([payM  isEqual: @"1"]){
+                    //微信支付
+                    [self sendWXpay:@{@"prepayid":[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"hash_result"][@"prepayid"]],@"package":[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"hash_result"][@"package"]],@"noncestr":[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"hash_result"][@"noncestr"]],@"timestamp":[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"hash_result"][@"timestamp"]],@"sign":[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"hash_result"][@"sign"]]} andOrderNo:[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"order_no"]]];
                 }else{
-//                    STLog(@"支付宝支付");
-//                    STLog(@"%@",[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"hash_result"]]);
-                    [self alipayM:[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"hash_result"]]];
+                    //支付宝支付
+                    [self alipayM:[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"hash_result"]] andOrderNo:[NSString stringWithFormat:@"%@",feedBacks[@"data"][@"order_no"]]];
                 }
             }else if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"10009"]){
                 [MethodFunc dealAuthMiss:self tipInfo:feedBacks[@"msg"]];
@@ -134,13 +129,12 @@
     MineAds *mineAds = self.firmOrderV.mineAds[0];
     [self startPR:self.firmOrderV.selMs.coupon_code_id andGroupId:[NSString stringWithFormat:@"%@",[_pass_Vals objectForKey:@"group_id"]] andAC:self.firmOrderV.AC andAddressId:mineAds.ids andPayM:[NSString stringWithFormat:@"%ld",(long)self.firmOrderV.selectM]];
 }
-- (void)toCoupon {    _popAligment  = CBPopupViewAligmentBottom;
+- (void)toCoupon {_popAligment  = CBPopupViewAligmentBottom;
     CouponVC *vc = [[CouponVC alloc] initWithParams:self.firmOrderV.homeDetailMs.category_id andTotalO:[NSString stringWithFormat:@"%ld",[self.firmOrderV.homeDetailMs.discount_price intValue] * self.firmOrderV.AC] andRow:self.selRow];
     vc.view.frame = CGRectMake(0, 0, self.view.bounds.size.width, 326*StScaleH);
     vc.couponB = ^(NSDictionary *dict, BOOL b){
         self.firmOrderV.selMs = [dict objectForKey:@"selMs"];
         self.selRow = [dict objectForKey:@"selRow"];
-        STLog(@"%@",[self.firmOrderV.selMs modelToJSONString]);
         switch (self.firmOrderV.selMs.coupon_type) {
             case 1:  //满减
             {
@@ -190,16 +184,22 @@
     }];
 }
 //拉起微信支付 =========   哈哈哈哈哈O(∩_∩)O
-- (void)sendWXpay:(NSDictionary *)payDict{
+- (void)sendWXpay:(NSDictionary *)payDict andOrderNo:(NSString *)order_no{
     if ([STPAYMANAGER st_orInstall]){
         //微信支付丫：
         [STPAYMANAGER st_payWithOrderMessage:[STPAYMANAGER st_getWXPayParam:payDict] callBack:^(STErrCode errCode, NSString *errStr) {
             STLog(@"errCode = %zd,errStr = %@",errCode,errStr);
+            if ([[NSString stringWithFormat:@"%ld",(long)errCode]  isEqual: @"0"]) {
+                [self mOrderStatus:order_no];
+                //支付成功逻辑: 跳转到支付成功界面
+            }else{
+                //支付成功逻辑: 跳转到支付失败界面
+            }
         }];
     }
 }
 //拉起支付宝支付 =========   哈哈哈哈哈O(∩_∩)O
-- (void)alipayM:(NSString *)payStr{
+- (void)alipayM:(NSString *)payStr andOrderNo:(NSString *)order_no{
     /**
      *  @author DevelopmentEngineer-ST
      *
@@ -207,6 +207,27 @@
      */
     [STPAYMANAGER st_payWithOrderMessage:payStr callBack:^(STErrCode errCode, NSString *errStr) {
         STLog(@"errCode = %zd,errStr = %@",errCode,errStr);
+        if ([[NSString stringWithFormat:@"%ld",(long)errCode]  isEqual: @"0"]) {
+            [self mOrderStatus:order_no];
+            //支付成功逻辑: 跳转到支付成功界面
+        }else{
+            //支付成功逻辑: 跳转到支付失败界面
+        }
+    }];
+}
+
+//修改订单状态丫：
+-(void) mOrderStatus:(NSString *)order_no{
+    [NetWorkManager requestWithType:HttpRequestTypePost withUrlString:followRoute@"pay/success" withParaments:@{@"order_no":order_no} Authos:self.Auths withSuccessBlock:^(NSDictionary *feedBacks) {
+        //进行容错处理丫:
+        if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
+            STLog(@"订单状态修改成功");
+        }else{
+            [HudTips showToast: feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
+        }
+    } withFailureBlock:^(NSError *error) {
+        [HudTips hideHUD:self];
+        STLog(@"%@",error)
     }];
 }
 

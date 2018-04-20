@@ -10,7 +10,7 @@
 
 @implementation HomeMs
 //实现构造方法
-- (id)initMs:(NSString *)group_id title:(NSString *)title price:(NSString *)price discount_price:(NSString *)discount_price spic:(NSString *)spic status:(NSString *)status total_inventory:(NSString *)total_inventory freeze_inventory:(NSString *)freeze_inventory start_time:(NSString *)start_time end_time:(NSString *)end_time type:(NSString *)type subtitle:(NSString *)subtitle attr_value:(NSString *)attr_value{
+- (id)initMs:(NSString *)group_id title:(NSString *)title price:(NSString *)price discount_price:(NSString *)discount_price spic:(NSString *)spic status:(NSString *)status total_inventory:(NSString *)total_inventory freeze_inventory:(NSString *)freeze_inventory start_time:(NSString *)start_time end_time:(NSString *)end_time type:(NSString *)type subtitle:(NSString *)subtitle attr_value:(NSString *)attr_value  desc:(NSString *)desc{
     if(self=[super init]){
         self.group_id = group_id;
         self.title = title;
@@ -25,6 +25,7 @@
         self.type = type;
         self.subtitle = subtitle;
         self.attr_value = attr_value;
+        self.desc = desc;
     }
     return self;
 }

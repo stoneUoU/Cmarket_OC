@@ -95,7 +95,7 @@
     homeTbCells.product_title.text = [NSString stringWithFormat:@"%@",homeMs.title];
     //homeTbCells.product_title.attributedText = [MethodFunc strWithUIImage:@" 海上月是天上月，故乡人是心上人海上月是天上月，故乡人是心上人海上月是天上月，故乡人是心上人" andImage:@"tag_four" andBounds:CGRectMake(0, 0, 64*ScreenW/iphoneSixW, 14*ScreenW/iphoneSixW)];
     homeTbCells.product_small_title.text = [NSString stringWithFormat:@"%@",homeMs.subtitle];
-    homeTbCells.product_attr.text = [[FormatDs retainPoint:@"0.00" floatV:[homeMs.discount_price floatValue]/[[homeMs.attr_value stringByReplacingOccurrencesOfString:@"kg" withString:@""] floatValue]/2] stringByAppendingString:@"元/斤"];
+    homeTbCells.product_attr.text = homeMs.desc;
     homeTbCells.progress_bar.progress =  [homeMs.freeze_inventory floatValue]/[homeMs.total_inventory floatValue];
     homeTbCells.progress_bar_vals.text = [[@"已购" stringByAppendingString:[FormatDs retainPoint:@"0" floatV:[homeMs.freeze_inventory floatValue]/[homeMs.total_inventory floatValue]*10000] ] stringByAppendingString:@"%"];
     homeTbCells.doBtn.transferDs = @{@"datas":homeMs.group_id};

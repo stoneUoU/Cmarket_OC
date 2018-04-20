@@ -130,7 +130,7 @@
     req.prepayId= [wxDict objectForKey:@"prepayid"];
     req.package = [wxDict objectForKey:@"package"];
     req.nonceStr= [wxDict objectForKey:@"noncestr"];
-    req.timeStamp= (UInt32)[wxDict objectForKey:@"timestamp"] ;
+    req.timeStamp= (UInt32)[[wxDict objectForKey:@"timestamp"] intValue] ;
     req.sign= [wxDict objectForKey:@"sign"];
     return req;
 }
@@ -152,6 +152,7 @@
         [[AlipaySDK defaultService] payOrder:(NSString *)orderMessage fromScheme:self.appSchemeDict[STALIPAYURLNAME] callback:^(NSDictionary *resultDic){
             NSString *resultStatus = resultDic[@"resultStatus"];
             NSString *errStr = resultDic[@"memo"];
+            STLog(@"%@",resultDic);
             STErrCode errorCode = STErrCodeSuccess;
             switch (resultStatus.integerValue) {
                 case 9000:// 成功

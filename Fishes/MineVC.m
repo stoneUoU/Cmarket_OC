@@ -29,7 +29,6 @@
 
     //监听是否有网
     _netUseVals = [UICKeyChainStore keyChainStore][@"ifnetUse"];
-    _Auths = [UICKeyChainStore keyChainStore][@"authos"];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(setNet:)
                                                  name:@"netChange"
@@ -72,8 +71,8 @@
         [self setCache];
     }
     if ([_netUseVals isEqualToString: @"Useable"]){
-        [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"user/list" withParaments:@{} Authos:self.Auths withSuccessBlock:^(NSDictionary *feedBacks) {
-            STLog(@"%@",[feedBacks modelToJSONString]);
+        [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"user/list" withParaments:@{} Authos:[UICKeyChainStore keyChainStore][@"authos"] withSuccessBlock:^(NSDictionary *feedBacks) {
+            //STLog(@"%@",[feedBacks modelToJSONString]);
             //进行容错处理丫:
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
                 if (![[NSString stringWithFormat:@"%@",feedBacks] isEqualToString:[NSString stringWithFormat:@"%@",[YYCacheTools resCacheForURL:@"user/list"]]]){

@@ -61,7 +61,6 @@
             [self.placeholderV removeFromSuperview];
             self.placeholderV = nil;
         }
-        STLog(@"%@",inTab == 0 ? @{@"page":@(_pageInt),@"limit":@(_pageSize)} : @{@"page":@(_pageInt),@"limit":@(_pageSize),@"consumer_status":@(inTab)});
         [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"order/list" withParaments:inTab == 0 ? @{@"page":@(_pageInt),@"limit":@(_pageSize)} : @{@"page":@(_pageInt),@"limit":@(_pageSize),@"consumer_status":@(inTab)} Authos:self.Auths withSuccessBlock:^(NSDictionary *feedBacks) {
             //STLog(@"%@",[feedBacks modelToJSONString]);
             //进行容错处理丫:（上拉加载绝对是走这里）注：没拍出上拉加载数据与前一页相同的情况

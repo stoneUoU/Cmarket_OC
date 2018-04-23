@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		190C152298CE4C445552C782 /* Pods_Fishes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F37055393C97E28B7B668FA1 /* Pods_Fishes.framework */; };
 		5202E7442089C25D00772C12 /* STVFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5202E7432089C25D00772C12 /* STVFactory.m */; };
+		5202E74A2089DFFA00772C12 /* NSString+FloatPreciseCalculation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5202E7492089DFFA00772C12 /* NSString+FloatPreciseCalculation.m */; };
 		5216E9F8206E0AFD004DBBCB /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5216E9F7206E0AFC004DBBCB /* AlipaySDK.bundle */; };
 		5216E9FA206E0B05004DBBCB /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5216E9F9206E0B05004DBBCB /* AlipaySDK.framework */; };
 		5216E9FC206E0B34004DBBCB /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5216E9FB206E0B34004DBBCB /* libc++.tbd */; };
@@ -153,6 +154,8 @@
 		5202E7422089C25D00772C12 /* STVFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STVFactory.h; sourceTree = "<group>"; };
 		5202E7432089C25D00772C12 /* STVFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STVFactory.m; sourceTree = "<group>"; };
 		5202E7452089C4A900772C12 /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
+		5202E7482089DFFA00772C12 /* NSString+FloatPreciseCalculation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+FloatPreciseCalculation.h"; sourceTree = "<group>"; };
+		5202E7492089DFFA00772C12 /* NSString+FloatPreciseCalculation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+FloatPreciseCalculation.m"; sourceTree = "<group>"; };
 		5216E9F7206E0AFC004DBBCB /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		5216E9F9206E0B05004DBBCB /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		5216E9FB206E0B34004DBBCB /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -797,6 +800,8 @@
 				528AA1752086E1AD000B52F4 /* UILabel+Deal.m */,
 				523F04D42065068A00858BDD /* NSString+MD5.h */,
 				523F04D52065068A00858BDD /* NSString+MD5.m */,
+				5202E7482089DFFA00772C12 /* NSString+FloatPreciseCalculation.h */,
+				5202E7492089DFFA00772C12 /* NSString+FloatPreciseCalculation.m */,
 				52BC7E662065DEC9000B5E43 /* UIFont+runtime.h */,
 				52BC7E672065DEC9000B5E43 /* UIFont+runtime.m */,
 				5288FAE62069EB32002EC6AA /* UIButton+countDown.h */,
@@ -1207,6 +1212,7 @@
 				52AE1B752085EE6500434BBE /* FirmOrderMs.m in Sources */,
 				526047991F75160C0072AFB4 /* UIImage+Image.m in Sources */,
 				523F04D02065020500858BDD /* CodeLoginVC.m in Sources */,
+				5202E74A2089DFFA00772C12 /* NSString+FloatPreciseCalculation.m in Sources */,
 				52680C8320623D1900F5DB96 /* WillStartVC.m in Sources */,
 				52795ACC20807A75000FA895 /* OrderListV.m in Sources */,
 				52A22218206B749700F71B0C /* MonitorVC.m in Sources */,

@@ -64,7 +64,7 @@
 
     //[self startQ];
 
-    [self startO];
+    [self startU];
     //[self testYYCache];
     //[self setAlert];
     //[self performSelector:@selector(showAdAlertView) withObject:nil afterDelay:0.1];
@@ -142,18 +142,33 @@
 
 
 -(void)startQ{
-    [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"carousel/list" withParaments:@{} Authos:@"" withSuccessBlock:^(NSDictionary *feedBacks) {
-        [YYCacheTools setResCache:feedBacks url:@"carousel/list"];
-        STLog(@"%@",[[YYCacheTools resCacheForURL:@"carousel/list"] modelToJSONString]);
-        for (int i = 0; i < [[YYCacheTools resCacheForURL:@"carousel/list"][@"data"] count]; i++) {
-            MoveMs *moveMs = [MoveMs modelWithJSON:[YYCacheTools resCacheForURL:@"carousel/list"][@"data"][i]];
-            [self.dataArrs addObject:moveMs];
-        }
-        MoveMs *moveMs = self.dataArrs[0];
-        STLog(@"%@",moveMs.title);
+    [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"app/index/list" withParaments:@{} Authos:@"" withSuccessBlock:^(NSDictionary *feedBacks) {
+        //[YYCacheTools setResCache:feedBacks url:@"carousel/list"];
+        STLog(@"%@",[feedBacks modelToJSONString]);
+//        for (int i = 0; i < [[YYCacheTools resCacheForURL:@"carousel/list"][@"data"] count]; i++) {
+//            MoveMs *moveMs = [MoveMs modelWithJSON:[YYCacheTools resCacheForURL:@"carousel/list"][@"data"][i]];
+//            [self.dataArrs addObject:moveMs];
+//        }
+//        MoveMs *moveMs = self.dataArrs[0];
+//        STLog(@"%@",moveMs.title);
     } withFailureBlock:^(NSError *error) {
         [HudTips hideHUD:self];
         STLog(@"%@",error)
+    }];
+}
+
+
+-(void)startU{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    //注意：responseObject:请求成功返回的响应结果（AFN内部已经把响应体转换为OC对象，通常是字典或数组）
+    /**分别设置请求以及相应的序列化器*/
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json", @"text/javascript", nil];
+    //self.LogisticCode = "538681744406"  "887102266424600383"  self.ShipperCode = "ZTO"  "YTO"
+    [manager GET:@"https://api.365greenlife.com/api/tiptop/v1/app/index/list" parameters:@{} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull res) {
+        STLog(@"%@",[res modelToJSONString]);
+    } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
+        NSLog(@"失败---%@",error);
     }];
 }
 -(void)startO{

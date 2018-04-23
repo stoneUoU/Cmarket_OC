@@ -14,4 +14,6 @@
 
 @property (nonatomic,strong) OrderDetailV *orderDetailV;
 
+@property (nonatomic,assign) BOOL hideFls;//立一个Flag,显示或隐藏退款详情
+
 @end

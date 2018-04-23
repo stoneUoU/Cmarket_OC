@@ -91,7 +91,7 @@
         [self dealPushM:remoteUserInfo];
     }else{
         if ([[NSString stringWithFormat:@"%@",[UICKeyChainStore keyChainStore][@"firstIn"]]  isEqual: @"true"]){
-            self.window.rootViewController =  [TabBarVC sharedVC]; //[[ThreadVC alloc] init];//[TabBarVC sharedVC];  //  [[YYCacheVC alloc] init]; //[[MonitorVC alloc]init ];  //[[YYModelVC alloc] init];
+            self.window.rootViewController =[TabBarVC sharedVC];// [TabBarVC sharedVC]; //[[ThreadVC alloc] init];//  //  [[YYCacheVC alloc] init]; //[[MonitorVC alloc]init ];  //[[YYModelVC alloc] init]; [[YYCacheVC alloc] init];
             //[self xyAdLaunch];
         }else{
             [self setFollow];

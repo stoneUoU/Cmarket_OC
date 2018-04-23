@@ -50,10 +50,10 @@
 //#define followRoute @"api/cht/app/v1/"
 
 //请求地址：测试环境
-#define CMarketUrl  @"http://10.10.0.62:13381/"
+#define CMarketUrl  @"http://10.10.0.62:13381/"  //@"https://api.365greenlife.com/"
 #define picUrl @"http://10.10.0.62:13380"
 #define LQYIP @"http://10.10.0.62:13380/"
-#define followRoute @""
+#define followRoute @""  //@"api/tiptop/v1/"
 //定义登录失效的状态码
 #define OutCode  @"10009"
 //请求超时时间

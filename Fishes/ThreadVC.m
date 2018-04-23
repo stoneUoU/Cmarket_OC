@@ -5,7 +5,6 @@
 //  Created by test on 2018/4/8.
 //  Copyright © 2018年 com.youlu. All rights reserved.
 //
-
 #import "ThreadVC.h"
 
 #import "CircleView.h"
@@ -14,6 +13,7 @@
 
 @interface ThreadVC ()
 @property (nonatomic,strong) CircleView *circleView;
+
 @end
 
 @implementation ThreadVC
@@ -22,7 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    [self toSetUp];
+    //[self toSetUp];
 
     //①获取当前线程
     //NSThread *current = [NSThread currentThread];
@@ -51,6 +51,14 @@
 //    [self.view addSubview:button];
     
 }
+
+//- (void)pingResult:(NSNumber*)success {
+//    if (success.boolValue) {
+//        STLog(@"拼得通");
+//    } else {
+//        STLog(@"拼不通");
+//    }
+//}
 
 -(void) toSetUp{
     for (int i = 0; i<3 ; i++){

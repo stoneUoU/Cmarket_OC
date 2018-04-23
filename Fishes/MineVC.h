@@ -10,6 +10,5 @@
 #import "MineV.h"
 @interface MineVC: UIViewController<MineVDel>
 @property (nonatomic,strong) MineV *mineV;
-@property(nonatomic, copy) NSString *Auths;
 @property(nonatomic, copy) NSString *netUseVals;
 @end

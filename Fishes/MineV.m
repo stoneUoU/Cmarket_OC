@@ -320,7 +320,6 @@
             wait_pay_brage.textAlignment = NSTextAlignmentCenter;
             wait_pay_brage.text = _mineSonMs.no_pay == NULL ? @"" : [NSString stringWithFormat:@"%@",_mineSonMs.no_pay];
             wait_pay_brage.layer.borderColor = [UIColor color_HexStr:@"d73509"].CGColor;
-            STLog(@"%@",[NSString stringWithFormat:@"%@",_mineSonMs.no_pay]);
             if ([[NSString stringWithFormat:@"%@",_mineSonMs.no_pay] isEqual: @"0"] || _mineSonMs.no_pay == NULL ){
                 wait_pay_brage.hidden = YES;
             }else{

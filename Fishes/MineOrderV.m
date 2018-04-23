@@ -29,7 +29,6 @@
     /// pageTitleView
     _pageTitleView = [SGPageTitleView pageTitleViewWithFrame:CGRectMake(0, 0, ScreenW, 44) delegate:self titleNames:titles configure:configure];
     [self addSubview:_pageTitleView];
-    STLog(@"%ld",(long)index);
     _pageTitleView.selectedIndex = index;
 
     NSMutableArray * childVcs=[NSMutableArray array];

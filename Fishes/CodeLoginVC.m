@@ -72,15 +72,13 @@
         [HudTips showHUD:self];
         [NetWorkManager requestWithType:HttpRequestTypePost withUrlString:followRoute@"user/login/password" withParaments:@{@"registration_id":@"",@"username":@"15717914505",@"password":[[[@"000000" MD5]MD5]MD5]} Authos:@"" withSuccessBlock:^(NSDictionary *feedBacks) {
             [HudTips hideHUD:self];
-            STLog(@"%@",feedBacks);
             //进行容错处理丫:
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
                 [HudTips showToast: feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
                 //存登录后的token
                 [UICKeyChainStore keyChainStore][@"orLogin"] = @"true";
                 [UICKeyChainStore keyChainStore][@"authos"] = feedBacks[@"data"][@"token"];
-                STLog(@"%@",feedBacks[@"data"][@"token"]);
-                STLog(@"%@",[feedBacks[@"data"] objectForKey:@"token"]);
+                STLog(@"%@",[UICKeyChainStore keyChainStore][@"authos"]);
                 if ([[NSString stringWithFormat:@"%@",[_pass_Vals objectForKey:@"status_code"]]  isEqual: @"0"]){
                     [MethodFunc dismissCurrVC:self];
                     [MethodFunc backToHomeVC:[_pass_Vals objectForKey:@"selfVC"]];

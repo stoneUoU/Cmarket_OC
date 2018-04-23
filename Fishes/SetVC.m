@@ -62,6 +62,7 @@
         [HudTips showHUD:self];
         [NetWorkManager requestWithType:HttpRequestTypePost withUrlString:followRoute@"user/logout" withParaments:@{} Authos:self.Auths withSuccessBlock:^(NSDictionary *feedBacks) {
             [HudTips hideHUD:self];
+            STLog(@"%@",[feedBacks modelToJSONString]);
             //进行容错处理丫:
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
                 [HudTips showToast: @"注销成功" showType:Pos animationType:StToastAnimationTypeScale];

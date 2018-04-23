@@ -60,5 +60,6 @@
 @property (nonatomic, copy) NSString* status;
 @property (nonatomic, copy) NSString* outrefund_no;
 @property (nonatomic, copy) NSString* update_time;
+@property (nonatomic, copy) NSString* refund_no;
 @end
 

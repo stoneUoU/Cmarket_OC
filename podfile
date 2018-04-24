@@ -3,18 +3,18 @@ target ‘Fishes’ do
 use_frameworks!
 pod 'Masonry'
 pod 'AFNetworking'
-pod 'MJRefresh'
+pod 'MJRefresh', inhibit_warnings: true 
 pod 'IQKeyboardManager'
 pod 'RealReachability'
 pod 'UICKeyChainStore'
 pod 'MBProgressHUD'
 pod 'CYLTableViewPlaceHolder'
-pod 'SDCycleScrollView','~> 1.75'
+pod 'SDCycleScrollView','~> 1.75', inhibit_warnings: true 
 pod 'JPush'
 pod 'SocketRocket'
-pod 'YYKit'
+pod 'YYKit',inhibit_warnings: true 
 pod 'WechatOpenSDK' 
-pod ‘XYLaunchAndIntroduction’
-pod 'Meiqia', '~> 3.4.5'
+pod ‘XYLaunchAndIntroduction’, inhibit_warnings: true 
+pod 'Meiqia', '~> 3.4.5', inhibit_warnings: true 
 pod 'SGPagingView'
 end 

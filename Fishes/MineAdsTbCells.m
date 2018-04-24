@@ -44,7 +44,7 @@
     if(_delInfo == nil) {
         _delInfo = [[UILabel alloc] init];
         _delInfo.font = [UIFont systemFontOfSize:16];
-        _delInfo.textColor = deepBlackC;
+        _delInfo.textColor = midBlackC;
         _delInfo.numberOfLines = 0;
         [self addSubview:_delInfo];
         [_delInfo mas_makeConstraints:^(MASConstraintMaker *make) {

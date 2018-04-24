@@ -11,6 +11,10 @@
 #import "AboutUsVC.h"
 #import "SetVC.h"
 #import "MineOrderVC.h"
+#import "MineVoucherVC.h"
+#import "NoticeVC.h"
+#import "StallManageVC.h"
+#import "MinePlaceVC.h"
 @interface MineVC ()
 
 @end
@@ -119,6 +123,9 @@
 //        STLog(@"%@",[dict objectForKey:@"postN"]);
 //        [self startR:1];
 //    };
+    [MethodFunc pushToNextVC:self destVC:[[NoticeVC alloc]init ]];
+}
+- (void)toAccount {
     [MethodFunc pushToNextVC:self destVC:[[AccountInfoVC alloc]init ]];
 }
 - (void)toOrder {
@@ -128,14 +135,14 @@
     switch ([section integerValue]) {
         case 0:{
             if ([row  isEqual: @"0"]) {
-                STLog(@"我的优惠券");
+                [MethodFunc pushToNextVC:self destVC:[[MineVoucherVC alloc] init]];
             }else{
-                STLog(@"摊位管理");
+                [MethodFunc pushToNextVC:self destVC:[[StallManageVC alloc] init]];
             }
             break;
         }
         case 1:{
-            STLog(@"收货地址");
+            [MethodFunc pushToNextVC:self destVC:[[MinePlaceVC alloc] init]];
             break;
         }
         case 2:{

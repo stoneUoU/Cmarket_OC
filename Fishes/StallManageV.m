@@ -1,17 +1,17 @@
 //
-//  SetV.m
+//  StallManageV.m
 //  Fishes
 //
-//  Created by test on 2018/3/24.
+//  Created by test on 2018/4/24.
 //  Copyright © 2018年 com.youlu. All rights reserved.
 //
 
-#import "SetV.h"
+#import "StallManageV.h"
 #import "SetTbCells.h"
-@implementation SetV
+@implementation StallManageV
 - (id)init
 {
-    self.setMs = [NSMutableArray array];
+    self.stallMs = [NSMutableArray array];
     return [super init];
 }
 - (void)drawRect:(CGRect)rect {
@@ -44,11 +44,11 @@
 // MARK: - UITableViewDelegate,UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [self.setMs count];
+    return [self.stallMs count];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
-    return [self.setMs[section] count];
+    return [self.stallMs[section] count];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 44;
@@ -61,41 +61,11 @@
     return 10*StScaleH;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    UIView *footerV = [[UIView alloc] init];
-    switch (section) {
-        case 0:
-            break;
-        default:
-        {
-            UIButton *exitBtn = [[UIButton alloc] init];
-            exitBtn.titleLabel.font=[UIFont systemFontOfSize:16];
-            exitBtn.backgroundColor = styleColor;
-            exitBtn.layer.cornerRadius = 22;
-            [exitBtn setTitle:@"注销" forState:UIControlStateNormal];
-            [exitBtn setTitleColor:[UIColor whiteColor]  forState:UIControlStateNormal];
-            [exitBtn addTarget:self action:@selector(toDo:)forControlEvents:UIControlEventTouchUpInside];
-            [footerV addSubview:exitBtn];
-            [exitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.mas_equalTo(100*StScaleH);
-                make.left.mas_equalTo(spaceM);
-                make.width.mas_equalTo(ScreenW - (spaceM*2));
-                make.height.mas_equalTo(44*StScaleH);
-            }];
-            break;
-        }
-    }
-    return footerV;
+
+    return [[UIView alloc]init];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    switch (section) {
-        case 0:
-            return 0.00001;
-            break;
-        default:
-            return 180*StScaleH;
-            break;
-    }
-    return 100*StScaleH;
+    return 10*StScaleH;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -103,23 +73,13 @@
     if (!Cell){
         Cell = [[SetTbCells alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"setTbCells"];
     }
-    Cell.infoV.text = [self.setMs[indexPath.section][indexPath.row] objectForKey:@"modelName"];
-    Cell.sideV.text = [self.setMs[indexPath.section][indexPath.row] objectForKey:@"vals"];
-    if (indexPath.section  == 1 &&  indexPath.row == 0){
-        Cell.lineV.backgroundColor = cutOffLineC;
-    }else if (indexPath.section  == 1 &&  indexPath.row == 1){
-        Cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        Cell.goV.image = [UIImage imageNamed:@""];
-    }
+    Cell.infoV.text = [self.stallMs[indexPath.section][indexPath.row] objectForKey:@"modelName"];
+    Cell.sideV.text = [self.stallMs[indexPath.section][indexPath.row] objectForKey:@"vals"];
     return Cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [_delegate tableVClick:indexPath.section andRow:indexPath.row];
-}
-//按钮、手势函数写这
-- (void)toDo:(UIButton *)sender{
-    [_delegate toExit];
 }
 
 @end

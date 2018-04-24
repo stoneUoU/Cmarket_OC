@@ -1,14 +1,18 @@
 //
-//  AboutUsVC.m
+//  StallAuthVC.m
 //  Fishes
 //
-//  Created by test on 2018/4/4.
+//  Created by test on 2018/4/24.
 //  Copyright © 2018年 com.youlu. All rights reserved.
 //
 
-#import "AboutUsVC.h"
+#import "StallAuthVC.h"
 
-@implementation AboutUsVC
+@interface StallAuthVC ()
+
+@end
+
+@implementation StallAuthVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -18,38 +22,14 @@
 - (void)setUpUI{
 
     // 第二步：初始化
-    //当前版本号：
-    // 加载网络Html页面 请设置允许Http请求  //
-
     // WKWebView初始化
     // 方法一：（简单的设置）
     _webView = [[WKWebView alloc] init];
     _webView.navigationDelegate = self;
-    // 加载请求
-//    NSString* htmlPath = [[NSBundle mainBundle] pathForResource:@"JsBridge" ofType:@"html"];
-//    NSString* appHtml = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
-//    NSURL *baseURL = [NSURL fileURLWithPath:htmlPath];
-//    [_webView loadHTMLString:appHtml baseURL:baseURL];
-    //[NSURL URLWithString:@"https://webview.cht.znrmny.com/about?version=1.0"];
-    NSURL *url = [NSURL URLWithString:[[webVIP stringByAppendingString:@"about?version="] stringByAppendingString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]]];
+    NSURL *url = [NSURL URLWithString:[[webVIP stringByAppendingString:@"authIndex?token="] stringByAppendingString:self.Auths]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [_webView loadRequest:request];
     [self.view addSubview:_webView];
-    //JsBridge交互
-    [WebViewJavascriptBridge enableLogging];
-    _bridge = [WebViewJavascriptBridge bridgeForWebView:_webView];
-    [_bridge setWebViewDelegate:self];
-
-    //JS调OC的方法
-    [_bridge registerHandler:@"JS_Call_ObjC" handler:^(id data, WVJBResponseCallback responseCallback) {
-        responseCallback(@"OC被调用后响应:调用成功!");
-        STLog(@"SUCCC");
-    }];
-
-    //OC调用JS的方法
-    [_bridge callHandler:@"OC_Call_JS" data: @{ @"OC调用JS": @"Hi there, JS!" } responseCallback:^(id response) {
-        STLog(@"testJavascriptHandler responded: %@", response);
-    }];
 
     // KVO，监听webView属性值得变化(estimatedProgress,title为特定的key)
     [_webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
@@ -131,3 +111,4 @@
     [super didReceiveMemoryWarning];
 }
 @end
+

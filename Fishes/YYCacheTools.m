@@ -30,7 +30,6 @@ static YYCache *_dataCache;
     return isContains;
 }
 + (void)removeAppointedResCache:(NSString *)url{
-    STLog(@"99999");
     //根据key移除缓存
     [_dataCache.diskCache removeObjectForKey:url withBlock:^(NSString * _Nonnull url) {
         STLog(@"removeObjectForKey %@",url);

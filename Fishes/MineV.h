@@ -12,6 +12,7 @@
 @protocol MineVDel
 //这里只需要声明方法
 - (void)toMsg;
+- (void)toAccount;
 - (void)toOrder;
 - (void)toRefresh;
 - (void)toNextVC:(NSString *) section row:(NSString *) row;

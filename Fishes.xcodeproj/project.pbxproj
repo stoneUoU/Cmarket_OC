@@ -10,6 +10,16 @@
 		190C152298CE4C445552C782 /* Pods_Fishes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F37055393C97E28B7B668FA1 /* Pods_Fishes.framework */; };
 		5202E7442089C25D00772C12 /* STVFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5202E7432089C25D00772C12 /* STVFactory.m */; };
 		5202E74A2089DFFA00772C12 /* NSString+FloatPreciseCalculation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5202E7492089DFFA00772C12 /* NSString+FloatPreciseCalculation.m */; };
+		520AD916208EFCA500961CB0 /* MineVoucherVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 520AD915208EFCA500961CB0 /* MineVoucherVC.m */; };
+		520AD919208F003500961CB0 /* StallManageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 520AD918208F003500961CB0 /* StallManageVC.m */; };
+		520AD91C208F009E00961CB0 /* MinePlaceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 520AD91B208F009E00961CB0 /* MinePlaceVC.m */; };
+		520AD91F208F00D800961CB0 /* EditPlaceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 520AD91E208F00D800961CB0 /* EditPlaceVC.m */; };
+		520AD922208F011B00961CB0 /* NoticeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 520AD921208F011B00961CB0 /* NoticeVC.m */; };
+		520AD925208F01F600961CB0 /* StallAuthVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 520AD924208F01F600961CB0 /* StallAuthVC.m */; };
+		520AD928208F031300961CB0 /* StallManageV.m in Sources */ = {isa = PBXBuildFile; fileRef = 520AD927208F031300961CB0 /* StallManageV.m */; };
+		520AD92B208F032500961CB0 /* MinePlaceV.m in Sources */ = {isa = PBXBuildFile; fileRef = 520AD92A208F032500961CB0 /* MinePlaceV.m */; };
+		520AD92E208F033600961CB0 /* EditPlaceV.m in Sources */ = {isa = PBXBuildFile; fileRef = 520AD92D208F033600961CB0 /* EditPlaceV.m */; };
+		520AD931208F07EB00961CB0 /* SetTbCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 520AD930208F07EB00961CB0 /* SetTbCells.m */; };
 		5216E9F8206E0AFD004DBBCB /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5216E9F7206E0AFC004DBBCB /* AlipaySDK.bundle */; };
 		5216E9FA206E0B05004DBBCB /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5216E9F9206E0B05004DBBCB /* AlipaySDK.framework */; };
 		5216E9FC206E0B34004DBBCB /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5216E9FB206E0B34004DBBCB /* libc++.tbd */; };
@@ -156,6 +166,26 @@
 		5202E7452089C4A900772C12 /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
 		5202E7482089DFFA00772C12 /* NSString+FloatPreciseCalculation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+FloatPreciseCalculation.h"; sourceTree = "<group>"; };
 		5202E7492089DFFA00772C12 /* NSString+FloatPreciseCalculation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+FloatPreciseCalculation.m"; sourceTree = "<group>"; };
+		520AD914208EFCA500961CB0 /* MineVoucherVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineVoucherVC.h; sourceTree = "<group>"; };
+		520AD915208EFCA500961CB0 /* MineVoucherVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineVoucherVC.m; sourceTree = "<group>"; };
+		520AD917208F003500961CB0 /* StallManageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StallManageVC.h; sourceTree = "<group>"; };
+		520AD918208F003500961CB0 /* StallManageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StallManageVC.m; sourceTree = "<group>"; };
+		520AD91A208F009E00961CB0 /* MinePlaceVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MinePlaceVC.h; sourceTree = "<group>"; };
+		520AD91B208F009E00961CB0 /* MinePlaceVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MinePlaceVC.m; sourceTree = "<group>"; };
+		520AD91D208F00D800961CB0 /* EditPlaceVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditPlaceVC.h; sourceTree = "<group>"; };
+		520AD91E208F00D800961CB0 /* EditPlaceVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditPlaceVC.m; sourceTree = "<group>"; };
+		520AD920208F011B00961CB0 /* NoticeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeVC.h; sourceTree = "<group>"; };
+		520AD921208F011B00961CB0 /* NoticeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeVC.m; sourceTree = "<group>"; };
+		520AD923208F01F600961CB0 /* StallAuthVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StallAuthVC.h; sourceTree = "<group>"; };
+		520AD924208F01F600961CB0 /* StallAuthVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StallAuthVC.m; sourceTree = "<group>"; };
+		520AD926208F031300961CB0 /* StallManageV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StallManageV.h; sourceTree = "<group>"; };
+		520AD927208F031300961CB0 /* StallManageV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StallManageV.m; sourceTree = "<group>"; };
+		520AD929208F032500961CB0 /* MinePlaceV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MinePlaceV.h; sourceTree = "<group>"; };
+		520AD92A208F032500961CB0 /* MinePlaceV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MinePlaceV.m; sourceTree = "<group>"; };
+		520AD92C208F033600961CB0 /* EditPlaceV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditPlaceV.h; sourceTree = "<group>"; };
+		520AD92D208F033600961CB0 /* EditPlaceV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditPlaceV.m; sourceTree = "<group>"; };
+		520AD92F208F07EB00961CB0 /* SetTbCells.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetTbCells.h; sourceTree = "<group>"; };
+		520AD930208F07EB00961CB0 /* SetTbCells.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetTbCells.m; sourceTree = "<group>"; };
 		5216E9F7206E0AFC004DBBCB /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		5216E9F9206E0B05004DBBCB /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		5216E9FB206E0B34004DBBCB /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -458,6 +488,8 @@
 				5295DB61207DDA3B00352354 /* AccountInfoTbCells.m */,
 				52795AD3208090D3000FA895 /* OrderListTbCells.h */,
 				52795AD4208090D3000FA895 /* OrderListTbCells.m */,
+				520AD92F208F07EB00961CB0 /* SetTbCells.h */,
+				520AD930208F07EB00961CB0 /* SetTbCells.m */,
 			);
 			name = MineCells;
 			sourceTree = "<group>";
@@ -677,6 +709,18 @@
 				52C96B8F20847E7E00F4DD03 /* OrderDetailVC.m */,
 				528DC0ED20745E2900B02986 /* AboutUsVC.h */,
 				528DC0EE20745E2900B02986 /* AboutUsVC.m */,
+				520AD914208EFCA500961CB0 /* MineVoucherVC.h */,
+				520AD915208EFCA500961CB0 /* MineVoucherVC.m */,
+				520AD920208F011B00961CB0 /* NoticeVC.h */,
+				520AD921208F011B00961CB0 /* NoticeVC.m */,
+				520AD923208F01F600961CB0 /* StallAuthVC.h */,
+				520AD924208F01F600961CB0 /* StallAuthVC.m */,
+				520AD917208F003500961CB0 /* StallManageVC.h */,
+				520AD918208F003500961CB0 /* StallManageVC.m */,
+				520AD91A208F009E00961CB0 /* MinePlaceVC.h */,
+				520AD91B208F009E00961CB0 /* MinePlaceVC.m */,
+				520AD91D208F00D800961CB0 /* EditPlaceVC.h */,
+				520AD91E208F00D800961CB0 /* EditPlaceVC.m */,
 			);
 			name = VC;
 			sourceTree = "<group>";
@@ -697,6 +741,12 @@
 				52C96B9220847E9100F4DD03 /* OrderDetailV.m */,
 				528F51A92068DEF0008BA452 /* AccountInfoV.h */,
 				528F51AA2068DEF0008BA452 /* AccountInfoV.m */,
+				520AD926208F031300961CB0 /* StallManageV.h */,
+				520AD927208F031300961CB0 /* StallManageV.m */,
+				520AD929208F032500961CB0 /* MinePlaceV.h */,
+				520AD92A208F032500961CB0 /* MinePlaceV.m */,
+				520AD92C208F033600961CB0 /* EditPlaceV.h */,
+				520AD92D208F033600961CB0 /* EditPlaceV.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1165,17 +1215,20 @@
 				528DC0FF207474C400B02986 /* WebViewJavascriptBridge_JS.m in Sources */,
 				528DC0FE207474C400B02986 /* WebViewJavascriptBridge.m in Sources */,
 				52BC7E6B2065E611000B5E43 /* SmsLoginV.m in Sources */,
+				520AD92E208F033600961CB0 /* EditPlaceV.m in Sources */,
 				5295DB65207E028600352354 /* STDatePickerView.m in Sources */,
 				5292B35320888676002A3E87 /* PopPresentV.m in Sources */,
 				528DC1202074C8A000B02986 /* UIViewController+CBPopup.m in Sources */,
 				528DC10720749E6900B02986 /* PopPresentAnimation.m in Sources */,
 				52795AD2208086B5000FA895 /* MineOrderV.m in Sources */,
 				52AE74C91FCE584900081972 /* HomeDetailVC.m in Sources */,
+				520AD925208F01F600961CB0 /* StallAuthVC.m in Sources */,
 				528DC1142074B95F00B02986 /* STAlertV.m in Sources */,
 				52E42E672071DEF60038062C /* TestModel.m in Sources */,
 				528AA1792086E851000B52F4 /* CouponVC.m in Sources */,
 				5260477F1F7513E40072AFB4 /* HomeVC.m in Sources */,
 				523F04B520648E5100858BDD /* MineV.m in Sources */,
+				520AD91C208F009E00961CB0 /* MinePlaceVC.m in Sources */,
 				52E42E612071D1940038062C /* SingleClass.m in Sources */,
 				52680C86206248A900F5DB96 /* CarouselMs.m in Sources */,
 				523F04D62065068A00858BDD /* NSString+MD5.m in Sources */,
@@ -1187,6 +1240,7 @@
 				52795AD5208090D3000FA895 /* OrderListTbCells.m in Sources */,
 				52BADA4A2079E43A00C84945 /* ThreadVC.m in Sources */,
 				528DC0FD207474C400B02986 /* WKWebViewJavascriptBridge.m in Sources */,
+				520AD931208F07EB00961CB0 /* SetTbCells.m in Sources */,
 				52C96B9320847E9100F4DD03 /* OrderDetailV.m in Sources */,
 				528936EB2061EC71004463E6 /* UIButton+ST_FixMultiClick.m in Sources */,
 				523F04D32065021800858BDD /* CodeLoginV.m in Sources */,
@@ -1210,10 +1264,15 @@
 				523C2907207A026000D2D225 /* UIButton+ExpandArea.m in Sources */,
 				52C96B962085895500F4DD03 /* TransferBtn.m in Sources */,
 				52AE1B752085EE6500434BBE /* FirmOrderMs.m in Sources */,
+				520AD919208F003500961CB0 /* StallManageVC.m in Sources */,
 				526047991F75160C0072AFB4 /* UIImage+Image.m in Sources */,
+				520AD916208EFCA500961CB0 /* MineVoucherVC.m in Sources */,
+				520AD92B208F032500961CB0 /* MinePlaceV.m in Sources */,
+				520AD922208F011B00961CB0 /* NoticeVC.m in Sources */,
 				523F04D02065020500858BDD /* CodeLoginVC.m in Sources */,
 				5202E74A2089DFFA00772C12 /* NSString+FloatPreciseCalculation.m in Sources */,
 				52680C8320623D1900F5DB96 /* WillStartVC.m in Sources */,
+				520AD928208F031300961CB0 /* StallManageV.m in Sources */,
 				52795ACC20807A75000FA895 /* OrderListV.m in Sources */,
 				52A22218206B749700F71B0C /* MonitorVC.m in Sources */,
 				528DC11120749FCF00B02986 /* FirmOrderV.m in Sources */,
@@ -1237,6 +1296,7 @@
 				523FD55720664727009753B4 /* SetVC.m in Sources */,
 				52C96B992085C8B000F4DD03 /* MineAdsTbCells.m in Sources */,
 				526047A21F7516920072AFB4 /* TabBar.m in Sources */,
+				520AD91F208F00D800961CB0 /* EditPlaceVC.m in Sources */,
 				528AA17C2086E867000B52F4 /* CouponV.m in Sources */,
 				526047141F7510800072AFB4 /* AppDelegate.m in Sources */,
 				5260478E1F7515270072AFB4 /* main.m in Sources */,

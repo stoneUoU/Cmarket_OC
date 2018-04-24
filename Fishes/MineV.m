@@ -537,7 +537,7 @@
     [self.delegate toMsg];
 }
 - (void)toInfo:(id)sender{
-    [self.delegate toMsg];
+    [self.delegate toAccount];
 }
 - (void)toOrder:(id)sender{
     [self.delegate toOrder];

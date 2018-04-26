@@ -8,6 +8,7 @@
 
 #import "FirmOrderVC.h"
 #import "CouponVC.h"
+#import "EditPlaceVC.h"
 @implementation FirmOrderVC
 - (id)init
 {
@@ -42,9 +43,10 @@
 -(void)startAR{
     if ([self.netUseVals isEqualToString: @"Useable"]){
         [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"user/address/list" withParaments:@{@"default":@0,@"page":@1,@"limit":@1} Authos:self.Auths withSuccessBlock:^(NSDictionary *feedBacks) {
-            STLog(@"%@",[feedBacks modelToJSONString]);
+            //STLog(@"%@",[feedBacks modelToJSONString]);
             //进行容错处理丫:
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
+                [self.firmOrderV.mineAds removeAllObjects];
                 for (int i = 0; i < [feedBacks[@"data"] count]; i++) {
                     MineAds *mineAds = [MineAds modelWithJSON:feedBacks[@"data"][i]];
                     [self.firmOrderV.mineAds addObject:mineAds];
@@ -165,8 +167,14 @@
 - (void)toRealN {
     STLog(@"实名丫");
 }
-- (void)toEditAs {
-    STLog(@"编辑地址丫");
+- (void)toEditAs:(MineAds *)datas {
+    EditPlaceVC * vc=[[EditPlaceVC alloc]init];
+    vc.minePls = datas;
+    __weak typeof (self) weakSelf = self;
+    vc.placeEditB = ^(NSDictionary *dict, BOOL b){
+        [weakSelf startAR];
+    };
+    [MethodFunc pushToNextVC:self destVC:vc];
 }
 - (void)toPlusDescC:(NSInteger)AC{
     self.firmOrderV.selMs = NULL;

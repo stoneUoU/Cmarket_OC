@@ -587,7 +587,7 @@
             [_delegate toRealN];
         }else{
             //去编辑地址
-            [_delegate toEditAs];
+            [_delegate toEditAs:_mineAds[indexPath.section]];
         }
     }
 }

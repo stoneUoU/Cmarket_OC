@@ -19,7 +19,7 @@
 //去实名
 - (void)toRealN;
 //去编辑地址
-- (void)toEditAs;
+- (void)toEditAs:(MineAds *)datas;
 //加减个数
 - (void)toPlusDescC:(NSInteger )AC;   //AC为商品数量
 @end

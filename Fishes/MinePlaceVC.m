@@ -47,7 +47,7 @@
             self.placeholderV = nil;
         }
         [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"user/address/list" withParaments:@{@"default":@0,@"page":@1,@"limit":@1} Authos:self.Auths withSuccessBlock:^(NSDictionary *feedBacks) {
-            STLog(@"%@",[feedBacks modelToJSONString]);
+            [self.minePlaceV.minePls removeAllObjects];
             //进行容错处理丫:
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
                 for (int i = 0; i < [feedBacks[@"data"] count]; i++) {
@@ -81,8 +81,12 @@
 // MARK: - StallManageVDel
 - (void)tableVClick:(NSInteger)section andRow:(NSInteger)row andDatas:(MineAds *)datas {
     if (section == 0 && row == 0){
-        STLog(@"%@",datas);
         EditPlaceVC * vc=[[EditPlaceVC alloc]init];
+        vc.minePls = datas;
+        __weak typeof (self) weakSelf = self;
+        vc.placeEditB = ^(NSDictionary *dict, BOOL b){
+            [weakSelf startR:1];
+        };
         [MethodFunc pushToNextVC:self destVC:vc];
     }
 }

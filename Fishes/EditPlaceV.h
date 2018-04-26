@@ -14,7 +14,17 @@
 
 @property (nonatomic, weak) id<EditPlaceVDel> delegate; //定义一个属性，可以用来进行get set操作
 
-@property (nonatomic ,strong)UIButton *exitBtn;
+@property (nonatomic ,strong)UITextField *manField;
+
+@property (nonatomic ,strong)UITextField *telField;
+
+@property (nonatomic ,strong)UITextField *placeField;
+
+@property (nonatomic ,strong)UITextField *delField;
+
+@property (nonatomic ,strong)UISwitch *switchBtn;
+
+@property (nonatomic ,strong)UIButton *saveBtn;
 
 
 @end

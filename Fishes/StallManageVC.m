@@ -50,7 +50,6 @@
         [HudTips showHUD:self];
         [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"user/certify/list" withParaments:@{} Authos:self.Auths withSuccessBlock:^(NSDictionary *feedBacks) {
             [HudTips hideHUD:self];
-            STLog(@"%@",[feedBacks modelToJSONString]);
             //进行容错处理丫:
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
                 [self.stallManageV.stallMs removeAllObjects];

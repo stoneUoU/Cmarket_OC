@@ -17,7 +17,7 @@
 - (id)init
 {
     _editPlaceV = [[EditPlaceV alloc] init]; //对MyUIView进行初始化
-    _editPlaceV.backgroundColor = [UIColor whiteColor];
+    _editPlaceV.backgroundColor = allBgColor;
     _editPlaceV.delegate = self; //将SecondVC自己的实例作为委托对象
     return [super init];
 }
@@ -25,8 +25,23 @@
     [super viewDidLoad];
     [self setUp:@"收货地址" sideVal:@"" backIvName:@"custom_serve_back.png" navC:[UIColor clearColor] midFontC:deepBlackC sideFontC:deepBlackC];
     [self setUpUI];
-
-    //[self startR];
+    [self startR];
+    [self performSelector:@selector(setVals) withObject:nil afterDelay:0.1f];
+}
+- (void)setVals{
+    _editPlaceV.manField.text = _minePls.addressee;
+    _editPlaceV.telField.text = _minePls.tel;
+    _editPlaceV.delField.text = _minePls.detail;
+    if ([_minePls.area  isEqual: @""]){
+        _editPlaceV.placeField.text = [NSString stringWithFormat:@"%@-%@",_minePls.province,_minePls.city];
+    }else{
+        _editPlaceV.placeField.text = [NSString stringWithFormat:@"%@-%@-%@",_minePls.province,_minePls.city,_minePls.area];
+    }
+    if ([_minePls.defaultA  isEqual: @"0"]){
+        _editPlaceV.switchBtn.on = YES;
+    }else{
+        _editPlaceV.switchBtn.on = NO;
+    }
 }
 - (void)setUpUI{
     [self.view addSubview:_editPlaceV];
@@ -47,24 +62,6 @@
             [self.placeholderV removeFromSuperview];
             self.placeholderV = nil;
         }
-        [HudTips showHUD:self];
-        [NetWorkManager requestWithType:HttpRequestTypePost withUrlString:followRoute@"user/logout" withParaments:@{} Authos:self.Auths withSuccessBlock:^(NSDictionary *feedBacks) {
-            [HudTips hideHUD:self];
-            STLog(@"%@",[feedBacks modelToJSONString]);
-            //进行容错处理丫:
-            if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
-                [HudTips showToast: @"注销成功" showType:Pos animationType:StToastAnimationTypeScale];
-                //清空用户信息
-                [UICKeyChainStore keyChainStore][@"orLogin"] = @"false";
-                [UICKeyChainStore keyChainStore][@"authos"] = @"";
-                [MethodFunc backToHomeVC:self];
-            }else{
-                [HudTips showToast: feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
-            }
-        } withFailureBlock:^(NSError *error) {
-            [HudTips hideHUD:self];
-            STLog(@"%@",error)
-        }];
     }else{
         if (self.placeholderV == nil){
             self.placeholderV = [[STPlaceholderView alloc]initWithFrame:CGRectMake(0, StatusBarAndNavigationBarH, ScreenW, ScreenH - StatusBarAndNavigationBarH ) type:STPlaceholderViewTypeNoNetwork delegate:self];
@@ -73,10 +70,35 @@
         [HudTips showToast: missNetTips showType:Pos animationType:StToastAnimationTypeScale];
     }
 }
-
 // MARK: - EditPlaceVDel
 - (void)toSubmit {
-    STLog(@"保存");
+    if ([self.netUseVals isEqualToString: @"Useable"]){
+        if ([_editPlaceV.manField.text isEqual:@""]) {
+            [HudTips showToast: @"请输入收货人姓名哈" showType:Pos animationType:StToastAnimationTypeScale];
+        }else if (![ValidatedFile MobileIsValidated:_editPlaceV.telField.text]){
+            [HudTips showToast: @"请输入正确的手机号码哈" showType:Pos animationType:StToastAnimationTypeScale];
+        }else{
+            [NetWorkManager requestWithType:HttpRequestTypePost withUrlString:followRoute@"user/address/modify" withParaments:@{@"province":_minePls.province,@"city":_minePls.city,@"area":_minePls.area,@"detail":_minePls.detail,@"addressee":_editPlaceV.manField.text,@"tel":_editPlaceV.telField.text,@"default":_minePls.defaultA,@"tag":@"家",@"id":_minePls.ids} Authos:self.Auths withSuccessBlock:^(NSDictionary *feedBacks) {
+                STLog(@"%@",[feedBacks modelToJSONString]);
+                //进行容错处理丫:
+                if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
+                    [HudTips showToast: feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
+                    [MethodFunc popToPrevVC:self];
+                    if (_placeEditB != NULL){
+                        _placeEditB(@{@"succ":@YES}, YES);
+                    }
+                }else if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"10009"]){
+                    [MethodFunc dealAuthMiss:self tipInfo:feedBacks[@"msg"]];
+                }else{
+                    [HudTips showToast: feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
+                }
+            } withFailureBlock:^(NSError *error) {
+                STLog(@"%@",error)
+            }];
+        }
+    }else{
+        [HudTips showToast: missNetTips showType:Pos animationType:StToastAnimationTypeScale];
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

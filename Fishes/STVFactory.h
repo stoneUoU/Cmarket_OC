@@ -41,7 +41,6 @@
                               title:(NSString *)title
                               color:(UIColor *)color
                                font:(UIFont *)font
-                    backgroundImage:(UIImage *)backgroundImage
                              target:(id)target
                              action:(SEL)action;
 

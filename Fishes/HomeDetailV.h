@@ -9,7 +9,7 @@
 #import "HomeDetailMs.h"
 
 #import "CountDown.h"
-
+#import "TimeLabel.h"
 @protocol HomeDetailVDel
 //这里只需要声明方法
 - (void)toDo;
@@ -27,9 +27,6 @@
 //定义一个底部View (去拼单)
 @property (nonatomic,strong)UIButton *buyBtn;
 
-@property (strong, nonatomic)  CountDown *countDown;
-
-
 //轮播图
 @property SDCycleScrollView *cycleScrollV;
 
@@ -46,7 +43,7 @@
 //距开始：：：距结束
 @property (nonatomic ,strong) UILabel *start_end;
 //倒计时
-@property (nonatomic ,strong) UILabel *count_down;
+@property (nonatomic ,strong) TimeLabel *count_down;
 //进度条文字
 @property (nonatomic ,strong) UILabel *progress_bar_vals;
 //进度条

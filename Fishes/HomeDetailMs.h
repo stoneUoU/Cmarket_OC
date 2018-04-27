@@ -11,7 +11,7 @@
 @interface HomeDetailMs : NSObject
 @property (nonatomic, copy) NSString* group_id;
 @property (nonatomic, copy) NSString* title;
-@property (nonatomic, assign) NSInteger status;
+@property (nonatomic, copy) NSString *status;
 @property (nonatomic, copy) NSString* discount_price;
 @property (nonatomic, copy) NSString* volume;
 @property (nonatomic, copy) NSString* vendor_id;

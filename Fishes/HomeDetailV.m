@@ -17,7 +17,6 @@
 }
 - (void)drawRect:(CGRect)rect {
     [self setUpUI];
-    _countDown = [[CountDown alloc] init];
 }
 - (void)setUpUI{
     self.backgroundColor =  [UIColor whiteColor];
@@ -190,39 +189,37 @@
     }];
 
     //倒计时
-    _count_down = [[UILabel alloc] init];
+    _count_down = [[TimeLabel alloc] init];
     _count_down.font = [UIFont systemFontOfSize:12];
     _count_down.textColor = deepBlackC;
-    if (_homeDetailMs.status == 4){
-        _count_down.attributedText = [FormatDs returnAttrStr:[self getInTimeWithStr:[NSString stringWithFormat:@"%@",_homeDetailMs.end_time]]];
-        __weak __typeof(self) weakSelf= self;
-        ///每秒回调一次
-        [self.countDown countDownWithPER_SECBlock:^{
-            [weakSelf setCount];
-        }];
-    }else if(_homeDetailMs.status == 2){
-        _count_down.attributedText = [FormatDs returnAttrStr:[self getInTimeWithStr:[NSString stringWithFormat:@"%@",_homeDetailMs.end_time]]];
-        __weak __typeof(self) weakSelf= self;
-        ///每秒回调一次
-        [self.countDown countDownWithPER_SECBlock:^{
-            [weakSelf setCount];
-        }];
-    }else{
-        _count_down.attributedText = [FormatDs returnAttrStr:@"00 : 00 : 00"];
+    if (_homeDetailMs.status != NULL){
+        if ([_homeDetailMs.status isEqual:@"4"]){
+            _count_down.descTimer = _homeDetailMs.end_time;
+            _count_down.attributedText = [FormatDs returnAttrStr:[self getInTimeWithStr:[NSString stringWithFormat:@"%@",_homeDetailMs.end_time]]];
+        }else if([_homeDetailMs.status isEqual:@"2"]){
+            _count_down.descTimer = _homeDetailMs.start_time;
+            _count_down.attributedText = [FormatDs returnAttrStr:[self getInTimeWithStr:[NSString stringWithFormat:@"%@",_homeDetailMs.end_time]]];
+        }else{
+            _count_down.descTimer = @"00 : 00 : 00";
+            _count_down.attributedText = [FormatDs returnAttrStr:@"00 : 00 : 00"];
+        }
     }
+    _count_down.countStop = ^(NSDictionary *dict, BOOL b){
+        STLog(@"计时停止");
+    };
     [headerV addSubview:_count_down];
     [_count_down mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(_progress_bar.mas_top).offset(-12*StScaleH);
-        make.right.equalTo(headerV.mas_right).offset(-spaceM);
+        make.centerX.equalTo(_progress_bar);
     }];
 
     //距开始：：：距结束
     _start_end = [[UILabel alloc] init];
     _start_end.font = [UIFont systemFontOfSize:13];
     _start_end.textColor = deepBlackC;
-    if (_homeDetailMs.status == 4){
+    if ([_homeDetailMs.status isEqual:@"4"]){
         _start_end.text =@"距结束";
-    }else if(_homeDetailMs.status == 2){
+    }else if([_homeDetailMs.status isEqual:@"2"]){
         _start_end.text =@"距开始";
     }else{
         _start_end.text = @"";
@@ -302,12 +299,6 @@
     [_delegate toDo];
 }
 
--(void)setCount{
-    STLog(@"88888");
-   _count_down.attributedText = [FormatDs returnAttrStr:_count_down.text];
-    [self.tableV reloadData];
-}
-
 -(NSString *)getInTimeWithStr:(NSString *)aTimeString{
     NSDateFormatter* formater = [[NSDateFormatter alloc] init];
     [formater setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
@@ -376,6 +367,11 @@
     return [[NSAttributedString alloc] initWithData:data options:options documentAttributes:nil error:nil];
 }
 
+- (void)dealloc
+{
+    [self.count_down.timer invalidate];
+    self.count_down.timer = nil;
+}
 //if (![[NSString stringWithFormat:@"%@",[UICKeyChainStore keyChainStore][@"orLogin"]]  isEqual: @"true"]){
 //    //MARK:弹出登录视图：在主页消息、主页立即购买、商品详情界面登录:status_code:1
 //    StartVC * startV = [[StartVC alloc] init];

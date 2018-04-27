@@ -48,6 +48,7 @@
 		523FD55420664716009753B4 /* SetV.m in Sources */ = {isa = PBXBuildFile; fileRef = 523FD55320664716009753B4 /* SetV.m */; };
 		523FD55720664727009753B4 /* SetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 523FD55620664727009753B4 /* SetVC.m */; };
 		523FD55A20665454009753B4 /* MethodFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 523FD55920665454009753B4 /* MethodFunc.m */; };
+		524B431720931BA700D9A733 /* TimeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 524B431620931BA700D9A733 /* TimeLabel.m */; };
 		526047141F7510800072AFB4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 526047131F7510800072AFB4 /* AppDelegate.m */; };
 		5260471C1F7510800072AFB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5260471B1F7510800072AFB4 /* Assets.xcassets */; };
 		5260472A1F7510800072AFB4 /* FishesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 526047291F7510800072AFB4 /* FishesTests.m */; };
@@ -232,6 +233,8 @@
 		523FD55620664727009753B4 /* SetVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetVC.m; sourceTree = "<group>"; };
 		523FD55820665454009753B4 /* MethodFunc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MethodFunc.h; sourceTree = "<group>"; };
 		523FD55920665454009753B4 /* MethodFunc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MethodFunc.m; sourceTree = "<group>"; };
+		524B431520931BA700D9A733 /* TimeLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeLabel.h; sourceTree = "<group>"; };
+		524B431620931BA700D9A733 /* TimeLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimeLabel.m; sourceTree = "<group>"; };
 		5260470C1F7510800072AFB4 /* Fishes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fishes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		526047121F7510800072AFB4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		526047131F7510800072AFB4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -816,6 +819,8 @@
 				52AE1B772085FDDD00434BBE /* PPNumberButton.m */,
 				5202E7422089C25D00772C12 /* STVFactory.h */,
 				5202E7432089C25D00772C12 /* STVFactory.m */,
+				524B431520931BA700D9A733 /* TimeLabel.h */,
+				524B431620931BA700D9A733 /* TimeLabel.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1322,6 +1327,7 @@
 				523F04BA20649E1300858BDD /* MineTbCells.m in Sources */,
 				52907D112092CBFE009F08B1 /* ReSetCodeV.m in Sources */,
 				523F04BD2064CB5100858BDD /* MineMs.m in Sources */,
+				524B431720931BA700D9A733 /* TimeLabel.m in Sources */,
 				5284058720637D59000623B4 /* CountDown.m in Sources */,
 				528936EE2061ECC4004463E6 /* STPlaceholderView.m in Sources */,
 				528AA1762086E1AD000B52F4 /* UILabel+Deal.m in Sources */,

@@ -1,14 +1,12 @@
 //
-//  SmsLoginV.m
+//  ReSetCodeV.m
 //  Fishes
 //
-//  Created by test on 2018/3/24.
+//  Created by test on 2018/4/27.
 //  Copyright © 2018年 com.youlu. All rights reserved.
 //
-
-#import "SmsLoginV.h"
-@interface SmsLoginV(){
-    UIButton *_submitBtn;
+#import "ReSetCodeV.h"
+@interface ReSetCodeV(){
 
     UIView *_telV;
 
@@ -18,15 +16,18 @@
 
     UIView *_l_cut_line;
 
+    UIView *_s_cut_line;
+
     UIView *_smsV;
 
     UILabel *_smsL;
 
-    UILabel *_codeLoginV;
+    UIView *_codeV;
+
+    UILabel *_codeL;
 }
 @end
-
-@implementation SmsLoginV
+@implementation ReSetCodeV
 - (void)drawRect:(CGRect)rect {
     [self setUpUI];
 }
@@ -93,21 +94,45 @@
     _smsField.leftView = sms_leftV;
     [_smsV addSubview:_smsField];
 
-    _codeLoginV = [[UILabel alloc] init];
-    _codeLoginV.font=[UIFont systemFontOfSize:13];
-    _codeLoginV.textColor = deepBlackC;
-    _codeLoginV.text = @"密码登录";
-    [_codeLoginV setUserInteractionEnabled:YES];
-    UITapGestureRecognizer *touchTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toCodeVC:)];
-    [_codeLoginV addGestureRecognizer:touchTap];
-    [self addSubview:_codeLoginV];
+    _s_cut_line = [[UIView alloc] init];
+    _s_cut_line.backgroundColor = cutOffLineC;
+    [_smsV addSubview:_s_cut_line];
 
+    _codeV = [[UIView alloc] init];
+    _codeV.backgroundColor = [UIColor whiteColor];
+    [self addSubview:_codeV];
+
+    _codeL = [[UILabel alloc] init];
+    _codeL.font=[UIFont systemFontOfSize:16];
+    _codeL.textColor = deepBlackC;
+    _codeL.text = @"密    码";
+    [_codeV addSubview:_codeL];
+
+    _codeField = [[UITextField alloc] init];
+    _codeField.placeholder = @"6到16位数字或字母";
+    _codeField.font = [UIFont systemFontOfSize:16];
+    _codeField.tintColor  = styleColor;//光标颜色
+    _codeField.textColor  = midBlackC;//字体颜色
+    _codeField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    _codeField.keyboardType = UIKeyboardTypePhonePad;
+    _codeField.secureTextEntry = YES;
+    UIView *code_leftV = [[UIView alloc] initWithFrame:CGRectMake(0, 0,spaceM,0)];
+    _codeField.leftViewMode = UITextFieldViewModeAlways;//设置左边距显示的时机，这个表示一直显示
+    _codeField.leftView = code_leftV;
+    [_codeV addSubview:_codeField];
+
+    _seeCodeV = [[STButton alloc] init];
+    [_seeCodeV setBackgroundImage:[UIImage imageNamed:@"close_eye.png"] forState:UIControlStateNormal];
+    _seeCodeV.hitTestEdgeInsets = UIEdgeInsetsMake(-12, -12, -12, -12);
+    [_seeCodeV addTarget:self action:@selector(toSeeCode:)
+        forControlEvents:UIControlEventTouchUpInside];
+    [_codeV addSubview:_seeCodeV];
 
     _submitBtn = [[UIButton alloc] init];
     _submitBtn.titleLabel.font=[UIFont systemFontOfSize:16];
     _submitBtn.backgroundColor = styleColor;
     _submitBtn.layer.cornerRadius = 22;
-    [_submitBtn setTitle:@"登录" forState:UIControlStateNormal];
+    [_submitBtn setTitle:@"确认" forState:UIControlStateNormal];
     [_submitBtn setTitleColor:[UIColor whiteColor]  forState:UIControlStateNormal];
     [_submitBtn addTarget:self action:@selector(toDo:)forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_submitBtn];
@@ -138,7 +163,7 @@
     [_v_cut_line mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_telV.mas_top).offset(0);
         make.left.equalTo(_telField.mas_right).offset(0);
-        make.width.mas_equalTo(0.7);
+        make.width.mas_equalTo(0.5);
         make.height.mas_equalTo(44*StScaleH);
     }];
 
@@ -152,7 +177,7 @@
         make.top.equalTo(_telV.mas_bottom).offset(0);
         make.left.equalTo(self.mas_left).offset(spaceM);
         make.width.mas_equalTo(ScreenW - spaceM);
-        make.height.mas_equalTo(0.7);
+        make.height.mas_equalTo(0.5);
     }];
 
     [_smsV mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -173,13 +198,37 @@
         make.height.mas_equalTo(44*StScaleH);
     }];
 
-    [_codeLoginV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(_smsV.mas_bottom).offset(18*StScaleH);
-        make.left.equalTo(self).offset(spaceM);
+    [_s_cut_line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_smsV.mas_bottom).offset(0);
+        make.left.equalTo(self.mas_left).offset(spaceM);
+        make.width.mas_equalTo(ScreenW - spaceM);
+        make.height.mas_equalTo(0.5);
+    }];
+
+    [_codeV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_s_cut_line.mas_bottom).offset(0);
+        make.left.equalTo(self.mas_left).offset(0);
+        make.width.mas_equalTo(ScreenW);
+        make.height.mas_equalTo(44*StScaleH);
+    }];
+
+    [_codeL mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(_codeV);
+        make.left.mas_equalTo(spaceM);
+    }];
+    [_codeField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_codeV.mas_top).offset(0);
+        make.left.equalTo(_codeL.mas_right).offset(0);
+        make.right.equalTo(_codeV.mas_right).offset(-3*spaceM);
+        make.height.mas_equalTo(44*StScaleH);
+    }];
+    [_seeCodeV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(_codeV);
+        make.right.mas_equalTo(-spaceM);
     }];
 
     [_submitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_codeLoginV.mas_bottom).offset(24*StScaleH);
+        make.top.equalTo(_codeV.mas_bottom).offset(48*StScaleH);
         make.centerX.equalTo(self);
         make.width.mas_equalTo(ScreenW - (spaceM*2));
         make.height.mas_equalTo(44*StScaleH);
@@ -187,27 +236,43 @@
 }
 //按钮、手势函数写这
 - (void)toSmsCode:(UIButton *)sender{
-    [_delegate toSmsCode ];
+    NSString *tel = _telField.text;
+    tel = [tel stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    tel = [tel stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (![ValidatedFile MobileIsValidated:tel]){
+        [HudTips showToast: @"手机号码不合理" showType:Pos animationType:StToastAnimationTypeScale];
+    }else{
+        [_delegate toSmsCode:tel];
+    }
 }
-
-
 - (void)toDo:(UIButton *)sender{
     NSString *tel = _telField.text;
     NSString *smsCode = _smsField.text;
+    NSString *codeCode = _codeField.text;
 
     //去除两端空格
     tel = [tel stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     smsCode = [smsCode stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    codeCode = [codeCode stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     //去除两端空格和回车
     tel = [tel stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     smsCode = [smsCode stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-
-    [_delegate toSubmit:tel withSmsCode:smsCode];
+    codeCode = [codeCode stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (![ValidatedFile MobileIsValidated:tel]){
+        [HudTips showToast: @"手机号码不合理" showType:Pos animationType:StToastAnimationTypeScale];
+    }else if (![ValidatedFile PayCodeIsValidated:smsCode]){
+        [HudTips showToast: @"验证码位数不合理" showType:Pos animationType:StToastAnimationTypeScale];
+    }else if (![ValidatedFile LoginCodeIsValidated:codeCode]){
+        [HudTips showToast: @"登录密码不合理" showType:Pos animationType:StToastAnimationTypeScale];
+    }else{
+        [_delegate toSubmit:tel withSmsCode:smsCode withCodeCode:codeCode];
+    }
 }
 
-- (void)toCodeVC:(id)sender{
-    [_delegate toCodeVC];
+- (void)toSeeCode:(id)sender{
+    [_delegate toSeeCode];
 }
+
 /*
  // Only override drawRect: if you perform custom drawing.
  // An empty implementation adversely affects performance during animation.

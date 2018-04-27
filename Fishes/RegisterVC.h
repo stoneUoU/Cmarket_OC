@@ -13,4 +13,6 @@
 
 //从上一个界面传过来的字典：   //定一个值：登录失效是:status_code:0
 @property(nonatomic,strong)NSDictionary *pass_Vals;
+@property(nonatomic,assign)BOOL boolSee;
+@property(nonatomic,assign)BOOL boolR;  //注册的Bool值
 @end

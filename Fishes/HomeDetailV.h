@@ -7,6 +7,9 @@
 //
 #import <UIKit/UIKit.h>
 #import "HomeDetailMs.h"
+
+#import "CountDown.h"
+
 @protocol HomeDetailVDel
 //这里只需要声明方法
 - (void)toDo;
@@ -23,6 +26,8 @@
 
 //定义一个底部View (去拼单)
 @property (nonatomic,strong)UIButton *buyBtn;
+
+@property (strong, nonatomic)  CountDown *countDown;
 
 
 //轮播图

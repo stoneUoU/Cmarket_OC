@@ -17,6 +17,7 @@
 }
 - (void)drawRect:(CGRect)rect {
     [self setUpUI];
+    _countDown = [[CountDown alloc] init];
 }
 - (void)setUpUI{
     self.backgroundColor =  [UIColor whiteColor];
@@ -135,25 +136,6 @@
         make.top.equalTo(_product_title.mas_bottom).offset(12*StScaleH);
     }];
 
-    //距开始：：：距结束
-    _start_end = [[UILabel alloc] init];
-    _start_end.font = [UIFont systemFontOfSize:13];
-    _start_end.textColor = deepBlackC;
-    [headerV addSubview:_start_end];
-    [_start_end mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(_product_small_title);
-        make.right.equalTo(headerV.mas_right).offset(-spaceM);
-    }];
-
-    //倒计时
-    _count_down = [[UILabel alloc] init];
-    _count_down.font = [UIFont systemFontOfSize:12];
-    _count_down.textColor = deepBlackC;
-    [headerV addSubview:_count_down];
-    [_count_down mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(_start_end.mas_bottom).offset(15*StScaleH);
-        make.right.equalTo(headerV.mas_right).offset(-spaceM);
-    }];
     _product_price = [[UILabel alloc] init];
     _product_price.font = [UIFont systemFontOfSize:18];
     _product_price.textColor = [UIColor color_HexStr:@"d73509"];
@@ -205,6 +187,50 @@
     [_progress_bar_vals mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_progress_bar);
         make.right.equalTo(_progress_bar.mas_left).offset(-5);
+    }];
+
+    //倒计时
+    _count_down = [[UILabel alloc] init];
+    _count_down.font = [UIFont systemFontOfSize:12];
+    _count_down.textColor = deepBlackC;
+    if (_homeDetailMs.status == 4){
+        _count_down.attributedText = [FormatDs returnAttrStr:[self getInTimeWithStr:[NSString stringWithFormat:@"%@",_homeDetailMs.end_time]]];
+        __weak __typeof(self) weakSelf= self;
+        ///每秒回调一次
+        [self.countDown countDownWithPER_SECBlock:^{
+            [weakSelf setCount];
+        }];
+    }else if(_homeDetailMs.status == 2){
+        _count_down.attributedText = [FormatDs returnAttrStr:[self getInTimeWithStr:[NSString stringWithFormat:@"%@",_homeDetailMs.end_time]]];
+        __weak __typeof(self) weakSelf= self;
+        ///每秒回调一次
+        [self.countDown countDownWithPER_SECBlock:^{
+            [weakSelf setCount];
+        }];
+    }else{
+        _count_down.attributedText = [FormatDs returnAttrStr:@"00 : 00 : 00"];
+    }
+    [headerV addSubview:_count_down];
+    [_count_down mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(_progress_bar.mas_top).offset(-12*StScaleH);
+        make.right.equalTo(headerV.mas_right).offset(-spaceM);
+    }];
+
+    //距开始：：：距结束
+    _start_end = [[UILabel alloc] init];
+    _start_end.font = [UIFont systemFontOfSize:13];
+    _start_end.textColor = deepBlackC;
+    if (_homeDetailMs.status == 4){
+        _start_end.text =@"距结束";
+    }else if(_homeDetailMs.status == 2){
+        _start_end.text =@"距开始";
+    }else{
+        _start_end.text = @"";
+    }
+    [headerV addSubview:_start_end];
+    [_start_end mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(_count_down.mas_top).offset(-12*StScaleH);
+        make.centerX.equalTo(_count_down);
     }];
 
     return headerV;
@@ -260,8 +286,71 @@
         make.right.equalTo(footerV.mas_right).offset(-spaceM);
         make.bottom.equalTo(footerV.mas_bottom).offset(0);
     }];
-
     return footerV;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *nullCell = [tableView dequeueReusableCellWithIdentifier:@"Cells"];
+    return nullCell;
+}
+#pragma 代理方法
+- (void)loadDs{
+    [_delegate toDo];
+}
+
+- (void)goBuy:(id)sender{
+    [_delegate toDo];
+}
+
+-(void)setCount{
+    STLog(@"88888");
+   _count_down.attributedText = [FormatDs returnAttrStr:_count_down.text];
+    [self.tableV reloadData];
+}
+
+-(NSString *)getInTimeWithStr:(NSString *)aTimeString{
+    NSDateFormatter* formater = [[NSDateFormatter alloc] init];
+    [formater setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    // 截止时间date格式
+    NSDate  *expireDate = [formater dateFromString:aTimeString];
+    NSDate  *nowDate = [NSDate date];
+    // 当前时间字符串格式
+    NSString *nowDateStr = [formater stringFromDate:nowDate];
+    // 当前时间date格式
+    nowDate = [formater dateFromString:nowDateStr];
+
+    NSTimeInterval timeInterval =[expireDate timeIntervalSinceDate:nowDate];
+
+    int days = (int)(timeInterval/(3600*24));
+    int hours = (int)((timeInterval-days*24*3600)/3600);
+    int minutes = (int)(timeInterval-days*24*3600-hours*3600)/60;
+    int seconds = timeInterval-days*24*3600-hours*3600-minutes*60;
+
+    NSString *dayStr;NSString *hoursStr;NSString *minutesStr;NSString *secondsStr;
+    //天
+    dayStr = [NSString stringWithFormat:@"%d",days];
+    //小时
+    if(hours<10)
+        hoursStr = [NSString stringWithFormat:@"0%d",hours];
+    else
+        hoursStr = [NSString stringWithFormat:@"%d",hours];
+    //分钟
+    if(minutes<10)
+        minutesStr = [NSString stringWithFormat:@"0%d",minutes];
+    else
+        minutesStr = [NSString stringWithFormat:@"%d",minutes];
+    //秒
+    if(seconds < 10)
+        secondsStr = [NSString stringWithFormat:@"0%d", seconds];
+    else
+        secondsStr = [NSString stringWithFormat:@"%d",seconds];
+    if (hours<=0&&minutes<=0&&seconds<=0) {
+        return @"00 : 00 : 00";
+    }
+    if (days) {
+        return [NSString stringWithFormat:@"%@ : %@ : %@ : %@", dayStr,hoursStr, minutesStr,secondsStr];
+    }
+    return [NSString stringWithFormat:@"%@ : %@ : %@",hoursStr , minutesStr,secondsStr];
 }
 
 //将 &lt 等类似的字符转化为HTML中的“<”等
@@ -285,20 +374,6 @@
     NSData *data = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
 
     return [[NSAttributedString alloc] initWithData:data options:options documentAttributes:nil error:nil];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *nullCell = [tableView dequeueReusableCellWithIdentifier:@"Cells"];
-    return nullCell;
-}
-#pragma 代理方法
-- (void)loadDs{
-    [_delegate toDo];
-}
-
-- (void)goBuy:(id)sender{
-    [_delegate toDo];
 }
 
 //if (![[NSString stringWithFormat:@"%@",[UICKeyChainStore keyChainStore][@"orLogin"]]  isEqual: @"true"]){

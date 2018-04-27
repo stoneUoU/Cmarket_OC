@@ -91,6 +91,7 @@
     _tableV = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _tableV.delegate = self;
     _tableV.dataSource = self;
+    _tableV.separatorStyle = UITableViewCellSeparatorStyleNone;
     //给tableV注册Cells
     [_tableV registerClass:[MineTbCells class] forCellReuseIdentifier: @"mineTbCells"];
     //添加下拉刷新头
@@ -520,6 +521,11 @@
     }
     Cell.part_icon.image = [UIImage imageNamed:_mineDicts[indexPath.section][indexPath.row][@"png"]];
     Cell.part_name.text = _mineDicts[indexPath.section][indexPath.row][@"vals"];
+    if (indexPath.section  == 0 &&  indexPath.row == 0){
+        Cell.lineV.backgroundColor = cutOffLineC;
+    }else if (indexPath.section  == 2 &&  indexPath.row == 0){
+        Cell.lineV.backgroundColor = cutOffLineC;
+    }
     return Cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

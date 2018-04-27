@@ -35,11 +35,11 @@
     NSArray  *cells = self.tableView.visibleCells; //取出屏幕可见cell
     for (HomeTbCells *cell in cells) {
         HomeMs *homeMs = self.dataArrs[cell.tag];
-        cell.count_down.text = [self getInTimeWithStr:homeMs.end_time];
-        if ([cell.count_down.text isEqualToString:@"活动已经结束！"]) {
-            cell.count_down.textColor = [UIColor redColor];
+        if ([cell.count_down.text isEqualToString:@"00 : 00 : 00"]) {
+            cell.count_down.attributedText = [FormatDs returnAttrStr:@"00 : 00 : 00"];
         }else{
-            cell.count_down.textColor = [UIColor orangeColor];
+            cell.count_down.text = [self getInTimeWithStr:homeMs.end_time];
+            cell.count_down.attributedText = [FormatDs returnAttrStr:cell.count_down.text];
         }
     }
 }
@@ -96,6 +96,9 @@
     //homeTbCells.product_title.attributedText = [MethodFunc strWithUIImage:@" 海上月是天上月，故乡人是心上人海上月是天上月，故乡人是心上人海上月是天上月，故乡人是心上人" andImage:@"tag_four" andBounds:CGRectMake(0, 0, 64*ScreenW/iphoneSixW, 14*ScreenW/iphoneSixW)];
     homeTbCells.product_small_title.text = [NSString stringWithFormat:@"%@",homeMs.subtitle];
     homeTbCells.product_attr.text = homeMs.desc;
+    if([homeMs.desc isEqual:@""]){
+        homeTbCells.product_attr.hidden = YES;
+    }
     homeTbCells.progress_bar.progress =  [homeMs.freeze_inventory floatValue]/[homeMs.total_inventory floatValue];
     homeTbCells.progress_bar_vals.text = [[@"已购" stringByAppendingString:[FormatDs retainPoint:@"0" floatV:[homeMs.freeze_inventory floatValue]/[homeMs.total_inventory floatValue]*10000] ] stringByAppendingString:@"%"];
     homeTbCells.doBtn.transferDs = @{@"datas":homeMs.group_id};
@@ -104,16 +107,12 @@
     homeTbCells.product_price.text =  [FormatDs retainPoint:@"0.00" floatV:[homeMs.discount_price floatValue]];
     homeTbCells.doBtn.backgroundColor = styleColor;
     homeTbCells.start_end.text = @"距结束";
-    homeTbCells.count_down.text = [self getInTimeWithStr:[NSString stringWithFormat:@"%@",homeMs.end_time]];
     if ([homeMs.total_inventory isEqual: homeMs.freeze_inventory]) {
         [homeTbCells.doBtn setTitle:@"已拼满" forState:UIControlStateNormal];
         homeTbCells.doBtn.backgroundColor = btnDisableC;
-        homeTbCells.count_down.hidden = YES;
-    }
-    if ([homeTbCells.count_down.text isEqualToString:@"活动已经结束！"]) {
-        homeTbCells.count_down.textColor = [UIColor redColor];
+        homeTbCells.count_down.attributedText = [FormatDs returnAttrStr:@"00 : 00 : 00"];
     }else{
-        homeTbCells.count_down.textColor = [UIColor orangeColor];
+        homeTbCells.count_down.attributedText = [FormatDs returnAttrStr:[self getInTimeWithStr:[NSString stringWithFormat:@"%@",homeMs.end_time]]];
     }
     homeTbCells.tag = indexPath.row;
     return homeTbCells;
@@ -162,13 +161,13 @@
  *
  * @return 返回天数
  */
--(NSInteger)getDayNumberWithYear:(NSInteger )y month:(NSInteger )m{
-    int days[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-    if (2 == m && 0 == (y % 4) && (0 != (y % 100) || 0 == (y % 400))) {
-        days[1] = 29;
-    }
-    return (days[m - 1]);
-}
+//-(NSInteger)getDayNumberWithYear:(NSInteger )y month:(NSInteger )m{
+//    int days[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+//    if (2 == m && 0 == (y % 4) && (0 != (y % 100) || 0 == (y % 400))) {
+//        days[1] = 29;
+//    }
+//    return (days[m - 1]);
+//}
 
 -(NSString *)getInTimeWithStr:(NSString *)aTimeString{
     NSDateFormatter* formater = [[NSDateFormatter alloc] init];
@@ -192,7 +191,10 @@
     //天
     dayStr = [NSString stringWithFormat:@"%d",days];
     //小时
-    hoursStr = [NSString stringWithFormat:@"%d",hours];
+    if(hours<10)
+        hoursStr = [NSString stringWithFormat:@"0%d",hours];
+    else
+        hoursStr = [NSString stringWithFormat:@"%d",hours];
     //分钟
     if(minutes<10)
         minutesStr = [NSString stringWithFormat:@"0%d",minutes];
@@ -204,11 +206,13 @@
     else
         secondsStr = [NSString stringWithFormat:@"%d",seconds];
     if (hours<=0&&minutes<=0&&seconds<=0) {
-        return @"活动已经结束！";
+        return @"00 : 00 : 00";
     }
     if (days) {
-        return [NSString stringWithFormat:@"%@天 %@时 %@分 %@秒", dayStr,hoursStr, minutesStr,secondsStr];
+        return [NSString stringWithFormat:@"%@ : %@ : %@ : %@", dayStr,hoursStr, minutesStr,secondsStr];
     }
-    return [NSString stringWithFormat:@"%@时 %@分 %@秒",hoursStr , minutesStr,secondsStr];
+    return [NSString stringWithFormat:@"%@ : %@ : %@",hoursStr , minutesStr,secondsStr];
 }
+
+
 @end

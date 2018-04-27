@@ -10,4 +10,5 @@
 
 @interface FormatDs : NSObject
 +(NSString *)retainPoint:(NSString *)format floatV:(float)floatV;
++(NSMutableAttributedString *)returnAttrStr:(NSString *)Str;
 @end

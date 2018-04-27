@@ -10,12 +10,14 @@
 #import "AppDelegate.h"
 #import "RegisterVC.h"
 #import "SmsLoginVC.h"
+#import "ReSetCodeVC.h"
 @implementation CodeLoginVC
 - (id)init
 {
     _codeLoginV = [[CodeLoginV alloc] init]; //对MyUIView进行初始化
-    _codeLoginV.backgroundColor = [UIColor whiteColor];
+    _codeLoginV.backgroundColor = allBgColor;
     _codeLoginV.delegate = self; //将SecondVC自己的实例作为委托对象
+    _boolSee = NO;
     return [super init];
 }
 - (void)viewDidLoad {
@@ -38,12 +40,7 @@
 }
 
 // MARK: - CodeLoginVDel
-- (void)toSubmit {
-    [self startR];
-}
-
 -(void) toBack{
-    STLog(@"密码登录返回");
     [self.navigationController popViewControllerAnimated:true];
 }
 -(void) toSmsVC{
@@ -53,6 +50,31 @@
         [self.navigationController pushViewController:smsLoginV animated:true];
     });
 }
+
+- (void)toLeftCode {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        ReSetCodeVC *reSetCodeV =[[ReSetCodeVC alloc] init];
+        [self.navigationController pushViewController:reSetCodeV animated:true];
+    });
+}
+
+
+- (void)toSeeCode {
+    _boolSee = !_boolSee;
+    if (_boolSee){
+        [_codeLoginV.seeCodeV setBackgroundImage:[UIImage imageNamed:@"open_eye.png"] forState:UIControlStateNormal];
+        _codeLoginV.codeField.secureTextEntry = NO;
+    }else{
+        [_codeLoginV.seeCodeV setBackgroundImage:[UIImage imageNamed:@"close_eye.png"] forState:UIControlStateNormal];
+        _codeLoginV.codeField.secureTextEntry = YES;
+    }
+}
+
+
+- (void)toSubmit:(NSString *)tel withCode:(NSString *)code {
+    [self startR:tel withCode:code];
+}
+
 
 -(void) toSide{
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -67,7 +89,7 @@
 }
 
 
--(void)startR{
+-(void)startR:(NSString *)tel withCode:(NSString *)code{
     if ([self.netUseVals isEqualToString: @"Useable"]){
         [HudTips showHUD:self];
         [NetWorkManager requestWithType:HttpRequestTypePost withUrlString:followRoute@"user/login/password" withParaments:@{@"registration_id":@"",@"username":@"15717914505",@"password":[[[@"000000" MD5]MD5]MD5]} Authos:@"" withSuccessBlock:^(NSDictionary *feedBacks) {
@@ -100,4 +122,5 @@
         [HudTips showToast: missNetTips showType:Pos animationType:StToastAnimationTypeScale];
     }
 }
+
 @end

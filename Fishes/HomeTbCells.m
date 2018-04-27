@@ -172,7 +172,7 @@
     }];
     [_count_down mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(_doBtn.mas_top).offset(-15);
-        make.right.equalTo(self.mas_right).offset(-spaceM);
+        make.centerX.equalTo(_doBtn);
     }];
 
     [_start_end mas_makeConstraints:^(MASConstraintMaker *make) {

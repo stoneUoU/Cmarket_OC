@@ -58,8 +58,8 @@
         [self addSubview:_lineV];
         [_lineV mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.mas_equalTo(0);
-            make.bottom.equalTo(self.mas_bottom).offset(-0.7);
-            make.height.mas_equalTo(0.7);
+            make.bottom.equalTo(self.mas_bottom).offset(-0.5);
+            make.height.mas_equalTo(0.5);
         }];
     }
     return _lineV;

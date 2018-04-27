@@ -9,12 +9,14 @@
 #import "RegisterVC.h"
 #import "TabBarVC.h"
 #import "AppDelegate.h"
+#import "UIButton+countDown.h"
 @implementation RegisterVC
 - (id)init
 {
     _registerV = [[RegisterV alloc] init]; //对MyUIView进行初始化
-    _registerV.backgroundColor = [UIColor whiteColor];
+    _registerV.backgroundColor = allBgColor ;
     _registerV.delegate = self; //将SecondVC自己的实例作为委托对象
+    _boolSee = NO;
     return [super init];
 }
 - (void)viewDidLoad {
@@ -36,27 +38,27 @@
     }];
 }
 
-// MARK: - SmsLoginVDel
-- (void)toSubmit {
-    [self startR];
-}
-
-//-(void) toBack{
-//    STLog(@"注册返回");
-//    for (UIViewController *controller in self.navigationController.viewControllers) {
-//        if ([controller isKindOfClass:[StartVC class]]) {
-//            StartVC *startV =(StartVC *)controller;
-//            [self.navigationController popToViewController:startV animated:YES];
-//        }
-//    }
-//}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
+//获取验证码:
+- (void)smsCodeR:(NSString *)tel{
+    if ([self.netUseVals isEqualToString: @"Useable"]){
+        [HudTips showHUD:self];
+        [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"user/code" withParaments:@{@"opr":@"login",@"tel":tel} Authos:@"" withSuccessBlock:^(NSDictionary *feedBacks) {
+            [HudTips hideHUD:self];
+            STLog(@"%@",feedBacks);
+            [HudTips showToast: feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];
+        } withFailureBlock:^(NSError *error) {
+            [HudTips hideHUD:self];
+            STLog(@"%@",error)
+        }];
+    }else{
+        [HudTips showToast: missNetTips showType:Pos animationType:StToastAnimationTypeScale];
+    }
+}
+//注册:
 -(void)startR{
     if ([self.netUseVals isEqualToString: @"Useable"]){
         [HudTips showHUD:self];
@@ -90,4 +92,39 @@
         [HudTips showToast: missNetTips showType:Pos animationType:StToastAnimationTypeScale];
     }
 }
+// MARK: - SmsLoginVDel
+- (void)toSeeCode {
+    _boolSee = !_boolSee;
+    if (_boolSee){
+        [_registerV.seeCodeV setBackgroundImage:[UIImage imageNamed:@"open_eye.png"] forState:UIControlStateNormal];
+        _registerV.codeField.secureTextEntry = NO;
+    }else{
+        [_registerV.seeCodeV setBackgroundImage:[UIImage imageNamed:@"close_eye.png"] forState:UIControlStateNormal];
+        _registerV.codeField.secureTextEntry = YES;
+    }
+}
+
+- (void)toSelected {
+    _boolR = !_boolR;
+    if (_boolR){
+        [_registerV.selectV setBackgroundImage:[UIImage imageNamed:@"accept.png"] forState:UIControlStateNormal];
+        _registerV.submitBtn.backgroundColor = styleColor;
+        _registerV.submitBtn.userInteractionEnabled = YES;
+    }else{
+        [_registerV.selectV setBackgroundImage:[UIImage imageNamed:@"unAccept.png"] forState:UIControlStateNormal];
+        _registerV.submitBtn.backgroundColor = btnDisableC;
+        _registerV.submitBtn.userInteractionEnabled = NO;
+    }
+}
+
+- (void)toSmsCode:(NSString *)tel {
+    [_registerV.smsBtn startWithTime:60 title:@"获取验证码" countDownTitle:@"s后再获取" mainColor:[UIColor clearColor] countColor:[UIColor clearColor]];
+    [self smsCodeR:tel];
+
+}
+
+- (void)toSubmit:(NSString *)tel withSmsCode:(NSString *)smsCode withCodeCode:(NSString *)codeCode {
+    [self startR];
+}
+
 @end

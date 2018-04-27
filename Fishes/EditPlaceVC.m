@@ -26,7 +26,7 @@
     [self setUp:@"收货地址" sideVal:@"" backIvName:@"custom_serve_back.png" navC:[UIColor clearColor] midFontC:deepBlackC sideFontC:deepBlackC];
     [self setUpUI];
     [self startR];
-    [self performSelector:@selector(setVals) withObject:nil afterDelay:0.1f];
+    [self performSelector:@selector(setVals) withObject:nil afterDelay:0.01f];
 }
 - (void)setVals{
     _editPlaceV.manField.text = _minePls.addressee;

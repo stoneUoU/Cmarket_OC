@@ -123,13 +123,13 @@
  *
  * @return 返回天数
  */
--(NSInteger)getDayNumberWithYear:(NSInteger )y month:(NSInteger )m{
-    int days[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-    if (2 == m && 0 == (y % 4) && (0 != (y % 100) || 0 == (y % 400))) {
-        days[1] = 29;
-    }
-    return (days[m - 1]);
-}
+//-(NSInteger)getDayNumberWithYear:(NSInteger )y month:(NSInteger )m{
+//    int days[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+//    if (2 == m && 0 == (y % 4) && (0 != (y % 100) || 0 == (y % 400))) {
+//        days[1] = 29;
+//    }
+//    return (days[m - 1]);
+//}
 //点击函数
 - (void)toMore:(id)sender{
     STLog(@"查看更多");

@@ -35,6 +35,10 @@
     _goV.image  = [UIImage imageNamed:@"blackGoArrow"];
     [self addSubview:_goV];
 
+    _lineV = [[UIView alloc] init];
+    _lineV.backgroundColor  = [UIColor whiteColor];
+    [self addSubview:_lineV];
+
     [self setMas];
 }
 - (void) setMas{
@@ -52,6 +56,13 @@
     [_goV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
         make.right.equalTo(self.mas_right).offset(-spaceM);
+    }];
+
+    [_lineV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self).offset(-0.5);
+        make.left.mas_equalTo(0);
+        make.width.mas_equalTo(ScreenW);
+        make.height.mas_equalTo(0.5);
     }];
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

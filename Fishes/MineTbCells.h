@@ -11,4 +11,5 @@
 @property (nonatomic ,strong) UIImageView *part_icon;
 @property (nonatomic ,strong) UILabel *part_name;
 @property (nonatomic ,strong) UIImageView *goV;
+@property (nonatomic ,strong) UIView *lineV;
 @end

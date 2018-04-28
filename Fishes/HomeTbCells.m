@@ -114,6 +114,11 @@
     _start_end.textColor = deepBlackC;
     [self addSubview:_start_end];
 
+    //距开始：：：距结束
+    _lineV = [[UIView alloc] init];
+    _lineV.backgroundColor = cutOffLineC;
+    [self addSubview:_lineV];
+
     [self setMas];
 }
 - (void) setMas{
@@ -178,6 +183,13 @@
     [_start_end mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(_count_down.mas_top).offset(-8);
         make.centerX.equalTo(_doBtn);
+    }];
+
+    [_lineV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(spaceM);
+        make.bottom.equalTo(self.mas_bottom).offset(-0.5);
+        make.height.mas_equalTo(0.5);
+        make.width.mas_equalTo(ScreenW - spaceM);
     }];
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

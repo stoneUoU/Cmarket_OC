@@ -11,7 +11,7 @@
 #import "HomeTbCells.h"
 #import "CountDown.h"
 
-@interface OnStartVC : HomeBaseTbVC
+@interface OnStartVC : HomeBaseTbVC<STPlaceholderViewDelegate>
 @property (strong, nonatomic)  CountDown *countDown;
 
 @end

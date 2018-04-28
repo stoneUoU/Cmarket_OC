@@ -43,17 +43,17 @@
 #define  StatusBarAndNavigationBarH  (isX ? 88.f : 64.f)
 #define ViewSafeAreInsets(view) ({UIEdgeInsets insets; if(@available(iOS 11.0, *)) {insets = view.safeAreaInsets;} else {insets = UIEdgeInsetsZero;} insets;})
 //请求地址：生产环境
-//#define CMarketUrl  @"https://api.cht.znrmny.com"
-//#define picUrl @"https://pic.cht.znrmny.com"
-//#define webVIP @"https://webview.cht.znrmny.com/"
-//////定义BaseURL后面的一戳
-//#define followRoute @"api/cht/app/v1/"
+#define CMarketUrl  @"https://api.cht.znrmny.com"
+#define picUrl @"https://pic.cht.znrmny.com"
+#define webVIP @"https://webview.cht.znrmny.com/"
+////定义BaseURL后面的一戳
+#define followRoute @"api/cht/app/v1/"
 
 //请求地址：测试环境
-#define CMarketUrl  @"http://10.10.0.62:13381/"  //@"https://api.365greenlife.com/"
-#define picUrl @"http://10.10.0.62:13380"
-#define webVIP @"http://10.10.0.62:13380/"
-#define followRoute @""  //@"api/tiptop/v1/"
+//#define CMarketUrl  @"http://10.10.0.62:13381/"  //@"https://api.365greenlife.com/"
+//#define picUrl @"http://10.10.0.62:13380"
+//#define webVIP @"http://10.10.0.62:13380/"
+//#define followRoute @""  //@"api/tiptop/v1/"
 //定义登录失效的状态码
 #define OutCode  @"10009"
 //请求超时时间

@@ -33,7 +33,7 @@
 #pragma mark - UI搭建
 /** UI搭建 */
 - (void)setUpUI{
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor clearColor];
 
     //------- 图片在正中间 -------//
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(ScreenW/ 2 - 50, ScreenH / 2 - 100 - StatusBarAndNavigationBarH, 100, 100)];

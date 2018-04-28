@@ -155,7 +155,6 @@
     UIView *headerV = [[UIView alloc] init];
     switch (section) {
         case 0:{
-            headerV.backgroundColor = allBgColor;
             _topV = [[UIView alloc] init ];
             _topV.backgroundColor = styleColor;
             [_topV setUserInteractionEnabled:YES];

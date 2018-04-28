@@ -15,7 +15,6 @@
 
 @implementation OnStartVC
 - (void)viewDidLoad {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toRefreshVC:) name:@"onStartRef" object:nil];
     [super viewDidLoad];
     [self setUpUI];
 }
@@ -30,6 +29,8 @@
     [self.tableView registerClass:[HomeTbCells class] forCellReuseIdentifier: @"onStartTbs"];
 
     [self startPR:@"4" withFreeze:@"desc" withUpdate:@"" andIfR:1];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toRefreshVC:) name:@"onStartRef" object:nil];
 }
 -(void)updateTimeInVisibleCells{
     NSArray  *cells = self.tableView.visibleCells; //取出屏幕可见cell
@@ -48,7 +49,6 @@
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *headerV = [[UIView alloc] init];
-    headerV.backgroundColor = allBgColor;
     return headerV;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -57,7 +57,6 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     UIView *footerV = [[UIView alloc] init];
-    footerV.backgroundColor = allBgColor ;
     if (self.dataArrs.count >= 10){
         [footerV setUserInteractionEnabled:YES];
         UITapGestureRecognizer *tapMore = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toMore:)];
@@ -141,17 +140,16 @@
         [MethodFunc pushToNextVC:self destVC:vc ];
     }
 }
+
 //方法:监听到通知之后调用的方法
 - (void)toRefreshVC:(NSNotification *)noti {
-    STLog(@"%@",[noti.object objectForKey:@"num"]);
     [self startPR:@"4" withFreeze:@"desc" withUpdate:@"" andIfR:0];
-    //self.view.backgroundColor = noti.object;
-    //[MethodFunc pushToNextVC:self destVC:[[FirmOrderVC alloc]init] ];
 }
 
 -(void)dealloc{
     NSLog(@"%s dealloc",object_getClassName(self));
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"onStartRef" object:nil];
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -189,7 +187,10 @@
 
     NSString *dayStr;NSString *hoursStr;NSString *minutesStr;NSString *secondsStr;
     //天
-    dayStr = [NSString stringWithFormat:@"%d",days];
+    if(days<10)
+        dayStr = [NSString stringWithFormat:@"0%d",days];
+    else
+        dayStr = [NSString stringWithFormat:@"%d",days];
     //小时
     if(hours<10)
         hoursStr = [NSString stringWithFormat:@"0%d",hours];
@@ -214,5 +215,35 @@
     return [NSString stringWithFormat:@"%@ : %@ : %@",hoursStr , minutesStr,secondsStr];
 }
 
+/** 占位图的重新加载按钮点击时回调 */
+- (void)placeholderView:(STPlaceholderView *)placeholderView reloadButtonDidClick:(UIButton *)sender{
+    switch (placeholderView.type) {
+        case STPlaceholderViewTypeNoGoods:       // 没商品
+        {
+            STLog(@"没商品");
+        }
+            break;
 
+        case STPlaceholderViewTypeNoData:       // 没有订单
+        {
+            [self startPR:@"4" withFreeze:@"desc" withUpdate:@"" andIfR:0];
+        }
+            break;
+
+        case STPlaceholderViewTypeNoNetwork:     // 没网
+        {
+            STLog(@"没网");
+        }
+            break;
+
+        case STPlaceholderViewTypeBeautifulGirl: // 妹纸
+        {
+            STLog(@"没商品");
+        }
+            break;
+
+        default:
+            break;
+    }
+}
 @end

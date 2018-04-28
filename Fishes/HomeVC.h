@@ -10,7 +10,6 @@
 #import "SPPageMenu.h"
 #import "HomeBaseTbV.h"
 #import "STAlertV.h"
-#import "UIViewController+CBPopup.h"
 
 @interface HomeVC : UIViewController<UITextFieldDelegate,SPPageMenuDelegate,UITableViewDataSource,UITableViewDelegate,SDCycleScrollViewDelegate,STPlaceholderViewDelegate,STAlertVDel>
 @property (nonatomic ,strong)UIView *navBarV;
@@ -49,7 +48,6 @@
 //定义一个没有数据时的View
 @property (nonatomic,strong)STPlaceholderView *placeholderV;
 
-//定义一个弹出视图
-@property (assign, nonatomic) CBPopupViewAligment popAligment;
-
+//啦啦啦：我要设置一个flag  判断是不是在正在进行  即将开始
+@property (nonatomic,assign)NSInteger tabStatus;
 @end

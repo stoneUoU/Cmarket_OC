@@ -89,7 +89,6 @@ static AccountInfoVC *_shareIns = nil;
         [HudTips showHUD:self];
         [NetWorkManager requestWithType:HttpRequestTypeGet withUrlString:followRoute@"user/list" withParaments:@{} Authos:self.Auths withSuccessBlock:^(NSDictionary *feedBacks) {
             [HudTips hideHUD:self];
-            STLog(@"我进这请求了哈  %@",feedBacks);
             //进行容错处理丫:
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"0"]){
                 [self.accountInfoV.accountInfoMs removeAllObjects];
@@ -163,7 +162,7 @@ static AccountInfoVC *_shareIns = nil;
     if (section == 0 && row == 0){
         [self selPhoto];
     }else if(section == 2 && row == 0){
-        [self modifyR:@{@"nick_name":@"不屑的小坦克"} deal:1];
+        [self modifyR:@{@"nick_name":@"不屑的Stone"} deal:1];
     }else if(section == 2 && row == 1){
         [self setSex];
     }else if(section == 2 && row == 2){

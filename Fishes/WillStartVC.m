@@ -27,19 +27,20 @@
     }];
     //给tableView注册Cells
     [self.tableView registerClass:[HomeTbCells class] forCellReuseIdentifier: @"onStartTbs"];
+    [self.view bringSubviewToFront:self.tableView];
 
-    [self startPR:@"2" withFreeze:@"" withUpdate:@"desc" andIfR:1];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toRefreshVC:) name:@"willStartRef" object:nil];
 }
 
 -(void)updateTimeInVisibleCells{
     NSArray  *cells = self.tableView.visibleCells; //取出屏幕可见cell
     for (HomeTbCells *cell in cells) {
         HomeMs *homeMs = self.dataArrs[cell.tag];
-        cell.count_down.text = [self getInTimeWithStr:homeMs.end_time];
-        if ([cell.count_down.text isEqualToString:@"活动已经结束！"]) {
-            cell.count_down.textColor = [UIColor redColor];
+        if ([cell.count_down.text isEqualToString:@"00 : 00 : 00"]) {
+            cell.count_down.attributedText = [FormatDs returnAttrStr:@"00 : 00 : 00"];
         }else{
-            cell.count_down.textColor = [UIColor orangeColor];
+            cell.count_down.text = [self getInTimeWithStr:homeMs.end_time];
+            cell.count_down.attributedText = [FormatDs returnAttrStr:cell.count_down.text];
         }
     }
 }
@@ -48,7 +49,6 @@
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *headerV = [[UIView alloc] init];
-    headerV.backgroundColor = allBgColor;
     return headerV;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -57,7 +57,6 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     UIView *footerV = [[UIView alloc] init];
-    footerV.backgroundColor = allBgColor ;
     if (self.dataArrs.count >= 10){
         [footerV setUserInteractionEnabled:YES];
         UITapGestureRecognizer *tapMore = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toMore:)];
@@ -94,19 +93,18 @@
     [homeTbCells.product_icon sd_setImageWithURL:[NSURL URLWithString:[picUrl stringByAppendingString:homeMs.spic]] placeholderImage:[UIImage imageNamed:@"pic_loading_shangpingxiangqing.png"]];
     homeTbCells.product_title.text = [NSString stringWithFormat:@"%@",homeMs.title];
     homeTbCells.product_small_title.text = [NSString stringWithFormat:@"%@",homeMs.subtitle];
-    homeTbCells.product_attr.text = [[FormatDs retainPoint:@"0.00" floatV:[homeMs.discount_price floatValue]/[[homeMs.attr_value stringByReplacingOccurrencesOfString:@"kg" withString:@""] floatValue]/2] stringByAppendingString:@"元/斤"];
+    homeTbCells.product_attr.text = homeMs.desc;
+    if([homeMs.desc isEqual:@""]){
+        homeTbCells.product_attr.hidden = YES;
+    }
     homeTbCells.progress_bar.progress =  [homeMs.freeze_inventory floatValue]/[homeMs.total_inventory floatValue];
     homeTbCells.progress_bar_vals.text = [[@"已购" stringByAppendingString:[FormatDs retainPoint:@"0" floatV:[homeMs.freeze_inventory floatValue]/[homeMs.total_inventory floatValue]*10000] ] stringByAppendingString:@"%"];
     [homeTbCells.doBtn setTitle:@"立即下单" forState:UIControlStateNormal];
+    homeTbCells.doBtn.backgroundColor = btnDisableC;
+    homeTbCells.doBtn.userInteractionEnabled = NO;
     homeTbCells.product_price.text =  [FormatDs retainPoint:@"0.00" floatV:[homeMs.discount_price floatValue]];
-    homeTbCells.doBtn.backgroundColor = styleColor;
-    homeTbCells.start_end.text = @"距结束";
-    homeTbCells.count_down.text = [self getInTimeWithStr:[NSString stringWithFormat:@"%@",homeMs.end_time]];
-    if ([homeTbCells.count_down.text isEqualToString:@"活动已经结束！"]) {
-        homeTbCells.count_down.textColor = [UIColor redColor];
-    }else{
-        homeTbCells.count_down.textColor = [UIColor orangeColor];
-    }
+    homeTbCells.start_end.text = @"距开始";
+    homeTbCells.count_down.attributedText = [FormatDs returnAttrStr:[self getInTimeWithStr:[NSString stringWithFormat:@"%@",homeMs.end_time]]];
     if ([[FormatDs retainPoint:@"0" floatV:[homeMs.freeze_inventory floatValue]/[homeMs.total_inventory floatValue]*100] isEqualToString:@"1"]) {
         [homeTbCells.doBtn setTitle:@"已拼满" forState:UIControlStateNormal];
         homeTbCells.doBtn.backgroundColor = btnDisableC;
@@ -154,9 +152,15 @@
 
     NSString *dayStr;NSString *hoursStr;NSString *minutesStr;NSString *secondsStr;
     //天
-    dayStr = [NSString stringWithFormat:@"%d",days];
+    if(days<10)
+        dayStr = [NSString stringWithFormat:@"0%d",days];
+    else
+        dayStr = [NSString stringWithFormat:@"%d",days];
     //小时
-    hoursStr = [NSString stringWithFormat:@"%d",hours];
+    if(hours<10)
+        hoursStr = [NSString stringWithFormat:@"0%d",hours];
+    else
+        hoursStr = [NSString stringWithFormat:@"%d",hours];
     //分钟
     if(minutes<10)
         minutesStr = [NSString stringWithFormat:@"0%d",minutes];
@@ -168,14 +172,20 @@
     else
         secondsStr = [NSString stringWithFormat:@"%d",seconds];
     if (hours<=0&&minutes<=0&&seconds<=0) {
-        return @"活动已经结束！";
+        return @"00 : 00 : 00";
     }
     if (days) {
-        return [NSString stringWithFormat:@"%@天 %@时 %@分 %@秒", dayStr,hoursStr, minutesStr,secondsStr];
+        return [NSString stringWithFormat:@"%@ : %@ : %@ : %@", dayStr,hoursStr, minutesStr,secondsStr];
     }
-    return [NSString stringWithFormat:@"%@时 %@分 %@秒",hoursStr , minutesStr,secondsStr];
+    return [NSString stringWithFormat:@"%@ : %@ : %@",hoursStr , minutesStr,secondsStr];
 }
-
+//方法:监听到通知之后调用的方法
+- (void)toRefreshVC:(NSNotification *)noti {
+    [self startPR:@"2" withFreeze:@"desc" withUpdate:@"" andIfR:0];
+}
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 #pragma mark - Delegate - 占位图
 /** 占位图的重新加载按钮点击时回调 */
 - (void)placeholderView:(STPlaceholderView *)placeholderView reloadButtonDidClick:(UIButton *)sender{
@@ -188,7 +198,7 @@
 
         case STPlaceholderViewTypeNoData:       // 没有订单
         {
-            STLog(@"没有订单");
+            [self startPR:@"2" withFreeze:@"desc" withUpdate:@"" andIfR:0];
         }
             break;
 

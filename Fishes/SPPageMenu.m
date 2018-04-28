@@ -525,7 +525,7 @@
 
     // 必须先添加分割线，再添加backgroundView;假如先添加backgroundView,那也就意味着backgroundView是SPPageMenu的第一个子控件,而scrollView又是backgroundView的第一个子控件,当外界在由导航控制器管理的控制器中将SPPageMenu添加为第一个子控件时，控制器会不断的往下遍历第一个子控件的第一个子控件，直到找到为scrollView为止,一旦发现某子控件的第一个子控件为scrollView,会将scrollView的内容往下偏移64;这时控制器中必须设置self.automaticallyAdjustsScrollViewInsets = NO;为了避免这样做，这里将分割线作为第一个子控件
     SPPageMenuLine *dividingLine = [[SPPageMenuLine alloc] init];
-    dividingLine.backgroundColor = [UIColor grayColor];
+    dividingLine.backgroundColor = [UIColor whiteColor];
     __weak typeof(self) weakSelf = self;
     dividingLine.hideBlock = ^() {
         [weakSelf setNeedsLayout];
@@ -590,6 +590,31 @@
     }
 
     self.selectedButton = sender;
+    if (_spPageCB != NULL){
+        _spPageCB(@{@"sender":[NSNumber numberWithInteger:sender.tag]}, YES);
+    }
+    //实现方式3：
+    //在PopPresentVC中
+    //PopPresentVC.h文件
+    // 定义一个block:  返回值(^Block名)(参数类型)
+    //typedef void(^DictB)(NSDictionary *, BOOL);
+    // 声明一个闭包
+    // @property (nonatomic, strong) DictB dictB;
+
+    //PopPresentVC.m文件
+    //调用block传参,让预置块代码执行
+    //_dictB(@{@"name":@"oooooo"}, YES);
+
+    //  在本VC中:
+    //PopPresentVC * popPresentV = [PopPresentVC new];
+    //popPresentV.dictB = ^(NSDictionary *dict, BOOL b){
+    //    STLog(@"%@",[dict objectForKey:@"name"]);
+    //    [MethodFunc pushToNextVC:self destVC:[[FirmOrderVC alloc]init] ];
+    //};
+    //popPresentV.modalPresentationStyle = UIModalPresentationCustom;
+    //popPresentV.transitioningDelegate = self;
+    //[self presentViewController:popPresentV animated:YES completion:nil];
+
 
 }
 
@@ -719,12 +744,49 @@
 
     CGRect newFrame = self.tracker.frame;
     CGPoint newCenter = self.tracker.center;
+
+//    SPPageMenuTrackerStyleLineWidthEqualTextLabel:
+//    {
+//        trackerW = selectedButton.titleLabel.width;
+//        trackerH = _trackerHeight;
+//        trackerX = selectedButton.titleLabel.frame.origin.x;
+//        trackerY = self.itemScrollView.bounds.size.height - trackerH;
+//        self.tracker.frame = CGRectMake(trackerX, trackerY, trackerW, trackerH);
+//    }
     if (self.trackerStyle == SPPageMenuTrackerStyleLine) {
         newCenter.x = fromButton.center.x + xDistance * progress;
         newFrame.size.width = fromButton.frame.size.width + wDistance * progress;
         self.tracker.frame = newFrame;
         self.tracker.center = newCenter;
-    } else if (self.trackerStyle == SPPageMenuTrackerStyleLineAttachment){
+    }else if (self.trackerStyle == SPPageMenuTrackerStyleLineWidthEqualTextLabel) {
+        // 这种样式的计算比较复杂,有个很关键的技巧，就是参考progress分别为0、0.5、1时的临界值
+        // 原先的宽度
+        CGFloat originW = fromButton.titleLabel.width;
+        if (currentOffsetX - _beginOffsetX >= 0) { // 向左拖拽了
+            // 原先的x值
+            CGFloat originX = fromButton.titleLabel.frame.origin.x+fromButton.titleLabel.font.pointSize;
+            if (progress < 0.5) {
+                newFrame.origin.x = originX; // x值保持不变
+                newFrame.size.width = originW + xDistance * progress * 2;
+            } else {
+                newFrame.origin.x = originX + xDistance * (progress-0.5) * 2;
+                newFrame.size.width = originW + xDistance - xDistance * (progress-0.5) * 2;
+            }
+        } else { // 向右拖拽了
+            // 原先的x值
+            CGFloat originX = fromButton.titleLabel.frame.origin.x+fromButton.titleLabel.font.pointSize - xDistance;
+            // 此时xDistance为负
+            if (progress < 0.5) {
+                newFrame.origin.x = originX + xDistance * progress * 2;
+                newFrame.size.width = originW - xDistance * progress * 2;
+            } else {
+                newFrame.origin.x = originX + xDistance;
+                newFrame.size.width = originW - xDistance + xDistance * (progress-0.5) * 2;
+            }
+        }
+
+        self.tracker.frame = newFrame;
+    }else if (self.trackerStyle == SPPageMenuTrackerStyleLineAttachment){
         // 这种样式的计算比较复杂,有个很关键的技巧，就是参考progress分别为0、0.5、1时的临界值
         // 原先的x值
         CGFloat originX = fromButton.frame.origin.x+(fromButton.frame.size.width-fromButton.titleLabel.font.pointSize)*0.5;
@@ -1029,7 +1091,7 @@
     for (int i= 0 ; i < self.buttons.count; i++) {
         SPItem *button = self.buttons[i];
 
-        CGFloat setupButtonW = [[self.setupWidths objectForKey:[NSString stringWithFormat:@"%zd",i]] floatValue];
+        CGFloat setupButtonW = [[self.setupWidths objectForKey:[NSString stringWithFormat:@"%d",i]] floatValue];
         CGFloat textW = [button.titleLabel.text boundingRectWithSize:CGSizeMake(MAXFLOAT, itemScrollViewH) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:_itemTitleFont} context:nil].size.width;
         CGFloat imageW = button.currentImage.size.width;
         if (button.currentTitle && !button.currentImage) {
@@ -1129,6 +1191,15 @@
             trackerW = selectedButtonWidth ? selectedButton.titleLabel.font.pointSize : 0; // 固定宽度为字体大小
             trackerH = _trackerHeight;
             trackerX = selectedButton.frame.origin.x;
+            trackerY = self.itemScrollView.bounds.size.height - trackerH;
+            self.tracker.frame = CGRectMake(trackerX, trackerY, trackerW, trackerH);
+        }
+            break;
+        case SPPageMenuTrackerStyleLineWidthEqualTextLabel:
+        {
+            trackerW = selectedButton.titleLabel.width;
+            trackerH = _trackerHeight;
+            trackerX = selectedButton.titleLabel.frame.origin.x;
             trackerY = self.itemScrollView.bounds.size.height - trackerH;
             self.tracker.frame = CGRectMake(trackerX, trackerY, trackerW, trackerH);
         }

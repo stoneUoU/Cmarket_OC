@@ -44,7 +44,6 @@
 - (void) setClosure{
     AccountInfoVC *accountV=[AccountInfoVC shareIns];
     accountV.nickB = ^(NSDictionary *dict, BOOL b){
-        STLog(@"%@",[dict objectForKey:@"postN"]);
         [self startR:1];
     };
 }

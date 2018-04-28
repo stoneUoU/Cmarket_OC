@@ -37,4 +37,7 @@
 //距开始：：：距结束
 @property (nonatomic ,strong) UILabel *start_end;
 
+//分割线
+@property (nonatomic ,strong) UIView *lineV;
+
 @end

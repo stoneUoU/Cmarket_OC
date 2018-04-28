@@ -94,7 +94,6 @@
         Cell.info_label.text = [self.accountInfoMs[indexPath.section][indexPath.row] objectForKey:@"modelName"];
         // 图片，圆角，边线 -- OK
         [Cell.avatar zy_cornerRadiusAdvance:22*StScaleH rectCornerType:UIRectCornerTopLeft | UIRectCornerTopRight | UIRectCornerBottomLeft | UIRectCornerBottomRight];
-        STLog(@"%@",[self.accountInfoMs[indexPath.section][indexPath.row] objectForKey:@"vals"]);
         [Cell.avatar sd_setImageWithURL:[self.accountInfoMs[indexPath.section][indexPath.row] objectForKey:@"vals"] placeholderImage:[UIImage imageNamed:@"pic_loading_shangpingxiangqing.png"]];
         [Cell.avatar mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(Cell);

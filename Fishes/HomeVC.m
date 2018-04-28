@@ -14,11 +14,13 @@
 #import "HomeDetailVC.h"
 #import "SetVC.h"
 #import "YYCacheVC.h"
+#import "NoticeVC.h"
 @implementation HomeVC
 - (id)init
 {
     self.dataArrs = [NSMutableArray array];
     self.imgStrGroup = [NSMutableArray array];
+    _tabStatus = 4;
     // 情景二：采用网络图片实现
     return [super init];
 }
@@ -50,7 +52,6 @@
 - (void)viewDidLoad {
 
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
     //监听是否有网
     _netUseVals = [UICKeyChainStore keyChainStore][@"ifnetUse"];
 
@@ -132,6 +133,7 @@
     [self addChildViewController:[[OnStartVC alloc] init]];
     [self addChildViewController:[[WillStartVC alloc] init]];
     // 先将第一个子控制的view添加到scrollView上去
+    self.scrollView.backgroundColor = [UIColor color_HexStr:@"edecf2"];
     [self.scrollView addSubview:self.childViewControllers[0].view];
     // 添加头部视图
     self.tableView.tableHeaderView = _cycleScrollV;
@@ -228,7 +230,14 @@
  // 下拉刷新
  - (void)downPullUpdateData {
      // 模拟网络请求，1秒后结束刷新
-     [[NSNotificationCenter defaultCenter] postNotificationName:@"onStartRef" object:@{@"num":@"刷新"}];
+     switch (_tabStatus) {
+         case 4:
+             [[NSNotificationCenter defaultCenter] postNotificationName:@"onStartRef" object:@{@"status":@4}];
+             break;
+         default:
+             [[NSNotificationCenter defaultCenter] postNotificationName:@"willStartRef" object:@{@"status":@2}];
+             break;
+     }
  }
 
 //按钮、手势函数写这
@@ -237,48 +246,19 @@
 //    [self.navigationController pushViewController:[[HomeDetailVC alloc] init] animated:true];
 //}
 - (void)toMsg:(id)sender{
-//    if (![[NSString stringWithFormat:@"%@",[UICKeyChainStore keyChainStore][@"orLogin"]]  isEqual: @"true"]){
-//        //MARK:弹出登录视图：在主页消息、主页立即购买、商品详情界面登录:status_code:1
-//        StartVC * startV = [[StartVC alloc] init];
-//        startV.pass_Vals = @{@"status_code":@"1"};
-//        [MethodFunc presentToNaviVC:self destVC:startV];
-//    }else{
-//        STLog(@"已登录,去消息");
-//    }
+    if (![[NSString stringWithFormat:@"%@",[UICKeyChainStore keyChainStore][@"orLogin"]]  isEqual: @"true"]){
+        //MARK:弹出登录视图：在主页消息、主页立即购买、商品详情界面登录:status_code:1
+        StartVC * startV = [[StartVC alloc] init];
+        startV.pass_Vals = @{@"status_code":@"1"};
+        [MethodFunc presentToNaviVC:self destVC:startV];
+    }else{
+        STLog(@"已登录,去消息");
+        [MethodFunc pushToNextVC:self destVC:[[NoticeVC alloc]init ]];
+    }
 //    HomeDetailVC * homeDetailV = [[HomeDetailVC alloc] init];
 //    homeDetailV.pass_Vals = @{@"group_id":@"20"};
 //    [MethodFunc pushToNextVC:self destVC:homeDetailV];
-    //[MethodFunc pushToNextVC:self destVC:[[SetVC alloc]init] ];
-//    STAlertV *alertV = [[STAlertV alloc] initWithContentView:self.view];
-//    alertV.delegate = self;
-//    [alertV setPopStyle:STPopStyleFromTop];
-//    [alertV presentPopupControllerAnimate:YES];
-
-    self.popAligment  = CBPopupViewAligmentBottom;
-        YYCacheVC *vc = [[YYCacheVC alloc] init];
-        //vc.view.backgroundColor = [UIColor cyanColor];
-        if (self.popAligment == CBPopupViewAligmentCenter) {
-            vc.view.frame = CGRectMake(0, 0, 285, 250);
-            vc.view.layer.cornerRadius = 4.0;
-            vc.view.layer.masksToBounds = YES;
-        }else
-        {
-            vc.view.frame = CGRectMake(0, 0, self.view.bounds.size.width, 250);
-
-        }
-
-        [self cb_presentPopupViewController:vc animationType:CBPopupViewAnimationSlideFromBottom aligment:self.popAligment overlayDismissed:nil];
-
-    //    CBPopupViewAligmentCenter,
-    //    CBPopupViewAligmentTop,
-    //    CBPopupViewAligmentBottom
-
-//    {@"Fade":@(CBPopupViewAnimationFade),
-//        @"SlideFromBottom":@(CBPopupViewAnimationSlideFromBottom),
-//        @"SlideFromTop":@(CBPopupViewAnimationSlideFromTop),
-//        @"SlideFromLeft":@(CBPopupViewAnimationSlideFromLeft),
-//        @"SlideFromRight":@(CBPopupViewAnimationSlideFromRight)
-
+//    [MethodFunc pushToNextVC:self destVC:[[SetVC alloc]init] ];
 }
 //监听textfeild的内容改变
 - (void)valC:(id)UITextField{
@@ -292,7 +272,6 @@
  }
 
 - (void)refFooterM:(NSNotification *)noti {
-    STLog(@"%@",[noti.object objectForKey:@"info"]);
     [self.tableView.mj_header endRefreshing];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -340,6 +319,7 @@
 }
 
 #pragma mark - SPPageMenuDelegate
+
 - (void)pageMenu:(SPPageMenu *)pageMenu itemSelectedFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex {
     if (!self.childViewControllers.count) { return;}
     // 如果上一次点击的button下标与当前点击的buton下标之差大于等于2,说明跨界面移动了,此时不动画.
@@ -365,20 +345,35 @@
 - (SPPageMenu *)pageMenu {
 
     if (!_pageMenu) {
-        _pageMenu = [SPPageMenu pageMenuWithFrame:CGRectMake(0, 0, ScreenW, PageMenuH) trackerStyle:SPPageMenuTrackerStyleLineAttachment];
+        _pageMenu = [SPPageMenu pageMenuWithFrame:CGRectMake(0, 0, ScreenW, PageMenuH) trackerStyle:SPPageMenuTrackerStyleLineWidthEqualTextLabel];
         [_pageMenu setItems:@[@"正在进行",@"即将开始"] selectedItemIndex:0];
         _pageMenu.delegate = self;
-        _pageMenu.itemTitleFont = [UIFont adjustFont:16];
+        _pageMenu.itemTitleFont = [UIFont adjustFont:14];
         _pageMenu.selectedItemTitleColor = styleColor;
         _pageMenu.unSelectedItemTitleColor = deepBlackC;
         _pageMenu.tracker.backgroundColor = styleColor;
         _pageMenu.permutationWay = SPPageMenuPermutationWayNotScrollEqualWidths;
         _pageMenu.bridgeScrollView = self.scrollView;
+        _pageMenu.spPageCB= ^(NSDictionary *dict, BOOL b){
+            switch ([[dict objectForKey:@"sender"] intValue]) {
+                case 100:
+                    _tabStatus = 4;
+                    //正在进行
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"onStartRef" object:@{@"status":@4}];
+                    break;
+                default:
+                    //即将开始
+                    _tabStatus = 2;
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"willStartRef" object:@{@"status":@2}];
+                    break;
+            }
+        };
     }
     return _pageMenu;
 }
 
 - (void)dealloc {
+    STLog(@"88888");
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void)didReceiveMemoryWarning {

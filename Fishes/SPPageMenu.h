@@ -14,6 +14,7 @@ typedef NS_ENUM(NSInteger, SPPageMenuTrackerStyle) {
     SPPageMenuTrackerStyleLine = 0,                  // 下划线,默认与item等宽
     SPPageMenuTrackerStyleLineLongerThanItem,        // 下划线,比item要长(长度为item的宽+间距)
     SPPageMenuTrackerStyleLineAttachment,            // 下划线依恋样式
+    SPPageMenuTrackerStyleLineWidthEqualTextLabel,   // 下划线跟文字宽度相同
     SPPageMenuTrackerStyleTextZoom,                  // 文字缩放
     SPPageMenuTrackerStyleRoundedRect,               // 圆角矩形
     SPPageMenuTrackerStyleRect                       // 矩形
@@ -44,6 +45,9 @@ typedef NS_ENUM(NSInteger, SPItemImagePosition) {
 - (void)pageMenu:(SPPageMenu *)pageMenu itemSelectedFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex;
 
 @end
+
+// 定义一个block:点击SPPageItem触发
+typedef void(^SPPageCB)(NSDictionary *, BOOL);
 
 @interface SPPageMenu : UIView
 
@@ -91,6 +95,9 @@ typedef NS_ENUM(NSInteger, SPItemImagePosition) {
 @property (nonatomic, assign) UIEdgeInsets contentInset;
 /** 排列方式 */
 @property (nonatomic, assign) SPPageMenuPermutationWay permutationWay;
+
+// 定义一个block:点击SPPageItem触发
+@property (nonatomic, strong) SPPageCB spPageCB;
 
 // 插入item,插入和删除操作时,如果itemIndex超过了了items的个数,则不做任何操作
 - (void)insertItemWithTitle:(nullable NSString *)title atIndex:(NSUInteger)itemIndex animated:(BOOL)animated;

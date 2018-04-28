@@ -23,6 +23,7 @@
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.showsVerticalScrollIndicator = NO;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.contentInset = UIEdgeInsetsMake(0, 0, PageMenuH+StatusBarAndNavigationBarH+TabBarH, 0);
     }
     return _tableView;
@@ -52,9 +53,10 @@
                     if (_placeholderV == nil){
                         _placeholderV = [[STPlaceholderView alloc]initWithFrame:self.view.bounds type:STPlaceholderViewTypeNoData delegate:self];
                         [self.view addSubview:_placeholderV];
+                        [self.tableView reloadData];
                     }
                 }else{
-                    [_placeholderV removeAllSubviews];
+                    [_placeholderV removeFromSuperview];
                     _placeholderV = nil;
                     for (int i = 0; i < [feedBacks[@"data"] count]; i++) {
                         HomeMs *homeMs = [[HomeMs alloc] initMs:feedBacks[@"data"][i][@"group_id"] title:feedBacks[@"data"][i][@"title"] price:feedBacks[@"data"][i][@"price"] discount_price:feedBacks[@"data"][i][@"discount_price"] spic:feedBacks[@"data"][i][@"spic"] status:feedBacks[@"data"][i][@"status"] total_inventory:feedBacks[@"data"][i][@"total_inventory"] freeze_inventory:feedBacks[@"data"][i][@"freeze_inventory"] start_time:feedBacks[@"data"][i][@"start_time"] end_time:feedBacks[@"data"][i][@"end_time"] type:feedBacks[@"data"][i][@"type"] subtitle:feedBacks[@"data"][i][@"subtitle"] attr_value:feedBacks[@"data"][i][@"attr_value"][0][@"attr_value"] desc:feedBacks[@"data"][i][@"description"]];
@@ -62,7 +64,6 @@
                     }
                     [self.tableView reloadData];
                 }
-                //  ifR == 0  下拉刷新
                 if (ifR == 0){
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"onStartRefEnd" object:@{@"info":@"完成"}];
                 }
@@ -113,5 +114,12 @@
     NSDictionary *dict = notification.userInfo;
     _netUseVals =  dict[@"ifnetUse"];
 }
+
+
+- (void)toClickVC:(NSNotification *)noti {
+    STLog(@"%@",[noti.object objectForKey:@"status"]);
+    [self startPR:[NSString stringWithFormat:@"%@",[noti.object objectForKey:@"status"]] withFreeze:@"desc" withUpdate:@"" andIfR:0];
+}
+
 @end
 

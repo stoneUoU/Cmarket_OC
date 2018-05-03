@@ -16,9 +16,12 @@
     _searchResultV = [[SearchResultV alloc] init]; //对MyUIView进行初始化
     _searchResultV.backgroundColor = [UIColor whiteColor];
     _searchResultV.delegate = self; //将SecondVC自己的实例作为委托对象
-    _pageSize = 4;
+    _pageSize = 10;
     _pageInt = 1;
     _totalMount = 0;
+    _timeStr = @"desc";
+    _priceStr = @"";
+    _progressStr = @"";
     _keyStr = @"";
     _selArr = [NSMutableArray arrayWithObjects:@0,@0, nil];
     return [super init];
@@ -40,7 +43,7 @@
                                                object:nil];
     _statusStr = [_pass_Vals objectForKey:@"statusStr"];
     _keyStr = [_pass_Vals objectForKey:@"keyStr"];
-    [self startPR:_statusStr withKeyWord:_keyStr withFreeze:@"" withPrice:@"" withUpdate:@"" andL:1];
+    [self startPR:_statusStr withKeyWord:_keyStr withFreeze:@"" withPrice:@"" withUpdate:@"desc" andL:1];  //此处接口有毒，后台的锅   传desc、asc返回的数据量不一致
 }
 - (void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:true];
@@ -157,6 +160,11 @@
 
 - (void)toLoadM {
     _pageInt = _pageInt + 1;
+    STLog(@"%@",_statusStr);
+    STLog(@"%@",_keyStr);
+    STLog(@"%@",_progressStr);
+    STLog(@"%@",_priceStr);
+    STLog(@"%@",_timeStr);
     [self startPR:_statusStr withKeyWord:_keyStr withFreeze:_progressStr withPrice:_priceStr withUpdate:_timeStr andL:0];
 }
 -(void) tableVClick:(NSInteger)row andDatas:(HomeMs *)datas{
@@ -198,9 +206,8 @@
             [self.placeholderV removeFromSuperview];
             self.placeholderV = nil;
         }
-        STLog(@"%@",[@{@"cond":@{@"keywords":key_word,@"status":selIdx},@"sort":@{@"freeze_inventory":freeze_inventory,@"group_product_price":price_much,@"update_time":update_time},@"limit":@(_pageSize),@"page":@(_pageInt)} modelToJSONString]);
         [NetWorkManager requestWithType:HttpRequestTypePost withUrlString:followRoute@"search" withParaments:@{@"cond":@{@"keywords":key_word,@"status":selIdx},@"sort":@{@"freeze_inventory":freeze_inventory,@"group_product_price":price_much,@"update_time":update_time},@"limit":@(_pageSize),@"page":@(_pageInt)} Authos:@"" withSuccessBlock:^(NSDictionary *feedBacks) {
-            STLog(@"%@",[feedBacks modelToJSONString]);
+            STLog(@"%lu",[feedBacks[@"data"] count]);
             if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]] isEqualToString:@"0"]){
                 if (ifL == 1){
                     [self.searchResultV.dataArrs removeAllObjects];
@@ -228,15 +235,12 @@
                 }
                 [self.searchResultV.tableV.mj_header endRefreshing];
                 [self.searchResultV.tableV reloadData];
-                switch (ifL) {
-                    case true:
-                        if (self.pageInt >= ceil(self.totalMount/self.pageSize)){
-                            [self.searchResultV.tableV.mj_footer endRefreshingWithNoMoreData];
-                        }
-                        break;
-                    default:
-                        [self.searchResultV.tableV.mj_footer resetNoMoreData];
-                        break;
+                if (ifL == 0){
+                    if (self.pageInt >= ceil(self.totalMount/self.pageSize)){
+                        [self.searchResultV.tableV.mj_footer endRefreshingWithNoMoreData];
+                    }
+                }else{
+                     [self.searchResultV.tableV.mj_footer resetNoMoreData];
                 }
             }else{
                 [HudTips showToast: feedBacks[@"msg"] showType:Pos animationType:StToastAnimationTypeScale];

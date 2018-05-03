@@ -31,7 +31,7 @@
                                                  name:@"netChange"
                                                object:nil];
     [self setUpUI];
-    [self startR:1 andTab:[[_pass_Vals objectForKey:@"ids"] intValue] andR:1 andL:1];
+    [self startR:[[_pass_Vals objectForKey:@"ids"] intValue] andR:1 andL:1];
 }
 - (void)setUpUI{
     [self.view addSubview:_orderListV];
@@ -49,7 +49,7 @@
 }
 
 //发送网络请求：（查询个人信息R） andTab:在那个tab   andNoData:从空数据图上点过来的
--(void)startR:(NSInteger )pageInt andTab:(NSInteger )inTab andR:(NSInteger )ifR andL:(NSInteger)ifL{
+-(void)startR:(NSInteger )inTab andR:(NSInteger )ifR andL:(NSInteger)ifL{
     //ifL: 0->true  1->false
     if (ifL == 1) {   //没上拉加载才setCache
         if([YYCacheTools isCacheExist:@"order/list"]){
@@ -158,12 +158,12 @@
     //清空数据
     _pageInt = 1;
     //0:刷新  1:不刷新    0:加载  1:不加载
-    [self startR:1 andTab:[[_pass_Vals objectForKey:@"ids"] intValue] andR:0 andL:1];
+    [self startR:[[_pass_Vals objectForKey:@"ids"] intValue] andR:0 andL:1];
 }
 //上拉加载
 -(void)toLoadM{
     _pageInt  = _pageInt + 1;
-    [self startR:_pageInt andTab:[[_pass_Vals objectForKey:@"ids"] intValue] andR:1 andL:0];
+    [self startR:[[_pass_Vals objectForKey:@"ids"] intValue] andR:1 andL:0];
 }
 
 //网络监测通知：
@@ -186,7 +186,7 @@
         case STPlaceholderViewTypeNoData:       // 没有订单
         {
             [YYCacheTools setResCache:@{} url:@"order/list"];
-            [self startR:1 andTab:[[_pass_Vals objectForKey:@"ids"] intValue] andR:1 andL:1];
+            [self startR:[[_pass_Vals objectForKey:@"ids"] intValue] andR:1 andL:1];
         }
             break;
 

@@ -135,6 +135,10 @@
 		52BC7E6E2065E62B000B5E43 /* SmsLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E6D2065E62B000B5E43 /* SmsLoginVC.m */; };
 		52BC7E712065E65F000B5E43 /* RegisterV.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E702065E65F000B5E43 /* RegisterV.m */; };
 		52BC7E742065E66E000B5E43 /* RegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BC7E732065E66E000B5E43 /* RegisterVC.m */; };
+		52C6F2512099472F002C5892 /* SearchResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C6F2502099472F002C5892 /* SearchResultVC.m */; };
+		52C6F2542099474F002C5892 /* SearchResultV.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C6F2532099474F002C5892 /* SearchResultV.m */; };
+		52C6F2572099506B002C5892 /* UIButton+ImageTitleSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C6F2562099506B002C5892 /* UIButton+ImageTitleSpacing.m */; };
+		52C6F25A20996C24002C5892 /* STDropMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C6F25920996C24002C5892 /* STDropMenu.m */; };
 		52C96B9020847E7E00F4DD03 /* OrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C96B8F20847E7E00F4DD03 /* OrderDetailVC.m */; };
 		52C96B9320847E9100F4DD03 /* OrderDetailV.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C96B9220847E9100F4DD03 /* OrderDetailV.m */; };
 		52C96B962085895500F4DD03 /* TransferBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C96B952085895500F4DD03 /* TransferBtn.m */; };
@@ -410,6 +414,14 @@
 		52BC7E702065E65F000B5E43 /* RegisterV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterV.m; sourceTree = "<group>"; };
 		52BC7E722065E66E000B5E43 /* RegisterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterVC.h; sourceTree = "<group>"; };
 		52BC7E732065E66E000B5E43 /* RegisterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterVC.m; sourceTree = "<group>"; };
+		52C6F24F2099472F002C5892 /* SearchResultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchResultVC.h; sourceTree = "<group>"; };
+		52C6F2502099472F002C5892 /* SearchResultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchResultVC.m; sourceTree = "<group>"; };
+		52C6F2522099474F002C5892 /* SearchResultV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchResultV.h; sourceTree = "<group>"; };
+		52C6F2532099474F002C5892 /* SearchResultV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchResultV.m; sourceTree = "<group>"; };
+		52C6F2552099506B002C5892 /* UIButton+ImageTitleSpacing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+ImageTitleSpacing.h"; sourceTree = "<group>"; };
+		52C6F2562099506B002C5892 /* UIButton+ImageTitleSpacing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ImageTitleSpacing.m"; sourceTree = "<group>"; };
+		52C6F25820996C24002C5892 /* STDropMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STDropMenu.h; sourceTree = "<group>"; };
+		52C6F25920996C24002C5892 /* STDropMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STDropMenu.m; sourceTree = "<group>"; };
 		52C96B8E20847E7E00F4DD03 /* OrderDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailVC.h; sourceTree = "<group>"; };
 		52C96B8F20847E7E00F4DD03 /* OrderDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailVC.m; sourceTree = "<group>"; };
 		52C96B9120847E9100F4DD03 /* OrderDetailV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailV.h; sourceTree = "<group>"; };
@@ -655,6 +667,8 @@
 				52680C8220623D1900F5DB96 /* WillStartVC.m */,
 				52AE74C71FCE584900081972 /* HomeDetailVC.h */,
 				52AE74C81FCE584900081972 /* HomeDetailVC.m */,
+				52C6F24F2099472F002C5892 /* SearchResultVC.h */,
+				52C6F2502099472F002C5892 /* SearchResultVC.m */,
 				528DC10920749ECB00B02986 /* PopPresentVC.h */,
 				528DC10A20749ECB00B02986 /* PopPresentVC.m */,
 				528DC10C20749FB700B02986 /* FirmOrderVC.h */,
@@ -673,6 +687,8 @@
 				52680C72206239B700F5DB96 /* HomeBaseTbV.h */,
 				528C5478206C848000635C9E /* HomeDetailV.h */,
 				528C5479206C848000635C9E /* HomeDetailV.m */,
+				52C6F2522099474F002C5892 /* SearchResultV.h */,
+				52C6F2532099474F002C5892 /* SearchResultV.m */,
 				5292B35120888676002A3E87 /* PopPresentV.h */,
 				5292B35220888676002A3E87 /* PopPresentV.m */,
 				528DC10F20749FCF00B02986 /* FirmOrderV.h */,
@@ -821,6 +837,8 @@
 				5202E7432089C25D00772C12 /* STVFactory.m */,
 				524B431520931BA700D9A733 /* TimeLabel.h */,
 				524B431620931BA700D9A733 /* TimeLabel.m */,
+				52C6F25820996C24002C5892 /* STDropMenu.h */,
+				52C6F25920996C24002C5892 /* STDropMenu.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -876,6 +894,8 @@
 				5288FAE72069EB32002EC6AA /* UIButton+countDown.m */,
 				523C2905207A026000D2D225 /* UIButton+ExpandArea.h */,
 				523C2906207A026000D2D225 /* UIButton+ExpandArea.m */,
+				52C6F2552099506B002C5892 /* UIButton+ImageTitleSpacing.h */,
+				52C6F2562099506B002C5892 /* UIButton+ImageTitleSpacing.m */,
 				5295DB5A207DB31E00352354 /* UIImageView+CornerRadius.h */,
 				5295DB5B207DB31E00352354 /* UIImageView+CornerRadius.m */,
 				5294D9AE2091CBC5005FE5C8 /* UILabel+STAttributeTextTapAction.h */,
@@ -1231,6 +1251,7 @@
 				52AB1029206DE5F0007DC919 /* YYModelVC.m in Sources */,
 				52795AC920807A14000FA895 /* OrderListVC.m in Sources */,
 				523FD55420664716009753B4 /* SetV.m in Sources */,
+				52C6F2512099472F002C5892 /* SearchResultVC.m in Sources */,
 				528936F12061FDA1004463E6 /* UIColor+Hex.m in Sources */,
 				528DC0FF207474C400B02986 /* WebViewJavascriptBridge_JS.m in Sources */,
 				528DC0FE207474C400B02986 /* WebViewJavascriptBridge.m in Sources */,
@@ -1278,6 +1299,7 @@
 				523C2901207A003000D2D225 /* CircleView.m in Sources */,
 				52680C8020623CCD00F5DB96 /* OnStartVC.m in Sources */,
 				528BFD0420734E1E002C5ACB /* LazyTbCells.m in Sources */,
+				52C6F2542099474F002C5892 /* SearchResultV.m in Sources */,
 				5288FAE82069EB32002EC6AA /* UIButton+countDown.m in Sources */,
 				5284058A20638076000623B4 /* HomeMs.m in Sources */,
 				52680C74206239B700F5DB96 /* HomeBaseTbV.m in Sources */,
@@ -1301,8 +1323,10 @@
 				5284058D2063960B000623B4 /* FormatDs.m in Sources */,
 				523F04CA2064D71700858BDD /* StartV.m in Sources */,
 				52A22213206B345400F71B0C /* ValidatedFile.m in Sources */,
+				52C6F2572099506B002C5892 /* UIButton+ImageTitleSpacing.m in Sources */,
 				528F51AB2068DEF0008BA452 /* AccountInfoV.m in Sources */,
 				528C547A206C848000635C9E /* HomeDetailV.m in Sources */,
+				52C6F25A20996C24002C5892 /* STDropMenu.m in Sources */,
 				52680C7D20623B0400F5DB96 /* HomeBaseTbVC.m in Sources */,
 				528DC0EF20745E2900B02986 /* AboutUsVC.m in Sources */,
 				5294D9B02091CBC5005FE5C8 /* UILabel+STAttributeTextTapAction.m in Sources */,

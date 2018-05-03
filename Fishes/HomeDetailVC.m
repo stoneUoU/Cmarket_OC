@@ -72,7 +72,7 @@
                 for (int i = 0 ; i < [feedBacks[@"data"][@"banner"] count]; i++) {
                     [homeDetailMs.banner_list addObject:[picUrl stringByAppendingString:feedBacks[@"data"][@"banner"][i]]];
                 }
-                HomeDetailMs* testMs = homeDetailMs;
+                //HomeDetailMs* testMs = homeDetailMs;
                 self.homeDetailV.homeDetailMs = homeDetailMs;
                 [self.homeDetailV.tableV reloadData];
             }else if ([[NSString stringWithFormat:@"%@",feedBacks[@"code"]]  isEqual: @"10009"]){

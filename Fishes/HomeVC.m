@@ -15,6 +15,7 @@
 #import "SetVC.h"
 #import "YYCacheVC.h"
 #import "NoticeVC.h"
+#import "SearchResultVC.h"
 @implementation HomeVC
 - (id)init
 {
@@ -263,7 +264,9 @@
 //监听textfeild的内容改变
 - (void)valC:(id)UITextField{
     [self.searchBar resignFirstResponder];
-    STLog(@"去搜索模块");
+    SearchResultVC * searchResultV = [[SearchResultVC alloc] init];
+    searchResultV.pass_Vals = @{@"statusStr":@"4",@"keyStr":@""};
+    [MethodFunc pushToNextVC:self destVC:searchResultV];
 }
 //通知模块代码：
  -(void)setNet:(NSNotification *)notification{

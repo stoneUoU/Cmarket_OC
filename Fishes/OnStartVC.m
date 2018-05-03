@@ -10,6 +10,7 @@
 #import "HomeDetailVC.h"
 #import "StartVC.h"
 #import "FirmOrderVC.h"
+#import "SearchResultVC.h"
 @interface OnStartVC ()
 @end
 
@@ -125,7 +126,9 @@
 }
 //点击函数
 - (void)toMore:(id)sender{
-    STLog(@"查看更多");
+    SearchResultVC * searchResultV = [[SearchResultVC alloc] init];
+    searchResultV.pass_Vals = @{@"statusStr":@"4",@"keyStr":@""};
+    [MethodFunc pushToNextVC:self destVC:searchResultV];
 }
 -(void)getOrder:(TransferBtn *)btn{
     if (![[NSString stringWithFormat:@"%@",[UICKeyChainStore keyChainStore][@"orLogin"]]  isEqual: @"true"]){

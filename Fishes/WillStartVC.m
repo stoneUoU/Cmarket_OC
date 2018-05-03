@@ -7,7 +7,7 @@
 //
 
 #import "WillStartVC.h"
-
+#import "SearchResultVC.h"
 @interface WillStartVC ()
 
 @end
@@ -105,10 +105,6 @@
     homeTbCells.product_price.text =  [FormatDs retainPoint:@"0.00" floatV:[homeMs.discount_price floatValue]];
     homeTbCells.start_end.text = @"距开始";
     homeTbCells.count_down.attributedText = [FormatDs returnAttrStr:[self getInTimeWithStr:[NSString stringWithFormat:@"%@",homeMs.end_time]]];
-    if ([[FormatDs retainPoint:@"0" floatV:[homeMs.freeze_inventory floatValue]/[homeMs.total_inventory floatValue]*100] isEqualToString:@"1"]) {
-        [homeTbCells.doBtn setTitle:@"已拼满" forState:UIControlStateNormal];
-        homeTbCells.doBtn.backgroundColor = btnDisableC;
-    }
     homeTbCells.tag = indexPath.row;
     return homeTbCells;
 }
@@ -130,7 +126,9 @@
 //}
 //点击函数
 - (void)toMore:(id)sender{
-    STLog(@"查看更多");
+    SearchResultVC * searchResultV = [[SearchResultVC alloc] init];
+    searchResultV.pass_Vals = @{@"statusStr":@"2",@"keyStr":@""};
+    [MethodFunc pushToNextVC:self destVC:searchResultV];
 }
 -(NSString *)getInTimeWithStr:(NSString *)aTimeString{
     NSDateFormatter* formater = [[NSDateFormatter alloc] init];

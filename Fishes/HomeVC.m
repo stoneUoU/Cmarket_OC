@@ -53,7 +53,6 @@
 - (void)viewDidLoad {
 
     [super viewDidLoad];
-    
     //监听是否有网
     _netUseVals = [UICKeyChainStore keyChainStore][@"ifnetUse"];
 
@@ -64,6 +63,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refFooterM:) name:@"onStartRefEnd" object:nil];
     [self setUpUI];
     [self startR];
+    STLog(@"I am stone");
     
 }
 - (void)viewWillAppear:(BOOL)animated{

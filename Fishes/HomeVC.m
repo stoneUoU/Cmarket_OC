@@ -53,6 +53,7 @@
 - (void)viewDidLoad {
 
     [super viewDidLoad];
+    
     //监听是否有网
     _netUseVals = [UICKeyChainStore keyChainStore][@"ifnetUse"];
 
